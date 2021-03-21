@@ -1,0 +1,163 @@
+<style>
+    .header {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        box-shadow: 2.407px 3.195px 5px rgba(0, 0, 0, 0.08);
+        background-color: #132753;
+        padding: 0 15px;
+        z-index: 1;
+        flex: none; 
+    }
+    .page-content{
+        overflow: auto;
+    }
+    .headTitle h5,h1{
+        color: #ffffff;
+    }
+    .g-cols{
+        margin: 20px 0px;
+    }
+    .g-cols.offset_none > .one-half{
+        width: 40%;
+    }
+    .form-field .input-icon{
+        padding-left: 10px;
+    }
+    .fix-width{
+        width: 155px;
+    }
+    .back-btn-link{
+        color: #de8b4e;
+        margin-right: 10px
+    }
+    .btn{
+        width: 100px;
+    }
+    
+    .default-password-input{
+        position: absolute;
+        top: 5px;
+        color: #132753;
+    }
+</style>
+<header class="header">
+    <div class="headTitle">
+        <h1>{{ accountName}}</h1>
+    </div>
+</header><!--header-->
+
+<div class="page-content">
+    <div >
+        <div class="g-cols offset_none">
+            <div class="one-half">
+                <div class="card-block">
+                    <div class="card-pad">
+                        <div class="card-head">
+                            <h3 ng-bind="title"></h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-container">
+                                <form name="userForm" ng-submit="userForm.$valid && saveUser()" novalidate="">
+                                    <div class="form-field-set">
+                                        <label>Name</label>
+                                        <div class="form-field">
+                                            <input type="text" placeholder="Enter Name" class="input-icon" ng-model="formData.name" name="name" required="">
+                                            <span ng-show="userForm.$submitted || userForm.name.$touched">
+                                                <span class="error-msg" ng-show="userForm.name.$error.required">Please enter name!</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-field-set">
+                                        <label>Username</label>
+                                        <div class="form-field">
+                                            <input type="text" placeholder="Enter Username" class="input-icon" ng-model="formData.username" name="username" required="">
+                                            <span ng-show="userForm.$submitted || userForm.username.$touched">
+                                                <span class="error-msg" ng-show="userForm.username.$error.required">Please enter username!</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-field-set">
+                                        <label>Email</label>
+                                        <div class="form-field">
+                                            <input type="email" placeholder="Enter Email" class="input-icon" ng-model="formData.email" name="email" required="">
+                                            <span ng-show="userForm.$submitted || userForm.email.$touched">
+                                                <span class="error-msg" ng-show="userForm.email.$error.required">Please enter email!</span>
+                                                <span class="error-msg" ng-show="userForm.email.$error.email">Please enter valid email!</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-field-set fix-width">
+                                        <label>Start Date</label>
+                                        <div class="form-field">
+                                            <input type="date" placeholder="Enter Username" class="input-icon" ng-model="formData.start_date" name="start_date" required="">
+                                            <span ng-show="userForm.$submitted || userForm.start_date.$touched">
+                                                <span class="error-msg" ng-show="userForm.start_date.$error.required">Please enter start date!</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-field-set fix-width">
+                                        <label>End Date</label>
+                                        <div class="form-field">
+                                            <input type="date" placeholder="Enter Username" class="input-icon" ng-model="formData.end_date" name="end_date" required="">
+                                            <span ng-show="userForm.$submitted || userForm.end_date.$touched">
+                                                <span class="error-msg" ng-show="userForm.end_date.$error.required">Please enter end date!</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-field-set">
+                                        <label>Mobile</label>
+                                        <div class="form-field">
+                                            <input type="number" placeholder="Enter Mobile Number" class="input-icon" ng-model="formData.mobile_no" name="mobile" required="">
+                                            <span ng-show="userForm.$submitted || userForm.mobile.$touched">
+                                                <span class="error-msg" ng-show="userForm.mobile.$error.required">Please enter mobile!</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-field-set fix-width">
+                                        <label>Status</label>
+                                        <div class="form-field">
+                                            <select ng-model="formData.status_id" ng-options="state.val as state.label for state in statuses" class="select-box" name="status" required="">
+                                                <option value="" ng-if="typeOfView == 'add'">Select Status</option>
+                                            </select>
+                                            <span ng-show="userForm.$submitted || userForm.status.$touched">
+                                                <span class="error-msg" ng-show="userForm.status.$error.required">Please enter status!</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-field-set fix-width">
+                                        <label>Enable Access</label>
+                                        <div class="form-field">
+                                            <select ng-model="formData.enable_access_state" ng-options="state.val as state.label for state in access_states" class="select-box" name="enable_access" required="">
+                                                <option value="" ng-if="typeOfView == 'add'">Select Access State</option>
+                                            </select>
+                                            <span ng-show="userForm.$submitted || userForm.enable_access.$touched">
+                                                <span class="error-msg" ng-show="userForm.enable_access.$error.required">Please enter enable access!</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-field-set" ng-if="typeOfView == 'edit'">
+                                        <div class="form-field">
+                                            <input value="123456" type="checkbox" class="default-password-input" ng-model="formData.password"><label> Set default password as 123456</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-footer">
+                                        <a ui-sref="app.admin-dashboard" class="back-btn-link">Back</a>
+                                        <button type="submit" class="btn btn-icon" ng-class="{'loader': btnLoader}"><span class="icon-save"></span>&nbsp;{{typeOfView=='add'? 'Add User': 'Update'}}</button>
+                                        <div class="success-msg" ng-if="successMsg">
+                                            <img src="images/icon-success.svg"/>&nbsp;&nbsp;User is added
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

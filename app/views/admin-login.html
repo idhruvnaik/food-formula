@@ -1,0 +1,148 @@
+<style type="text/css">
+
+    .pop-up{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        /* background-color: rgba(0, 0, 0, 0.7); */
+        background-color: #132753;
+        left: 0;
+        top: 0;
+        display: flex;
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .popup-box {
+        padding: 0;
+        margin: 0 auto;
+        border-radius: 8px;
+        box-shadow: 0px 3px 13px rgba(0, 0, 0, 0.41);
+        background-color: #ffffff;
+    }
+
+    .login-box{ position: relative; }
+
+
+    .close-btn {
+        position: absolute;
+        top: 7px;
+        right: 5px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: #f5f7fb; */
+        cursor: pointer;
+        z-index: 999;
+    }
+    .close-btn:before {
+        content: '';
+        display: block;
+        width: 25px;
+        height: 25px;
+        background: url(images/close-icon.svg) no-repeat center center;
+        z-index: 0;
+        transition: all 0.3s;
+    }
+    .close-btn:hover:before {
+        background-color: #ededed;
+        transform: scale(1);
+        border-radius: 50%;
+    }
+
+    .mob-popup-logo{ display: none; }
+
+    @media screen and (max-width: 1024px) {
+        .restaurant {
+            background: url(images/banner-bg.png) center top no-repeat;
+            background-size: 980px;
+        }
+        /*.mob-popup-logo{
+            display: block;
+            position: absolute;
+            top: -60px;
+        }*/
+
+        .login-box{
+            max-width: 300px;
+            height: auto;
+        }
+
+        /*.popup-box { border-radius: 0px 0px 8px 8px; }*/
+        .popup-body{ padding: 20px 20px; }
+        .r-col-pad{ margin-left: 0px; margin-right: 0px; }
+
+
+        .l-col{ display: none!important; }
+        .popup-logo{ display:  none!important;}
+    }
+
+    .btn{
+        background-color: #de8b4e;
+    }
+
+</style>
+<div class="pop-up login-popup" style="display: flex;">
+    <div class="popup-box">
+        <div id="login-popup" class="login-box">
+            <div class="popup-body">
+                <div class="mob-popup-logo">
+                    <div class="logo">
+                        <a href="/"><img src="images/ff-web-restaurant-logo.svg"></a>
+                    </div>
+                </div>
+
+                <div class="l-col">
+                    <span class="l-col-img">
+                    </span>
+                </div>
+
+                <div class="r-col">
+                    <div class="r-col-pad">
+                        <div class="login-pad mb60">
+                            <div class="popup-logo" style="margin-bottom:0px">
+                                <img src="images/nutrical-logo.svg"  width="115px" height="52px">
+                            </div><!--popup-logo-->
+                            <div class="login-form">
+                                <div class="login-details">
+                                    <span class="login-text">Login into your admin account</span>
+                                </div>
+                                <div class="login-content">
+                                    <form name="loginForm" ng-submit="loginForm.$valid && requestAccess()" novalidate>
+                                        <div class="login-box-container">
+                                            <div class="login-field">
+                                                <span ng-show="loginForm.$submitted || loginForm.userEmail.$touched">
+                                                    <span class="errorMsg" ng-show="loginForm.userEmail.$error.required">Please enter valid username or email id!</span>
+                                                </span>
+                                                <img src="images/user-icon.svg">
+                                                <input class="text" type="text" placeholder="Enter Username" ng-model="loginObj.email" name="userEmail" required />
+                                            </div>
+
+                                            <div class="login-field">
+                                                <span ng-show="loginForm.$submitted || loginForm.password.$touched">
+                                                    <span class="errorMsg" ng-show="loginForm.password.$error.required">Please enter password!</span>
+                                                </span>
+                                                <img src="images/password-icon.svg">
+                                                <input class="password" type="password" ng-model="loginObj.password" placeholder="Enter password" name="password" required>
+                                            </div><!--login-field-->
+                                        </div><!--login-box-container-->
+
+                                        <div class="login-link">
+                                            <button type="submit" class="btn btn-icon"  ng-class="{'loader': loginLoader}">Login</button>
+                                        </div><!--login-link-->
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="login-foot-note">
+                            <span>By signing up, you agree to NutriCal's Terms and Conditions & Privacy Policy</span>
+                        </div>
+                    </div>
+                </div>
+            </div><!--popup-body-->
+        </div><!--login-box-->
+    </div>
+</div>

@@ -1,0 +1,331 @@
+<!DOCTYPE html><html class="no-js modernizr-no-sizes modernizr-no-supports modernizr-no-srcset modernizr-no-serviceworker modernizr-touchevents ng-scope" lang="en" ng-app="restaurantApp"><head><style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style><style type="text/css">.uib-time input{width:50px;}</style><style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow,[uib-popover-html-popup].popover.top-left > .arrow,[uib-popover-html-popup].popover.top-right > .arrow,[uib-popover-html-popup].popover.bottom-left > .arrow,[uib-popover-html-popup].popover.bottom-right > .arrow,[uib-popover-html-popup].popover.left-top > .arrow,[uib-popover-html-popup].popover.left-bottom > .arrow,[uib-popover-html-popup].popover.right-top > .arrow,[uib-popover-html-popup].popover.right-bottom > .arrow,[uib-popover-template-popup].popover.top-left > .arrow,[uib-popover-template-popup].popover.top-right > .arrow,[uib-popover-template-popup].popover.bottom-left > .arrow,[uib-popover-template-popup].popover.bottom-right > .arrow,[uib-popover-template-popup].popover.left-top > .arrow,[uib-popover-template-popup].popover.left-bottom > .arrow,[uib-popover-template-popup].popover.right-top > .arrow,[uib-popover-template-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-html-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style><style type="text/css">.uib-datepicker-popup.dropdown-menu{display:block;float:none;margin:0;}.uib-button-bar{padding:10px 9px 2px;}</style><style type="text/css">.uib-position-measure{display:block !important;visibility:hidden !important;position:absolute !important;top:-9999px !important;left:-9999px !important;}.uib-position-scrollbar-measure{position:absolute !important;top:-9999px !important;width:50px !important;height:50px !important;overflow:scroll !important;}.uib-position-body-scrollbar-measure{overflow:scroll !important;}</style><style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-left,.uib-right{width:100%}</style><style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style><style>@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+        <meta charset="utf-8">
+        <meta name="description" content="restaurant cafe dubai vegan veganize your menu recipes calories plant based protein">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title class="ng-binding">'Veganizing' Your Menu</title>
+        <base href="/">
+        <meta name="fragment" content="!">
+
+        <!-- Place favicon.ico in the root directory -->
+        <meta name="msapplication-TileColor" content="#fdfdfd">
+        <meta name="theme-color" content="#ffffff">
+        <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon.ico">
+        <link rel="manifest" href="images/favicon/site.webmanifest">
+        <!--<link rel="mask-icon" href="images/favicons/safari-pinned-tab.svg" color="#5bbad5" />-->
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="components/angular-ui-notification/dist/angular-ui-notification.css">
+        <link rel="stylesheet" href="components/angular-loading-bar/build/loading-bar.css">
+        <link rel="stylesheet" href="components/owl.carousel/dist/assets/owl.carousel.css">
+        <link rel="stylesheet" href="components/owl.carousel/dist/assets/owl.theme.default.css">
+        <link rel="stylesheet" href="components/tinymce/skins/lightgray/skin.min.css">
+        <link rel="stylesheet" href="components/tinymce/skins/lightgray/content.min.css">
+        <link rel="stylesheet" href="components/offline/themes/offline-language-english.css">
+        <link rel="stylesheet" href="components/offline/themes/offline-theme-chrome.css">
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:css styles/main.css -->
+        <link rel="stylesheet" href="styles/font-style.css">
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/base.css">
+
+
+        <!-- endbuild -->
+        <!-- build:js scripts/modernizr.js -->
+        <script src="https://www.google-analytics.com/analytics.js"></script><script src="scripts/modernizr.js"></script>
+        <!-- endbuild --><script src="scripts/controllers/blog-controller.js" async=""></script>
+
+
+    </head>
+    <body class="ng-scope landing-page" ng-controller="MainCtrl" ng-class="{'landing-page':!isAuthenticate()}"><script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='/browser-sync/browser-sync-client.js?v=2.26.7'><\/script>".replace("HOST", location.hostname));
+//]]></script><script async="" src="/browser-sync/browser-sync-client.js?v=2.26.7"></script>
+
+        <!--[if IE]>
+          <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- uiView: --><div ui-view="" class="ng-scope"><div id="" ng-class="{'wrapper': isAuthenticate()}" class="ng-scope">
+    <!-- ngIf: isAuthenticate() -->
+    <div id="">        
+        <!-- uiView: --><ui-view class="ng-scope"><style class="ng-scope">
+    .blog-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding-left: 10%;
+        padding-right: 25%;
+        padding-top: 155px;
+    }
+    .blog-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .nutrical-image{
+        display: flex;
+        align-items: center;
+    }
+    .nutrical-image img{
+        width: 70px;
+        height: 90px;
+    }
+    .blog-container p{
+        color: #000;
+    }
+    .blog-title{
+        font-weight: 400;
+        font-size: 30px;
+        text-transform: uppercase;
+        line-height: 35px;
+        margin-bottom: 20px;
+    }
+    .upper-part{
+        border-bottom: 3px solid #132753;
+        margin-bottom: 15px;
+    }
+    .blog-date{
+        display: inline-block;
+        text-align: right;
+        color: #000;
+    }
+    .blog-publisher{
+        color: #000;
+        margin: 0px 20px;
+    }
+    .footer-detail .one-fourth li{
+        list-style-type: none;
+    }
+    @media (max-width: 599px) { 
+        .blog-container{
+            padding: 20px;
+            padding-top: 80px;
+        }
+        .blog-title{
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .nutrical-image img{
+            width: 50px;
+            height: 70px;
+        }
+    }
+</style>
+<div class="nutrical-platform ng-scope">
+    <!-- ngInclude: 'views/header.html' --><div ng-include="'views/header.html'" class="ng-scope"><header class="header fixed ng-scope">
+    <div class="nutrical-head">
+        <div class="header-wrap">
+            <div class="nav-btn">
+                <a class="sec-btn" style="margin-right: 10px" ui-sref="app.contact_us" title="Contact Us" href="/contact-us">Contact Us</a>
+                <a class="sec-btn" href="https://wa.me/971549941190" title="WhatsaApp Us">WhatsApp Us</a>
+            </div>
+            <div class="nav-sec-btn">
+                <a class="sec-btn" title="Go to my account" ng-click="loginModal()">Go to my account</a>
+                <a class="sec-btn" title="Get NutriCal Free" ng-click="signupModal()">Get NutriCal Free</a>
+            </div>
+        </div>
+    </div>
+    <!--header-wrap-->
+    <div class="l-subsection-h">
+        <a ui-sref="app.home" class="nutrical-logo" href="/"><img src="images/nutrical-logo.svg" width="140px" height="60px" alt="NutriCal" title="NutriCal"></a>
+        <nav class="main-nav">
+            <ul>
+                <li>
+                    <a ui-sref-active="active" ui-sref="app.home" title="Why Nutrical" href="/">Why NutriCal</a>
+                    <a ui-sref-active="active" ui-sref="app.who_is_it_for" title="Who is it for" href="/who-is-it-for">Who is it for</a>
+                    <a ui-sref-active="active" ui-sref="app.how_it_works" title="How it works" href="/how-it-works">How it works</a>
+                    <a ui-sref-active="active" ui-sref="app.customers" title="Customers" href="/customers">Customers</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="responsive-header" style="display: none;">
+        <div class="responsive-logo">
+            <a ui-sref="app.home" class="nutrical-logo" href="/"><img src="images/nutrical-logo.svg" width="140px" height="60px" alt="NutriCal" title="NutriCal"></a>
+        </div>
+
+        <div>
+            <div class="icon-burger" id="icon-burger" onclick="navAction()">
+                <span class="burger-patty"></span>
+                <span class="burger-patty"></span>
+                <span class="burger-patty"></span>
+            </div>
+
+            <div class="sidenav" id="sidenav" style="height: 0vh;">
+                <a ui-sref-active="active" ui-sref="app.home" title="Why Nutrical" href="/">Why NutriCal</a>
+                <a ui-sref-active="active" ui-sref="app.who_is_it_for" title="Who is it for" href="/who-is-it-for">Who is it for</a>
+                <a ui-sref-active="active" ui-sref="app.how_it_works" title="How it works" href="/how-it-works">How it works</a>
+                <a ui-sref-active="active" ui-sref="app.customers" title="Customers" href="/customers">Customers</a>
+                <a ui-sref="app.contact_us" title="Contact Us" href="/contact-us">Contact Us</a>
+                <a ui-sref-active="active" href="https://wa.me/971549941190" title="WhatsaApp Us">WhatsApp Us</a>
+                <a class="bg-hover" title="Go to my account" ng-click="loginModal()">Go to my account</a>
+                <a class="bg-hover" title="Get NutriCal Free" ng-click="signupModal()">Get NutriCal Free</a>
+            </div>
+        </div>
+    </div>
+
+</header>
+<script class="ng-scope">
+    $(document).ready(function () {
+        $(".icon-burger").click(function () {
+
+            if ($(this).hasClass("is-open")) {
+                $(this).removeClass("is-open");
+            } else {
+                $(this).addClass("is-open");
+            }
+
+        });
+    });
+    function navAction() {
+        if (document.getElementById("sidenav").style.height == "100vh") {
+            document.getElementById("sidenav").style.height = "0vh"
+        } else {
+            document.getElementById("sidenav").style.height = "100vh"
+        }
+    }
+</script></div> 
+    <div class="blog-container">
+        <div class="upper-part">
+            <h1 class="blog-title ng-binding">'Veganizing' Your Menu</h1>
+            <div class="blog-header">
+                <div class="nutrical-image">
+                    <img src="images/Nutrical-logo-round-container.png">
+                    <span class="blog-publisher">Nutrical Team</span>
+                </div>
+                <span class="blog-date ng-binding">Posted On Thu Jun 11 2020</span>
+            </div>
+        </div>
+        <div id="results" ng-bind-html="content" class="ng-binding"><h6><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><img src="https://s3.ap-south-1.amazonaws.com/ff-dubai/entity_images/images/000/000/594/big/scrabble-tiles-in-blue-ceramic-plate-2377164.jpg?1591879194" alt="vegan food menu recipe" width="691" height="389" style="display: block; margin-left: auto; margin-right: auto;" data-mce-style="display: block; margin-left: auto; margin-right: auto;" data-mce-src="https://s3.ap-south-1.amazonaws.com/ff-dubai/entity_images/images/000/000/594/big/scrabble-tiles-in-blue-ceramic-plate-2377164.jpg?1591879194"></span></h6><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">As per a Nielsen survey, approximately 67% of consumers in the GCC follow a particular diet to avoid non-communicable diseases (NCDs) such as blood pressure, diabetes etc.</span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">As restaurant owners or food businesses, you would want to make sure to accommodate every type of customer who comes across your online business or walks into the door - vegan, plant based, vegetarian etc.</span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">People following a vegan diet avoid all types of animal products including meat, seafood, milk and other dairy products as well as honey.</span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">There are various reasons why they follow this diet - 1. It could be for the animals, 2. For health reasons or 3. For the environment to reduce their carbon footprint due to adverse effects of animal agriculture.</span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Below we mention some ways to veganize your menu.</span></p><ol><li><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Protein Alternatives</strong> - </span></span>Instead of meat and seafood - there are many ready to cook / eat plant-based meat available now, but also tofu, tempeh, seitan, mushrooms, jackfruit are great meat replacements.</p></li><li style="font-weight: 400;" data-mce-style="font-weight: 400;"><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>No Dairy</strong> - </span></span>There are a bunch of packaged vegan cheeses available now that taste similar to mozzarella, cheddar, even Feta that have a base of potato starch or tapioca starch. Violife, Daiya are some commonly used brands. Many restaurants and cafes create their cheese from scratch using cashews, coconut milk etc.&nbsp; For milk there are many options available soya, oat, coconut, almond, rice etc.</p></li><li><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Use <strong>vegetable broth / stock</strong> instead of chicken broth. Use mushroom broth for the umami flavour. Use coconut milk or cream instead of regular heavy cream or milk.</span></p></li><li><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Double up on those veggies and legumes</strong> - </span></span>For salads, for appetisers - charred broccoli, asparagus, cauliflower etc, for mains - thai vegetable curry, soba noodles for everything vegan double up on vegetables to create base and to create flavour. Chickpeas, lentils, kidney beans etc - these are extremely versatile whether you are adding it to a salad, making a curry of it, making a patty or something else creative.</p></li><li><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Replace Egg</strong> - </span></span>There are store bought egg replacements which are available, common one being Bob’s Red Mill Vegetarian Egg Replacer. But some other hacks are to use flaxseed, banana, vegan yogurt, fruit puree etc to bake cakes &amp; breads and chickpea flour for vegan omelettes and scrambled eggs.</p></li><li style="font-weight: 400;" data-mce-style="font-weight: 400;"><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Nutritional Yeast</strong> - This ingredient is a vegan favourite and can be sprinkled on practically any vegan savoury dish.</span></p></li><li style="font-weight: 400;" data-mce-style="font-weight: 400;"><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Yes<strong> dessert</strong> is possible without eggs, butter and milk - </span></span>Surprisingly, there are lots that can be done with vegan ingredients for ones with a sweet tooth. Using chocolate, nut butters, coconut cream, fruits such as bananas, strawberries can take you a long way. There are recipes available for<span style="font-weight: 400;" data-mce-style="font-weight: 400;"> vegan cheesecake, v</span><span style="font-weight: 400;" data-mce-style="font-weight: 400;">egan carrot cake, c</span><span style="font-weight: 400;" data-mce-style="font-weight: 400;">hocolate / peanut butter fudge or truffles, f</span><span style="font-weight: 400;" data-mce-style="font-weight: 400;">ruit sorbets, i</span><span style="font-weight: 400;" data-mce-style="font-weight: 400;">ce cream / gelato with a coconut milk base, c</span><span style="font-weight: 400;" data-mce-style="font-weight: 400;">ookies, v</span><span style="font-weight: 400;" data-mce-style="font-weight: 400;">egan macarons ( using aquafaba).</span></p></li></ol><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">There is always a concern with the vegan diet about protein, therefore to ease the process we suggest few vegan ingredients with high protein below- </span></p><ol><li style="font-weight: 400;" data-mce-style="font-weight: 400;"><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Nutritional Yeast</strong> - approximately 50g of protein per 100 grams</span></p></li><li style="font-weight: 400;" data-mce-style="font-weight: 400;"><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Seitan</strong> - approximately 20g of protein per 100 grams</span></p></li><li style="font-weight: 400;" data-mce-style="font-weight: 400;"><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Tofu</strong> - approximately 8g of protein per 100 grams</span></p></li><li style="font-weight: 400;" data-mce-style="font-weight: 400;"><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Tempeh</strong> - approximately 18g of protein per 100 grams</span></p></li><li style="font-weight: 400;" data-mce-style="font-weight: 400;"><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Edamame</strong> - approximately 11g of protein per 100 grams</span></p></li><li style="font-weight: 400;" data-mce-style="font-weight: 400;"><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Lentils</strong> - approximately 9g of protein per 100 grams</span></p></li><li style="font-weight: 400;" data-mce-style="font-weight: 400;"><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Chickpeas</strong> - approximately 7g of protein per 100 grams</span></p></li><li style="font-weight: 400;" data-mce-style="font-weight: 400;"><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Nut Butters</strong> - approximately 7g of protein per 100 grams</span></p></li></ol><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Studies have shown that veganism has beneficial effects such as lowering the risk of cancer, reducing arthritis symptoms, improving kidney functions etc.</span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Luckily for the demographic in UAE, many Indian and Arabic dishes are “accidentally” vegan - so Dal Tadka, Falafel, Hummus, Baba Ganoush, Gobhi Aloo, Dosa, Idli could be hot favourites.</span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">When you do veganise your menu and add these dishes make sure to put a “v” or “ve” next to the dish name and advertise the menu on your different social media channels.</span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">To understand what are the best ingredients to use for maximum nutrition benefits and also calculate calories and macros of the recipes at your food establishment / vegan restaurant - <a href="contact-us.html" target="_blank" rel="noopener" data-mce-href="contact-us.html">contact NutriCal.</a></span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Email us on&nbsp;<a href="mailto:info@nutrical.co" data-mce-href="mailto:info@nutrical.co">info@nutrical.co</a>&nbsp;or call / whatsapp us on + 971 52 994 1190 for more information.</span></p></div>
+    </div>
+    <!-- ngInclude: 'views/footer.html' --><div ng-include="'views/footer.html'" class="ng-scope"><footer class="footer ng-scope">
+    <div class="footer-detail">
+        <div>
+            <div class="one-fourth">
+                <ul class="">
+                    <li>For Users</li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Food Manufacturer</a></li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Food Brand</a></li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Restaurant &amp; Cafes</a></li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Hospitality Company</a></li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Meal Plan &amp; Food Delivery Company</a></li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Food Labs</a></li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Nutritionist / Personal Trainers</a></li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Cloud Kitchens</a></li>
+                </ul>
+            </div>
+            <div class="one-fourth">
+                <ul>
+                    <li>For Business Activities</li>
+                    <li class="pointer" ng-click="signupModal()">Create Nutrition Label</li>
+                    <li class="pointer" ng-click="signupModal()">Analyse recipes &amp; dishes</li>
+                    <li class="pointer" ng-click="signupModal()">Develop new food products</li>
+                    <li class="pointer" ng-click="signupModal()">Recipe experimentation</li>
+                    <li class="pointer" ng-click="signupModal()">Meal Planning</li>
+                    <li class="pointer" ng-click="signupModal()">Menu Management</li>
+                    <li class="title-text"><a ui-sref="app.blogs" href="/blogs">Blog</a></li>
+                    <li class="title-text"><a ui-sref="app.customers" href="/customers">Cutomers &amp; Partners</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <div class="one-fourth">
+                <ul class="footer-contact-info">
+                    <li>Contact Information</li>
+                    <li>A: Dubai, UAE</li>
+                    <li>W: www.nutrical.co</li>
+                    <li>P: +971 4 3235 228 / 229</li>
+                    <li>M: +971 54 9941190</li>
+                    <li><a href="mailto:info@nutrical.co">E: info@nutrical.co</a></li>
+                </ul>
+                <div class="social-media-links">
+                    <a href=" https://www.linkedin.com/company/34889191/admin/" target="_blank"><img src="images/linkedin-logo.svg" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/nutrical__/" target="_blank"><img src="images/insta-logo.svg" alt="Instagram"></a>
+                    <a href="https://wa.me/971549941190" style="margin-left: 10px" target="_blank"><img src="images/whatsapp-logo.svg" alt="Whatsapp"></a>
+                </div>
+            </div>
+            <div class="one-fourth">
+                <img src="images/nutrical-logo-white.svg" alt="Nutrical" width="115px" height="50px">
+                <p>NutriCal is a web-based <br>software that facilitates<br>businesses in the food<br>industry to understand and<br> effectively communicate data<br>about their food.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-note">Powered by <a class="footer-link" href="https://www.fitterfly.com/" title="Fitterfly Technologies Private Limited" target="_blank">Fitterfly</a></div>
+</footer></div>
+</div></ui-view> 
+    </div>
+</div>
+
+</div>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+                    (function (b, o, i, l, e, r) {
+                        b.GoogleAnalyticsObject = l;
+                        b[l] || (b[l] =
+                                function () {
+                                    (b[l].q = b[l].q || []).push(arguments)
+                                });
+                        b[l].l = +new Date;
+                        e = o.createElement(i);
+                        r = o.getElementsByTagName(i)[0];
+                        e.src = 'https://www.google-analytics.com/analytics.js';
+                        r.parentNode.insertBefore(e, r)
+                    }(window, document, 'script', 'ga'));
+                    ga('create', 'UA-XXXXX-X');
+                    ga('send', 'pageview');
+        </script>
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="components/jquery/dist/jquery.js"></script>
+        <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="components/angular/angular.js"></script>
+        <script src="components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="components/underscore/underscore.js"></script>
+        <script src="components/oclazyload/dist/ocLazyLoad.js"></script>
+        <script src="components/angular-ui-notification/dist/angular-ui-notification.js"></script>
+        <script src="components/ngstorage/ngStorage.js"></script>
+        <script src="components/angular-loading-bar/build/loading-bar.js"></script>
+        <script src="components/owl.carousel/dist/owl.carousel.js"></script>
+        <script src="components/highcharts/highcharts.js"></script>
+        <script src="components/highcharts/modules/exporting.js"></script>
+        <script src="components/angular-ui-tinymce/src/tinymce.js"></script>
+        <script src="components/ng-idle/angular-idle.js"></script>
+        <script src="components/checklist-model/checklist-model.js"></script>
+        <script src="components/qrcode-generator/js/qrcode.js"></script>
+        <script src="components/qrcode-generator/js/qrcode_UTF8.js"></script>
+        <script src="components/angular-qrcode/angular-qrcode.js"></script>
+        <script src="components/offline/offline.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+
+        <!-- build:js scripts/app.js -->
+        <script src="scripts/routes.js" type="text/javascript"></script>
+        <script src="scripts/services/env/config.js" type="text/javascript"></script>
+        <script src="scripts/services/errorInterceptor.js" type="text/javascript"></script>
+        <script src="scripts/app.js"></script>        
+        <script src="scripts/services/dataService.js" type="text/javascript"></script>
+        <script src="scripts/services/accountService.js" type="text/javascript"></script>
+        <script src="scripts/services/helperService.js" type="text/javascript"></script>
+        <script src="scripts/mainCtrl.js" type="text/javascript"></script>
+        <!-- endbuild -->
+
+
+
+    
+
+<div class="offline-ui offline-ui-up"><div class="offline-ui-content"></div><a href="" class="offline-ui-retry"></a></div></body></html>

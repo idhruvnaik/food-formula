@@ -1,0 +1,704 @@
+<style>
+    .header {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        box-shadow: 2.407px 3.195px 5px rgba(0, 0, 0, 0.08);
+        background-color: #132753;
+        padding: 0 15px;
+        z-index: 1;
+        flex: none;
+        flex-direction: row;
+    }
+
+    .header .rest-logo {
+        position: absolute;
+        width: 199px;
+        height: 70px;
+        border-radius: 4px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.26);
+        background-color: #ffffff;
+        right: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: none;
+    }
+
+    .header .rest-logo img {
+        max-height: 70px;
+        max-width: 180px;
+    }
+
+    .header .search-box {
+        width: 350px;
+        display: flex;
+        position: relative;
+    }
+
+    .header .search-box:before {
+        content: '';
+        width: 40px;
+        background: url("images/search-icon.svg") no-repeat center center;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        display: block;
+        left: 0;
+        position: absolute;
+    }
+
+    .header .search-box input {
+        font-size: 13px;
+        line-height: 40px;
+        color: #000000;
+        padding-left: 40px;
+        height: 40px;
+        border: 0;
+        border-bottom: 1px solid #ddd;
+        border-radius: 0;
+        padding: 0 0 0 40px;
+        width: 100%;
+        background-color: #132753;
+        margin-right: 25px;
+    }
+
+    .header .search-box input:focus,
+    .header .search-box input:hover {
+        background-color: #f5f7fb;
+        border-radius: 4px;
+        transition: all 0.5s;
+    }
+
+    .header .search-box ::-webkit-input-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9;
+    }
+
+    .header .search-box ::-moz-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9;
+    }
+
+    .header .search-box :-ms-input-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9;
+    }
+
+    .header .search-box :-moz-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9;
+    }
+
+    .headTitle h5,
+    h1 {
+        color: #ffffff;
+    }
+
+    .button-disable {
+        pointer-events: none;
+        opacity: 0.4;
+    }
+
+    .pop-up-content.scroll-vertical {
+        padding: 5px;
+        max-height: 500px;
+        overflow-y: auto;
+        max-width: 500px;
+        margin-bottom: 10px;
+    }
+</style>
+<style>
+    .card-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-list .card {
+        width: 100%;
+    }
+
+    .link-btn {
+        margin: 0 5px;
+        color: #4a5f7f;
+        font-size: 13px;
+        /*font-weight: 500;*/
+    }
+
+    .link-btn.primary {
+        font-weight: 500;
+    }
+
+    .link-btn.secondary:hover {
+        font-weight: 500;
+    }
+
+    .card-list .card .card-body .food-list {
+        margin: 8px 0 0;
+        border-bottom: none;
+    }
+
+    .card-list .card .card-head {
+        border-bottom: none;
+        padding: 10px 10px 5px 10px;
+    }
+
+    .card-list .card .card-body {
+        padding: 0 15px;
+    }
+
+    .card-list .card .card-body .food-list .food-item strong {
+        font-size: 13px;
+        color: #494d54;
+    }
+
+    .card-list .card .card-body .food-list .food-item.food-draft strong {
+        font-size: 13px;
+        color: #84888e;
+    }
+
+    .card-list .card .card-body .food-list .food-item.food-draft .eng-no {
+        display: none !important;
+    }
+
+    .card-list .card .card-body .food-list .food-item {
+        text-transform: capitalize;
+    }
+
+    .card-list .card .card-body .food-list .food-item:last-child {
+        border: none;
+    }
+
+    .card-list .card .card-head h4 {
+        font-weight: 400;
+        text-transform: capitalize;
+        font-size: 15px;
+        line-height: 15px;
+        color: #de8b4e;
+        letter-spacing: -0.4px;
+    }
+
+    /*.card-list .card .card-pad{
+        padding: 0;
+        overflow: hidden;
+    }*/
+
+    .card-list .card .card-footer {
+        padding: 10px 15px;
+        background-color: #f9f9fb;
+        margin-top: 6px;
+        border-bottom-left-radius: 4px;
+        border-top: 1px solid #f1f1ff;
+        border-bottom-right-radius: 4px;
+    }
+
+    .card-list .card.emptyCard .card-footer {
+        margin-top: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="number"],
+    input[type="email"],
+    select,
+    textarea {
+        border: 1px solid #efefef;
+        background-color: #ffffff;
+    }
+
+    .food-item-act-links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .btn-icon {
+        justify-content: flex-start;
+    }
+
+    .green {
+        color: green;
+    }
+
+    .checkbox-inline,
+    .radio-inline {
+        position: relative;
+        display: inline-block;
+        /*        padding-left: 20px;
+                margin-bottom: 0;
+                font-weight: 400;
+                vertical-align: middle;
+                cursor: pointer;*/
+    }
+
+    .checkbox input[type=checkbox],
+    .checkbox-inline input[type=checkbox],
+    .radio input[type=radio],
+    .radio-inline input[type=radio] {
+        position: absolute;
+        /*        margin-top: 4px\9;
+                margin-left: -20px;*/
+    }
+
+    label.checkbox-inline {
+        display: block;
+        padding-left: 15px;
+        /*text-indent: -15px;*/
+        margin: 5px 0px;
+    }
+
+    label.checkbox-inline span {
+        margin-left: 15px;
+    }
+
+    .checkbox-inline input {
+        width: 13px;
+        height: 13px;
+        padding: 0;
+        margin-left: -15px;
+        vertical-align: bottom;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card-head .card-head-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .card-head .card-head-info .down-arrow {
+        margin: 0px 10px;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card-body {
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: all 0.4s ease-in-out;
+        max-height: 0vh;
+        overflow-y: auto;
+    }
+
+    .card-body.open {
+        transform: scaleY(1);
+    }
+
+    .card-body.none {
+        max-height: 50vh;
+    }
+
+    .fa-arrow-down {
+        transform: rotate(0deg);
+        transition: transform 0.4s linear;
+    }
+
+    .fa-arrow-down.open {
+        transform: rotate(180deg);
+        transition: transform 0.4s linear;
+    }
+
+    .save-order {
+        transition: opacity 1s ease-out;
+        opacity: 0;
+        height: 0;
+        min-height: 19px;
+        font-size: 11px;
+    }
+
+    .save-order.open {
+        opacity: 1;
+        height: auto;
+    }
+</style>
+<header class="header db-page">
+    <div class="headTitle">
+        <h1>{{accountData.user.name}}</h1>
+    </div>
+    <div class="right-head-col">
+        <div class="form-field" ng-if="isAdmin()">
+            <select class="select-box" ui-select2 ng-model="restaurantUser" ng-change="changeUser(restaurantUser)">
+                <option value="" ng-if="!restaurantUser" selected>Select restaurant's recipes</option>
+                <option ng-value="0">My Recipes</option>
+                <option ng-value="user" ng-repeat="user in users | orderBy: 'name'">{{user.name}}</option>
+            </select>
+        </div>
+
+        <div class="form-field search-box">
+            <input type="text" ng-model="searchQuery" ng-keyup="searchRecipe(searchQuery)"
+                placeholder="Search recipe" />
+        </div>
+
+        <div class="btn btn-icon" ng-click="openMenuPrintModal()" style="margin-right: 5px;"><span
+                class="icon-printer"></span>&nbsp;Menu QR</div>
+        <div class="btn btn-icon" ng-click="openMenuTemplate()" style="margin-right: 5px;"><span
+                class="icon-menu-of-three-lines"></span>&nbsp;Download Menu</div>
+        <div class="btn btn-icon" ng-click="exportIngredients()" style="margin-right: 5px;"><span
+                class="icon-csv"></span>&nbsp;Export Recipes With Costing</div>
+    </div>
+</header>
+<!--header-->
+<div class="page-content" style="height: calc(100vh - 60px); overflow: auto; padding: 5px;">
+    <div class="container">
+        <div class="container-pad">
+            <div class="card-list" ng-if="recipeCategories.length">
+                <div class="card-column" ng-repeat="cols in categoryCols track by $index">
+                    <div class="card act-card" ng-if="$index == addCategoryIndex">
+                        <div class="card-pad">
+                            <div class="add-cat-block" ng-if="isUserChanged() == false"
+                                ng-class="{'open': category.showCatBox}">
+                                <div class="btn btn-icon add-cat-link" ng-click="category.openCatBox()"
+                                    ng-class="{'button-disable':access_state == 2 && getRecipeCategoriesLength() >= 3}">
+                                    <span class="icon-plus-circle"></span>&nbsp;Add New Category
+                                </div>
+                                <div class="add-food-item-box add-cat-box">
+                                    <div class="add-cat-box-pad">
+                                        <input type="text" placeholder="type here" ng-model="category.name"
+                                            class="form-control">
+                                        <div class="cat-act-links">
+                                            <div ng-click="category.save()" class="btn btn-icon"
+                                                ng-class="{'loader': category.addCatLoader}"><span
+                                                    class="icon-plus-circle"></span>&nbsp;Add</div>
+                                            <span ng-click="category.hideCatBox()" class="close-btn"></span>
+                                        </div>
+                                        <!--cat-act-links-->
+                                    </div>
+                                    <!--add-cat-box-pad-->
+                                </div>
+                                <!--add-cat-box-->
+                            </div>
+                            <!--add-cat-block-->
+                        </div>
+                        <!--card-pad-->
+                    </div>
+                    <!--card-->
+                    <div class="card" ng-class="{'emptyCard': cat.recipes.length == 0}"
+                        ng-repeat="cat in cols track by $index">
+                        <div class="card-pad">
+                            <div class="card-head">
+                                <div class="card-head-info">
+                                    <h4>{{cat.name}}</h4>
+                                    <div class="down-arrow" ng-click="categoryShow(cat)">
+                                        <img src="/images/arrow-down-expand.svg" id="{{cat.id}}-down-arrow"
+                                            class="fa-arrow-down" ng-class="{'open' : cat.show}">
+                                    </div>
+                                </div>
+                                <div class="card-links">
+                                    <div class="links-icon act-links">
+                                        <em><img src="images/act-icon.svg" /></em>
+                                        <ul class="act-block">
+                                            <li ng-if="isUserChanged() == false" ng-click="categoryModal(cat)"
+                                                class="edit-link"><span class="icon-edit"></span>Edit</li>
+                                            <li ng-if="isUserChanged() == false" ng-click="deleteCategory(cat)"
+                                                class="delete-link"><span class="icon-delete-button"></span>Delete</li>
+                                            <li ng-click="downloadCategory(cat)" class="delete-link"><span
+                                                    class="icon-download"></span>Download</li>
+                                        </ul>
+                                        <!--act-block-->
+                                    </div>
+                                    <!--act-links-->
+                                </div>
+                                <!--card-links-->
+                            </div>
+                            <!--card-head-->
+                            <div class="card-body" id="{{cat.id}}" ng-class="{'open none' : cat.show}">
+                                <div class="food-list" ng-if="cat.recipes.length == 0 && cat.isLoading">
+                                    Loading...
+                                </div>
+                                <div class="food-list" dnd-list="cat.recipes" dnd-allowed-types="cat.cat_id">
+                                    <div class="food-item {{ getVegNonVegIndi(recipe)}}"
+                                        ng-repeat="recipe in cat.recipes" dnd-draggable="recipe"
+                                        dnd-moved="cat.recipes.splice($index, 1)" dnd-effect-allowed="move"
+                                        dnd-type="recipe.cat_id"
+                                        ng-class="{'food-published': recipe.status_id == 1, 'food-draft': recipe.status_id != 1}">
+
+                                        <strong class="recipe-name">{{ recipe.name}}</strong>
+
+                                        <span class="eng-no"
+                                            style="text-transform: none">{{ (recipe.energy != null && recipe.energy != '') ? getRoundVal(recipe.energy) + ' kcal' : ''}}</span>
+                                        <ul class="food-act-links">
+                                            <li>
+                                                <a ng-click="openFoodItemLabel(recipe)" ng-if="recipe.status_id == 1"
+                                                    title="Download Recipe As Label"><img
+                                                        src="/images/food-label-icon.svg" /></a>
+                                            </li>
+                                            <li>
+                                                <a ng-click="openQrModal(cat.name, recipe)"
+                                                    ng-if="recipe.status_id == 1" title="Nutrition Facts Label"><img
+                                                        src="images/qr-icon-arabic.svg" /></a>
+                                            </li>
+                                            <li ng-if="isUserChanged() == false">
+                                                <a ng-click="copyRecipe(recipe.id)" ng-if="recipe.status_id == 1"
+                                                    title="Copy Recipe"><img src="/images/copy.svg" /></a>
+                                            </li>
+                                            <li>
+                                                <a ng-href="/edit-recipe-details/{{recipe.id}}/false"
+                                                    title="Edit Recipe"><img src="images/edit-icon.svg" /></a>
+                                            </li>
+                                            <li ng-if="isUserChanged() == false">
+                                                <a ng-click="foodItem.discard(cat, recipe)" title="Delete Recipe"><img
+                                                        src="images/delete-icon.svg" /></a>
+                                            </li>
+                                        </ul>
+                                        <!--food-act-links-->
+                                    </div>
+                                    <!--food-item-->
+                                </div>
+                                <!--food-list-->
+
+
+                            </div>
+                            <!--card-body-->
+
+                            <div class="card-footer">
+                                <div class="add-food-item-box" ng-if="foodItem.selectedCat.id == cat.id">
+                                    <div ng-if="!foodItem.addBulk">
+                                        <input type="text" placeholder="Type name of recipe here"
+                                            ng-model="foodItem.name" class="form-control">
+                                    </div>
+
+                                    <div ng-if="foodItem.addBulk">
+                                        <textarea placeholder="Enter name of recipes one on each line"
+                                            ng-model="foodItem.name" class="form-control"
+                                            style="width: 100%; height: 100px;"></textarea>
+                                    </div>
+
+                                    <div class="cat-act-links">
+                                        <div ng-click="foodItem.save()" class="btn btn-icon"
+                                            ng-class="{'loader': foodItem.addLoader}"><span
+                                                class="icon-plus-circle"></span>&nbsp;Add</div>
+                                        <span ng-click="foodItem.hideCategoryFood(cat)" class="close-btn"></span>
+                                    </div>
+                                </div>
+                                <!--add-food-item-box-->
+
+                                <div class="food-item-act-links"
+                                    ng-if="foodItem.selectedCat.id != cat.id && access_state == 2">
+                                </div>
+                                <!--empty-body-->
+                                <div class="food-item-act-links"
+                                    ng-if="foodItem.selectedCat.id != cat.id && isUserChanged() == false">
+                                    <div>
+                                        <a ng-href="#" ng-click="foodItem.addCategoryFood(cat)" class="link-btn primary"
+                                            ng-class="{'button-disable':access_state == 2 && cat.recipes.length >= 3}"><span></span>Add
+                                            new item</a> |
+                                        <a ng-href="#" ng-click="foodItem.addCategoryFoodBulk(cat)"
+                                            class="link-btn secondary"
+                                            ng-class="{'button-disable':access_state == 2 && cat.recipes.length >= 3}"><span></span>Bulk
+                                            Entry</a>
+                                    </div>
+                                    <button class="btn btn-icon save-order" ng-show="cat.show" ng-class="{'open none' : cat.show}" ng-click="saveOrder(cat.recipes)">Save order</button>
+                                </div>
+                                <!--empty-body-->
+                            </div>
+                        </div>
+                        <!--card-pad-->
+                    </div>
+                    <!--card-->
+                </div>
+            </div>
+            <div class="empty-content" ng-if="recipeCategories.length == 0">
+                <div class="empty-block">
+                    <h3>No food category added</h3>
+                    <strong ng-if="isUserChanged() == false">Add your food category here</strong>
+                    <div ng-if="isUserChanged() == false" ng-click="categoryModal({})" class="btn btn-icon"><span
+                            class="icon-plus-circle"></span>&nbsp;Add Category</div>
+                </div>
+                <!--empty-block-->
+            </div>
+            <!--empty-content-->
+        </div>
+        <!--container-pad-->
+    </div>
+    <!--container-->
+</div>
+<!-- /.page-content -->
+
+<script type="text/ng-template" id="category_modal.html">
+    <div class="pop-up">
+        <div class="popup-box" style="width:400px;">
+            <div class="pop-up-pad">
+                <span ng-click="$dismiss()" class="close-btn"></span>
+                <div class="pop-up-head">
+                    <div class="pop-up-title">
+                        <h4 ng-bind="title"></h4>
+                    </div>
+                </div>
+                <div class="pop-up-content">
+                    <form name="categoryForm" ng-submit="categoryForm.$valid && saveCategory()" novalidate="">
+                        <div class="g-cols">
+                            <div class="full-width">
+                                <div class="form-container">
+                                    <div class="form-field-set">
+                                        <div class="form-field">
+                                            <input name="name" style="padding-left: 15px;" type="text" placeholder="Category Name" ng-model="category.name" class="form-control" required="">
+                                            <span ng-show="categoryForm.$submitted || categoryForm.name.$touched">
+                                            <span class="err-msg" ng-show="categoryForm.name.$error.required">Category Name required.</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-footer">
+                            <button type="submit" class="btn btn-icon"><span class="icon-save"></span>{{ (category.id) ? 'Update':'Add'}}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="qr_modal.html">
+    <div class="pop-up qr-code">
+        <div class="popup-box nutri-fact-box">
+            <div class="pop-up-pad">
+                <span ng-click="$dismiss()" class="close-btn"></span>
+                <div class="pop-up-head">
+                    <div class="meal-type veg-food">
+                        <span>{{ detail.categoryName}}</span>
+                    </div>
+
+                    <div class="pop-up-title">
+                        <h4>{{ detail.recipe.name}}</h4>
+                        <select ng-model="qrLanguage" class="select-box">
+                        <option ng-value="" value=""  ng-if="!qrLanguage" >Select Language</option>
+                        <option ng-value="1"  ng-if="qrLanguage" >Both</option>
+                        <option ng-value="2">English</option>
+                        <option ng-value="3">Arabic</option>
+                    </select>
+                    </div>
+                </div>
+
+                <div class="pop-up-content">
+                    <div class="g-cols">
+                        <div class="one-half" id='DivIdToPrint'>
+                            <div class="nutri-facts-info" ng-if="qrLanguage == 3">
+                                <div class="nutri-facts-img">
+                                    <iframe scrolling="no" ng-src="{{detail.qrDetailArabic}}" style="border:0; width: 300px; height: 530px;"></iframe>
+                                </div>
+                            </div>
+                            <div class="nutri-facts-info" ng-if="qrLanguage == 2">
+                                <div class="nutri-facts-img">
+                                    <iframe scrolling="no" ng-src="{{detail.qrDetailEnglish}}" style="border:0; width: 300px; height: 530px;"></iframe>
+                                </div>
+                            </div>
+                            <div class="nutri-facts-info" ng-if="!qrLanguage || qrLanguage == 1">
+                                <div class="nutri-facts-img">
+                                    <iframe scrolling="no" ng-src="{{detail.qrDetailMix}}" style="border:0; width: 400px ; height: 600px;"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="one-half">
+                            <div class="qr-code-block" ng-if="!qrLanguage || qrLanguage == 1">
+                                <div class="qr-img">
+                                    <qrcode data="{{detail.qrDetailMix}}" href="{{detail.qrDetailMix}}" download></qrcode>
+                                </div>
+                            </div>
+                            <div class="qr-code-block" ng-if="qrLanguage == 2">
+                                <div class="qr-img">
+                                    <qrcode data="{{detail.qrDetailEnglish}}" href="{{detail.qrDetailEnglish}}" download></qrcode>
+                                </div>
+                            </div>
+                            <div class="qr-code-block" ng-if="qrLanguage == 3">
+                                <div class="qr-img">
+                                    <qrcode data="{{detail.qrDetailArabic}}" href="{{detail.qrDetailArabic}}" download></qrcode>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-footer">
+                        <div ng-click='print()' class="btn btn-icon"><span class="icon-printer"></span>PRINT</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="download_menu_template.html">
+    <div class="pop-up">
+        <div class="popup-box">
+            <div class="pop-up-pad">
+                <span ng-click="$dismiss()" class="close-btn"></span>
+                <div class="pop-up-head">
+                    <div class="pop-up-title">
+                        <h4>Select Category</h4>
+                    </div>
+                </div>
+
+                <div class="pop-up-content scroll-vertical">
+                    <div class="full-width">
+                        <div class="form-container">
+                            <label class="checkbox-inline">
+                            <input type="checkbox" ng-model="download.checkall" ng-true-value="true" ng-false-value="false"> 
+                            <span>Select All</span>
+                        </label>
+                            <label class="checkbox-inline" ng-repeat="cat in categories track by $index">
+                            <input type="checkbox" checklist-model="download.categories" checklist-value="cat.id"> 
+                            <span ng-bind="cat.name"></span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-footer">
+                    <button class="btn btn-icon" ng-click="downloadCategories()">Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="menu_print_modal.html">
+    <div class="pop-up">
+        <div class="popup-box">
+            <div class="pop-up-pad">
+                <span ng-click="$dismiss()" class="close-btn"></span>
+                <div class="pop-up-head">
+                    <div class="pop-up-title">
+                        <h4>Select Category</h4>
+                    </div>
+                </div>
+
+                <div class="pop-up-content scroll-vertical">
+                    <div class="full-width">
+                        <div class="form-container">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" ng-model="download.checkall" ng-true-value="true" ng-false-value="false"> 
+                                <span>Select All</span>
+                            </label>
+                            <label class="checkbox-inline" ng-repeat="cat in categories track by $index">
+                                <input type="checkbox" checklist-model="download.categories" checklist-value="cat.id"> 
+                                <span ng-bind="cat.name"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-footer">
+                    <button class="btn btn-icon" style="margin-right: 15px" ng-click="printCategories('ar')">Arabic QR</button>
+                    <button class="btn btn-icon" ng-click="printCategories('eng')">English QR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

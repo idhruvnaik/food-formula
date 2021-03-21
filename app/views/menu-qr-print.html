@@ -1,0 +1,146 @@
+<style>
+    navigation{
+        display: none;
+    }
+    .menu-print-box .qr-code-block{
+        margin: 0px 0px 10px 0px;
+        width: 100%;
+    }
+    .menu-print-box .info-text{
+        color: #ffffff;
+        background-color: #de8b4e;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .info-text h5{
+        font-size: 16px;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin-right: 10px;
+
+    }
+    .restaurant-title{
+        color: #132753;
+        font-size: 20px;
+        margin-bottom: 10px;
+        font-weight: 400;
+        text-align: center;
+    }
+    .menu-print-box .form-field-set{
+        margin-bottom: 0px;
+    }
+    .popup-box{
+        box-shadow: none;
+        background-color: unset;
+        border-radius: 0px;
+    }
+    .pop-up-content{
+        padding: 0px;
+    }
+    .pop-up-content .g-cols{
+        flex-direction: column;
+    }
+    .pop-up-pad{
+        border-radius: 10px;
+        background-color: #ffffff;
+        margin-bottom: 10px;
+        padding: 20px;
+    }
+    .img-container{
+        object-fit: contain;
+        max-height: 120px;
+        max-width: 200px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+    .pop-up-head{
+        margin: 10px 0px;
+        text-align: center;
+    }
+    .pop-up-head .menu-title{
+        font-size: 16px;
+        color: #de8b4e;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-weight: 400;
+    }
+    .menu-title:before,
+    .menu-title:after {
+        content: '';
+        border-top: 1px solid #132753;
+        margin: 0 5px 0 0;
+        flex: 1 0 20px;
+    }
+    .menu-title:after {
+        margin: 0 0 0 5px;
+    }
+
+@media print {
+    .menu-print-box{
+        visibility: hidden;
+    }
+    #menu-print{
+        visibility: visible;
+        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        padding: 15px;
+    }
+    .wrapper, .wrapper:before{
+        background-color: white;
+        background-image: none;
+    }
+}
+</style>
+<div class="container">
+    <div class="content">
+         <div class="pop-up menu-print-box">
+            <div class="popup-box nutri-fact-box">
+                <div class="pop-up-pad">
+                    <div class="form-field-set">
+                        <label>Select QR Size to Print</label>
+                        <div class="form-field">
+                            <select class="select-box" ng-model="qrSize" style="max-width:150px">
+                                <option ng-value="100">Small</option>
+                                <option ng-value="200">Medium</option>
+                                <option ng-value="250">Large</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="menu-print">
+                        <div class="pop-up-head">
+                            <h5 ng-bind="accountData.user.name" class="restaurant-title" ng-if="logo == null"></h5>
+                            <img class="img-container" ng-src="{{logo.image_original}}" ng-if="logo != null"/>
+                            <h5 class="menu-title">Menu QR</h5>
+                        </div>
+                        <div class="pop-up-content">
+                            <div class="g-cols">
+                                <div class="qr-code-block">
+                                    <div class="qr-img">
+                                        <qrcode data="{{menuPrint.qrcodeUrl}}" color="{{lang == 'ar' ? 'green' : 'black'}}" href="{{menuPrint.qrcodeUrl}}" size="{{qrSize}}" download></qrcode>
+                                    </div>
+                                </div>
+                                <div class="info-text">
+                                    <h5>Scan to order</h5>
+                                    <img src="/images/camera.svg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-footer">    
+                    <div ng-click='print()' class="btn btn-icon"><span class="icon-printer"></span>PRINT</div>
+                </div>        
+            </div>
+        </div>
+    </div>
+</div>

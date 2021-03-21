@@ -1,0 +1,100 @@
+.post-details{
+    input[type="file"]{
+        position:absolute;
+        width: 100px;
+        height: 30px;
+        opacity:0;
+    }
+    .blog-images-block{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        .blog-images{
+            display: flex; 
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .blog-img-container{
+            position: relative;
+            img{
+                width: 150px;
+                height: 150px;
+                object-fit: contain;
+            }
+        }
+        .img-link-container{
+            margin: 0px 10px;
+        }
+    }
+    .banner-image-block{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        img{
+            position: unset;
+            opacity: unset;
+            top: 0;
+            left: 0;
+            object-fit: contain;
+            height: 150px;
+            width: 150px;
+            margin-bottom: 10px;
+        }
+        input{
+            opacity: 1;
+            width: auto;
+            height: auto;
+            position: unset;
+        }
+    }
+    .close {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        z-index: 100;
+        padding: 0px 7px;
+        background-color: whitesmoke;
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+        text-align: center;
+        font-size: 22px;
+        border-radius: 50%;
+    }
+    .close:hover{
+        color: #DF8F52;
+    }
+    .form-field.error input, .form-field.error select{
+        border: 1px solid red;
+    }
+    .input-label{
+        position: relative;
+    }
+    .input-label sup, .error-msg{
+        color: red;
+        font-size: 12px;
+    }
+    .input-label img {
+        width: 11px;
+        position: absolute;
+        top: 5px;
+        right: -15px;
+    }
+    .success-msg{
+        left: 15px;
+        top: unset;
+    }
+    .g-cols.offset_none > .one-half{
+        margin: 20px 0px;
+        width: 70%;
+    }
+    .field-width{
+        width: 50%;
+    }
+    .drop-down-width{
+        width: 200px;
+    }
+}

@@ -1,0 +1,331 @@
+<!DOCTYPE html><html class="no-js modernizr-no-sizes modernizr-no-supports modernizr-no-srcset modernizr-no-serviceworker modernizr-touchevents ng-scope" lang="en" ng-app="restaurantApp"><head><style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style><style type="text/css">.uib-time input{width:50px;}</style><style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow,[uib-popover-html-popup].popover.top-left > .arrow,[uib-popover-html-popup].popover.top-right > .arrow,[uib-popover-html-popup].popover.bottom-left > .arrow,[uib-popover-html-popup].popover.bottom-right > .arrow,[uib-popover-html-popup].popover.left-top > .arrow,[uib-popover-html-popup].popover.left-bottom > .arrow,[uib-popover-html-popup].popover.right-top > .arrow,[uib-popover-html-popup].popover.right-bottom > .arrow,[uib-popover-template-popup].popover.top-left > .arrow,[uib-popover-template-popup].popover.top-right > .arrow,[uib-popover-template-popup].popover.bottom-left > .arrow,[uib-popover-template-popup].popover.bottom-right > .arrow,[uib-popover-template-popup].popover.left-top > .arrow,[uib-popover-template-popup].popover.left-bottom > .arrow,[uib-popover-template-popup].popover.right-top > .arrow,[uib-popover-template-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-html-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style><style type="text/css">.uib-datepicker-popup.dropdown-menu{display:block;float:none;margin:0;}.uib-button-bar{padding:10px 9px 2px;}</style><style type="text/css">.uib-position-measure{display:block !important;visibility:hidden !important;position:absolute !important;top:-9999px !important;left:-9999px !important;}.uib-position-scrollbar-measure{position:absolute !important;top:-9999px !important;width:50px !important;height:50px !important;overflow:scroll !important;}.uib-position-body-scrollbar-measure{overflow:scroll !important;}</style><style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-left,.uib-right{width:100%}</style><style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style><style>@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+        <meta charset="utf-8">
+        <meta name="description" content="NutriCal is a web-based software that facilitates businesses in the food industry to understand and effectively communicate data about their food.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title class="ng-binding">Let's talk Sushi - Nutrition Facts in Top Sushi Ingredients</title>
+        <base href="/">
+        <meta name="fragment" content="!">
+
+        <!-- Place favicon.ico in the root directory -->
+        <meta name="msapplication-TileColor" content="#fdfdfd">
+        <meta name="theme-color" content="#ffffff">
+        <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon.ico">
+        <link rel="manifest" href="images/favicon/site.webmanifest">
+        <!--<link rel="mask-icon" href="images/favicons/safari-pinned-tab.svg" color="#5bbad5" />-->
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="components/angular-ui-notification/dist/angular-ui-notification.css">
+        <link rel="stylesheet" href="components/angular-loading-bar/build/loading-bar.css">
+        <link rel="stylesheet" href="components/owl.carousel/dist/assets/owl.carousel.css">
+        <link rel="stylesheet" href="components/owl.carousel/dist/assets/owl.theme.default.css">
+        <link rel="stylesheet" href="components/tinymce/skins/lightgray/skin.min.css">
+        <link rel="stylesheet" href="components/tinymce/skins/lightgray/content.min.css">
+        <link rel="stylesheet" href="components/offline/themes/offline-language-english.css">
+        <link rel="stylesheet" href="components/offline/themes/offline-theme-chrome.css">
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:css styles/main.css -->
+        <link rel="stylesheet" href="styles/font-style.css">
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/base.css">
+
+
+        <!-- endbuild -->
+        <!-- build:js scripts/modernizr.js -->
+        <script src="https://www.google-analytics.com/analytics.js"></script><script src="scripts/modernizr.js"></script>
+        <!-- endbuild --><script src="scripts/controllers/blog-controller.js" async=""></script>
+
+
+    </head>
+    <body class="ng-scope landing-page" ng-controller="MainCtrl" ng-class="{'landing-page':!isAuthenticate()}"><script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='/browser-sync/browser-sync-client.js?v=2.26.7'><\/script>".replace("HOST", location.hostname));
+//]]></script><script async="" src="/browser-sync/browser-sync-client.js?v=2.26.7"></script>
+
+        <!--[if IE]>
+          <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- uiView: --><div ui-view="" class="ng-scope"><div id="" ng-class="{'wrapper': isAuthenticate()}" class="ng-scope">
+    <!-- ngIf: isAuthenticate() -->
+    <div id="">        
+        <!-- uiView: --><ui-view class="ng-scope"><style class="ng-scope">
+    .blog-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding-left: 10%;
+        padding-right: 25%;
+        padding-top: 155px;
+    }
+    .blog-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .nutrical-image{
+        display: flex;
+        align-items: center;
+    }
+    .nutrical-image img{
+        width: 70px;
+        height: 90px;
+    }
+    .blog-container p{
+        color: #000;
+    }
+    .blog-title{
+        font-weight: 400;
+        font-size: 30px;
+        text-transform: uppercase;
+        line-height: 35px;
+        margin-bottom: 20px;
+    }
+    .upper-part{
+        border-bottom: 3px solid #132753;
+        margin-bottom: 15px;
+    }
+    .blog-date{
+        display: inline-block;
+        text-align: right;
+        color: #000;
+    }
+    .blog-publisher{
+        color: #000;
+        margin: 0px 20px;
+    }
+    .footer-detail .one-fourth li{
+        list-style-type: none;
+    }
+    @media (max-width: 599px) { 
+        .blog-container{
+            padding: 20px;
+            padding-top: 80px;
+        }
+        .blog-title{
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .nutrical-image img{
+            width: 50px;
+            height: 70px;
+        }
+    }
+</style>
+<div class="nutrical-platform ng-scope">
+    <!-- ngInclude: 'views/header.html' --><div ng-include="'views/header.html'" class="ng-scope"><header class="header fixed ng-scope">
+    <div class="nutrical-head">
+        <div class="header-wrap">
+            <div class="nav-btn">
+                <a class="sec-btn" style="margin-right: 10px" ui-sref="app.contact_us" title="Contact Us" href="/contact-us">Contact Us</a>
+                <a class="sec-btn" href="https://wa.me/971549941190" title="WhatsaApp Us">WhatsApp Us</a>
+            </div>
+            <div class="nav-sec-btn">
+                <a class="sec-btn" title="Go to my account" ng-click="loginModal()">Go to my account</a>
+                <a class="sec-btn" title="Get NutriCal Free" ng-click="signupModal()">Get NutriCal Free</a>
+            </div>
+        </div>
+    </div>
+    <!--header-wrap-->
+    <div class="l-subsection-h">
+        <a ui-sref="app.home" class="nutrical-logo" href="/"><img src="images/nutrical-logo.svg" width="140px" height="60px" alt="NutriCal" title="NutriCal"></a>
+        <nav class="main-nav">
+            <ul>
+                <li>
+                    <a ui-sref-active="active" ui-sref="app.home" title="Why Nutrical" href="/">Why NutriCal</a>
+                    <a ui-sref-active="active" ui-sref="app.who_is_it_for" title="Who is it for" href="/who-is-it-for">Who is it for</a>
+                    <a ui-sref-active="active" ui-sref="app.how_it_works" title="How it works" href="/how-it-works">How it works</a>
+                    <a ui-sref-active="active" ui-sref="app.customers" title="Customers" href="/customers">Customers</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="responsive-header" style="display: none;">
+        <div class="responsive-logo">
+            <a ui-sref="app.home" class="nutrical-logo" href="/"><img src="images/nutrical-logo.svg" width="140px" height="60px" alt="NutriCal" title="NutriCal"></a>
+        </div>
+
+        <div>
+            <div class="icon-burger" id="icon-burger" onclick="navAction()">
+                <span class="burger-patty"></span>
+                <span class="burger-patty"></span>
+                <span class="burger-patty"></span>
+            </div>
+
+            <div class="sidenav" id="sidenav" style="height: 0vh;">
+                <a ui-sref-active="active" ui-sref="app.home" title="Why Nutrical" href="/">Why NutriCal</a>
+                <a ui-sref-active="active" ui-sref="app.who_is_it_for" title="Who is it for" href="/who-is-it-for">Who is it for</a>
+                <a ui-sref-active="active" ui-sref="app.how_it_works" title="How it works" href="/how-it-works">How it works</a>
+                <a ui-sref-active="active" ui-sref="app.customers" title="Customers" href="/customers">Customers</a>
+                <a ui-sref="app.contact_us" title="Contact Us" href="/contact-us">Contact Us</a>
+                <a ui-sref-active="active" href="https://wa.me/971549941190" title="WhatsaApp Us">WhatsApp Us</a>
+                <a class="bg-hover" title="Go to my account" ng-click="loginModal()">Go to my account</a>
+                <a class="bg-hover" title="Get NutriCal Free" ng-click="signupModal()">Get NutriCal Free</a>
+            </div>
+        </div>
+    </div>
+
+</header>
+<script class="ng-scope">
+    $(document).ready(function () {
+        $(".icon-burger").click(function () {
+
+            if ($(this).hasClass("is-open")) {
+                $(this).removeClass("is-open");
+            } else {
+                $(this).addClass("is-open");
+            }
+
+        });
+    });
+    function navAction() {
+        if (document.getElementById("sidenav").style.height == "100vh") {
+            document.getElementById("sidenav").style.height = "0vh"
+        } else {
+            document.getElementById("sidenav").style.height = "100vh"
+        }
+    }
+</script></div> 
+    <div class="blog-container">
+        <div class="upper-part">
+            <h1 class="blog-title ng-binding">Let's talk Sushi - Nutrition Facts in Top Sushi Ingredients</h1>
+            <div class="blog-header">
+                <div class="nutrical-image">
+                    <img src="images/Nutrical-logo-round-container.png">
+                    <span class="blog-publisher">Nutrical Team</span>
+                </div>
+                <span class="blog-date ng-binding">Posted On Wed Jun 03 2020</span>
+            </div>
+        </div>
+        <div id="results" ng-bind-html="content" class="ng-binding"><p><span id="_mce_caret" data-mce-bogus="1" data-mce-type="format-caret"><strong><img src="https://s3.ap-south-1.amazonaws.com/ff-dubai/entity_images/images/000/000/578/big/Sushi.jpg?1591173277" alt="Sushi" width="695" height="463" style="display: block; margin-left: auto; margin-right: auto;" data-mce-style="display: block; margin-left: auto; margin-right: auto;"></strong></span></p><p><strong>White Rice</strong></p><p><strong><span style="font-weight: 400;" data-mce-style="font-weight: 400;">&nbsp;The main ingredient of sushi, which has been refined and stripped of almost all fiber, vitamins, and minerals.</span></strong></p><p><strong>Kcal 129(100G): Protein –2.66G, Carbs – 27.9G, Fats – 0.28G</strong></p><p><em>Tips and Comments:</em></p><ul><li><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Recommend to be prepared with brown rice instead of white rice, it can increase its fiber content and nutritional value.</span></li><li>Rolls can be prepared with less rice content and more vegetables instead to increase the nutrient content.</li></ul><p><br></p><p><strong>Salmon</strong></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">The most commonly and popular ingredient found in sushi. It is </span><span style="font-weight: 400;" data-mce-style="font-weight: 400;">a good source of protein, iodine, and multiple vitamins and minerals.</span></p><p><strong>Kcal – 206 (100G): Protein – 22G, Carbs - 0G, Fats – 12G</strong></p><p><em>Tips and Comments:</em></p><ul><li><span style="font-weight: 400;" data-mce-style="font-weight: 400;">It is a nutrient-dense fish has omega-3s, high-quality protein, and rich micronutrients.</span></li></ul><p><br data-mce-bogus="1"></p><p><strong>Tuna</strong></p><p>&nbsp;One of the most popular types of fish found in sushi aside from salmon. It has a firm, but tender, texture and mild, but fresh flavor. It includes omega-3 fatty acids, which gives balance in the blood vessels therefore decreasing cholesterol in the arteries.</p><p><strong>&nbsp;Kcal: 130 (100G): Protein – 29G, Carbs – 0G, Fats – 0.6G</strong></p><p><em>Tips and Comments:</em></p><ul><li><span style="font-weight: 400;" data-mce-style="font-weight: 400;">It</span> <span style="font-weight: 400;" data-mce-style="font-weight: 400;">is safe to eat in certain amounts. Eating large amounts of tuna is not advisable since it has a large amount of mercury in it.</span></li><li><span style="font-weight: 400;" data-mce-style="font-weight: 400;">It can perform as a neurotoxin and has an effect with the brain and nervous system</span></li></ul><p><strong><br data-mce-bogus="1"></strong></p><p><strong>Wasabi</strong></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Without this ingredient, sushi will not be sushi. It is often served alongside sushi and has a strong flavor. It’s only eaten in small amounts. It is made from the grated stem of (<em>Eutrema japonicum)</em>, which belongs to the family of mustard, cabbage and horseradish.</span></p><p><strong>Kcal – 109 (100G): Protein – 4.8G, Carbs - 24G, Fats – 0.6G</strong></p><p><em>Tips and Comments:</em></p><ul><li><span style="font-weight: 400;" data-mce-style="font-weight: 400;">These ingredient have antibacterial, </span><span style="font-weight: 400;" data-mce-style="font-weight: 400;">anticancer and anti-inflammatory </span><span style="font-weight: 400;" data-mce-style="font-weight: 400;">properties</span></li><li><span style="font-weight: 400;" data-mce-style="font-weight: 400;">It is naturally rich in vitamin C. Uniquely has an antioxidant </span>chemical named 6-methylthio hexyl isothiocyanate, which has its typical health benefit.</li></ul><p><br></p><p><strong>Seaweed</strong></p><p><strong><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Nori is a type of seaweed used to roll sushi. It contains many nutrients, including calcium, iron, sodium, iodine, magnesium</span><span style="font-weight: 400;" data-mce-style="font-weight: 400;">, phosphorus thiamine, and vitamins A, C, and E.</span></strong></p><p><strong>Kcal – 38 (100G): Protein –2.48G, Carbs – 8.43G, Fats – 0.26G</strong></p><p><em>Tips and Comments:</em></p><ul><li><span style="font-weight: 400;" data-mce-style="font-weight: 400;">It may also offer composites that fight viruses, inflammation,and even cancer. Nevertheless, the levels of these composites are perhaps too low to have any related health effects</span><span style="font-weight: 400;" data-mce-style="font-weight: 400;">.</span></li></ul><p><br></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Pickled Ginger</strong></span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">It’s sweet, pickled ginger, also known as Gari, often used to cleanse your appetite between the pieces of sushi.&nbsp; It is a good source of potassium, manganese, magnesium and copper.</span></p><p><strong>Kcal – 72 (100G): Protein – 0G, Carbs – 17G, Fats – 0G</strong></p><p><em>Tips and Comments:<span style="font-weight: 400;" data-mce-style="font-weight: 400;">&nbsp;</span></em></p><ul><li><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Studies show that ginger may improve memory and help reduce nausea, muscle, arthritic and menstrual pain, and even LDL(Low- Density Lipoprotein cholesterol) (bad) cholesterol levels.</span></li></ul><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong><br data-mce-bogus="1"></strong></span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Soy Sauce</strong></span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">This is a common condiment to Asian cuisine. This has to be one of the required ingredients in sushi partnered with wasabi. It's a good source of sodium and it has anti- allergenic and antioxidant properties according to the study.</span></p><p><strong>Kcal – 53 (100G): Protein – 6.28G, Carbs – 7.61G, Fats – 0.04G</strong></p><p><em>Tips &amp; Comments:</em></p><ul><li><span style="font-weight: 400;" data-mce-style="font-weight: 400;">It is a salty condiment made through fermentation of soybeans and wheat. Too much use of this is not advisable but a good replacement for salt.</span></li></ul><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong><br data-mce-bogus="1"></strong></span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Cucumber</strong></span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">It has a mild and refreshing taste and high in water content. </span><span style="font-weight: 400;" data-mce-style="font-weight: 400;">It can help relieve dehydration and is good to eat in hot weather or after workout. Cucumbers provide various nutrients such as calcium, potassium, Vitamin K, iron, Fiber, Folate and magnesium. It is low in calories, fat, cholesterol, and sodium.</span></p><p><strong>Kcal – 15 (100G): Protein – 0.7G, Carbs – 3.6G, Fats – 0.1G</strong></p><p><em>Tips and Comments:</em></p><ul><li><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Constant eating of cucumber will help you to have a healthy bone and it will prevent cancer.</span> <span style="font-weight: 400;" data-mce-style="font-weight: 400;">It may help lower blood sugar or stop blood glucose from rising too high.</span><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><br data-mce-bogus="1"></span></li></ul><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong><br data-mce-bogus="1"></strong></span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Roe</strong></span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">This fun ingredient in sushi which is also known to “pop” in the mouth. It is considered as exotic luxury food. It has an excellent source of omega-3 fatty acids.</span></p><p><strong>Kcal – 150(100G): Protein – 26G, Carbs – 0G, Fats –5.1G</strong></p><p><em>Tips and Comments:</em></p><ul><li><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Eating too much fish egg (Caviar) is not recommended since it is high in cholesterol and sodium.</span></li></ul><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><br data-mce-bogus="1"></span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Shrimp</strong></span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">It is one of the most common ingredients in sushi. It is relatively nutritious with high amounts of certain nutrients, such as iodine, that aren’t abundant in other ingredients.</span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><strong>Kcal – 119 (100G): Protein – 23G, Carbs – 1.5G, Fats –1.7G</strong></span></p><p><em>Tips and Comments:</em></p><ul><li><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Eating excessive amounts of shrimp is not advisable since it has high cholesterol content.</span> <span style="font-weight: 400;" data-mce-style="font-weight: 400;">Shrimp is high in cholesterol, but it also contains nutrients including antioxidants and omega-3 fatty acids, which have been shown to promote heart health. Research on shrimp has also shown positive health effects.</span></li></ul><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;"><br data-mce-bogus="1"></span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Please be reminded that the above lists are just suggested and commonly ingredients of </span><span style="font-weight: 400;" data-mce-style="font-weight: 400;">sushi but subjected to vary depending on the restaurant's preparation. The </span><span style="font-weight: 400;" data-mce-style="font-weight: 400;">figures are estimated according to the size and amount of each </span><span style="font-weight: 400;" data-mce-style="font-weight: 400;">ingredient.</span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">To understand what are the best ingredients to use for maximum nutrition benefits and also calculate calories and macros of the recipes at your food establishment / sushi joint / restaurant - <a data-mce-href="contact-us.html" href="contact-us.html" target="_blank" rel="noopener">contact NutriCal.</a></span><span style="font-weight: 400;" data-mce-style="font-weight: 400;"></span></p><p><span style="font-weight: 400;" data-mce-style="font-weight: 400;">Email us on&nbsp;<a href="mailto:info@nutrical.co" data-mce-href="mailto:info@nutrical.co">info@nutrical.co</a>&nbsp;or call / whatsapp us on + 971 52 994 1190 for more information.</span></p></div>
+    </div>
+    <!-- ngInclude: 'views/footer.html' --><div ng-include="'views/footer.html'" class="ng-scope"><footer class="footer ng-scope">
+    <div class="footer-detail">
+        <div>
+            <div class="one-fourth">
+                <ul class="">
+                    <li>For Users</li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Food Manufacturer</a></li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Food Brand</a></li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Restaurant &amp; Cafes</a></li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Hospitality Company</a></li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Meal Plan &amp; Food Delivery Company</a></li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Food Labs</a></li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Nutritionist / Personal Trainers</a></li>
+                    <li><a ui-sref="app.who_is_it_for" href="/who-is-it-for">Cloud Kitchens</a></li>
+                </ul>
+            </div>
+            <div class="one-fourth">
+                <ul>
+                    <li>For Business Activities</li>
+                    <li class="pointer" ng-click="signupModal()">Create Nutrition Label</li>
+                    <li class="pointer" ng-click="signupModal()">Analyse recipes &amp; dishes</li>
+                    <li class="pointer" ng-click="signupModal()">Develop new food products</li>
+                    <li class="pointer" ng-click="signupModal()">Recipe experimentation</li>
+                    <li class="pointer" ng-click="signupModal()">Meal Planning</li>
+                    <li class="pointer" ng-click="signupModal()">Menu Management</li>
+                    <li class="title-text"><a ui-sref="app.blogs" href="/blogs">Blog</a></li>
+                    <li class="title-text"><a ui-sref="app.customers" href="/customers">Cutomers &amp; Partners</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <div class="one-fourth">
+                <ul class="footer-contact-info">
+                    <li>Contact Information</li>
+                    <li>A: Dubai, UAE</li>
+                    <li>W: www.nutrical.co</li>
+                    <li>P: +971 4 3235 228 / 229</li>
+                    <li>M: +971 54 9941190</li>
+                    <li><a href="mailto:info@nutrical.co">E: info@nutrical.co</a></li>
+                </ul>
+                <div class="social-media-links">
+                    <a href=" https://www.linkedin.com/company/34889191/admin/" target="_blank"><img src="images/linkedin-logo.svg" alt="LinkedIn"></a>
+                    <a href="https://www.instagram.com/nutrical__/" target="_blank"><img src="images/insta-logo.svg" alt="Instagram"></a>
+                    <a href="https://wa.me/971549941190" style="margin-left: 10px" target="_blank"><img src="images/whatsapp-logo.svg" alt="Whatsapp"></a>
+                </div>
+            </div>
+            <div class="one-fourth">
+                <img src="images/nutrical-logo-white.svg" alt="Nutrical" width="115px" height="50px">
+                <p>NutriCal is a web-based <br>software that facilitates<br>businesses in the food<br>industry to understand and<br> effectively communicate data<br>about their food.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-note">Powered by <a class="footer-link" href="https://www.fitterfly.com/" title="Fitterfly Technologies Private Limited" target="_blank">Fitterfly</a></div>
+</footer></div>
+</div></ui-view> 
+    </div>
+</div>
+
+</div>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+                    (function (b, o, i, l, e, r) {
+                        b.GoogleAnalyticsObject = l;
+                        b[l] || (b[l] =
+                                function () {
+                                    (b[l].q = b[l].q || []).push(arguments)
+                                });
+                        b[l].l = +new Date;
+                        e = o.createElement(i);
+                        r = o.getElementsByTagName(i)[0];
+                        e.src = 'https://www.google-analytics.com/analytics.js';
+                        r.parentNode.insertBefore(e, r)
+                    }(window, document, 'script', 'ga'));
+                    ga('create', 'UA-XXXXX-X');
+                    ga('send', 'pageview');
+        </script>
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="components/jquery/dist/jquery.js"></script>
+        <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="components/angular/angular.js"></script>
+        <script src="components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="components/underscore/underscore.js"></script>
+        <script src="components/oclazyload/dist/ocLazyLoad.js"></script>
+        <script src="components/angular-ui-notification/dist/angular-ui-notification.js"></script>
+        <script src="components/ngstorage/ngStorage.js"></script>
+        <script src="components/angular-loading-bar/build/loading-bar.js"></script>
+        <script src="components/owl.carousel/dist/owl.carousel.js"></script>
+        <script src="components/highcharts/highcharts.js"></script>
+        <script src="components/highcharts/modules/exporting.js"></script>
+        <script src="components/angular-ui-tinymce/src/tinymce.js"></script>
+        <script src="components/ng-idle/angular-idle.js"></script>
+        <script src="components/checklist-model/checklist-model.js"></script>
+        <script src="components/qrcode-generator/js/qrcode.js"></script>
+        <script src="components/qrcode-generator/js/qrcode_UTF8.js"></script>
+        <script src="components/angular-qrcode/angular-qrcode.js"></script>
+        <script src="components/offline/offline.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+
+        <!-- build:js scripts/app.js -->
+        <script src="scripts/routes.js" type="text/javascript"></script>
+        <script src="scripts/services/env/config.js" type="text/javascript"></script>
+        <script src="scripts/services/errorInterceptor.js" type="text/javascript"></script>
+        <script src="scripts/app.js"></script>        
+        <script src="scripts/services/dataService.js" type="text/javascript"></script>
+        <script src="scripts/services/accountService.js" type="text/javascript"></script>
+        <script src="scripts/services/helperService.js" type="text/javascript"></script>
+        <script src="scripts/mainCtrl.js" type="text/javascript"></script>
+        <!-- endbuild -->
+
+
+
+    
+
+<div class="offline-ui offline-ui-up"><div class="offline-ui-content"></div><a href="" class="offline-ui-retry"></a></div></body></html>

@@ -1,0 +1,95 @@
+<style>
+    navigation{
+        display: none;
+    }
+    
+</style>
+<div class="container food-item-label">
+    <div class="pop-up" id="food-item-label">
+        <div class="popup-box" ng-if="isLoaded">
+            <div class="pop-up-pad">
+                <div class="l-div">
+                    <div class="logo-container">
+                        <img src="{{foodInformation.image}}">
+                    </div>
+                    <div class="recipe-image-container" ng-if="foodInformation.recipe_image">
+                        <img src="{{foodInformation.recipe_image}}">
+                    </div>
+                    <h3 class="recipe-name">{{foodInformation.recipe_name}} ({{foodInformation.servingSize}}g)</h3>
+                    <h5 ng-bind="personalDetail.webSiteUrl" class="url-name"></h5>
+                </div>
+
+                <div class="r-div">
+                    <div class="card-item">
+                        <div class="card-pad">
+                            <div class="info-div">
+                                <span class="title">INGREDIENTS:</span>
+                                <p class="description" ng-bind="' '+foodInformation.ingredients"></p>
+                            </div>
+
+                            <div class="info-div">
+                                <span class="title">SUITABLE FOR:</span>
+                                <p class="description"  ng-bind="' '+foodInformation.suitableFor"></p>
+                            </div>
+
+                            <div class="info-div">
+                                <span class="title">CONTAINS:</span>
+                                <p class="description" ng-bind="' '+foodInformation.contains"></p>
+                            </div>
+
+                            <div class="nutrients-info">
+                                <div class="nutrient-badge cal">
+                                    <img src="/images/half-circle-badge.svg" class="circle">
+                                    <h5 class="nutrient-name">Kcal</h5>
+                                    <h4 class="nutrient-value">{{foodInformation.nutrients[508]}}</h4>
+                                    <h5 class="nutrient-name-arabic"> السعرات الحرارية</h5>
+                                </div>
+                                <div class="nutrient-badge">
+                                    <img src="/images/circle-badge.svg" class="circle">
+                                    <h5 class="nutrient-name">Protein</h5>
+                                    <h4 class="nutrient-value">{{foodInformation.nutrients[493]}}g</h4>
+                                    <h5 class="nutrient-name-arabic">البروتين</h5>
+                                </div>
+                                <div class="nutrient-badge">
+                                    <img src="/images/circle-badge.svg" class="circle">
+                                    <h5 class="nutrient-name">Carbs</h5>
+                                    <h4 class="nutrient-value">{{foodInformation.nutrients[488]}}g</h4>
+                                    <h5 class="nutrient-name-arabic"> اجمالي الكربوهيدرات</h5>
+                                </div>
+                                <div class="nutrient-badge">
+                                    <img src="/images/circle-badge.svg" class="circle">
+                                    <h5 class="nutrient-name">Fat</h5>
+                                    <h4 class="nutrient-value">{{foodInformation.nutrients[490]}}g</h4>
+                                    <h5 class="nutrient-name-arabic">اجمالي الدهون</h5>
+                                </div>
+                                <div class="nutrient-badge" ng-if="foodInformation.nutrients[722] >= 0">
+                                    <img src="/images/circle-badge.svg" class="circle">
+                                    <h5 class="nutrient-name">Net Carbs</h5>
+                                    <h4 class="nutrient-value">{{foodInformation.nutrients[722]}}g</h4>
+                                    <h5 class="nutrient-name-arabic">النشويات الصافية</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-item" ng-if="foodInformation.productionDate != null || foodInformation.bestBeforeDate != null">
+                        <div class="card-pad">
+                            <div class="info-div">
+                                <span class="title">PRODUCTION DATE : </span>
+                                <p class="description">{{foodInformation.productionDate | date: dd/MM/yyyy}}</p>
+                            </div>
+
+                            <div class="info-div">
+                                <span class="title">BEST BEFORE : </span>
+                                <p class="description">{{foodInformation.bestBeforeDate | date: dd/MM/yyyy}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-footer no-print">    
+                <div ng-click='print()' class="btn btn-icon"><span class="icon-printer"></span>PRINT</div>
+            </div>        
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<header class="header fixed">
+  <div class="nutrical-head">
+    <div class="header-wrap">
+      <div class="nav-btn">
+        <a
+          class="sec-btn"
+          href="https://wa.me/971549941190"
+          title="WhatsaApp Us"
+          >WhatsApp Us</a
+        >
+      </div>
+      <div class="nav-sec-btn">
+        <a class="sec-btn" title="Go to my account" ng-click="loginModal()"
+          >Go to my account</a
+        >
+      </div>
+    </div>
+  </div>
+  <!--header-wrap-->
+  <div class="l-subsection-h">
+    <a ui-sref="app.home" class="nutrical-logo"
+      ><img
+        src="images/ff-logo.png"
+        width="140px"
+        height="50px"
+        style="object-fit: contain"
+        alt="Food formula"
+        title="Food formula"
+    /></a>
+    <nav class="main-nav">
+      <ul>
+        <li>
+          <a ui-sref-active="active" ui-sref="app.home" title="Why Food formula">Why Food formula</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="responsive-header" style="display: none">
+    <div class="responsive-logo">
+      <a ui-sref="app.home" class="nutrical-logo"
+        ><img
+          src="images/ff-logo.png"
+          width="140px"
+          height="60px"
+          alt="Why Food formula"
+          title="Why Food formula"
+      /></a>
+    </div>
+
+    <div>
+      <div class="icon-burger" id="icon-burger" onclick="navAction()">
+        <span class="burger-patty"></span>
+        <span class="burger-patty"></span>
+        <span class="burger-patty"></span>
+      </div>
+
+      <div class="sidenav" id="sidenav" style="height: 0vh">
+        <a ui-sref-active="active" ui-sref="app.home" title="Why Food formula"
+          >Why Food formula</a
+        >
+        <a
+          ui-sref-active="active"
+          href="https://wa.me/75674040798"
+          title="WhatsaApp Us"
+          >WhatsApp Us</a
+        >
+      </div>
+    </div>
+  </div>
+</header>
+<script>
+  $(document).ready(function () {
+    $(".icon-burger").click(function () {
+      if ($(this).hasClass("is-open")) {
+        $(this).removeClass("is-open");
+      } else {
+        $(this).addClass("is-open");
+      }
+    });
+  });
+  function navAction() {
+    if (document.getElementById("sidenav").style.height == "100vh") {
+      document.getElementById("sidenav").style.height = "0vh";
+    } else {
+      document.getElementById("sidenav").style.height = "100vh";
+    }
+  }
+</script>

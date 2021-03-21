@@ -1,0 +1,725 @@
+<style>
+    .card-block{
+        margin-right: 0px;
+    }
+    .card-head {
+        border-bottom: none;
+    }
+    .table-wrap .card-head h3 {
+        margin-bottom: 20px;
+    }
+    .one-half.table-wrap{
+        display: flex;
+        flex-direction: column;
+    }
+    .table-block th{
+        border-top: none;
+    }
+    .nutrients-table .card-body {
+        overflow-y: auto;
+        overflow-x: scroll;
+    }
+    .table-block td, .table-block th{
+        padding: 10px 10px 10px 0px;
+    }
+    .one-half.table-wrap.nutrients-table{
+        width: 45%;
+    }
+    .one-half.table-wrap.bdr-right{
+        width: 55%;
+    }
+    .form-table {
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+    .form-field .input-icon{
+        padding-left: 10px;
+    }
+    .header {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        box-shadow: 2.407px 3.195px 5px rgba(0, 0, 0, 0.08);
+        background-color: #132753;
+        padding: 0 15px;
+        z-index: 1;
+        flex: none; }
+    .header .rest-logo {
+        position: absolute;
+        width: 199px;
+        height: 70px;
+        border-radius: 4px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.26);
+        background-color: #ffffff;
+        right: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: none; }
+    .header .rest-logo img {
+        max-height: 70px;
+        max-width: 180px; }
+    .header .right-head-col {
+        padding-right: 220px;
+        display: flex;
+        align-items: center; }
+    .header .search-box {
+        width: 350px;
+        display: flex;
+        position: relative; }
+    .header .search-box:before {
+        content: '';
+        width: 40px;
+        background: url("images/search-icon.svg") no-repeat center center;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        display: block;
+        left: 0;
+        position: absolute; }
+    .header .search-box input {
+        font-size: 13px;
+        line-height: 40px;
+        color: #000000;
+        padding-left: 40px;
+        height: 40px;
+        border: 0;
+        border-bottom: 1px solid #ddd;
+        border-radius: 0;
+        padding: 0 0 0 40px;
+        width: 100%;
+        background-color: #132753;
+        margin-right: 25px; }
+    .header .search-box input:focus, .header .search-box input:hover {
+        background-color: #f5f7fb;
+        border-radius: 4px;
+        transition: all 0.5s; }
+    .header .search-box ::-webkit-input-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9; }
+    .header .search-box ::-moz-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9; }
+    .header .search-box :-ms-input-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9; }
+    .header .search-box :-moz-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9; }
+    .headTitle h5,h1{
+        color: #ffffff;
+    }
+    .ingrd-block .card-body {
+        max-height: 345px;
+        overflow: auto;
+    }
+    .checkbox-inline{
+        display: inline-block;
+        width: 230px !important;
+        margin-bottom: 10px;
+    }
+    .checkboxInfo{
+        margin: 10px 0px 0px 20px;
+    }
+    .checkbox-inline input[type="checkbox"]{
+        position: absolute;
+        margin-left: -20px;
+        width: 15px;
+        height: 15px;
+    }
+    .checkbox-inline:last-child{
+        width: 175px !important;
+    }
+    .close {
+        position: absolute;
+        right: 5px;
+        top: 3px;
+        z-index: 100;
+        padding: 0px 7px;
+        background-color: whitesmoke;
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+        text-align: center;
+        font-size: 22px;
+        border-radius: 50%;
+    }
+    .close:hover{
+        color: #DF8F52;
+    }
+    .image-list{
+        display: flex;
+        margin-bottom: 20px;
+    }
+    .img-container{
+        width: 200px;
+        height: 150px;
+        position: relative;
+        margin-right: 30px;
+    }
+    .img-container:last-child{
+        margin-right: 0px;
+    }
+    .img-container img{
+        border-radius: 5px;
+    }
+    .recipe-img{
+        width: 100%; display: block; height: 100%;
+        object-fit: contain;
+    }
+    .input-label{
+        position: relative;
+    }
+    .input-label sup{
+        color: red;
+        font-size: 12px;
+    }
+    .input-label img {
+        width: 13px;
+        position: absolute;
+        top: 4px;
+    }
+    input[type="checkbox"]{
+        cursor: pointer;
+    }
+    input[type="checkbox"]:disabled{
+        opacity: 0.5;
+        cursor: unset;
+    }
+    #cooking-instruction{
+        background: url(images/text-number.png);
+        background-attachment: local;
+        background-repeat: no-repeat;
+        padding-left: 35px;
+        padding-top: 14px;
+        border-color:#ccc;
+        line-height: 1.3;
+    }
+    .fix-header th{
+        max-width: 150px;
+        overflow-y: auto;
+        background-color: #e4e4e4;
+        cursor: pointer;
+    }
+    .fix-header th, .fix-header td {
+        border: 1px solid #c5c5c547;
+        min-width: 150px;
+        width: auto;
+        text-align: center;
+    }
+    .fix-header tbody {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: block;
+        max-height: 300px;
+    }
+    .fix-header thead{
+        display: table-row;
+    }
+    .form-footer button{
+        margin-right: 10px;
+    }
+    .form-footer button:last-child{
+        margin-right: 0px;
+    }
+    .cell-overflow{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        white-space: nowrap;
+        width: 100px;
+    }
+    .one-half .sub-recipe-info{
+        font-size: 12px;
+        line-height: 18px;
+        color: #132753;
+    }
+    .form-table table{
+        width: 25%;
+    }
+    .form-field-set:last-child.search-nutrient{
+        margin-bottom: 0px;
+        width: 30%;
+    }
+    .search-nutrient .form-field{
+        margin-bottom: 0px;
+    }
+    input[type="date"]{
+        padding: 8px 15px;
+    }
+</style>
+<header class="header">
+    <div class="headTitle">
+        <h1>{{isCopy == 'true' ? 'Add Recipe' : 'Edit Recipe'}}</h1>
+    </div>
+</header><!--header-->
+
+<div class="page-content" style="display: block;overflow: scroll;">
+    <div class="page-cont-pad">
+        <div class="addEditRecipe">
+            <div  class="mb10" >
+                <div class="g-cols">
+                    <div class="card-block">
+                        <div class="card-pad">
+                            <div class="card-head">
+                                <h3>Food Information</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-container food-info-block">
+                                    <form name="recipeForm" ng-submit="recipeForm.$valid && updateRecipe()" novalidate="">
+                                        <div class="g-cols">
+                                            <div class="form-field-set" ng-class="{'error': recipeForm.$submitted && recipeForm.stoRecipeId.$invalid}" ng-if="accountId == 271">
+                                                <label class="input-label"><sup>*</sup> STO RECIPE ID</label>
+                                                <div class="form-field">
+                                                    <input type="text" ng-model="recipeDetail.stoRecipeId" placeholder="Enter Id" name="stoRecipeId" class="input-icon" required/>
+                                                    <span ng-if="recipeForm.$submitted">
+                                                        <span class="err-msg" ng-if="recipeForm.stoRecipeId.$error.required">Required</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-field-set" ng-class="{'error': recipeForm.$submitted && recipeForm.name.$invalid}">
+                                                <label>Name</label>
+                                                <div class="form-field">
+                                                    <input type="text" ng-model="recipeDetail.name" name="name" class="input-icon" required=""/>
+                                                    <span ng-if="recipeForm.$submitted">
+                                                        <span class="err-msg" ng-if="recipeForm.name.$error.required">Required</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-field-set">
+                                                <label>Category</label>
+                                                <div class="form-field">
+                                                    <select ng-model="recipe.category_id" class="select-box" name="category_id">
+                                                        <option ng-value="cat.id" ng-repeat="cat in recipeCategories" ng-bind="cat.name"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-field-set" ng-class="{'error': recipeForm.$submitted && recipeForm.foodType.$invalid}">
+                                                <label class="input-label"><sup>*</sup> Type</label>
+                                                <div class="form-field">
+                                                    <select ng-model="recipeDetail.foodType" class="select-box" name="foodType" required="">
+                                                        <option value="" ng-if="!recipeDetail.foodType" selected>Select Type</option>
+                                                        <option ng-value="type.id" ng-repeat="type in foodTypes" ng-bind="type.name"></option>
+                                                    </select>
+                                                    <span ng-if="recipeForm.$submitted">
+                                                        <span class="err-msg" ng-if="recipeForm.foodType.$error.required">Required</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-field-set qty-field" ng-class="{'error': recipeForm.$submitted && recipeForm.cookedWeight.$invalid}">
+                                                <label class="input-label"><sup>*</sup> Total Cooked Weight&nbsp;&nbsp;<img src="images/info-icon-blue.svg" title="Enter the cooked weight in grams of your recipe. This will be less than or equal to the total weight of your recipe."></label>
+                                                <div class="form-field">
+                                                    <input type="number" ng-model="recipeDetail.cookedWeight" name="cookedWeight" class="" id="composition_weight" placeholder="Quantity" min="1" required=""/>
+                                                    <span ng-if="recipeForm.$submitted">
+                                                        <span class="err-msg" ng-if="recipeForm.cookedWeight.$error.required && recipeForm.cookedWeight.$error.min">Required</span>
+                                                    </span>
+                                                    <em class="serv-unit">gm</em>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-field-set qty-field" ng-class="{'error': recipeForm.$submitted && recipeForm.servingDescription.$invalid}">
+                                                <label class="input-label"><sup>*</sup> Serving Description&nbsp;&nbsp;<img src="images/info-icon-blue.svg" title="Example - Serves 2, 1 Serving, 8 pcs per plate."></label>
+                                                <div class="form-field">
+                                                    <input type="text" ng-model="recipeDetail.servingDescription" name="servingDescription" class="" id="composition_description" placeholder="Description"  required=""/>
+                                                    <span ng-if="recipeForm.$submitted">
+                                                        <span class="err-msg" ng-if="recipeForm.servingDescription.$error.required">Required</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-field-set">
+                                                <label class="input-label">Production Date</label>
+                                                <div class="form-field">
+                                                    <input type="date" ng-model="dietInfo.productionDate" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="g-cols">
+                                            <div class="form-field-set qty-field" ng-class="{'error': recipeForm.$submitted && recipeForm.servingWeight.$invalid}">
+                                                <label class="input-label"><sup>*</sup> Per Serving Weight&nbsp;&nbsp;<img src="images/info-icon-blue.svg" title="Enter weight in grams per serving. This weight is also used to compute the Nutrition Facts Label"></label>
+                                                <div class="form-field">
+                                                    <input type="number" ng-model="recipeDetail.servingWeight" name="servingWeight" class="" id="composition_quantity" min="1" placeholder="Quantity" required=""/>
+                                                    <span ng-if="recipeForm.$submitted">
+                                                        <span class="err-msg" ng-if="recipeForm.servingWeight.$error.required && recipeForm.servingWeight.$error.min">Required</span>
+                                                    </span>
+                                                    <em class="serv-unit">gm</em>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-field-set qty-field" ng-class="{'error': recipeForm.$submitted && recipeForm.price.$invalid}">
+                                                <label class="input-label">Per Serving Selling Price</label>
+                                                <div class="form-field">
+                                                    <input type="number" ng-model="dietInfo.price" name="price" class="" id="composition_price" placeholder="Price" required=""/>
+                                                    <span ng-if="recipeForm.$submitted">
+                                                        <span class="err-msg" ng-if="recipeForm.price.$error.required">Required</span>
+                                                    </span>
+                                                    <em class="serv-unit"></em>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-field-set qty-field" ng-class="{'error': recipeForm.$submitted && recipeForm.costPrice.$invalid}">
+                                                <label class="input-label">Per Serving Cost Price</label>
+                                                <div class="form-field">
+                                                    <input type="number" ng-model="dietInfo.costPrice" name="costPrice" id="composition_cost_price" placeholder="Cost Price" required=""/>
+                                                    <span ng-if="recipeForm.$submitted">
+                                                        <span class="err-msg" ng-if="recipeForm.costPrice.$error.required">Required</span>
+                                                    </span>
+                                                    <em class="serv-unit"></em>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-field-set" ng-class="{'error': recipeForm.$submitted && recipeForm.usedAsIngredient.$invalid}">
+                                                <label class="input-label">Used as Ingredient</label>
+                                                <div class="form-field">
+                                                    <select ng-model="recipeDetail.usedAsIngredient" class="select-box" name="usedAsIngredient" required="">
+                                                        <option ng-value="uai.id" ng-repeat="uai in usedAsIngredients" ng-bind="uai.name"></option>
+                                                    </select>
+                                                    <span ng-if="recipeForm.$submitted">
+                                                        <span class="err-msg" ng-if="recipeForm.usedAsIngredient.$error.required">Required</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-field-set" ng-class="{'error': recipeForm.$submitted && recipeForm.statusId.$invalid}">
+                                                <label class="input-label">Status</label>
+                                                <div class="form-field">
+                                                    <select ng-model="recipeDetail.statusId" class="select-box" name="statusId" required="">
+                                                        <option ng-value="status.id" ng-repeat="status in foodStatus" ng-bind="status.name"></option>
+                                                    </select>
+                                                    <span ng-if="recipeForm.$submitted">
+                                                        <span class="err-msg" ng-if="recipeForm.statusId.$error.required">Required</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-field-set">
+                                                <label class="input-label">Best before Date</label>
+                                                <div class="form-field">
+                                                    <input type="date" ng-model="dietInfo.bestBeforeDate" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- <div class="g-cols mb20">
+                                            <div>
+                                                <label>Suitable for<span title="These tags, allergens, and other information is being manually added by the user. NutriCal system is not claiming, advising or taking any responsibility for the dish in question containing or being suitable for any of the below items. The user takes full responsibility of information being checked on the Suitable for and Contains fields."> *</span></label>
+                                                <div class="checkboxInfo">
+                                                    <label ng-repeat="type in diet.suitableFor" for="{{type}}" class="checkbox-inline"><input type="checkbox" id="{{type}}" name="{{type}}" ng-click="diet.setDietType(type)" ng-checked="diet.isDietSelected(type)" ng-disabled="diet.isDisabled(type)">{{type}}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="g-cols mb20">
+                                            <div>
+                                                <label>Contains<span title="These tags, allergens, and other information is being manually added by the user. NutriCal system is not claiming, advising or taking any responsibility for the dish in question containing or being suitable for any of the below items. The user takes full responsibility of information being checked on the Suitable for and Contains fields."> *</span></label>
+                                                <div class="checkboxInfo">
+                                                    <label ng-repeat="item in diet.contains" for="{{item}}" class="checkbox-inline"><input type="checkbox" id="{{item}}" name="item" ng-click="diet.setItem(item)" ng-checked="diet.isItemSelected(item)" ng-disabled="diet.isDisabled(item)">{{item}}</label>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+                                        <div class="g-cols mb20">
+                                            <div>
+                                                <label>Allergies (System Generated)</label>
+                                                <div class="checkboxInfo" style="pointer-events: none;">
+                                                    <label ng-repeat="item in allergies" for="{{item.id}}" class="checkbox-inline">
+                                                        <input type="checkbox" id="{{item.id}}" name="{{item.name}}" ng-checked="diet.isAllergiesSelected(item.name)">{{item.name}}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="g-cols mb20">
+                                            <div>
+                                                <label>Meal Types (System Generated)</label>
+                                                <div class="checkboxInfo" style="pointer-events: none;">
+                                                    <label ng-repeat="type in mealTypes" for="{{type}}" class="checkbox-inline"><input type="checkbox" name="{{type}}" ng-checked="diet.isMealtypeSelected(type)">{{type}}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="g-cols">
+                                            <div class="form-field-set">
+                                                <label style="display: block;">Ingredients</label>
+                                                <div class="form-field">
+                                                    <textarea cols="30" placeholder="Enter ingredients..." ng-model="dietInfo.ingredientsInfo"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-field-set">
+                                                <label style="display: block;">Cooking Instructions</label>
+                                                <div class="form-field">
+                                                    <textarea cols="30" placeholder="Enter cooking instructions..." id="cooking-instruction" ng-model="cookingInstruction">{{cookingInstruction}}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-field-set">
+                                                <label style="display: block;">Allergies Info</label>
+                                                <div class="form-field">
+                                                    <textarea cols="30" placeholder="Enter allergies.." ng-model="dietInfo.allergiesInfo"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-field-set">
+                                                <label style="display: block;">Mealtypes Info</label>
+                                                <div class="form-field">
+                                                    <textarea cols="30" placeholder="Enter mealtypes.." ng-model="dietInfo.mealTypesInfo"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-footer">
+                                            <button type="button" class="btn btn-icon update-btn" ng-click="generateRecipeTags()"><img src="/images/generate-icon.svg"></span>&nbsp;Generate Allegies and Meal types</button>
+                                            <button type="button" class="btn btn-icon update-btn" ui-sref="app.dashboard"><span class="icon-arrow-left2"></span>&nbsp;Back</button>
+                                            <button type="submit" ng-if="isUserChanged() == false" class="btn btn-icon update-btn" ng-class="{'loader': updateRecipeLoader}"><span class="icon-save" ng-if="isCopy == 'true'"></span><span class="icon-refresh" ng-if="isCopy == 'false'"></span>&nbsp;{{isCopy == 'true' ? 'Add' : 'Update'}}</button>
+                                            <div class="success-msg" ng-if="addUpdateRecipeSuccess" style="display: flex">
+                                                <img src="images/icon-success.svg" /> &nbsp;  &nbsp;Your information is updated
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-block mb10">
+                <div class="card-pad">
+                    <div class="image-list" ng-if="images.length > 0">
+                        <div class="img-container" ng-repeat="img in images" ng-if="!loader">
+                            <span ng-if="isUserChanged() == false" class="close" ng-click="removeImage(img.id)">&times;</span>
+                            <img ng-src="{{ img.image_original}}" class="recipe-img"/>
+                        </div>
+                        <div ng-show="loader" class="page-loader">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-field-set">
+                            <label>Select Recipe Image</label>
+                            <div class="form-field">
+                                <input type="file" onchange="angular.element(this).scope().getFiles(this.files[0])" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-icon update-btn" ng-click="uploadImages()">Upload Image</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-block ingrd-block" ng-if="recipe.id">
+                <div class="card-pad">
+                    <div class="g-cols offset_none">
+                        <div class="one-half table-wrap bdr-right">
+                            <div class="card-head">
+                                <h3>Ingredients</h3>
+                            </div>
+
+                            <div class="card-body">
+                                <table class="table-block table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>S/N</th>
+                                            <th class="ingr-name">Name</th>
+                                            <th>Serving Unit</th>
+                                            <th>Qty.</th>
+                                            <th>Total Qty.</th>
+                                            <th>Cost/Gram</th>
+                                            <th>Total Cost</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ingredients_body">
+                                        <tr ng-repeat="ing in recipe.ingredients">
+                                            <td><b>{{$index+1}}</b></td>
+                                            <td ng-if="ing.parent_recipe" title="{{ ing.name }} ({{ing.parent_recipe}})"><span class="cell-overflow">{{ ing.name }} ({{ing.parent_recipe}})</span></td>
+                                            <td ng-if="!ing.parent_recipe" title="{{ ing.name }}"><span class="cell-overflow">{{ ing.name }}</span></td>
+                                            <td>{{ ing.unit_name }} ({{ ing.unit_quantity }})</td>
+                                            <td style="{{ (ing.isEditable) ? 'padding: 0 5px; vertical-align: middle;' : '' }}">
+                                                <span ng-if="!ing.isEditable">{{ ing.quantity  | number:2}}</span>
+                                                <input ng-if="ing.isEditable" type="text" ng-model="ing.quantity" style="width: 70px;padding: 5px;">
+                                            </td>
+                                            <td>
+                                                <span>{{ ing.total_quantity  | number:2}}</span>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <span>{{ ing.per_gram_cost | number:4 }}</span>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <span>{{ ing.total_cost | number:4 }}</span>
+                                            </td>
+                                            <td style="padding: 0px;">
+                                                <div class="center">
+                                                    <div class="action-col">
+                                                        <a href="javascript:void(0)" ng-if="!ing.isEditable" ng-click="setIngredientEditable(ing)"><img src="images/sm-edit-icon.svg"></a>
+                                                    </div>
+                                                    <div class="action-col">
+                                                        <a href="javascript:void(0)" ng-if="!ing.isEditable" ng-click="removeIngredient(ing)"><img src="images/sm-delete-icon.svg"></a>
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-icon {{ing.isEditableLoader ? 'loader' : ''}}" style="width: 70px" href="javascript:void(0)" ng-if="ing.isEditable" ng-click="updateIngredient(ing)">Done</button>
+                                                <!-- <button class="btn btn-icon" style="width: 70px" href="javascript:void(0)" ng-if="ing.isEditableLoader"><span class="loader"></span></button> -->
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Total weight:</td>
+                                            <td><span id="totalIngredientWeight" style="color: #181818; font-weight: 700;">{{getGetRoundOfNum(totalIngredientWeight)}}</span> Grams</td>
+                                            <td></td>
+                                            <td style="text-align: center;">{{total_ingredient_cost | number:4}}</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                        </div>
+                        <div class="one-half table-wrap nutrients-table">
+                            <div class="card-head">
+                                <h3>Nutrients</h3>
+                            </div>
+                            <div class="card-body fix-header mb20">
+                                <table class="table-block table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>S/N</th>
+                                            <th ng-repeat="n in masterNutrients| filter:nutrientName">{{ n.name}} ({{ n.unit_name}})</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ingredient_nutrients_body">
+                                        <tr ng-repeat="ing in recipe.ingredients">
+                                            <td><b>{{$index + 1}}</b></td>
+                                            <td ng-repeat="n in masterNutrients| filter:nutrientName">{{ getIngredientNutrientValue(n, ing.nutrient_values_without_absorption) | number:2}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Total</b></td>
+                                            <td ng-repeat="n in masterNutrients| filter:nutrientName"><b style="color: #de8b4e;">{{ getGetRoundOfNum(n.total)}}</b></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="form-field-set search-nutrient">
+                                <div class="form-field">
+                                    <input type="text" ng-model="nutrientName" placeholder="Search Nutrient">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="g-cols">
+                        <div class="one-half" style="width: 100%;">
+                            <div class="form-table">
+                                <table ng-if="isUserChanged() == false">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-field-set">
+                                                    <div class="form-field" style="display: flex;flex-direction: row">
+                                                        <div class="search-box auto-select-block">
+                                                            <input type="text" class="" id="ingredient_name" ng-model="addIngredientForm.ingredient_name" ng-change="searchIngredients()" placeholder="Type ingredient name here"/>
+                                                            <div class="auto-select-list" id="ingredient" ng-class="{'topPos': (autocompleteHt > 200)}" style="max-height: {{autocompleteHt}}px" ng-if="showAutocomplete">
+                                                                <div ng-repeat="ingredient in masterIngredients" ng-click="setIngredient(ingredient)">{{ ingredient.name}}</div>
+                                                            </div>
+                                                            <div class="auto-select-list" id="ingredient" ng-class="{'topPos': (autocompleteHt > 200)}" style="max-height: {{autocompleteHt}}px" ng-if="showloader">
+                                                                <div>Loading...</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </td>
+
+                                            <td id="ingredient_serving_unit_id" style="width: 190px;" ng-if="addIngredientForm.serving_units">
+                                                <div class="form-field-set">
+                                                    <div class="form-field">
+                                                        <select class="select-box" ng-model="addIngredientForm.serving_unit_id">
+                                                            <option value="">Select serving unit</option>
+                                                            <option ng-repeat="unit in addIngredientForm.serving_units" value="{{ unit.id}}">{{ unit.master_unit.displayable_name}} ({{ unit.quantity}})</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                            <td id="quantity_td" ng-if="addIngredientForm.serving_unit_id">
+                                                <div class="form-field-set qty-field">
+                                                    <div class="form-field">
+                                                        <input type="number" ng-model="addIngredientForm.quantity" class="" id="quantity" placeholder="Quantity" style="width: 90px; padding: 10px 10px; margin-right: 15px;" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-field-set">
+                                                    <div class="form-field">
+                                                        <button class="btn btn-icon {{addIngredientForm.loader ? 'loader' : ''}}" style="width: 70px;" ng-if="addIngredientForm.quantity" ng-click="addIngredient()">Add</button>
+                                                        <!-- <div class="btn btn-sm" style="width: 75px" ng-if="addIngredientForm.loader"><span class="btnLoader loaderBlack"></span></div> -->
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-field-set">
+                                                    <div class="form-field">
+                                                        <div class="search-box auto-select-block">
+                                                            <input type="text" class="" id="sub_recipe" ng-model="addIngredientsForm.ingredient_name" ng-change="searchSubRecipe()" placeholder="Type Sub Recipe name here"/>
+                                                            <div class="auto-select-list" id="sub_recipe_name" ng-class="{'topPos': (autocompleteHt > 200)}" style="max-height: {{autocompleteHt}}px" ng-if="showAutocompletes">
+                                                                <div ng-repeat="ing in masterSubRecipes" ng-click="setIngredients(ing)">{{ ing.name}}</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td id="quantity_td" ng-if="addIngredientsForm.add">
+                                                <div class="form-field-set qty-field">
+                                                    <div class="form-field">
+                                                        <input type="number" ng-model="addIngredientsForm.quantity" class="" id="quantity" placeholder="Grams" style="width: 90px; padding: 10px 10px; margin-right: 15px;" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-field-set">
+                                                    <div class="form-field">
+                                                        <button class="btn btn-icon {{addIngredientsForm.loader ? 'loader' : ''}}" style="width: 70px;" ng-if="addIngredientsForm.quantity" ng-click="addIngredients()">Add</button>
+                                                        <!-- <div class="btn btn-sm" style="width: 75px" ng-if="addIngredientForm.loader"><span class="btnLoader loaderBlack"></span></div> -->
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="sub-recipe-info">
+                                <span>
+                                    Sub Recipe ingredients are imported based on raw weight of the ingredient mentioned in the Sub Recipe and not cooked weight.</br>
+                                    <b>
+                                        For eg 100 gm of cooked Rice when imported, only 20 gm of rice ingredient will be imported.<br/>
+                                        The nutritional value of the imported Sub Recipe should be the basis to check the correctness.
+                                    </b>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

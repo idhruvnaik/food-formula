@@ -1,0 +1,153 @@
+<style>
+    html, body{
+        overflow: visible;
+        height: 100%;
+    }
+    div{
+        color: black;
+    }
+    navigation{
+        display: none;
+    }
+    #page-wrapper {
+        padding-left: 0px;
+    }
+    .container{
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    .content{
+        border-radius: 10px;
+        background-color: white;
+        overflow: auto;
+        width: 50%;
+        height: 80%;
+    }
+    .restaurant-logo{
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+        border-radius: 5px;
+        margin: 10px;
+    }
+    .category-title{
+        color:#1d2e5c;
+        font-size: 20px;
+        font-weight: 800;
+        text-align: left;
+        padding:0px;
+        line-height: 1;
+    }
+    .print{
+        display: none;
+    }
+    table td{
+        width: 70px;
+        padding: 10px 5px;
+        font-size: 15px;
+        text-align: right;
+    }
+    table tr{
+        padding: 10px;
+        page-break-inside: avoid;
+    }
+    thead {
+        display: table-header-group;
+    }
+    .nested-table tr:last-child td{
+        font-size: 10px;
+        padding-top: 0px;
+    }
+    .nested-table td {
+        text-align: left;
+    }
+    .container-table{
+        padding: 10px;
+    }
+    .category-info-block{
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    @media print
+    {    
+        @page {
+            size: auto;
+            margin: 0.5cm 0mm 0.5cm 0cm ;
+            padding: 0;
+        }
+        .no-print{
+            display: none !important;
+        }
+        .container{
+            display: unset;
+        }
+        .content{
+            border-radius: 0px;
+            width: auto;
+            height: 100%;
+            overflow: visible;
+            padding: 0px 10px;
+        }
+        .restaurant-logo{
+            margin: 10px 10px 10px 0px;
+        }
+        .print{
+            display: block;
+        }
+    }
+</style>
+<div class="container">
+    <div class="content">
+        <header class="no-print">
+            <img ng-src="{{logo.image_original}}" class="restaurant-logo" ng-if="logo != null"/>
+        </header>
+        <div ng-if="recipeCategories && recipeCategories.length">
+            <table class="container-table">
+                <thead>
+                    <tr class="print">
+                        <th>
+                            <img ng-src="{{logo.image_original}}" class="restaurant-logo" ng-if="logo != null"/>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="category in recipeCategories track by $index">
+                        <td>
+                            <table class="category-info-block">
+                                <tr><td class="category-title" ng-bind="category.name" colspan="4"></td></tr>
+                                <tr ng-repeat="recipe in category.recipes track by $index">
+                                    <td style="width: 130px;">
+                                        <table class="nested-table">
+                                            <tr>
+                                                <td style="line-height: 1.2;" ng-bind="recipe.name"></td>
+                                            </tr>
+                                            <tr>
+                                                <td ng-bind="recipe.ingredients_info"></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td ng-bind="(recipe.price)? recipe.price+' '+currency:'NA'"></td>
+                                    <td ng-bind="(recipe.energy > 0 ? getRoundVal(recipe.energy) : 0)+' '+recipe.unit_name"></td>
+                                    <td style="text-align: -webkit-right;">
+                                        <qrcode data="{{recipe.url}}" href="{{recipe.url}}"></qrcode>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-footer no-print" style="padding: 10px 0px; width: 50%;" ng-if="recipeCategories && recipeCategories.length">    
+        <div ng-click='printPage()' class="btn btn-icon"><span class="icon-printer"></span>&nbsp;PRINT</div>
+    </div>
+</div>

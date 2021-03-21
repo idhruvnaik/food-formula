@@ -1,0 +1,7 @@
+<div id="{{isAuthenticate() ? 'wrapper' : ''}}" ng-class="{'wrapper': isAuthenticate()}" ng-cloak="">
+    <div ng-include="'views/navigation.html'" ng-if="isAuthenticate()"></div>
+    <div id="{{isAuthenticate() ? 'page-wrapper' : ''}}">        
+        <ui-view style="height: 100%;display: flex;flex-direction: column;"></ui-view> 
+    </div>
+</div>
+

@@ -1,0 +1,161 @@
+<style>
+    .header {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        box-shadow: 2.407px 3.195px 5px rgba(0, 0, 0, 0.08);
+        background-color: #132753;
+        padding: 0 15px;
+        z-index: 1;
+        flex: none; }
+    .header .rest-logo {
+        position: absolute;
+        width: 199px;
+        height: 70px;
+        border-radius: 4px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.26);
+        background-color: #ffffff;
+        right: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: none; }
+    .header .rest-logo img {
+        max-height: 70px;
+        max-width: 180px; }
+    .header .right-head-col {
+        padding-right: 220px;
+        display: flex;
+        align-items: center; }
+    .header .search-box {
+        width: 350px;
+        display: flex;
+        position: relative; }
+    .header .search-box:before {
+        content: '';
+        width: 40px;
+        background: url("images/search-icon.svg") no-repeat center center;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        display: block;
+        left: 0;
+        position: absolute; }
+    .header .search-box input {
+        font-size: 13px;
+        line-height: 40px;
+        color: #000000;
+        padding-left: 40px;
+        height: 40px;
+        border: 0;
+        border-bottom: 1px solid #ddd;
+        border-radius: 0;
+        padding: 0 0 0 40px;
+        width: 100%;
+        background-color: #132753;
+        margin-right: 25px; }
+    .header .search-box input:focus, .header .search-box input:hover {
+        background-color: #f5f7fb;
+        border-radius: 4px;
+        transition: all 0.5s; }
+    .header .search-box ::-webkit-input-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9; }
+    .header .search-box ::-moz-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9; }
+    .header .search-box :-ms-input-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9; }
+    .header .search-box :-moz-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9; }
+    .headTitle h5,h1{
+        color: #ffffff;
+    }
+    .rest-logo{
+        background-color: #132753;
+    }
+</style>
+
+<header class="header">
+    <div class="headTitle">
+        <h1>{{ accountName}}</h1>
+    </div>
+</header><!--header-->
+
+<div class="page-content" style="height: calc(100vh - 60px); overflow: auto;">
+    <div>
+        <div class="g-cols offset_none" style="display: block;">
+            <div class="one-half">
+                <div class="card-block">
+                    <div class="card-pad">
+                        <div class="card-head">
+                            <h3>Change Password</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-container">
+                                <form  name="profileForm" ng-submit="profileForm.$valid && saveUserPassword()">
+                                    <div class="form-field-set" ng-class="{'error': profileForm.$submitted && profileForm.old_password.$invalid}">
+                                        <div class="bdr-bottom">
+                                            <label>Old Password</label>
+                                            <div class="form-field">
+                                                <img src="images/password-icon.svg">
+                                                <input name="old_password" type="password" placeholder="type your old password" ng-model="pass.old_password" class="input-icon" required="">
+                                                <span ng-show="profileForm.$submitted || profileForm.old_password.$touched">
+                                                    <span class="err-msg" ng-show="profileForm.old_password.$error.required">Wrong password</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-field-set" ng-class="{'error': profileForm.$submitted && profileForm.new_password.$invalid}">
+                                        <label>New Password</label>
+                                        <div class="form-field">
+                                            <img src="images/password-icon.svg">
+                                            <input type="password" placeholder="type your new password" name="new_password" ng-model="pass.new_password" class="input-icon" required="">
+                                            <span ng-show="profileForm.$submitted || profileForm.new_password.$touched">
+                                                <span class="err-msg" ng-show="profileForm.new_password.$error.required">Wrong password</span>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-field-set" ng-class="{'error': profileForm.$submitted && profileForm.confirm_password.$invalid}" style="margin-bottom: 40px;">
+                                        <label>Retype New Password</label>
+                                        <div class="form-field">
+                                            <img src="images/password-icon.svg">
+                                            <input type="password" placeholder="retype your new password" name="confirm_password" ng-model="pass.retype_new_password" class="input-icon" required="">
+                                            <span ng-show="profileForm.$submitted || profileForm.confirm_password.$touched">
+                                                <span class="err-msg" ng-show="profileForm.confirm_password.$error.required">Wrong password</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-footer">    
+                                        <button type="submit" class="btn btn-icon"><span class="icon-save"></span>&nbsp;save changes</button>
+                                        <div class="success-msg" ng-if="successMsg2">
+                                            <img src="images/icon-success.svg" /> &nbsp;  &nbsp;Your information is updated
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

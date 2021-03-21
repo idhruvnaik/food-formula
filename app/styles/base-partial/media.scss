@@ -1,0 +1,109 @@
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 481px) {
+  .home-page {
+    .hero-banner {
+      .owl-carousel {
+        height: 450px;
+        .owl-stage-outer {
+          height: 100%;
+          .owl-stage {
+            height: 100%;
+          }
+          .owl-item {
+            height: 100%;
+          }
+          .banner {
+            height: 600px;
+            .banner-pad {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100%;
+              .hero-text {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                h1 {
+                  color: #ffffff;
+                  font-weight: 500;
+                  font-size: 16px;
+                  margin-bottom: 10px;
+                }
+                p {
+                  color: #ffffff;
+                  font-size: 12px;
+                  font-weight: 300;
+                  text-align: center;
+                }
+                .learn-more-btn {
+                  background-color: #113448;
+                  padding: 10px 15px;
+                  color: #ffffff;
+                  border-radius: 30px;
+                  &:hover {
+                    border: 2px solid #113448;
+                    background-color: transparent;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      #intro {
+        .container {
+          .row {
+            padding: 0px 15px;
+            .col-lg-5 {
+              width: 100%;
+              margin-bottom: 25px;
+            }
+            .col-lg-7 {
+              width: 100%;
+              .image-container {
+                height: auto;
+                width: auto;
+                img {
+                  height: 100%;
+                  width: 100%;
+                  object-fit: contain;
+                  border-radius: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+      #contact {
+        .row {
+          .col-lg-6 {
+            width: calc(100% - 20px);
+            .text-container {
+              .section-title{
+                text-align: center;
+              }
+              h2{
+                text-align: center;
+              }
+              .social-media-links {
+                margin-bottom: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-height: 570px) {
+}
+
+@media (max-width: 320px) {
+}
+
+@media (max-width: 280px) {
+}

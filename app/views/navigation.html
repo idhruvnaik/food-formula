@@ -1,0 +1,106 @@
+<navigation id="navigation">
+    <nav class="mainNav">
+        <div class="logoBlock">
+            <img src="images/nutrical-logo-white.svg"/>
+        </div>
+
+        <div class="nav" ng-if="!isAdmin()">
+            <ul>
+                <li ui-sref-active="active">
+                    <div ui-sref="app.dashboard">
+                        <a href="#">
+                            <img class="nav-img" src="images/dashboard-icon.svg"/>
+                        </a>
+                        <ul class="subNav">
+                            <li>Home</li>
+                        </ul>
+                    </div>
+                </li>
+                <li ui-sref-active="active">
+                    <div ui-sref="app.profile">
+                        <a href="#">
+                            <img class="nav-img" src="images/profile-icon.svg"/>
+                        </a>
+
+                        <ul class="subNav multi-subnav">
+                            <li class="head-sub-nav">Profile</li>
+                        </ul>
+                    </div>
+                </li>
+                <li ui-sref-active="active">
+                    <div ui-sref="app.nutrical_tutorial">
+                        <a >
+                            <img class="nav-img" src="images/nutrical-tutorial.svg" style="width: 30px;" />
+                        </a>
+
+                        <ul class="subNav multi-subnav">
+                            <li class="head-sub-nav">Demo</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="bot-links" >
+                <li title="Logout">
+                    <div ng-click="logout()">
+                        <a href="#" >
+                            <img class="nav-img" src="images/logout-icon.svg" />
+                        </a>
+                        <ul class="subNav">
+                            <li>Logout</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="nav" ng-if="isAdmin()">
+            <ul>
+                <li ui-sref-active="active">
+                    <div ui-sref="app.dashboard">
+                        <a href="#">
+                            <img class="nav-img" src="images/dashboard-icon.svg"/>
+                        </a>
+                        <ul class="subNav">
+                            <li>Home</li>
+                        </ul>
+                    </div>
+                </li>
+                <li ui-sref-active="active">
+                    <div ui-sref="app.admin-dashboard">
+                        <a href="#">
+                            <img class="nav-img" src="/images/users-icon.svg"/>
+                        </a>
+                        <ul class="subNav">
+                            <li>Nurical Users</li>
+                        </ul>
+                    </div>
+                </li>
+                <li ui-sref-active="active">
+                    <div>
+                        <a href="#">
+                            <img class="nav-img" src="images/profile-icon.svg"/>
+                        </a>
+
+                        <ul class="subNav multi-subnav">
+                            <li ui-sref="app.admin-profile" class="head-sub-nav">Change Password</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="bot-links" >
+                <li title="Logout">
+                    <div ng-click="logout()">
+                        <a href="#" >
+                            <img class="nav-img" src="images/logout-icon.svg" />
+                        </a>
+                        <ul class="subNav">
+                            <li>Logout</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</navigation>

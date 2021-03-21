@@ -1,0 +1,210 @@
+.food-item-template-page {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .container-box {
+    height: 90%;
+    width: 55%;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    .page-pad {
+      padding: 10px 15px;
+      height: 100%;
+      overflow: visible;
+      position: relative;
+      .template-head {
+        display: flex;
+        flex-direction: column;
+        .restaurant-name {
+          font-size: 26px;
+          line-height: 32px;
+          color: #de8b4e;
+          font-weight: 500;
+          letter-spacing: 0.5px;
+          padding: 10px 0;
+          border-bottom: 1px solid #aaadaf;
+        }
+        .img-container {
+          width: 100px;
+          height: 100px;
+          .restaurant-logo {
+            border-radius: 5px;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+  }
+
+  .recipe-info-block {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0px;
+    .recipe-info {
+      margin-right: 10px;
+      flex: 1;
+      .recipe-name {
+        color: #de8b4e;
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 10px;
+      }
+      .details-block {
+        margin-bottom: 10px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        h4 {
+          font-size: 15px;
+          margin-bottom: 10px;
+        }
+        p {
+          font-size: 10px;
+          margin: 0;
+        }
+      }
+    }
+    .recipe-img-conrainer {
+      width: 180px;
+      height: 180px;
+      padding: 10px;
+      border: 1px solid gray;
+      border-radius: 5px;
+      img {
+        border-radius: 5px;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .nutritional-info {
+    margin-bottom: 10px;
+  }
+
+  .analysis-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .diet-info {
+      margin-bottom: 10px;
+      p {
+        font-size: 10px;
+        margin: 0px;
+        b {
+          color: black;
+        }
+      }
+    }
+    .disclaimer-info {
+      color: red;
+      font-size: 10px;
+      line-height: 13px;
+      font-weight: 400;
+    }
+  }
+
+  .footer-block {
+    display: none;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    .download-info {
+      color: black;
+      font-size: 10px;
+    }
+    .nutrical-details {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      .footer-logo {
+        width: 35px;
+      }
+      a {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .ingredients-info{
+    padding: 10px 0px;
+  }
+
+  .table-container {
+    .title {
+      color: #de8b4e;
+      font-size: 20px;
+      margin-bottom: 10px;
+      padding: 0px;
+      font-weight: 400;
+      border-bottom: 1px solid #7d7e80;
+    }
+    .table-block {
+      th,
+      td {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      tr {
+        &:first-child {
+          th {
+            border: none;
+          }
+        }
+        th,
+        td {
+          &:last-child {
+            text-align: center;
+          }
+        }
+      }
+      td,
+      th {
+        padding: 5px 0px;
+        line-height: 10px;
+      }
+    }
+  }
+
+  @media print {
+    .no-print {
+      display: none;
+    }
+
+    body {
+      padding-bottom: 10px;
+    }
+
+    html,
+    body {
+      width: 210mm;
+      height: 297mm;
+    }
+
+    .footer-block {
+      display: flex;
+    }
+
+    .container-box {
+      height: 100%;
+      width: 100%;
+      border-radius: unset;
+      margin-bottom: 0px;
+    }
+
+    .table-block td,
+    .table-block th {
+      line-height: 8px;
+    }
+  }
+}
