@@ -345,13 +345,6 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-field-set">
-                                                <label class="input-label">Production Date</label>
-                                                <div class="form-field">
-                                                    <input type="date" ng-model="dietInfo.productionDate" />
-                                                </div>
-                                            </div>
-
                                         </div>
                                         <div class="g-cols">
                                             <div class="form-field-set qty-field" ng-class="{'error': recipeForm.$submitted && recipeForm.servingWeight.$invalid}">
@@ -414,36 +407,18 @@
                                             <div class="form-field-set">
                                                 <label class="input-label">Best before Date</label>
                                                 <div class="form-field">
-                                                    <input type="date" ng-model="dietInfo.bestBeforeDate" />
+                                                    <input type="date" ng-model="recipeDetail.expiryDate" />
                                                 </div>
                                             </div>
 
                                         </div>
 
-                                        <!-- <div class="g-cols mb20">
-                                            <div>
-                                                <label>Suitable for<span title="These tags, allergens, and other information is being manually added by the user. NutriCal system is not claiming, advising or taking any responsibility for the dish in question containing or being suitable for any of the below items. The user takes full responsibility of information being checked on the Suitable for and Contains fields."> *</span></label>
-                                                <div class="checkboxInfo">
-                                                    <label ng-repeat="type in diet.suitableFor" for="{{type}}" class="checkbox-inline"><input type="checkbox" id="{{type}}" name="{{type}}" ng-click="diet.setDietType(type)" ng-checked="diet.isDietSelected(type)" ng-disabled="diet.isDisabled(type)">{{type}}</label>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <div class="g-cols mb20">
                                             <div>
-                                                <label>Contains<span title="These tags, allergens, and other information is being manually added by the user. NutriCal system is not claiming, advising or taking any responsibility for the dish in question containing or being suitable for any of the below items. The user takes full responsibility of information being checked on the Suitable for and Contains fields."> *</span></label>
+                                                <label>Allergies</label>
                                                 <div class="checkboxInfo">
-                                                    <label ng-repeat="item in diet.contains" for="{{item}}" class="checkbox-inline"><input type="checkbox" id="{{item}}" name="item" ng-click="diet.setItem(item)" ng-checked="diet.isItemSelected(item)" ng-disabled="diet.isDisabled(item)">{{item}}</label>
-                                                </div>
-                                            </div>
-                                        </div> -->
-
-                                        <div class="g-cols mb20">
-                                            <div>
-                                                <label>Allergies (System Generated)</label>
-                                                <div class="checkboxInfo" style="pointer-events: none;">
-                                                    <label ng-repeat="item in allergies" for="{{item.id}}" class="checkbox-inline">
-                                                        <input type="checkbox" id="{{item.id}}" name="{{item.name}}" ng-checked="diet.isAllergiesSelected(item.name)">{{item.name}}
+                                                    <label ng-repeat="item in allergies track by $index" for="allergy_{{item.id}}" class="checkbox-inline">
+                                                        <input type="checkbox" data-checklist-model="diet.allergies" data-checklist-value="item.id" id="allergy_{{item.id}}">{{item.name}}
                                                     </label>
                                                 </div>
                                             </div>
@@ -451,9 +426,11 @@
 
                                         <div class="g-cols mb20">
                                             <div>
-                                                <label>Meal Types (System Generated)</label>
-                                                <div class="checkboxInfo" style="pointer-events: none;">
-                                                    <label ng-repeat="type in mealTypes" for="{{type}}" class="checkbox-inline"><input type="checkbox" name="{{type}}" ng-checked="diet.isMealtypeSelected(type)">{{type}}</label>
+                                                <label>Meal Types</label>
+                                                <div class="checkboxInfo">
+                                                    <label ng-repeat="type in mealTypes track by $index" for="meal_type_{{type.id}}" class="checkbox-inline">
+                                                        <input type="checkbox" data-checklist-model="diet.mealTypes" data-checklist-value="type.id" id="meal_type_{{type.id}}">{{type.name}}
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -486,7 +463,6 @@
                                         </div>
 
                                         <div class="form-footer">
-                                            <button type="button" class="btn btn-icon update-btn" ng-click="generateRecipeTags()"><img src="/images/generate-icon.svg"></span>&nbsp;Generate Allegies and Meal types</button>
                                             <button type="button" class="btn btn-icon update-btn" ui-sref="app.dashboard"><span class="icon-arrow-left2"></span>&nbsp;Back</button>
                                             <button type="submit" ng-if="isUserChanged() == false" class="btn btn-icon update-btn" ng-class="{'loader': updateRecipeLoader}"><span class="icon-save" ng-if="isCopy == 'true'"></span><span class="icon-refresh" ng-if="isCopy == 'false'"></span>&nbsp;{{isCopy == 'true' ? 'Add' : 'Update'}}</button>
                                             <div class="success-msg" ng-if="addUpdateRecipeSuccess" style="display: flex">

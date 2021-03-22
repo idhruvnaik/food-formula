@@ -1,5 +1,5 @@
 'use strict';
-angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', '$stateParams', '$scope', '$timeout', 'Data', 'Notification', '$localStorage', function ($filter, $stateParams, $scope, $timeout, Data, Notification, $localStorage) {
+angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', '$stateParams', '$scope', '$timeout', 'Data', 'Notification', '$localStorage', 'ENV', function ($filter, $stateParams, $scope, $timeout, Data, Notification, $localStorage, ENV) {
 
     $('.fix-header').scroll(function () {
         $('.fix-header table').width($('.fix-header').width() + $('.fix-header').scrollLeft());
@@ -21,6 +21,9 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
     $scope.recipeImage = [];
     $scope.loader = false;
     $scope.updateRecipeLoader = false;
+    $scope.allergies = ENV.ALLERGIES;
+    $scope.mealTypes = ENV.MEALTYPES
+    
     $scope.foodTypes = [
         { id: 1, name: 'Veg' },
         { id: 2, name: 'Non-Veg' }
@@ -42,124 +45,9 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
         $scope.getRecipeById();
         $scope.accountId = $localStorage.account_Id;
     };
-    $scope.dietInfo = {
-        suitableFor: [],
-        contains: [],
-        allergies: [],
-        recipe_meal_types: [],
-    };
 
-    $scope.mealTypes = ['Vegan', 'Vegetarian', 'Gluten Free', 'Non-Vegetarian', 'Ketogenic', 'Pescatarian', 'High Protein', 'No Added Sugar', 'Halal', 'Paleo', 'Clean Label', 'Baked not Fried', 'Lacto-Ovo Vegetarian'];
-    $scope.diet = {
-        suitableFor: ['Vegan', 'Vegetarian', 'Gluten Free', 'Non-Vegetarian', 'Ketogenic', 'Pescetarian', 'High Protein', 'No Added Sugar', 'Halal', 'Paleo', 'Clean Label', 'Baked not Fried', 'Lacto-Ovo Vegetarian'],
-        contains: ['Gluten', 'Eggs', 'Fish', 'Crustaceans', 'Peanuts', 'Soy', 'Dairy', 'Nuts', 'Celery', 'Mustard', 'Sesame Seeds', 'Mussels / Oysters', 'Squids', 'Snails', 'Sulphur Dioxide & Sulphites'],
-
-        veganEnable: ['Vegetarian'],
-        veganDisable: ['Pescetarian', 'Lacto-Ovo Vegetarian', 'Non-Vegetarian', 'Eggs', 'Fish', 'Crustaceans', 'Dairy', 'Mussels / Oysters', 'Squids', 'Snails'],
-        vegetarianDisable: ['Pescetarian', 'Lacto-Ovo Vegetarian', 'Non-Vegetarian', 'Eggs', 'Fish', 'Crustaceans', 'Mussels / Oysters', 'Squids', 'Snails'],
-        pescetarianEnable: ['Non-Vegetarian'],
-        nonVegetarianPescetarianDisable: ['Vegan', 'Lacto-Ovo Vegetarian', 'Vegetarian'],
-        lactoOvoVegetarianDisable: ['Vegan', 'Pescetarian', 'Vegetarian', 'Non-Vegetarian', 'Fish', 'Crustaceans', 'Mussels / Oysters', 'Squids', 'Snails'],
-        glutenFreeDisable: ['Gluten'],
-
-        setDietType: function (type) {
-            if ($scope.dietInfo.suitableFor == undefined) {
-                $scope.dietInfo.suitableFor = [];
-            }
-
-            var index = $scope.dietInfo.suitableFor.indexOf(type);
-
-            if (index == -1) {
-                $scope.dietInfo.suitableFor.push(type);
-            } else {
-                $scope.dietInfo.suitableFor.splice(index, 1);
-            }
-
-            if (type == 'Vegan' && $scope.dietInfo.suitableFor.indexOf('Vegan') != -1) {
-                if ($scope.dietInfo.suitableFor.indexOf('Vegetarian') == -1) {
-                    $scope.dietInfo.suitableFor = $scope.dietInfo.suitableFor.concat($scope.diet.veganEnable);
-                }
-            }
-
-            if (type == 'Pescetarian' && $scope.dietInfo.suitableFor.indexOf('Pescetarian') != -1) {
-                if ($scope.dietInfo.suitableFor.indexOf('Non-Vegetarian') == -1) {
-                    $scope.dietInfo.suitableFor = $scope.dietInfo.suitableFor.concat($scope.diet.pescetarianEnable);
-                }
-            }
-        },
-        setItem: function (item) {
-            if ($scope.dietInfo.contains == undefined) {
-                $scope.dietInfo.contains = [];
-            }
-
-            var index = $scope.dietInfo.contains.indexOf(item);
-
-            if (index == -1) {
-                $scope.dietInfo.contains.push(item);
-            } else {
-                $scope.dietInfo.contains.splice(index, 1);
-            }
-        },
-        isMealtypeSelected: function (item) {
-            var flag = false;
-            if ($scope.dietInfo.recipe_meal_types && $scope.dietInfo.recipe_meal_types.includes(item)) {
-                flag = true;
-            }
-            return flag;
-        },
-        isAllergiesSelected: function (item) {
-            var flag = false;
-            if ($scope.dietInfo.allergies && $scope.dietInfo.allergies.includes(item)) {
-                flag = true;
-            }
-            return flag;
-        },
-        isDietSelected: function (type) {
-            var flag = false;
-            if ($scope.dietInfo.suitableFor && $scope.dietInfo.suitableFor.includes(type)) {
-                flag = true;
-            }
-            return flag;
-        },
-        isItemSelected: function (item) {
-            var flag = false;
-            if ($scope.dietInfo.contains && $scope.dietInfo.contains.includes(item)) {
-                flag = true;
-            }
-            return flag;
-        },
-        isDisabled: function (type) {
-            if ($scope.dietInfo.suitableFor) {
-
-                if ($scope.dietInfo.suitableFor.includes('Vegan')) {
-                    if ($scope.diet.veganDisable.indexOf(type) != -1) {
-                        return true;
-                    }
-                }
-                if ($scope.dietInfo.suitableFor.includes('Vegetarian')) {
-                    if ($scope.diet.vegetarianDisable.indexOf(type) != -1) {
-                        return true;
-                    }
-                }
-                if ($scope.dietInfo.suitableFor.includes('Non-Vegetarian') || $scope.dietInfo.suitableFor.includes('Pescetarian')) {
-                    if ($scope.diet.nonVegetarianPescetarianDisable.indexOf(type) != -1) {
-                        return true;
-                    }
-                }
-                if ($scope.dietInfo.suitableFor.includes('Lacto-Ovo Vegetarian')) {
-                    if ($scope.diet.lactoOvoVegetarianDisable.indexOf(type) != -1) {
-                        return true;
-                    }
-                }
-                if ($scope.dietInfo.suitableFor.includes('Gluten Free')) {
-                    if ($scope.diet.glutenFreeDisable.indexOf(type) != -1) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        },
-    };
+    $scope.dietInfo = {};
+    $scope.diet = {};
 
     $scope.uploadImages = function () {
 
@@ -209,12 +97,17 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
             $scope.recipe.id = result.contents.id;
             $scope.recipeDetail.name = result.contents.name;
             $scope.recipeDetail.statusId = result.contents.status_id;
+            $scope.recipeDetail.expiryDate = new Date(result.contents.expiry_date);
 
             $scope.dietInfo.price = result.contents.per_serving_selling_price;
             $scope.dietInfo.costPrice = result.contents.per_serving_cost_price;
             $scope.cookingInstruction = result.contents.cooking_info;
             $scope.dietInfo.allergiesInfo = result.contents.allergies_info;
             $scope.dietInfo.ingredientsInfo = result.contents.ingredients_info;
+            $scope.dietInfo.mealTypesInfo = result.contents.meal_types_Info;
+
+            $scope.diet.allergies = result.contents.allergy_ids ? result.contents.allergy_ids.split("@") : [];
+            $scope.diet.mealTypes = result.contents.meal_type_ids ? result.contents.meal_type_ids.split("@") : [];
 
             $scope.recipeDetail.foodType = [1, 2].includes(result.contents.recipe_type) ? result.contents.recipe_type : '';
             $scope.recipeDetail.cookedWeight = result.contents.total_cooked_weight;
@@ -226,7 +119,6 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
 
             $scope.recipe.category_id = result.contents.category_id;
             
-            $scope.allergies = result.contents.allergies;
             $scope.images = result.contents.recipe_images;
 
             $scope.generateTotal();
@@ -238,6 +130,7 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
     };
 
     $scope.updateRecipe = function () {
+        
         $scope.updateRecipeLoader = true;
         var params = {
             id: $scope.recipe.id,
@@ -254,7 +147,11 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
             allergies_info: $scope.dietInfo.allergiesInfo,
             per_serving_cost_price: $scope.dietInfo.costPrice,
             per_serving_selling_price: $scope.dietInfo.price,
-            used_as_ingredient: $scope.recipeDetail.usedAsIngredient
+            used_as_ingredient: $scope.recipeDetail.usedAsIngredient,
+            allergy_ids: $scope.diet.allergies.join("@"),
+            meal_type_ids: $scope.diet.mealTypes.join("@"),
+            expiry_date: $scope.recipeDetail.expiryDate,
+            meal_types_Info: $scope.dietInfo.mealTypesInfo
 
         };
 
@@ -394,7 +291,6 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
             $scope.addIngredientForm.serving_unit_id = '';
             $scope.addIngredientForm.quantity = '';
             $scope.generateTotal();
-            $scope.$broadcast('GET_ALLERGIES_AND_MEAL_TYPES');
 
         }, function (error) {
             console.log(error);
@@ -430,7 +326,6 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
             $scope.addIngredientsForm.quantity = '';
             $scope.generateTotal();
             $scope.addIngredientsForm.add = false;
-            $scope.$broadcast('GET_ALLERGIES_AND_MEAL_TYPES');
 
         }, function (error) {
             console.log(error);
@@ -461,7 +356,6 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
             Data.removeIngredient({ id: ing.id }, function (result) {
                 $scope.recipe.ingredients.splice(index, 1);
                 $scope.generateTotal();
-                $scope.$broadcast('GET_ALLERGIES_AND_MEAL_TYPES');
             }, function (error) {
                 console.log(error);
             });
@@ -471,21 +365,6 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
     $scope.setIngredientEditable = function (ing) {
         ing.isEditable = true;
     };
-
-    $scope.generateRecipeTags = function () {
-        $scope.$broadcast('GET_ALLERGIES_AND_MEAL_TYPES');
-    }
-
-    $scope.$on('GET_ALLERGIES_AND_MEAL_TYPES', function (event, options) {
-        Data.getAllergiesAndMealTypes({ recipe_id: $stateParams.id }, function (result) {
-            $scope.dietInfo.allergies = angular.copy(result.contents.recipe_allergies);
-            $scope.dietInfo.recipe_meal_types = angular.copy(result.contents.recipe_meal_types);
-            $scope.dietInfo.allergiesInfo = angular.copy(result.contents.allergiesInfo);
-            $scope.dietInfo.mealTypesInfo = angular.copy(result.contents.mealTypesInfo);
-        }, function (error) {
-            console.log(error);
-        });
-    });
 
     $scope.init();
 
