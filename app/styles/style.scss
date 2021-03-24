@@ -467,7 +467,7 @@ ul li {
     background: transparent;
     border: 1px solid #fff;
     &:hover{
-        background-color: #de8b4e;
+        background-color: #14bf98;
         color: #fff !important;
     }
 }
@@ -539,10 +539,10 @@ header.fixed {
 
                 }
                 &:hover{
-                    color: #de8b4e!important;
+                    color: #14bf98!important;
                 }
                 &.active{
-                    color: #de8b4e!important;
+                    color: #14bf98!important;
                 }
             }
 
@@ -551,7 +551,7 @@ header.fixed {
 }
 
 a.active{
-    color: #de8b4e!important;
+    color: #14bf98!important;
 }
 
 .fix-height{
@@ -640,7 +640,7 @@ a.active{
         padding: 10px 15px;
         border-radius: 5px;
         font-weight: 600;
-        background: #de8b4e;
+        background: #14bf98;
         display: inline-block;
         text-align: center;
         color: #fff;
@@ -707,7 +707,7 @@ a.active{
         .owl-dots{
             .owl-dot.active{
                 span{
-                    background: #de8b4e;
+                    background: #14bf98;
                 }
 
             }
@@ -776,7 +776,7 @@ footer .footer-note {
 
 footer .footer-link:hover {
     text-decoration: none;
-    color: #de8b4e !important;
+    color: #14bf98 !important;
 }
 
 .footer-detail{
@@ -805,13 +805,13 @@ footer .footer-link:hover {
     padding: 6px 0px;
 }
 .footer-detail li a:hover{
-    color: #de8b4e !important;
+    color: #14bf98 !important;
 }
 .pointer{
     cursor: pointer;
 }
 .pointer:hover{
-    color: #de8b4e !important;
+    color: #14bf98 !important;
 }
 .footer-detail p{
     color: #fff;
@@ -1114,7 +1114,7 @@ select:not(:focus):invalid{
         font-weight: 100;
     }
     .responsive-header .sidenav a:hover:nth-child(-n+5){
-        background-color: #de8b4e;
+        background-color: #14bf98;
         color: #fff !important;
     }
     .responsive-header .sidenav {
