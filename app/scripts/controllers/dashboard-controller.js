@@ -1,16 +1,16 @@
-'use strict';
+"use strict";
 angular
-  .module('restaurantApp')
-  .controller('dashboardCtrl', [
-    '$scope',
-    '$window',
-    '$state',
-    'Data',
-    '$localStorage',
-    'ENV',
-    '$uibModal',
-    '$timeout',
-    'Notification',
+  .module("restaurantApp")
+  .controller("dashboardCtrl", [
+    "$scope",
+    "$window",
+    "$state",
+    "Data",
+    "$localStorage",
+    "ENV",
+    "$uibModal",
+    "$timeout",
+    "Notification",
     function (
       $scope,
       $window,
@@ -27,7 +27,7 @@ angular
       $scope.masterNutrients = [];
       delete $localStorage.recipeCategoryIds;
       $scope.search = {
-        q: '',
+        q: "",
         showRecipe: function (name) {
           var flag = true;
           if (this.q.length > 1) {
@@ -39,10 +39,10 @@ angular
         },
       };
       $scope.user = $localStorage.user;
-      $scope.access_state = $scope.user['access_state'];
+      $scope.access_state = $scope.user["access_state"];
       if ($scope.access_state == 2 && $scope.getRecipeCategoriesLength < 3) {
-        var d = document.getElementById('access_state');
-        d.className += ' button-disabled';
+        var d = document.getElementById("access_state");
+        d.className += " button-disabled";
       }
       $scope.saveOrder = function (list) {
         Data.setRecipeCategory(
@@ -53,15 +53,15 @@ angular
         return true;
       };
       $scope.changeUser = function (user) {
-        if (user === '') {
+        if (user === "") {
           return;
         }
-        if (user != '0') {
+        if (user != "0") {
           $localStorage.selectedUser = angular.copy(user);
-          $scope.accountData.user['name'] = $localStorage.selectedUser.name;
+          $scope.accountData.user["name"] = $localStorage.selectedUser.name;
         } else {
           delete $localStorage.selectedUser;
-          $scope.accountData.user['name'] = $localStorage.user.name;
+          $scope.accountData.user["name"] = $localStorage.user.name;
         }
         $scope.init();
       };
@@ -81,7 +81,7 @@ angular
         var params = {
           name: val,
         };
-        if (val == '') {
+        if (val == "") {
           Data.getResturantCategories(
             function (result) {
               $scope.recipeCategories = result.contents;
@@ -176,22 +176,22 @@ angular
         delete $localStorage.recipeCategoryIds;
         $localStorage.recipeCategoryIds = angular.copy([category.id]);
         $timeout(function () {
-          $window.open('/menu-template', '_blank');
+          $window.open("/menu-template", "_blank");
         }, 100);
       };
 
       $scope.category = {
         id: null,
-        name: '',
+        name: "",
         addCatLoader: false,
-        addCatError: '',
+        addCatError: "",
         showCatBox: false,
         save: function () {
-          if (this.name == '') {
-            this.addCatError = 'Please enter category name';
+          if (this.name == "") {
+            this.addCatError = "Please enter category name";
             return;
           }
-          this.addCatError = '';
+          this.addCatError = "";
           this.addCatLoader = true;
           Data.saveRecipeCategory(
             this.id,
@@ -208,12 +208,12 @@ angular
                 }
               }
               $scope.category.id = null;
-              $scope.category.name = '';
+              $scope.category.name = "";
               $scope.category.addCatLoader = false;
               $scope.init();
             },
             function (error) {
-              //                    alert(error);
+              console.log(error);
             }
           );
         },
@@ -230,18 +230,18 @@ angular
       };
 
       $scope.foodItem = {
-        name: '',
+        name: "",
         addBulk: false,
         selectedCat: null,
         addLoader: false,
-        addCatError: '',
+        addCatError: "",
         addCategoryFood: function (cat) {
           this.addBulk = false;
           this.selectedCat = cat;
         },
         hideCategoryFood: function () {
           this.addBulk = false;
-          this.name = '';
+          this.name = "";
           this.selectedCat = null;
         },
         addCategoryFoodBulk: function (cat) {
@@ -249,18 +249,18 @@ angular
           this.selectedCat = cat;
         },
         save: function () {
-          if (this.name == '') {
-            this.addCatError = 'Please enter category name';
+          if (this.name == "") {
+            this.addCatError = "Please enter category name";
             return;
           }
 
-          $scope.foodItem.addCatError = '';
+          $scope.foodItem.addCatError = "";
           $scope.foodItem.addLoader = true;
 
           if (this.addBulk) {
             Data.addBulkRecipes(
               {
-                recipe_names: this.name.split('\n'),
+                recipe_names: this.name.split("\n"),
                 category_id: this.selectedCat.id,
               },
               function (result) {
@@ -274,7 +274,7 @@ angular
                 }
 
                 $scope.foodItem.selectedCat = null;
-                $scope.foodItem.name = '';
+                $scope.foodItem.name = "";
                 $scope.foodItem.addLoader = false;
               },
               function (error) {
@@ -286,7 +286,7 @@ angular
               this.name,
               this.selectedCat.id,
               function (result) {
-                $state.go('app.edit-recipe-details', {
+                $state.go("app.edit-recipe-details", {
                   id: result.contents.id,
                   isCopy: false,
                 });
@@ -297,7 +297,7 @@ angular
 
                 $scope.foodItem.selectedCat.recipes.push(result.contents);
                 $scope.foodItem.selectedCat = null;
-                $scope.foodItem.name = '';
+                $scope.foodItem.name = "";
                 $scope.foodItem.addLoader = false;
               },
               function (error) {
@@ -307,7 +307,7 @@ angular
           }
         },
         discard: function (cat, recipe) {
-          if (confirm('Do you want to delete this recipe')) {
+          if (confirm("Do you want to delete this recipe")) {
             Data.discardRecipe(
               recipe.id,
               function (result) {
@@ -329,11 +329,11 @@ angular
       };
 
       $scope.getVegNonVegIndi = function (recipe) {
-        var className = '';
+        var className = "";
         if ([0, 1].includes(recipe.recipe_type)) {
-          className = 'veg-food';
+          className = "veg-food";
         } else if ([2, 3, 4, 5].includes(recipe.recipe_type)) {
-          className = 'non-veg-food';
+          className = "non-veg-food";
         }
 
         return className;
@@ -343,16 +343,16 @@ angular
         var param = Data.getAuthData({});
         $window.open(
           ENV.apiUrl +
-            '/restaurants_app/food_item/export_nutrical_ingredients.csv?api_key=' +
+            "/restaurants_app/food_item/export_nutrical_ingredients.csv?api_key=" +
             param.api_key +
-            '&auth_username=' +
+            "&auth_username=" +
             param.auth_username,
-          '_blank'
+          "_blank"
         );
       };
 
       $scope.openFoodItemLabel = function (recipe) {
-        $window.open('/food-item-label/' + recipe.id, '_blank');
+        $window.open("/food-item-label/" + recipe.id, "_blank");
       };
 
       $scope.openMenuTemplate = function () {
@@ -360,12 +360,12 @@ angular
           .open({
             animation: true,
             keyboard: false,
-            placement: 'bottom',
-            windowClass: 'login-modal',
-            size: 'lg',
-            backdrop: 'static',
-            templateUrl: 'download_menu_template.html',
-            controller: 'downloadMenuCtrl',
+            placement: "bottom",
+            windowClass: "login-modal",
+            size: "lg",
+            backdrop: "static",
+            templateUrl: "download_menu_template.html",
+            controller: "downloadMenuCtrl",
             resolve: {
               categories: function () {
                 return $scope.recipeCategories;
@@ -376,7 +376,7 @@ angular
             function (result) {
               $localStorage.recipeCategoryIds = result;
               $timeout(function () {
-                $window.open('/menu-template', '_blank');
+                $window.open("/menu-template", "_blank");
               }, 100);
             },
             function () {}
@@ -392,12 +392,12 @@ angular
           .open({
             animation: true,
             keyboard: false,
-            placement: 'bottom',
-            windowClass: 'login-modal',
-            size: 'lg',
-            backdrop: 'static',
-            templateUrl: 'qr_modal.html',
-            controller: 'qrModalCtrl',
+            placement: "bottom",
+            windowClass: "login-modal",
+            size: "lg",
+            backdrop: "static",
+            templateUrl: "qr_modal.html",
+            controller: "qrModalCtrl",
             resolve: {
               options: function () {
                 return {
@@ -418,12 +418,12 @@ angular
           .open({
             animation: true,
             keyboard: false,
-            placement: 'bottom',
-            windowClass: 'login-modal',
-            size: 'lg',
-            backdrop: 'static',
-            templateUrl: 'category_modal.html',
-            controller: 'categoryModalCtrl',
+            placement: "bottom",
+            windowClass: "login-modal",
+            size: "lg",
+            backdrop: "static",
+            templateUrl: "category_modal.html",
+            controller: "categoryModalCtrl",
             resolve: {
               options: function () {
                 return {
@@ -461,7 +461,7 @@ angular
         if (cat.recipes && cat.recipes.length != 0) {
           if (
             confirm(
-              'Warning! Deleting category will delete the recipes too. Press ok to countinue.'
+              "Warning! Deleting category will delete the recipes too. Press ok to countinue."
             )
           ) {
             Data.deleteRecipeCategory(
@@ -475,7 +475,7 @@ angular
             );
           }
         } else {
-          if (confirm('Do you want to delete the category?')) {
+          if (confirm("Do you want to delete the category?")) {
             Data.deleteRecipeCategory(
               cat.id,
               function (result) {
@@ -494,11 +494,11 @@ angular
           .open({
             animation: true,
             keyboard: false,
-            placement: 'bottom',
-            size: 'lg',
-            backdrop: 'static',
-            templateUrl: 'menu_print_modal.html',
-            controller: 'menuPrintCtrl',
+            placement: "bottom",
+            size: "lg",
+            backdrop: "static",
+            templateUrl: "menu_print_modal.html",
+            controller: "menuPrintCtrl",
             resolve: {
               categories: function () {
                 return $scope.recipeCategories;
@@ -506,19 +506,20 @@ angular
             },
           })
           .result.then(function (result) {
-            $localStorage.QrCategories = result.cat_id.join('@');
+            console.log(result.cat_id);
+            $localStorage.QrCategories = result.cat_id.join("@");
             $timeout(function () {
-              $window.open('/menu-qr-print/' + result.lang, '_blank');
+              $window.open("/menu-qr-print/" + result.lang, "_blank");
             }, 100);
           });
       };
 
       $scope.copyRecipe = function (recipeId) {
-        if (confirm('Do you want to copy the recipe ?')) {
+        if (confirm("Do you want to copy the recipe ?")) {
           Data.copyRecipe(
             { id: recipeId },
             function (result) {
-              $state.go('app.edit-recipe-details', {
+              $state.go("app.edit-recipe-details", {
                 id: result.contents.id,
                 isCopy: true,
               });
@@ -533,11 +534,11 @@ angular
       $scope.init();
     },
   ])
-  .controller('downloadMenuCtrl', [
-    '$scope',
-    'categories',
-    '$uibModalInstance',
-    'Notification',
+  .controller("downloadMenuCtrl", [
+    "$scope",
+    "categories",
+    "$uibModalInstance",
+    "Notification",
     function ($scope, categories, $uibModalInstance, Notification) {
       $scope.download = { categories: [] };
       $scope.categories = categories;
@@ -545,11 +546,11 @@ angular
         if ($scope.download.categories.length > 0) {
           $uibModalInstance.close($scope.download.categories);
         } else {
-          Notification.error('Select atleast one category');
+          Notification.error("Select atleast one category");
         }
       };
 
-      $scope.$watch('download.checkall', function (value) {
+      $scope.$watch("download.checkall", function (value) {
         if (value) {
           angular.forEach($scope.categories, function (item) {
             if (angular.isDefined(item.id)) {
@@ -562,16 +563,16 @@ angular
       });
     },
   ])
-  .controller('categoryModalCtrl', [
-    '$scope',
-    'options',
-    '$uibModalInstance',
-    'Data',
+  .controller("categoryModalCtrl", [
+    "$scope",
+    "options",
+    "$uibModalInstance",
+    "Data",
     function ($scope, options, $uibModalInstance, Data) {
       $scope.category = angular.copy(options.category);
       $scope.title = angular.equals(options.category, {})
-        ? 'Add Food Category'
-        : 'Edit Food Category';
+        ? "Add Food Category"
+        : "Edit Food Category";
       $scope.saveCategory = function () {
         Data.saveRecipeCategory(
           $scope.category.id,
@@ -583,55 +584,55 @@ angular
       };
     },
   ])
-  .controller('qrModalCtrl', [
-    '$scope',
-    'options',
-    'ENV',
-    '$sce',
+  .controller("qrModalCtrl", [
+    "$scope",
+    "options",
+    "ENV",
+    "$sce",
     function ($scope, options, ENV, $sce) {
       $scope.detail = angular.copy(options);
       $scope.detail.qrDetailArabic = $sce.trustAsResourceUrl(
         ENV.apiUrl +
-          '/restaurant/nutrition_facts_label_nutrical?&id=' +
+          "/restaurant/nutrition_facts_label_nutrical?&id=" +
           options.recipe.id +
-          '&language=Ar'
+          "&language=Ar"
       );
       $scope.detail.qrDetailEnglish = $sce.trustAsResourceUrl(
         ENV.apiUrl +
-          '/restaurant/nutrition_facts_label_nutrical?&id=' +
+          "/restaurant/nutrition_facts_label_nutrical?&id=" +
           options.recipe.id +
-          '&language=Eng'
+          "&language=Eng"
       );
       $scope.detail.qrDetailMix = $sce.trustAsResourceUrl(
         ENV.apiUrl +
-          '/restaurant/nutrition_facts_label_nutrical?&id=' +
+          "/restaurant/nutrition_facts_label_nutrical?&id=" +
           options.recipe.id +
-          '&language=Mix'
+          "&language=Mix"
       );
 
       $scope.print = function () {
-        var divToPrint = document.getElementById('DivIdToPrint');
-        var newWin = window.open('', 'Print-Window');
+        var divToPrint = document.getElementById("DivIdToPrint");
+        var newWin = window.open("", "Print-Window");
         newWin.document.open();
         newWin.document.write(
-          '<html><head><title>' +
+          "<html><head><title>" +
             $scope.detail.recipe.name +
-            '-Nutrition-Label' +
+            "-Nutrition-Label" +
             '</title><style>body{display: flex; justify-content: space-around; align-items: center;} .nutri-facts-info{padding: 20px; border: 1px dashed;}</style></head><body onload="window.print()">' +
             divToPrint.innerHTML +
-            '</body></html>'
+            "</body></html>"
         );
         newWin.document.close();
       };
     },
   ])
-  .controller('menuPrintCtrl', [
-    '$scope',
-    'categories',
-    '$uibModalInstance',
-    'Notification',
-    'Data',
-    '$localStorage',
+  .controller("menuPrintCtrl", [
+    "$scope",
+    "categories",
+    "$uibModalInstance",
+    "Notification",
+    "Data",
+    "$localStorage",
     function (
       $scope,
       categories,
@@ -645,15 +646,14 @@ angular
       $scope.printCategories = function (lang) {
         if ($scope.download.categories.length > 0) {
           $uibModalInstance.close({
-            cat_id: $scope.download.categories,
-            lang: lang,
+            cat_id: $scope.download.categories
           });
         } else {
-          Notification.error('Select atleast one category');
+          Notification.error("Select atleast one category");
         }
       };
 
-      $scope.$watch('download.checkall', function (value) {
+      $scope.$watch("download.checkall", function (value) {
         if (value) {
           angular.forEach($scope.categories, function (item) {
             if (angular.isDefined(item.id)) {
@@ -664,15 +664,8 @@ angular
           $scope.download.categories = [];
         }
       });
-      var userId = $localStorage.selectedUser
-        ? $localStorage.selectedUser.id
-        : $localStorage.user.user_id;
-      Data.getUserData(
-        { id: userId },
-        function (result) {
-          $scope.download.categories = result.contents.qr_code_category.split(
-            '@'
-          );
+      Data.getQRCategories({},function (result) {
+          $scope.download.categories = result.contents.split("@");
         },
         function (error) {
           console.log(error);

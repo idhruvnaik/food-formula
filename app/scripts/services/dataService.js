@@ -91,6 +91,10 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
             s.postHttp('admin/get_user_profile', params, successCb, failureCb);
         };
 
+        s.getQRCategories = function (params, successCb, failureCb) {
+            s.postHttp('restaurant/get_qr_code_category', params, successCb, failureCb);
+        };
+
         s.editUserData = function (params, successCb, failureCb) {
             s.postHttp('admin/update_user_profile', params, successCb, failureCb);
         };
@@ -143,23 +147,11 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
             s.postHttp('user/update_user_profile', params, successCb, failureCb);
         };
 
-        s.uploadImages = function (params, successCb, failureCb) {
-            $http.post(s.baseUrl + 'nutrical/add_image', params, {
-                withCredentials: false,
-                headers: {'Content-Type': undefined},
-                transformRequest: angular.identity
-            }).then(function (result) {
-                s.handleResponse(result, successCb, failureCb);
-            }, function (error) {
-                failureCb(error);
-            });
+        s.uploadImage = function (params, successCb, failureCb) {
+            s.postHttp('restaurant/store_image', params, successCb, failureCb);
         };
         s.removeImage = function (params, successCb, failureCb) {
-            $http.post(s.baseUrl + 'nutrical/remove_image', params).then(function (result) {
-                s.handleResponse(result, successCb, failureCb);
-            }, function (error) {
-                failureCb(error);
-            });
+            s.postHttp('restaurant/remove_image', params, successCb, failureCb);
         };
 
         s.getImage = function (params, successCb, failureCb) {
@@ -231,7 +223,7 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
             s.postHttp('restaurant/get_recipes_by_category', {id: data.id, ignoreLoadingBar: true}, successCb, failureCb);
         };
         s.updateQrCodeCategory = function (params, successCb, failureCb) {
-            s.postHttp('nutrical/update_qr_code_category', params, successCb, failureCb);
+            s.postHttp('restaurant/update_qr_code_category', params, successCb, failureCb);
         };
         s.getIngredients = function(successCb, failureCb){
             s.postHttp('nutrical/get_ingredients', {}, successCb, failureCb);

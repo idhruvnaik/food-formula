@@ -77,11 +77,9 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
         });
     };
 
-    $scope.removeImage = function (imageId) {
+    $scope.removeImage = function (index, imageId) {
         Data.removeImage({ id: imageId }, function (result) {
-            $scope.images = _.filter($scope.images, function (item) {
-                return item.id !== result
-            });
+            $scope.images.splice(index, 1);
         }, function (error) {
             console.log(error);
         });
@@ -126,6 +124,29 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
 
         }, function (error) {
             console.log(error);
+        });
+    };
+
+    $scope.uploadFile = function(file){
+        var storageRef = firebase.storage().ref();
+        var uploadTask = storageRef.child(Date.now().toString() + '-' + file.name).put(file);
+        uploadTask.on('state_changed', function(snapshot) {
+        }, function(error) {
+            console.log(error);
+        }, function() {
+        
+        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+            var params = {
+                entity_type: 1,
+                entity_type_id: $scope.recipeId,
+                url: downloadURL
+            };
+            Data.uploadImage(params, function (result) {
+                $scope.images.push(result.contents);
+        }, function (error) {
+            alert(error);
+        });
+        });
         });
     };
 

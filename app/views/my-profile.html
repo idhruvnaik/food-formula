@@ -308,11 +308,11 @@
                                     <div class="bdr-bottom">
                                         <label ng-if="!logoLoaded">Select Image File</label>
                                         <div class="form-field">
-                                            <input type="file" onchange="angular.element(this).scope().getFiles(this.files[0])" ng-if="!logoLoaded" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'">
+                                            <input type="file" onchange="angular.element(this).scope().uploadFile(this.files[0])" ng-if="!logoLoaded" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'">
                                         </div>
-                                        <div class="img-container" ng-repeat="l in logo">
-                                            <span class="close" ng-click="removeRestaurantLogo(l.id)">&times;</span>
-                                            <img ng-src="{{ l.image_original}}" class="restaurant-logo"/>
+                                        <div class="img-container" ng-if="logo.url">
+                                            <span class="close" ng-click="removeRestaurantLogo(logo.id)">&times;</span>
+                                            <img ng-src="{{logo.url}}" class="restaurant-logo"/>
                                         </div>
                                     </div>
                                 </div>

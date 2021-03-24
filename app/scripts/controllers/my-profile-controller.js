@@ -11,7 +11,7 @@ angular.module('restaurantApp').controller('ProfileCtrl', ['$scope', '$filter', 
     $scope.successMsg2 = false;
     $scope.formIsSubmit = false;
     $scope.logoUpdateSuccess = false;
-    $scope.logo = [];
+    $scope.logo = {};
     $scope.restaurantLogo = [];
     $scope.loader = false;
     $scope.currencies = ENV.CURRENCY;
@@ -107,6 +107,29 @@ angular.module('restaurantApp').controller('ProfileCtrl', ['$scope', '$filter', 
             Notification.success('Updated');
         }, function (error) {
             Notification.error(error);
+        });
+    };
+
+    $scope.uploadFile = function(file){
+        var storageRef = firebase.storage().ref();
+        var uploadTask = storageRef.child(Date.now().toString() + '-' + file.name).put(file);
+        uploadTask.on('state_changed', function(snapshot) {
+        }, function(error) {
+            console.log(error);
+        }, function() {
+        
+        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+            var params = {
+                entity_type: 2,
+                entity_type_id: $scope.user.user_id,
+                url: downloadURL
+            };
+            Data.uploadImage(params, function (result) {
+                $scope.logo = result.contents;
+        }, function (error) {
+            alert(error);
+        });
+        });
         });
     };
 

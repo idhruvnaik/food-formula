@@ -481,8 +481,8 @@
                 <div class="card-pad">
                     <div class="image-list" ng-if="images.length > 0">
                         <div class="img-container" ng-repeat="img in images" ng-if="!loader">
-                            <span ng-if="isUserChanged() == false" class="close" ng-click="removeImage(img.id)">&times;</span>
-                            <img ng-src="{{ img.image_original}}" class="recipe-img"/>
+                            <span ng-if="isUserChanged() == false" class="close" ng-click="removeImage($index, img.id)">&times;</span>
+                            <img ng-src="{{ img.url}}" class="recipe-img"/>
                         </div>
                         <div ng-show="loader" class="page-loader">
                             <span></span>
@@ -492,10 +492,10 @@
                         <div class="form-field-set">
                             <label>Select Recipe Image</label>
                             <div class="form-field">
-                                <input type="file" onchange="angular.element(this).scope().getFiles(this.files[0])" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'">
+                                <input type="file" onchange="angular.element(this).scope().uploadFile(this.files[0])" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-icon update-btn" ng-click="uploadImages()">Upload Image</button>
+                        <!-- <button type="submit" class="btn btn-icon update-btn" ng-click="uploadFile()">Upload Image</button> -->
                     </div>
                 </div>
             </div>

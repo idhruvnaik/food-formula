@@ -2,17 +2,15 @@
 angular.module('restaurantApp').controller('menuQrCtrl', ['$scope', '$window', '$localStorage', 'ENV', 'Data', '$stateParams', function ($scope, $window, $localStorage, ENV, Data, $stateParams) {
     
     $scope.logo = [];
-    $scope.lang = $stateParams.lang ? $stateParams.lang : 'eng'; 
-    $scope.account_Id = $localStorage.selectedUser ?  $localStorage.selectedUser.account_id : $localStorage.user.account_id;
+    $scope.user_id = $localStorage.user.user_id;
     $scope.init = function(){
         $scope.menuPrint = {};
         $scope.qrSize = 200;
 
-        $scope.menuPrint.qrcodeUrl = ENV.apiUrl + '/restaurant/nutrical_menu?id='+$scope.account_Id+'&lang='+$scope.lang;
+        $scope.menuPrint.qrcodeUrl = ENV.apiUrl + '/restaurant/get_menu_template?id='+ $scope.user_id;
         
-        $scope.getRestaurantLogo($scope.account_Id);
+        $scope.getRestaurantLogo($scope.user_id);
         var params = {
-            id: $scope.account_Id,
             qr_code_category: $localStorage.QrCategories
         };
         Data.updateQrCodeCategory(params, function(result){
@@ -29,7 +27,6 @@ angular.module('restaurantApp').controller('menuQrCtrl', ['$scope', '$window', '
     };
 
     $scope.print = function(){
-        document.title = $scope.$parent.accountData.user.name;
         $window.print(); 
     };
     $scope.init();
