@@ -61,7 +61,7 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
             s.postHttp('admin/request_account_access', data, successCb, failureCb);
         };
         s.getMastersData = function (successCb, failureCb) {
-            s.postHttp('masters/get_account_masters', {}, successCb, failureCb);
+            s.postHttp('user/get_master', {}, successCb, failureCb);
         };
 
         s.getDashboardDetails = function (successCb, failureCb) {

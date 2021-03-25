@@ -20,7 +20,7 @@ angular.module('restaurantApp').controller('ProfileCtrl', ['$scope', '$filter', 
         $scope.user = angular.copy($localStorage.user);
         delete $localStorage.selectedUser;
         $scope.accountId = $localStorage.account_Id;
-        $scope.getRestaurantLogo($scope.accountId);
+        // $scope.getRestaurantLogo($scope.accountId);
     };
 
     $scope.saveUserPassword = function () {

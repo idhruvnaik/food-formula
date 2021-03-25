@@ -366,8 +366,7 @@
                         <div class="card-pad">
                             <div class="add-cat-block" ng-if="isUserChanged() == false"
                                 ng-class="{'open': category.showCatBox}">
-                                <div class="btn btn-icon add-cat-link" ng-click="category.openCatBox()"
-                                    ng-class="{'button-disable':access_state == 2 && getRecipeCategoriesLength() >= 3}">
+                                <div class="btn btn-icon add-cat-link" ng-click="category.openCatBox()">
                                     <span class="icon-plus-circle"></span>&nbsp;Add New Category
                                 </div>
                                 <div class="add-food-item-box add-cat-box">
