@@ -2,24 +2,25 @@
 .btn{
     display: inline-flex;
     font : 500 12px/12px 'Roboto';
-    color: #ffffff;
+    color: #14bf98;
     padding: 0 10px;
     margin-bottom: 0;
-    background-color: #525d6f;
+    background-color: #ffffff;
     text-align: center;
     border-radius: 4px;
     background-image: none;
     cursor: pointer;
     white-space: nowrap;
     vertical-align: middle;
-    /*transition: all 0.3s ease 0s;*/
-    /*transform: scale(1);  */
+    transition: all 0.3s ease 0s;
+    transform: scale(1);
     text-transform:uppercase;
     min-height:30px;
+    border: 1px solid #14bf98;
     &:hover{
         color: #fff;
-        background-color: #d66614;
-        /*transform: scale(1.060);  */
+        background-color: #14bf98;
+        transform: scale(1.060);
     }
     &:focus{
         outline: none;
@@ -38,58 +39,25 @@
     cursor: pointer;
     white-space: nowrap;
     vertical-align: middle;
-    /*transition: all 0.3s ease 0s;*/
-    /*transform: scale(1);  */
+    transition: all 0.3s ease 0s;
+    transform: scale(1);
     min-height:30px;
     &:hover{
         color: #14bf98;
         background-color: #fef5ee;
-        /*transform: scale(1.060);  */
+        transform: scale(1.060);
     }
     &:focus{
         outline: none;
     }
 }
-
-.btn-bulk{
-    display: inline-flex;
-    font : 400 12px/12px 'Roboto';
-    color: #626262;
-    margin-bottom: 0;
-    padding: 0px 5px 0px 0px;
-    text-align: center;
-    border-radius: 4px;
-    background-image: none;
-    cursor: pointer;
-    white-space: nowrap;
-    vertical-align: middle;
-    /*transition: all 0.3s ease 0s;*/
-    /*transform: scale(1);  */
-    min-height:30px;
-    &:hover{
-        background-color: #e5e8ee;
-        /*transform: scale(1.060);  */
-    }
-    &:focus{
-        outline: none;
-    }
-}
-
 
 .btn-icon{
     display:inline-flex;
     align-items: center;
     justify-content: center;
 }
-.btn.green{
-    background-color:#00a94a;
-     &:hover{
-        color: #fff;
-        background-color: #008d3e;
-        border: 1px solid #008d3e;
-        /*transform: scale(1.060);  */
-    }
-}
+
 .update-btn{min-width:100px;}
 .btn.small{
      font-size: 12px;

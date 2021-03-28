@@ -521,40 +521,11 @@ a {
 .btn-default:focus {
     outline: none; }
 
-.btn-bulk {
-    display: inline-flex;
-    font: 400 12px/12px 'Roboto';
-    color: #626262;
-    margin-bottom: 0;
-    padding: 0px 5px 0px 0px;
-    text-align: center;
-    border-radius: 4px;
-    background-image: none;
-    cursor: pointer;
-    white-space: nowrap;
-    vertical-align: middle;
-    /*transition: all 0.3s ease 0s;*/
-    /*transform: scale(1);  */
-    min-height: 30px; }
-.btn-bulk:hover {
-    background-color: #e5e8ee;
-    /*transform: scale(1.060);  */ }
-.btn-bulk:focus {
-    outline: none; }
-
 .btn-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     /*span{margin-right:5px;}*/ }
-
-.btn.green {
-    background-color: #00a94a; }
-.btn.green:hover {
-    color: #fff;
-    background-color: #008d3e;
-    border: 1px solid #008d3e;
-    /*transform: scale(1.060);  */ }
 
 .update-btn {
     min-width: 100px; }

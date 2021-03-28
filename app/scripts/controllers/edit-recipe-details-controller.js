@@ -104,8 +104,8 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
             $scope.dietInfo.ingredientsInfo = result.contents.ingredients_info;
             $scope.dietInfo.mealTypesInfo = result.contents.meal_types_Info;
 
-            $scope.diet.allergies = result.contents.allergy_ids ? result.contents.allergy_ids.split("@") : [];
-            $scope.diet.mealTypes = result.contents.meal_type_ids ? result.contents.meal_type_ids.split("@") : [];
+            $scope.diet.allergies = result.contents.allergy_ids ? result.contents.allergy_ids.split('@') : [];
+            $scope.diet.mealTypes = result.contents.meal_type_ids ? result.contents.meal_type_ids.split('@') : [];
 
             $scope.recipeDetail.foodType = [1, 2].includes(result.contents.recipe_type) ? result.contents.recipe_type : '';
             $scope.recipeDetail.cookedWeight = result.contents.total_cooked_weight;
@@ -113,7 +113,6 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
             $scope.recipeDetail.servingWeight = result.contents.per_serving_weight;
 
             $scope.recipeCategories = result.contents.categories;
-            $scope.recipeDetail.usedAsIngredient = result.contents.used_as_ingredient;
 
             $scope.recipe.category_id = result.contents.category_id;
             
@@ -168,9 +167,8 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
             allergies_info: $scope.dietInfo.allergiesInfo,
             per_serving_cost_price: $scope.dietInfo.costPrice,
             per_serving_selling_price: $scope.dietInfo.price,
-            used_as_ingredient: $scope.recipeDetail.usedAsIngredient,
-            allergy_ids: $scope.diet.allergies.join("@"),
-            meal_type_ids: $scope.diet.mealTypes.join("@"),
+            allergy_ids: $scope.diet.allergies.join('@'),
+            meal_type_ids: $scope.diet.mealTypes.join('@'),
             expiry_date: $scope.recipeDetail.expiryDate,
             meal_types_Info: $scope.dietInfo.mealTypesInfo
 

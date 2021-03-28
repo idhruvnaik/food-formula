@@ -21,6 +21,17 @@ angular.module('restaurantApp').controller('MainCtrl', ['$scope', '$rootScope', 
         return false;
     }
 
+    var firebaseObj = {
+        apiKey: 'AIzaSyBEJHWSaGOIgYNScau7n0950kbgceIgJeY',
+        authDomain: 'ikoverk-978.firebaseapp.com',
+        databaseURL: 'https://ikoverk-978.firebaseio.com',
+        projectId: 'ikoverk-978',
+        storageBucket: 'ikoverk-978.appspot.com',
+        messagingSenderId: '999626119500',
+        appId: '1:999626119500:web:caaf848155db8433'
+    };
+    firebase.initializeApp(firebaseObj);
+
     $scope.loadMasters = function () {
         if ($localStorage.api_key) {
             Data.getMastersData(function (result) {

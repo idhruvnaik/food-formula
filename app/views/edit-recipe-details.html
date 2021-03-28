@@ -380,18 +380,6 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-field-set" ng-class="{'error': recipeForm.$submitted && recipeForm.usedAsIngredient.$invalid}">
-                                                <label class="input-label">Used as Ingredient</label>
-                                                <div class="form-field">
-                                                    <select ng-model="recipeDetail.usedAsIngredient" class="select-box" name="usedAsIngredient" required="">
-                                                        <option ng-value="uai.id" ng-repeat="uai in usedAsIngredients" ng-bind="uai.name"></option>
-                                                    </select>
-                                                    <span ng-if="recipeForm.$submitted">
-                                                        <span class="err-msg" ng-if="recipeForm.usedAsIngredient.$error.required">Required</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-
                                             <div class="form-field-set" ng-class="{'error': recipeForm.$submitted && recipeForm.statusId.$invalid}">
                                                 <label class="input-label">Status</label>
                                                 <div class="form-field">

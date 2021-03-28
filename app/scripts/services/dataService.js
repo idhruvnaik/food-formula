@@ -154,8 +154,8 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
             s.postHttp('restaurant/remove_image', params, successCb, failureCb);
         };
 
-        s.getImage = function (params, successCb, failureCb) {
-            s.postHttp('nutrical/get_image', params, successCb, failureCb);
+        s.getRestaurantLogo = function (params, successCb, failureCb) {
+            s.postHttp('restaurant/get_restaurant_logo', params, successCb, failureCb);
         };
 
 

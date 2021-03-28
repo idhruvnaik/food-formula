@@ -306,9 +306,9 @@
                             <form name="logoForm" ng-submit="saveRestaurantLogo()">
                                 <div class="form-field-set">
                                     <div class="bdr-bottom">
-                                        <label ng-if="!logoLoaded">Select Image File</label>
-                                        <div class="form-field">
-                                            <input type="file" onchange="angular.element(this).scope().uploadFile(this.files[0])" ng-if="!logoLoaded" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'">
+                                        <label ng-if="!logo.id">Select Image File</label>
+                                        <div class="form-field" ng-if="!logo.id">
+                                            <input type="file" onchange="angular.element(this).scope().getFiles(this.files[0])" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'">
                                         </div>
                                         <div class="img-container" ng-if="logo.url">
                                             <span class="close" ng-click="removeRestaurantLogo(logo.id)">&times;</span>
@@ -317,11 +317,8 @@
                                     </div>
                                 </div>
 
-                                <div class="form-footer">    
-                                    <button type="submit" class="btn btn-icon" ng-if="!logoLoaded"><span class="icon-refresh"></span>&nbsp;Update Logo</button>
-                                    <div class="success-msg" ng-if="logoUpdateSuccess">
-                                        <img src="/images/icon-success.svg" /> &nbsp;  &nbsp;Restaurant Logo is updated
-                                    </div>
+                                <div class="form-footer"  ng-if="!logo.id">    
+                                    <button type="submit" class="btn btn-icon"><span class="icon-refresh"></span>&nbsp;Update Logo</button>
                                 </div>
                             </form>
                         </div>            
