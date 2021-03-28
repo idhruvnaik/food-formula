@@ -222,13 +222,10 @@
                                     </div>
                                 </div>
 
-                                <div class="form-field-set" ng-class="{'error': userDetailsForm.$submitted && userDetailsForm.webSiteUrl.$invalid}">
-                                    <label>Website URL <sup>*</sup></label>
+                                <div class="form-field-set">
+                                    <label>Website URL</label>
                                     <div class="form-field">
-                                        <input type="text" ng-model="user.personal_detail.webSiteUrl" name="webSiteUrl" placeholder="Enter website URL" required="">
-                                        <span ng-show="userDetailsForm.$submitted || userDetailsForm.webSiteUrl.$touched">
-                                            <span class="err-msg" ng-if="userDetailsForm.webSiteUrl.$error.required">Please type website URL</span>
-                                        </span>
+                                        <input type="text" ng-model="user.website" name="website" placeholder="Enter website URL">
                                     </div>
                                 </div>
 

@@ -89,7 +89,7 @@ angular.module('restaurantApp').controller('ProfileCtrl', ['$scope', '$filter', 
     };
 
     $scope.updateUserDetails = function () {
-        Data.updateUserDetails({ name: $scope.user.name, email: $scope.user.email, currency: $scope.user.currency, personal_detail: $scope.user.personal_detail }, function (result) {
+        Data.updateUserDetails({ name: $scope.user.name, email: $scope.user.email, currency: $scope.user.currency, website: $scope.user.website }, function (result) {
             $localStorage.user = result.contents;
             Notification.success('Updated');
         }, function (error) {

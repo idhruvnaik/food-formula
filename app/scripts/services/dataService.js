@@ -235,7 +235,7 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
             s.postHttp('nutrical/get_food_item_label', params, successCb, failureCb);
         };
         s.copyRecipe = function (params, successCb, failureCb) {
-            s.postHttp('nutrical/copy_recipe', params, successCb, failureCb);
+            s.postHttp('restaurant/copy_recipe', params, successCb, failureCb);
         };
         s.searchRecipe = function (params, successCb, failureCb) {
             s.postHttp('restaurant/search_recipe', params, successCb, failureCb);
