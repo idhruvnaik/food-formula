@@ -203,6 +203,19 @@ angular.module('routes', [])
                                 role: 'admin'
                             }
                         })
+                        .state('app.enquiry', {
+                            url: '/enquiry',
+                            controller: 'enquiryCtrl',
+                            templateUrl: 'views/enquiry.html',
+                            resolve: {
+                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                                        return $ocLazyLoad.load('scripts/controllers/enquiry-controller.js');
+                                    }]
+                            },
+                            data: {
+                                role: 'admin'
+                            }
+                        })
                         .state('app.admin-profile', {
                             url: '/admin-profile',
                             controller: 'ProfileCtrl',

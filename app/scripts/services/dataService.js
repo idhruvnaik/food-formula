@@ -252,6 +252,12 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
         s.setRecipeCategory = function (params, successCb, failureCb) {
             s.postHttp('restaurant/set_recipe_category', params, successCb, failureCb);
         };
+        s.addEnquiry = function (params, successCb, failureCb) {
+            s.postHttp('restaurant/generate_enquiry', params, successCb, failureCb);
+        };
+        s.getEnquiries = function (successCb, failureCb) {
+            s.postHttp('restaurant/get_all_enquiries', {}, successCb, failureCb);
+        };
         s.handleResponse = function (result, successCb, failureCb) {
             if (result.data.status == 'success') {
                 successCb(result.data.contents);
