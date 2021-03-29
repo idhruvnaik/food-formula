@@ -250,7 +250,7 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
             s.getHttp('nutrical/get_label_information', params, successCb, failureCb);
         };
         s.setRecipeCategory = function (params, successCb, failureCb) {
-            s.postHttp('nutrical/set_recipe_category', params, successCb, failureCb);
+            s.postHttp('restaurant/set_recipe_category', params, successCb, failureCb);
         };
         s.handleResponse = function (result, successCb, failureCb) {
             if (result.data.status == 'success') {

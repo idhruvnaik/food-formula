@@ -62,11 +62,20 @@
                             <div class="form-container">
                                 <form name="userForm" ng-submit="userForm.$valid && saveUser()" novalidate="">
                                     <div class="form-field-set">
-                                        <label>Name</label>
+                                        <label>Restaurant Name</label>
                                         <div class="form-field">
                                             <input type="text" placeholder="Enter Name" class="input-icon" ng-model="formData.name" name="name" required="">
                                             <span ng-show="userForm.$submitted || userForm.name.$touched">
                                                 <span class="error-msg" ng-show="userForm.name.$error.required">Please enter name!</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-field-set">
+                                        <label>Manager name</label>
+                                        <div class="form-field">
+                                            <input type="text" placeholder="Enter Manager name" class="input-icon" ng-model="formData.manager_name" name="managerName" required="">
+                                            <span ng-show="userForm.$submitted || userForm.managerName.$touched">
+                                                <span class="error-msg" ng-show="userForm.managerName.$error.required">Please enter manager name!</span>
                                             </span>
                                         </div>
                                     </div>
@@ -104,6 +113,28 @@
                                             <input type="date" placeholder="Enter Username" class="input-icon" ng-model="formData.end_date" name="end_date" required="">
                                             <span ng-show="userForm.$submitted || userForm.end_date.$touched">
                                                 <span class="error-msg" ng-show="userForm.end_date.$error.required">Please enter end date!</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-field-set fix-width">
+                                        <label>Country</label>
+                                        <div class="form-field">
+                                            <select ng-model="formData.country" ng-options="state.code as state.name for state in countries track by state.code" class="select-box" name="country" required="">
+                                                <option value="" ng-if="typeOfView == 'add'">Select Country</option>
+                                            </select>
+                                            <span ng-show="userForm.$submitted || userForm.country.$touched">
+                                                <span class="error-msg" ng-show="userForm.country.$error.required">Please Select country!</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-field-set fix-width">
+                                        <label>Currency <sup>*</sup></label>
+                                        <div class="form-field">
+                                            <select class="select-box" name="currency" ng-model="formData.currency" ng-options="key as value for (key , value) in currencies">
+                                                <option value="" ng-if="typeOfView == 'add'">Select Currency</option>
+                                            </select>
+                                            <span ng-show="userForm.$submitted || userForm.currency.$touched">
+                                                <span class="error-msg" ng-show="userForm.currency.$error.required">Please Select currency!</span>
                                             </span>
                                         </div>
                                     </div>

@@ -12,7 +12,9 @@ angular.module('restaurantApp').controller('ProfileCtrl', ['$scope', '$filter', 
 
     var init = function () {
         $scope.user = angular.copy($localStorage.user);
-        $scope.getRestaurantLogo($scope.$parent.accountData.restaurant_id);
+        if(!$scope.isAdmin()){
+            $scope.getRestaurantLogo($scope.$parent.accountData.restaurant_id);
+        }
     };
 
     $scope.saveUserPassword = function () {
