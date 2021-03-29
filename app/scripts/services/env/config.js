@@ -2,7 +2,7 @@ angular.module("config", [])
 
 .constant("ENV", {
 	"name": "local",
-	"apiUrl": "http://localhost:3000/",
+	"apiUrl": "https://restoz.herokuapp.com/",
 	"CONTENT_STATUS": {
 		"1": "Published",
 		"2": "Draft",

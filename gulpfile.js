@@ -26,7 +26,7 @@ var isProd = argv.production ? true : false;
 var envSet = {
     loc: {
         name: 'local',
-        apiUrl: 'http://localhost:3000/',
+        apiUrl: 'https://restoz.herokuapp.com/',
         CONTENT_STATUS: { 1: "Published", 2: "Draft", 3: "Discarded" },
         POST_TYPES: [{ id: 1, name: "Blog" }, { id: 3, name: "Press" }],
         META_DESCRIPTION: 'Restaurants, Food Brands & Manufacturers, Meal Plan Companies, Cloud Kitchens use NutriCal to manage recipes & menus, calculate calories, create nutrition labels, conduct food costing & much more.',
@@ -455,7 +455,7 @@ var envSet = {
     },
     production: {
         name: 'production',
-        apiUrl: 'http://localhost:3000/',
+        apiUrl: 'https://restoz.herokuapp.com/',
         CONTENT_STATUS: { 1: "Published", 2: "Draft", 3: "Discarded" },
         POST_TYPES: [{ id: 1, name: "Blog" }, { id: 3, name: "Press" }],
         META_DESCRIPTION: 'Restaurants, Food Brands & Manufacturers, Meal Plan Companies, Cloud Kitchens use NutriCal to manage recipes & menus, calculate calories, create nutrition labels, conduct food costing & much more.',
