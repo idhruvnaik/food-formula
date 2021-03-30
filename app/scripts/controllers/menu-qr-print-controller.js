@@ -1,7 +1,7 @@
 'use strict';
 angular.module('restaurantApp').controller('menuQrCtrl', ['$scope', '$window', '$localStorage', 'ENV', 'Data', '$stateParams', function ($scope, $window, $localStorage, ENV, Data, $stateParams) {
     
-    $scope.logo = [];
+    $scope.logo = {};
     $scope.user_id = $localStorage.user.user_id;
     $scope.init = function(){
         $scope.menuPrint = {};
@@ -20,8 +20,9 @@ angular.module('restaurantApp').controller('menuQrCtrl', ['$scope', '$window', '
         })
     };
 
-    $scope.getRestaurantLogo = function (accountId) {
-        Data.getImage({Id: accountId, entity_type: 11}, function (result) {
+    $scope.getRestaurantLogo = function (restaurantId) {
+        $scope.logoLoaded = false;
+        Data.getRestaurantLogo({ restaurant_id: restaurantId }, function (result) {
             $scope.logo = result.contents;
         });
     };

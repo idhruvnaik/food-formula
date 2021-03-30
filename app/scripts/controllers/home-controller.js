@@ -14,7 +14,6 @@ angular.module('restaurantApp').controller('HomeCtrl', ['$scope', '$state', 'Dat
     $scope.enquiry = {};
     $scope.addEnquiry = function () {
         Data.addEnquiry($scope.enquiry, function (result) {
-            $scope.accountData = result.contents;
             Notification.success('Thank you! Our team will contact you within 24 hours');
             $("#contactForm")[0].reset();
         }, function (error) {

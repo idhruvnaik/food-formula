@@ -2,10 +2,10 @@
 angular.module('restaurantApp').controller('menuTemplateCtrl', ['$scope', 'Data', '$localStorage', function ($scope, Data, $localStorage) {
 
     $scope.init = function () {
-        $scope.account_Id = $localStorage.selectedUser ? $localStorage.selectedUser.account_id : $localStorage.user.account_id;
+        $scope.user_id = $localStorage.user.user_id;
         delete $scope.recipeCategoryIds;
         $scope.recipeCategoryIds = angular.copy($localStorage.recipeCategoryIds);
-        $scope.getRestaurantLogo($scope.account_Id);
+        $scope.getRestaurantLogo($scope.user_id);
         $scope.currency = ($localStorage.selectedUser && $localStorage.selectedUser.currency) ? $localStorage.selectedUser.currency : ($localStorage.user.currency ? $localStorage.user.currency : 'AED');
         $scope.getMenu();
     };
@@ -21,8 +21,8 @@ angular.module('restaurantApp').controller('menuTemplateCtrl', ['$scope', 'Data'
         });
     }
 
-    $scope.getRestaurantLogo = function (accountId) {
-        Data.getImage({ Id: accountId, entity_type: 11 }, function (result) {
+    $scope.getRestaurantLogo = function (restaurantId) {
+        Data.getRestaurantLogo({ restaurant_id: restaurantId }, function (result) {
             $scope.logo = result.contents;
         });
     };
@@ -32,7 +32,7 @@ angular.module('restaurantApp').controller('menuTemplateCtrl', ['$scope', 'Data'
     };
 
     $scope.printPage = function () {
-        document.title = $scope.$parent.accountData.user.name;
+        document.title = $scope.$parent.accountData.name;
         window.print();
     };
 

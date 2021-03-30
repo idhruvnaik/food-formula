@@ -52,19 +52,6 @@ angular
         );
         return true;
       };
-      $scope.changeUser = function (user) {
-        if (user === '') {
-          return;
-        }
-        if (user != '0') {
-          $localStorage.selectedUser = angular.copy(user);
-          $scope.accountData.user['name'] = $localStorage.selectedUser.name;
-        } else {
-          delete $localStorage.selectedUser;
-          $scope.accountData.user['name'] = $localStorage.user.name;
-        }
-        $scope.init();
-      };
 
       if ($scope.isAdmin()) {
         Data.getUsers(
@@ -343,10 +330,10 @@ angular
         var param = Data.getAuthData({});
         $window.open(
           ENV.apiUrl +
-          '/restaurants_app/food_item/export_nutrical_ingredients.csv?api_key=' +
+          '/restaurant/export_recipes.csv?api_key=' +
           param.api_key +
-          '&auth_username=' +
-          param.auth_username,
+          '&restaurant_id=' +
+          param.restaurant_id,
           '_blank'
         );
       };

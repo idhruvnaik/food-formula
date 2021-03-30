@@ -332,17 +332,9 @@
 </style>
 <header class="header db-page">
     <div class="headTitle">
-        <h1>{{accountData.user.name}}</h1>
+        <h1>{{accountData.name}}</h1>
     </div>
     <div class="right-head-col">
-        <div class="form-field" ng-if="isAdmin()">
-            <select class="select-box" ui-select2 ng-model="restaurantUser" ng-change="changeUser(restaurantUser)">
-                <option value="" ng-if="!restaurantUser" selected>Select restaurant's recipes</option>
-                <option ng-value="0">My Recipes</option>
-                <option ng-value="user" ng-repeat="user in users | orderBy: 'name'">{{user.name}}</option>
-            </select>
-        </div>
-
         <div class="form-field search-box">
             <input type="text" ng-model="searchQuery" ng-keyup="searchRecipe(searchQuery)"
                 placeholder="Search recipe" />
