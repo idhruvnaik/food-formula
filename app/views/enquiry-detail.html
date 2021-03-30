@@ -1,0 +1,125 @@
+<style>
+    .header {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        box-shadow: 2.407px 3.195px 5px rgba(0, 0, 0, 0.08);
+        background-color: #113448;
+        padding: 0 15px;
+        z-index: 1;
+        flex: none;
+    }
+
+    .page-content {
+        overflow: auto;
+    }
+
+    .headTitle h5,
+    h1 {
+        color: #ffffff;
+    }
+
+    .g-cols {
+        margin: 20px 0px;
+    }
+
+    .g-cols.offset_none>.one-half {
+        width: 40%;
+    }
+
+    .form-field .input-icon {
+        padding-left: 10px;
+    }
+
+    .fix-width {
+        width: 155px;
+    }
+
+    .back-btn-link {
+        color: #14bf98;
+        margin-right: 10px
+    }
+
+    .btn {
+        width: 100px;
+    }
+
+    .default-password-input {
+        position: absolute;
+        top: 5px;
+        color: #132753;
+    }
+</style>
+<header class="header">
+    <div class="headTitle">
+        <h1>{{accountName}}</h1>
+    </div>
+</header>
+
+<div class="page-content">
+    <div>
+        <div class="g-cols offset_none">
+            <div class="one-half">
+                <div class="card-block">
+                    <div class="card-pad">
+                        <div class="card-head">
+                            <h3>Enquiry Detail</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-container">
+                                <form ng-submit="updateEnquiry()">
+                                    <div class="form-field-set">
+                                        <label>Name</label>
+                                        <div class="form-field">
+                                            <input type="text" class="input-icon" ng-model="enquiry.name"
+                                                name="managerName" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-field-set">
+                                        <label>Email</label>
+                                        <div class="form-field">
+                                            <input type="text" class="input-icon" ng-model="enquiry.email"
+                                                name="managerName" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-field-set">
+                                        <label>Mobile</label>
+                                        <div class="form-field">
+                                            <input type="text" class="input-icon" ng-model="enquiry.mobile_no"
+                                                name="managerName" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-field-set">
+                                        <label>Message</label>
+                                        <div class="form-field">
+                                            <textarea ng-model="enquiry.message" cols="30" rows="10" readonly></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-field-set fixed-width">
+                                        <label>Status</label>
+                                        <div class="form-field">
+                                            <select ng-model="enquiry.status_id" ng-options="state.val as state.label for state in statuses" class="select-box"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-footer">
+                                        <a ui-sref="app.enquiry" class="back-btn-link">Back</a>
+                                        <button type="submit" class="btn btn-icon"
+                                            ng-class="{'loader': btnLoader}"><span
+                                                class="icon-save"></span>Update</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

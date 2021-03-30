@@ -358,7 +358,8 @@
                         <div class="card-pad">
                             <div class="add-cat-block" ng-if="isUserChanged() == false"
                                 ng-class="{'open': category.showCatBox}">
-                                <div class="btn btn-icon add-cat-link" ng-click="category.openCatBox()">
+                                <div class="btn btn-icon add-cat-link" ng-click="category.openCatBox()" 
+                                ng-class="{'button-disable':access_state == 2 && getRecipeCategoriesLength() >= 3}">
                                     <span class="icon-plus-circle"></span>&nbsp;Add New Category
                                 </div>
                                 <div class="add-food-item-box add-cat-box">
@@ -427,12 +428,12 @@
                                         <span class="eng-no"
                                             style="text-transform: none">{{ (recipe.energy != null && recipe.energy != '') ? getRoundVal(recipe.energy) + ' kcal' : ''}}</span>
                                         <ul class="food-act-links">
-                                            <li>
+                                            <li style="display: none;">
                                                 <a ng-click="openFoodItemLabel(recipe)" ng-if="recipe.status_id == 1"
                                                     title="Download Recipe As Label"><img
                                                         src="/images/food-label-icon.svg" /></a>
                                             </li>
-                                            <li>
+                                            <li style="display: none;">
                                                 <a ng-click="openQrModal(cat.name, recipe)"
                                                     ng-if="recipe.status_id == 1" title="Nutrition Facts Label"><img
                                                         src="images/qr-icon-arabic.svg" /></a>

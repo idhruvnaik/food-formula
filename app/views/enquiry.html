@@ -170,6 +170,7 @@
                                         <th>Mobile</th>
                                         <th>Status</th>
                                         <th>Edit</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -177,8 +178,12 @@
                                         <td>{{enquiry.name}}</td>
                                         <td>{{enquiry.email}}</td>
                                         <td>{{enquiry.mobile_no}}</td>
-                                        <td>{{enquiry.status}}</td>
-                                        <td><a href="/edit-user/{{user.id}}"><img src="/images/edit-icon.svg"></a></td>
+                                        <td ng-if="enquiry.status_id == 1">Open</td>
+                                        <td ng-if="enquiry.status_id == 2">Close</td>
+                                        <td><a href="/enquiry-detail/{{enquiry.id}}"><img
+                                                    src="/images/edit-icon.svg"></a></td>
+                                        <td><a ng-click="removeEnquiry(enquiry.id, $index)"><img
+                                                    src="/images/delete-icon.svg"></a></td>
                                     </tr>
                                 </tbody>
                             </table>

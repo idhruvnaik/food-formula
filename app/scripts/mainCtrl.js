@@ -33,7 +33,7 @@ angular.module('restaurantApp').controller('MainCtrl', ['$scope', '$rootScope', 
     firebase.initializeApp(firebaseObj);
 
     $scope.loadMasters = function () {
-        if ($localStorage.api_key) {
+        if ($localStorage.api_key && !$scope.isAdmin()) {
             Data.getMastersData(function (result) {
                 $scope.accountData = result.contents;
             }, function (error) {

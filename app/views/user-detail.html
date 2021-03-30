@@ -119,7 +119,7 @@
                                     <div class="form-field-set fix-width">
                                         <label>Country</label>
                                         <div class="form-field">
-                                            <select ng-model="formData.country" ng-options="state.code as state.name for state in countries track by state.code" class="select-box" name="country" required="">
+                                            <select ng-model="formData.country" ng-options="key as value for (key , value) in countries" class="select-box" name="country" required="">
                                                 <option value="" ng-if="typeOfView == 'add'">Select Country</option>
                                             </select>
                                             <span ng-show="userForm.$submitted || userForm.country.$touched">
@@ -128,7 +128,7 @@
                                         </div>
                                     </div>
                                     <div class="form-field-set fix-width">
-                                        <label>Currency <sup>*</sup></label>
+                                        <label>Currency</label>
                                         <div class="form-field">
                                             <select class="select-box" name="currency" ng-model="formData.currency" ng-options="key as value for (key , value) in currencies">
                                                 <option value="" ng-if="typeOfView == 'add'">Select Currency</option>
@@ -145,6 +145,12 @@
                                             <span ng-show="userForm.$submitted || userForm.mobile.$touched">
                                                 <span class="error-msg" ng-show="userForm.mobile.$error.required">Please enter mobile!</span>
                                             </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-field-set">
+                                        <label>Website URL</label>
+                                        <div class="form-field">
+                                            <input type="text" placeholder="Enter Website/social media URL" class="input-icon" ng-model="formData.website">
                                         </div>
                                     </div>
                                     <div class="form-field-set fix-width">

@@ -39,6 +39,7 @@ angular
         },
       };
       $scope.user = $localStorage.user;
+      console.log($scope.user['access_state']);
       $scope.access_state = $scope.user['access_state'];
       if ($scope.access_state == 2 && $scope.getRecipeCategoriesLength < 3) {
         var d = document.getElementById('access_state');
