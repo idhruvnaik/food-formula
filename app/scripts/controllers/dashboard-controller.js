@@ -318,10 +318,12 @@ angular
 
       $scope.getVegNonVegIndi = function (recipe) {
         var className = '';
-        if ([0, 1].includes(recipe.recipe_type)) {
+        if ([1].includes(recipe.recipe_type)) {
           className = 'veg-food';
-        } else if ([2, 3, 4, 5].includes(recipe.recipe_type)) {
+        } else if ([2].includes(recipe.recipe_type)) {
           className = 'non-veg-food';
+        } else if ([3].includes(recipe.recipe_type)) {
+          className = 'eggitarian';
         }
 
         return className;

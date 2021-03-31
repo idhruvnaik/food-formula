@@ -188,17 +188,17 @@
                   any questions and inquiries</p>
                 <div class="map-container">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d656.2653507781708!2d72.93917920290072!3d20.935031083864295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0f7f828e31137%3A0x666ae7270d7c26c6!2sShiv%20Parvati%20Krupa%20Society%2C%20Jamalpore!5e0!3m2!1sen!2sin!4v1617038288477!5m2!1sen!2sin"
-                    width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15280147.142585512!2d73.7235274075994!3d20.77086118135324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1617132859525!5m2!1sen!2sin"
+                    width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 <div class="list-unstyled">
                   <div>
                     <img src="/images/location.svg" height="20px" width="20px">
-                    <span>Navsari, Gujarat, India</span>
+                    <span>India</span>
                   </div>
                   <div>
                     <img src="/images/phone.svg" height="20px" width="20px">
-                    <span><a>+91 7567404798</a></span>
+                    <span><a>+91 9319970375</a></span>
                   </div>
                   <div>
                     <img src="/images/mail.svg" height="20px" width="20px">
@@ -218,26 +218,31 @@
               <!-- Contact Form -->
               <form id="contactForm" name="enquiryForm" ng-submit="enquiryForm.$valid && addEnquiry()" novalidate="">
                 <div class="form-group">
-                  <input type="text" class="form-control-input" ng-model="enquiry.name" name="name" placeholder="Enter your name" required>
+                  <input type="text" class="form-control-input" ng-model="enquiry.name" name="name"
+                    placeholder="Enter your name" required>
                   <span ng-show="enquiryForm.$submitted || enquiryForm.name.$touched">
                     <span class="error-msg" ng-show="enquiryForm.name.$error.required">Please Enter name</span>
                   </span>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control-input" ng-model="enquiry.email" name="email" placeholder="Enter your email" required>
+                  <input type="email" class="form-control-input" ng-model="enquiry.email" name="email"
+                    placeholder="Enter your email" required>
                   <span ng-show="enquiryForm.$submitted || enquiryForm.email.$touched">
                     <span class="error-msg" ng-show="enquiryForm.email.$error.required">Please Enter email</span>
                     <span class="error-msg" ng-show="enquiryForm.email.$error.email">Please enter valid email!</span>
                   </span>
                 </div>
                 <div class="form-group">
-                  <input type="number" class="form-control-input" ng-model="enquiry.mobile_no" name="mobile_no" placeholder="Enter your contact number" required>
+                  <input type="number" class="form-control-input" ng-model="enquiry.mobile_no" name="mobile_no"
+                    placeholder="Enter your contact number" required>
                   <span ng-show="enquiryForm.$submitted || enquiryForm.mobile_no.$touched">
-                    <span class="error-msg" ng-show="enquiryForm.mobile_no.$error.required">Please Enter contact number</span>
+                    <span class="error-msg" ng-show="enquiryForm.mobile_no.$error.required">Please Enter contact
+                      number</span>
                   </span>
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control-textarea" ng-model="enquiry.message" name="message" placeholder="Enter your message" required></textarea>
+                  <textarea class="form-control-textarea" ng-model="enquiry.message" name="message"
+                    placeholder="Enter your message" required></textarea>
                   <span ng-show="enquiryForm.$submitted || enquiryForm.message.$touched">
                     <span class="error-msg" ng-show="enquiryForm.message.$error.required">Please Enter email</span>
                   </span>
@@ -265,7 +270,11 @@
             </div>
           </div>
         </div>
-        <p class="copy-right">Copyright © 2021 by Food formula</p>
+        <div class="bottom-text">
+          <span>Copyright © 2021 by Food formula</span>
+          <span><a ui-sref="app.privacy_policy" target="_blank">Privacy Policy</a></span>  
+          <span><a ui-sref="app.terms_and_condition" target="_blank">T&C</a></span>
+        </div>
       </div>
     </div>
   </div>

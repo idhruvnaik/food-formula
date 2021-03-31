@@ -42,12 +42,22 @@ angular.module('routes', [])
                             }
                         })
                         .state('app.privacy_policy', {
-                            url: '/privacy_policy',
+                            url: '/privacy-policy',
                             controller: 'privacyPolicyCtrl',
                             templateUrl: 'views/privacy-policy.html',
                             resolve: {
                                 loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
                                         return $ocLazyLoad.load('scripts/controllers/privacy-policy-controller.js');
+                                    }]
+                            }
+                        })
+                        .state('app.terms_and_condition', {
+                            url: '/terms-and-condition',
+                            controller: 'termsAndConditionCtrl',
+                            templateUrl: 'views/terms-and-condition.html',
+                            resolve: {
+                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                                        return $ocLazyLoad.load('scripts/controllers/terms-and-condition-controller.js');
                                     }]
                             }
                         })

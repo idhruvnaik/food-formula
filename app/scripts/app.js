@@ -44,7 +44,7 @@ angular.module('restaurantApp', ['ui.router', 'oc.lazyLoad', 'ui.bootstrap', 'ui
                                 $location.path('/admin-dashboard');
                             }
                         } else {
-                            if (toState && _.contains(['app.home', 'app.who_is_it_for', 'app.how_it_works', 'app.contact_us', 'app.blogs', 'app.blogdetail', 'app.press', 'app.privacy_policy'], toState.name)) {
+                            if (toState && _.contains(['app.home', 'app.who_is_it_for', 'app.how_it_works', 'app.contact_us', 'app.blogs', 'app.blogdetail', 'app.press', 'app.privacy_policy', 'app.terms_and_condition'], toState.name)) {
                                 $location.path('/dashboard');
                             } else if (!toState || !toState.name) {
                                 $location.path('/dashboard');
@@ -58,7 +58,7 @@ angular.module('restaurantApp', ['ui.router', 'oc.lazyLoad', 'ui.bootstrap', 'ui
                         if (toState && toState.url == '/adminpanel') {
                             $location.path('/adminpanel');
                         } else {
-                            if (!_.contains(['app.who_is_it_for', 'app.how_it_works', 'app.contact_us', 'app.blogs', 'app.blogdetail', 'app.press', 'app.privacy_policy'], toState.name)) {
+                            if (!_.contains(['app.who_is_it_for', 'app.how_it_works', 'app.contact_us', 'app.blogs', 'app.blogdetail', 'app.press', 'app.privacy_policy', 'app.terms_and_condition'], toState.name)) {
                                 $location.path('/');
                             }
                         }

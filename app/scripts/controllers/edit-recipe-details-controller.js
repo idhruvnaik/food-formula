@@ -26,7 +26,8 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
     
     $scope.foodTypes = [
         { id: 1, name: 'Veg' },
-        { id: 2, name: 'Non-Veg' }
+        { id: 2, name: 'Non-Veg' },
+        { id: 3, name: 'Eggitarian' }
     ];
 
     $scope.foodStatus = [
@@ -107,7 +108,7 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
             $scope.diet.allergies = result.contents.allergy_ids ? result.contents.allergy_ids.split('@') : [];
             $scope.diet.mealTypes = result.contents.meal_type_ids ? result.contents.meal_type_ids.split('@') : [];
 
-            $scope.recipeDetail.foodType = [1, 2].includes(result.contents.recipe_type) ? result.contents.recipe_type : '';
+            $scope.recipeDetail.foodType = [1, 2, 3].includes(result.contents.recipe_type) ? result.contents.recipe_type : '';
             $scope.recipeDetail.cookedWeight = result.contents.total_cooked_weight;
             $scope.recipeDetail.servingDescription = result.contents.serving_description;
             $scope.recipeDetail.servingWeight = result.contents.per_serving_weight;
