@@ -8,7 +8,7 @@ angular.module('config', ['templates'])
 		'2': 'Draft',
 		'3': 'Discarded'
 	},
-	'META_DESCRIPTION': 'Restaurants, Food Brands & Manufacturers, Meal Plan Companies, Cloud Kitchens use NutriCal to manage recipes & menus, calculate calories, create nutrition labels, conduct food costing & much more.',
+	'META_DESCRIPTION': 'Restaurants use our platform to manage recipes & menus, conduct food costing & much more.',
 	'POST_TYPES': [
 		{
 			'id': 1,
