@@ -57,13 +57,7 @@ angular.module('restaurantApp').controller('MainCtrl', ['$scope', '$rootScope', 
             controller: 'AuthCtrl'
         }).result.then(function (result) {
             $rootScope.$broadcast('LOGIN');
-            //                console.log(result);
-            if (result.sign_in_count == 1) {
-                $state.go('app.nutrical_tutorial');
-            } else {
-                $state.go('app.dashboard');
-            }
-
+            $state.go('app.dashboard');
         }, function () {
 
         });

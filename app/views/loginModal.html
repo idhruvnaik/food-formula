@@ -57,10 +57,9 @@
         display: none;
     }
 
-    .btn.loader::before {
-        border-top: 2px solid #14bf98;
-        border-left: 2px solid #14bf98;
-        border-right: 2px solid #14bf98;
+    .btn{
+        background-color: #14bf98;
+        color: #ffffff;
     }
 
     @media screen and (max-width: 1024px) {
@@ -154,7 +153,7 @@
 
                                         <div class="login-link">
                                             <button type="submit" class="btn btn-icon"
-                                                ng-class="{'loader': isProgress}">Login</button>
+                                                ng-class="{'loading': isProgress}">Login</button>
                                             <!-- <div class="btn black-btn btn-lg" ng-if="loginLoader">Loading..</div> -->
                                         </div>
                                         <!--login-link-->

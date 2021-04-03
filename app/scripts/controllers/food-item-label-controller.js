@@ -8,8 +8,6 @@ angular.module('restaurantApp').controller('foodItemLabelCtrl', ['$scope', '$win
         $scope.isLoaded = false;
         Data.getFoodItemLabel({id: $scope.recipeId}, function(result){
             $scope.foodInformation = result.contents;
-            $scope.foodInformation.productionDate = new Date($scope.foodInformation.productionDate).getFullYear() == 1970 ? null : $scope.foodInformation.productionDate;
-            $scope.foodInformation.bestBeforeDate = new Date($scope.foodInformation.bestBeforeDate).getFullYear() == 1970 ? null : $scope.foodInformation.bestBeforeDate;
             $scope.isLoaded = true;
         }, function(error){
             console.log(error);

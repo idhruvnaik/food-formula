@@ -62,7 +62,7 @@
         display: table-header-group;
     }
     .nested-table tr:last-child td{
-        font-size: 10px;
+        font-size: 12px;
         padding-top: 0px;
     }
     .nested-table td {
@@ -74,6 +74,9 @@
     .category-info-block{
         padding: 10px;
         margin-bottom: 15px;
+    }
+    .recipe-name{
+        color: #14bf98;
     }
 
     @media print
@@ -127,17 +130,17 @@
                                     <td style="width: 130px;">
                                         <table class="nested-table">
                                             <tr>
-                                                <td style="line-height: 1.2;" ng-bind="recipe.name"></td>
+                                                <td style="line-height: 1.2;" class="recipe-name" ng-bind="recipe.name"></td>
                                             </tr>
                                             <tr>
-                                                <td ng-bind="recipe.ingredients_info"></td>
+                                                <td class="ingredients-info" ng-bind="recipe.ingredients_info"></td>
                                             </tr>
                                         </table>
                                     </td>
                                     <td ng-bind="(recipe.price)? recipe.price+' '+currency:'NA'"></td>
-                                    <td ng-bind="(recipe.energy > 0 ? getRoundVal(recipe.energy) : 0)+' '+recipe.unit_name"></td>
+                                    <td>{{recipe.serving_weight}} {{recipe.is_liquid == true ? 'ml' : 'gms'}}</td>
                                     <td style="text-align: -webkit-right;">
-                                        <qrcode data="{{recipe.url}}" href="{{recipe.url}}"></qrcode>
+                                        <img ng-src="{{recipe.image_url}}" class="restaurant-logo"/>
                                     </td>
                                 </tr>
                             </table>

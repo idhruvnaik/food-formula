@@ -200,15 +200,6 @@
         opacity: 0.5;
         cursor: unset;
     }
-    #cooking-instruction{
-        background: url(images/text-number.png);
-        background-attachment: local;
-        background-repeat: no-repeat;
-        padding-left: 35px;
-        padding-top: 14px;
-        border-color:#ccc;
-        line-height: 1.3;
-    }
     .fix-header th{
         max-width: 150px;
         overflow-y: auto;
@@ -324,6 +315,32 @@
                                                 </div>
                                             </div>
 
+                                            <div class="form-field-set" ng-class="{'error': recipeForm.$submitted && recipeForm.foodType.$invalid}">
+                                                <label class="input-label"><sup>*</sup>Jain</label>
+                                                <div class="form-field">
+                                                    <select ng-model="recipeDetail.is_jain" class="select-box" name="foodType" required="">
+                                                        <option value="" ng-if="!recipeDetail.is_jain" selected>IS Jain?</option>
+                                                        <option ng-value="type.id" ng-repeat="type in jain" ng-bind="type.name"></option>
+                                                    </select>
+                                                    <span ng-if="recipeForm.$submitted">
+                                                        <span class="err-msg" ng-if="recipeForm.foodType.$error.required">Required</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-field-set" ng-class="{'error': recipeForm.$submitted && recipeForm.foodType.$invalid}">
+                                                <label class="input-label"><sup>*</sup>Liquid</label>
+                                                <div class="form-field">
+                                                    <select ng-model="recipeDetail.is_liquid" class="select-box" name="foodType" required="">
+                                                        <option value="" ng-if="!recipeDetail.is_liquid" selected>IS Liquid?</option>
+                                                        <option ng-value="type.id" ng-repeat="type in liquid" ng-bind="type.name"></option>
+                                                    </select>
+                                                    <span ng-if="recipeForm.$submitted">
+                                                        <span class="err-msg" ng-if="recipeForm.foodType.$error.required">Required</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+
                                             <div class="form-field-set qty-field" ng-class="{'error': recipeForm.$submitted && recipeForm.cookedWeight.$invalid}">
                                                 <label class="input-label"><sup>*</sup> Total Cooked Weight&nbsp;&nbsp;<img src="images/info-icon-blue.svg" title="Enter the cooked weight in grams of your recipe. This will be less than or equal to the total weight of your recipe."></label>
                                                 <div class="form-field">
@@ -403,7 +420,7 @@
 
                                         <div class="g-cols mb20">
                                             <div>
-                                                <label>Allergies</label>
+                                                <label>Contains</label>
                                                 <div class="checkboxInfo">
                                                     <label ng-repeat="item in allergies track by $index" for="allergy_{{item.id}}" class="checkbox-inline">
                                                         <input type="checkbox" data-checklist-model="diet.allergies" data-checklist-value="item.id" id="allergy_{{item.id}}">{{item.name}}
@@ -433,19 +450,7 @@
                                             <div class="form-field-set">
                                                 <label style="display: block;">Cooking Instructions</label>
                                                 <div class="form-field">
-                                                    <textarea cols="30" placeholder="Enter cooking instructions..." id="cooking-instruction" ng-model="cookingInstruction">{{cookingInstruction}}</textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-field-set">
-                                                <label style="display: block;">Allergies Info</label>
-                                                <div class="form-field">
-                                                    <textarea cols="30" placeholder="Enter allergies.." ng-model="dietInfo.allergiesInfo"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-field-set">
-                                                <label style="display: block;">Mealtypes Info</label>
-                                                <div class="form-field">
-                                                    <textarea cols="30" placeholder="Enter mealtypes.." ng-model="dietInfo.mealTypesInfo"></textarea>
+                                                    <textarea cols="30" placeholder="Enter cooking instructions..." ng-model="cookingInstruction">{{cookingInstruction}}</textarea>
                                                 </div>
                                             </div>
                                         </div>

@@ -232,7 +232,7 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
         s.postHttp('nutrical/update_ingredient_cost', params, successCb, failureCb);
     }
     s.getFoodItemLabel = function (params, successCb, failureCb) {
-        s.postHttp('nutrical/get_food_item_label', params, successCb, failureCb);
+        s.postHttp('restaurant/food_item_label', params, successCb, failureCb);
     };
     s.copyRecipe = function (params, successCb, failureCb) {
         s.postHttp('restaurant/copy_recipe', params, successCb, failureCb);

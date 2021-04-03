@@ -35,7 +35,12 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
         { id: 2, name: 'Draft' }
     ];
 
-    $scope.usedAsIngredients = [
+    $scope.jain = [
+        { id: true, name: 'Yes' },
+        { id: false, name: 'No' }
+    ];
+
+    $scope.liquid = [
         { id: true, name: 'Yes' },
         { id: false, name: 'No' }
     ];
@@ -112,6 +117,8 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
             $scope.recipeDetail.cookedWeight = result.contents.total_cooked_weight;
             $scope.recipeDetail.servingDescription = result.contents.serving_description;
             $scope.recipeDetail.servingWeight = result.contents.per_serving_weight;
+            $scope.recipeDetail.is_liquid = result.contents.is_liquid;
+            $scope.recipeDetail.is_jain = result.contents.is_jain;
 
             $scope.recipeCategories = result.contents.categories;
 
@@ -171,7 +178,9 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
             allergy_ids: $scope.diet.allergies.join('@'),
             meal_type_ids: $scope.diet.mealTypes.join('@'),
             expiry_date: $scope.recipeDetail.expiryDate,
-            meal_types_Info: $scope.dietInfo.mealTypesInfo
+            meal_types_Info: $scope.dietInfo.mealTypesInfo,
+            is_jain: $scope.recipeDetail.is_jain,
+            is_liquid: $scope.recipeDetail.is_liquid
 
         };
 
