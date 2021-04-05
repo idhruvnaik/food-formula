@@ -499,7 +499,7 @@ angular
             console.log(result.cat_id);
             $localStorage.QrCategories = result.cat_id.join('@');
             $timeout(function () {
-              $window.open('/menu-qr-print/' + result.lang, '_blank');
+              $window.open('/menu-qr-print', '_blank');
             }, 100);
           });
       };

@@ -1,0 +1,136 @@
+.menu-container {
+  .menu-header {
+    background-color: #12a583;
+    .menu-header-pad {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .name-tagline-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .restaurant-title {
+          color: #ffffff;
+          margin-bottom: 5px;
+          font-weight: 400;
+        }
+        .tagline {
+          color: #ffffff;
+          font-size: 11px;
+          font-weight: 200;
+        }
+      }
+    }
+  }
+  .menu-content {
+    .menu-bg-container {
+      img {
+      }
+    }
+    .menu-details {
+      .category-container {
+        padding: 15px;
+        background-color: #d5e9fb6b;
+        overflow-x: auto;
+        padding: 15px;
+        background-color: rgba(213, 233, 251, 0.42);
+        overflow: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: calc(100% - 30px);
+        .cat-name {
+          color: #113448;
+          padding: 7px 10px;
+          border-radius: 50px;
+          font-size: 14px;
+          font-weight: 500;
+          margin-right: 10px;
+          &.active {
+            background-color: #12a583;
+            color: white;
+          }
+        }
+      }
+      .recipe-container {
+        padding: 10px;
+        .recipe-item {
+          display: flex;
+          margin-bottom: 20px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid rgba(17, 52, 72, 0.13);
+          .recipe-image-container {
+            height: 90px;
+            width: 110px;
+            margin-right: 10px;
+            min-width: 110px;
+            border-radius: 10px;
+            padding: 5px;
+            border: 1px solid;
+            img {
+              height: 100%;
+              width: 100%;
+              object-fit: contain;
+              border-radius: 10px;
+            }
+          }
+          .recipe-details {
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            h5 {
+              color: #113448;
+              font-size: 18px;
+              font-weight: 500;
+              margin-bottom: 5px;
+            }
+            span {
+              color: #14bf98;
+              margin-bottom: 5px;
+              font-weight: 300;
+            }
+            p {
+              margin: 0;
+              font-size: 14px;
+              color: #113448;
+              font-weight: 200;
+            }
+          }
+        }
+      }
+    }
+  }
+  .pop-up {
+    .pop-up-content {
+      .detail-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 10px;
+        h4 {
+          color: #113448;
+          font-size: 16px;
+          padding: 0px;
+          margin-bottom: 10px;
+        }
+        .item-container {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          span {
+            padding: 5px 10px;
+            background-color: #14bf98;
+            color: #fff;
+            border-radius: 20px;
+            margin: 0px 10px 10px 0px;
+            font-size: 12px;
+            &:last-child {
+              margin-right: 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

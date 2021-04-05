@@ -6,8 +6,7 @@ angular.module('restaurantApp').controller('menuQrCtrl', ['$scope', '$window', '
     $scope.init = function(){
         $scope.menuPrint = {};
         $scope.qrSize = 200;
-
-        $scope.menuPrint.qrcodeUrl = ENV.apiUrl + '/restaurant/get_menu_template?id='+ $scope.user_id;
+        $scope.menuPrint.qrcodeUrl = window.location.host + '/get-menu/'+ $scope.user_id;
         
         $scope.getRestaurantLogo($scope.user_id);
         var params = {

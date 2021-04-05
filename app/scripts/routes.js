@@ -21,26 +21,6 @@ angular.module('routes', [])
                                     }]
                             }
                         })
-                        .state('app.who_is_it_for', {
-                            url: '/who-is-it-for',
-                            controller: 'HomeCtrl',
-                            templateUrl: 'views/who_is_it_for.html',
-                            resolve: {
-                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load('scripts/controllers/home-controller.js');
-                                    }]
-                            }
-                        })
-                        .state('app.how_it_works', {
-                            url: '/how-it-works',
-                            controller: 'HomeCtrl',
-                            templateUrl: 'views/how_it_works.html',
-                            resolve: {
-                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load('scripts/controllers/home-controller.js');
-                                    }]
-                            }
-                        })
                         .state('app.privacy_policy', {
                             url: '/privacy-policy',
                             controller: 'privacyPolicyCtrl',
@@ -61,65 +41,6 @@ angular.module('routes', [])
                                     }]
                             }
                         })
-                        .state('app.contact_us', {
-                            url: '/contact-us',
-                            controller: 'HomeCtrl',
-                            templateUrl: 'views/contact_us.html',
-                            resolve: {
-                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load('scripts/controllers/home-controller.js');
-                                    }]
-                            }
-                        })
-                        .state('app.customers', {
-                            url: '/customers',
-                            controller: 'HomeCtrl',
-                            templateUrl: 'views/customers.html',
-                            resolve: {
-                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load('scripts/controllers/home-controller.js');
-                                    }]
-                            }
-                        })
-                        .state('app.press', {
-                            url: '/press',
-                            controller: 'pressCtrl',
-                            templateUrl: 'views/press.html',
-                            resolve: {
-                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load('scripts/controllers/press-controller.js');
-                                }],
-                                press: ['Data', function (Data) {
-                                        return Data.getPublishedPress();
-                                }]
-                            }
-                        })
-                        .state('app.blogs', {
-                            url: '/blogs',
-                            controller: 'blogsCtrl',
-                            templateUrl: 'views/blogs.html',
-                            resolve: {
-                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load('scripts/controllers/blogs-controller.js');
-                                    }],
-                                blogs: ['Data', function (Data) {
-                                        return Data.getPublishedBlogs();
-                                    }]
-                            }
-                        })
-                        .state('app.blogdetail', {
-                            url: '/blog/:url',
-                            controller: 'blogCtrl',
-                            templateUrl: 'views/blog.html',
-                            resolve: {
-                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load('scripts/controllers/blog-controller.js');
-                                    }],
-                                blogDetail: ['$stateParams', 'Data', function ($stateParams, Data) {
-                                        return Data.getBlogDetails({url: $stateParams.url});
-                                    }]
-                            }
-                        })
                         .state('app.dashboard', {
                             url: '/dashboard',
                             controller: 'dashboardCtrl',
@@ -127,16 +48,6 @@ angular.module('routes', [])
                             resolve: {
                                 loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
                                         return $ocLazyLoad.load('scripts/controllers/dashboard-controller.js');
-                                    }]
-                            }
-                        })
-                        .state('app.nutrical_tutorial', {
-                            url: '/nutrical-tutorial',
-                            controller: 'nutricalTutorialCtrl',
-                            templateUrl: 'views/nutrical_tutorial.html',
-                            resolve: {
-                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load('scripts/controllers/nutrical-tutorial-controller.js');
                                     }]
                             }
                         })
@@ -161,7 +72,7 @@ angular.module('routes', [])
                             }
                         })
                         .state('app.menu-qr-print', {
-                            url: '/menu-qr-print/:lang',
+                            url: '/menu-qr-print',
                             controller: 'menuQrCtrl',
                             templateUrl: 'views/menu-qr-print.html',
                             resolve: {
@@ -252,19 +163,6 @@ angular.module('routes', [])
                                 role: 'admin'
                             }
                         })
-                        .state('app.posts', {
-                            url: '/posts',
-                            controller: 'postsCtrl',
-                            templateUrl: 'views/posts.html',
-                            resolve: {
-                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load('scripts/controllers/posts-controller.js');
-                                    }]
-                            },
-                            data: {
-                                role: 'admin'
-                            }
-                        })
                         .state('app.add-user', {
                             url: '/add-user',
                             controller: 'userDetailCtrl',
@@ -291,42 +189,6 @@ angular.module('routes', [])
                                 role: 'admin'
                             }
                         })
-                        .state('app.add-post', {
-                            url: '/add-post',
-                            controller: 'postDetailCtrl',
-                            templateUrl: 'views/post-detail.html',
-                            resolve: {
-                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load('scripts/controllers/post-detail-controller.js');
-                                    }]
-                            },
-                            data: {
-                                role: 'admin'
-                            }
-                        })
-                        .state('app.edit-post', {
-                            url: '/edit-post/:id',
-                            controller: 'postDetailCtrl',
-                            templateUrl: 'views/post-detail.html',
-                            resolve: {
-                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load('scripts/controllers/post-detail-controller.js');
-                                    }]
-                            },
-                            data: {
-                                role: 'admin'
-                            }
-                        })
-                        .state('app.ingredients-cost', {
-                            url: '/ingredients-cost',
-                            controller: 'ingredientsCostCtrl',
-                            templateUrl: 'views/ingredients-cost.html',
-                            resolve: {
-                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load('scripts/controllers/ingredients-cost-controller.js');
-                                }]
-                            }
-                        })
                         .state('app.food-item-label', {
                             url: '/food-item-label/:recipeId',
                             controller: 'foodItemLabelCtrl',
@@ -334,6 +196,15 @@ angular.module('routes', [])
                             resolve: {
                                 loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
                                         return $ocLazyLoad.load('scripts/controllers/food-item-label-controller.js');
+                                    }]
+                            }
+                        }).state('app.getmenu', {
+                            url: '/get-menu/:id',
+                            controller: 'getMenuQrCtrl',
+                            templateUrl: 'views/get-menu.html',
+                            resolve: {
+                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                                        return $ocLazyLoad.load('scripts/controllers/get-menu-controller.js');
                                     }]
                             }
                         });

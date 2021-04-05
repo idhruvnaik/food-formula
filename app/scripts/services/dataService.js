@@ -267,6 +267,9 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
     s.deleteEnquiry = function (params, successCb, failureCb) {
         s.postHttp('restaurant/remove_enquiry', params, successCb, failureCb);
     };
+    s.getRestaurantMenu = function (params, successCb, failureCb) {
+        s.postHttp('restaurant/get_menu_template_v2', params, successCb, failureCb);
+    };
     s.handleResponse = function (result, successCb, failureCb) {
         if (result.data.status == 'success') {
             successCb(result.data.contents);
