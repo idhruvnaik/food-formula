@@ -41,15 +41,20 @@
         justify-content: space-between;
         width: calc(100% - 30px);
         .cat-name {
-          color: #113448;
-          padding: 7px 10px;
-          border-radius: 50px;
-          font-size: 14px;
-          font-weight: 500;
-          margin-right: 10px;
-          &.active {
-            background-color: #12a583;
-            color: white;
+          display: flex;
+          -webkit-tap-highlight-color: transparent;
+          div {
+            color: #113448;
+            padding: 7px 10px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 400;
+            margin-right: 10px;
+            width: max-content;
+            &.active {
+              background-color: #12a583;
+              color: white;
+            }
           }
         }
       }
@@ -60,6 +65,11 @@
           margin-bottom: 20px;
           padding-bottom: 20px;
           border-bottom: 1px solid rgba(17, 52, 72, 0.13);
+          &:last-child{
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+          }
           .recipe-image-container {
             height: 90px;
             width: 110px;
