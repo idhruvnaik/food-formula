@@ -199,7 +199,7 @@ angular.module('routes', [])
                                     }]
                             }
                         }).state('app.getmenu', {
-                            url: '/get-menu/:id',
+                            url: '/get-menu/:menu_key',
                             controller: 'getMenuQrCtrl',
                             templateUrl: 'views/get-menu.html',
                             resolve: {

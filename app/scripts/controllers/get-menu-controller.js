@@ -8,7 +8,7 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$window'
 
     $scope.init = function () {
         $scope.popupShow = false;
-        $scope.userId = $stateParams.id;
+        $scope.menu_key = $stateParams.menu_key;
         $scope.getRestaurantMenu();
         $scope.images = true;
         $scope.recipeImages = [];
@@ -16,7 +16,7 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$window'
     };
 
     $scope.getRestaurantMenu = function () {
-        Data.getRestaurantMenu({ id: $scope.userId }, function (result) {
+        Data.getRestaurantMenu({ menu_key: $scope.menu_key }, function (result) {
             $scope.user = result.contents.user;
             $scope.categories = result.contents.categories;
             $scope.recipes = (($scope.categories[0] && $scope.categories[0].recipes) ? $scope.categories[0].recipes : []); 
