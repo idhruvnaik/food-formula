@@ -270,6 +270,9 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
     s.getRestaurantMenu = function (params, successCb, failureCb) {
         s.postHttp('restaurant/get_menu_template_v3', params, successCb, failureCb);
     };
+    s.getRecipesByCategories = function (params, successCb, failureCb) {
+        s.postHttp('restaurant/get_recipe_details_from_category', params, successCb, failureCb);
+    };
     s.handleResponse = function (result, successCb, failureCb) {
         if (result.data.status == 'success') {
             successCb(result.data.contents);

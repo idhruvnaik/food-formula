@@ -162,7 +162,7 @@
         </div>
         <div class="menu-details">
             <div class="category-container">
-                <a class="cat-name" ng-click="populateRecipes(cat.recipes, $index)" ng-repeat="cat in categories"><div ng-class="{active: $index == selected}">{{cat.name}}</div></a>
+                <a class="cat-name" ng-click="populateRecipes(cat, $index)" ng-repeat="cat in categories"><div ng-class="{active: $index == selected}">{{cat.name}}</div></a>
             </div>
             <div class="recipe-container">
                 <div class="recipe-item" ng-repeat="recipe in recipes"

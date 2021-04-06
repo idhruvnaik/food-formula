@@ -13,20 +13,35 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$window'
         $scope.images = true;
         $scope.recipeImages = [];
         $scope.selected = 0;
+        $scope.foodItemObj = [];
     };
 
     $scope.getRestaurantMenu = function () {
         Data.getRestaurantMenu({ menu_key: $scope.menu_key }, function (result) {
             $scope.user = result.contents.user;
             $scope.categories = result.contents.categories;
-            $scope.recipes = (($scope.categories[0] && $scope.categories[0].recipes) ? $scope.categories[0].recipes : []); 
+            angular.forEach(result.contents.categories, function (item) {
+                $scope.foodItemObj.push({ id: item.id, recipes: item.recipes });
+            });
+            $scope.recipes = (($scope.foodItemObj[0] && $scope.foodItemObj[0].recipes) ? $scope.foodItemObj[0].recipes : []);
         }, function (error) {
             console.log(error);
         });
     };
 
-    $scope.populateRecipes = function (recipes, index) {
-        $scope.recipes = recipes;
+    $scope.populateRecipes = function (cat, index) {
+        var result = _.findWhere($scope.foodItemObj, { id: cat.id });
+        if (result.recipes.length == 0) {
+            Data.getRecipesByCategories({ category_id: result.id, menu_key: $scope.menu_key }, function (result) {
+                $scope.recipes = result.contents.recipes;
+                var index = _.findIndex($scope.foodItemObj, { id: cat.id });
+                $scope.foodItemObj[index].recipes = result.contents.recipes;
+            }, function (error) {
+                console.log(error);
+            });
+        } else if (result.recipes.length > 0) {
+            $scope.recipes = result.recipes;
+        }
         $scope.selected = index;
     }
 
