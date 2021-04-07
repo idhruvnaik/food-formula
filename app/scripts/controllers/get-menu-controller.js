@@ -6,6 +6,14 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$window'
         $(this).addClass('active');
     });
 
+    $scope.foodTypes = [
+        { id: 1, name: 'Veg' },
+        { id: 2, name: 'Non-Veg' },
+        { id: 3, name: 'Eggitarian' }
+    ];
+
+    $scope.foodType = null;
+
     $scope.init = function () {
         $scope.popupShow = false;
         $scope.menu_key = $stateParams.menu_key;

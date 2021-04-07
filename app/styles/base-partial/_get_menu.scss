@@ -26,6 +26,9 @@
   .menu-content {
     .menu-bg-container {
       img {
+        height: 150px;
+        width: 100%;
+        object-fit: cover;
       }
     }
     .menu-details {
@@ -58,6 +61,20 @@
           }
         }
       }
+      .filter-container {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        .form-field {
+          width: calc(50% - 10px);
+          margin-right: 10px;
+          &:last-child {
+            width: 50%;
+            margin-right: 0px;
+          }
+        }
+      }
       .recipe-container {
         padding: 10px;
         .recipe-item {
@@ -65,7 +82,7 @@
           margin-bottom: 20px;
           padding-bottom: 20px;
           border-bottom: 1px solid rgba(17, 52, 72, 0.13);
-          &:last-child{
+          &:last-child {
             border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
@@ -89,16 +106,36 @@
             padding: 5px;
             display: flex;
             flex-direction: column;
-            h5 {
-              color: #113448;
-              font-size: 18px;
-              font-weight: 500;
+            .recipe-name-container {
+              display: flex;
+              align-items: center;
               margin-bottom: 5px;
+              .img-cotainer {
+                display: flex;
+                align-items: center;
+                img {
+                  height: 12px;
+                  width: 12px;
+                  margin-right: 7px;
+                }
+                .jain-icon {
+                  font-size: 14px;
+                  font-weight: 400;
+                  color: #14bf98;
+                }
+              }
+              h5 {
+                color: #113448;
+                font-size: 16px;
+                font-weight: 500;
+                margin-right: 10px;
+              }
             }
-            span {
+            span.price {
               color: #14bf98;
               margin-bottom: 5px;
               font-weight: 300;
+              font-weight: 14px;
             }
             p {
               margin: 0;
