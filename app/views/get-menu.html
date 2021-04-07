@@ -145,7 +145,7 @@
         background-color: black;
     }
 </style>
-<div class="menu-container">
+<div class="menu-container" ng-if="loader == false">
     <div class="menu-header">
         <div class="menu-header-pad">
             <div class="burger-icon"></div>
@@ -239,6 +239,19 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div class="loader-container" ng-if="loader == true">
+    <div class="loader">
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__ball"></div>
+    </div>
+    <div class="powered-by-text">
+        <h5>Powered by Food Formula</h5>
     </div>
 </div>
 <script type="text/javascript">

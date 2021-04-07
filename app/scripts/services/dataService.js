@@ -7,7 +7,7 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
 
     s.postHttp = function (url, params, successCb, failureCb) {
         s.getAuthData(params);
-        $http.post(s.baseUrl + url, params).then(function (result) {
+        $http.post(s.baseUrl + url, params, {ignoreLoadingBar: params.ignoreLoadingBar}).then(function (result) {
             if (result.data.status == 'error') {
                 failureCb(result.data.message);
 
@@ -268,6 +268,7 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
         s.postHttp('restaurant/remove_enquiry', params, successCb, failureCb);
     };
     s.getRestaurantMenu = function (params, successCb, failureCb) {
+        params.ignoreLoadingBar = true;
         s.postHttp('restaurant/get_menu_template_v3', params, successCb, failureCb);
     };
     s.getRecipesByCategories = function (params, successCb, failureCb) {

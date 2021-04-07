@@ -1,5 +1,5 @@
 'use strict';
-angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$window', '$localStorage', 'ENV', 'Data', '$stateParams', function ($scope, $window, $localStorage, ENV, Data, $stateParams) {
+angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$window', '$localStorage', 'ENV', 'Data', '$stateParams', '$timeout', function ($scope, $window, $localStorage, ENV, Data, $stateParams, $timeout) {
 
     $('li').click(function () {
         $('li.li-item.active').removeClass('active');
@@ -22,6 +22,11 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$window'
         $scope.recipeImages = [];
         $scope.selected = 0;
         $scope.foodItemObj = [];
+        $scope.loader = true;
+
+        $timeout(function () {
+            $scope.loader = false;
+        }, 3000);
     };
 
     $scope.getRestaurantMenu = function () {
