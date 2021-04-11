@@ -19,6 +19,7 @@ angular.module('restaurantApp').controller('adminLoginCtrl', ['$scope', '$rootSc
                     $localStorage.api_key = result.contents.api_key;
                     $state.go('app.admin-dashboard');
                     window.localStorage.loggedInTime = new Date();
+                    $scope.loadMasters();
                 } else {
                     $scope.loginLoader = false;
                 }

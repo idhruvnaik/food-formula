@@ -9,7 +9,9 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
     $scope.pageLoader = true;
     $scope.recipeId = ($stateParams.id) ? $stateParams.id : null;
     $scope.isCopy = ($stateParams.isCopy) ? $stateParams.isCopy : false;
-    $scope.recipe = {};
+    $scope.recipe = {
+        food_item_prices: []
+    };
     $scope.masterIngredients = {};
     $scope.masterSubRecipes = {};
     $scope.masterNutrients = [];
@@ -23,7 +25,7 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
     $scope.updateRecipeLoader = false;
     $scope.allergies = ENV.ALLERGIES;
     $scope.mealTypes = ENV.MEALTYPES
-    
+
     $scope.foodTypes = [
         { id: 1, name: 'Veg' },
         { id: 2, name: 'Non-Veg' },
@@ -91,7 +93,6 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
         });
     };
 
-
     $scope.getFiles = function (file) {
         $scope.recipeImage = file;
     };
@@ -123,7 +124,7 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
             $scope.recipeCategories = result.contents.categories;
 
             $scope.recipe.category_id = result.contents.category_id;
-            
+            $scope.recipe.food_item_prices = result.contents.food_items_prices;
             $scope.images = result.contents.recipe_images;
 
             $scope.generateTotal();
@@ -134,31 +135,31 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
         });
     };
 
-    $scope.uploadFile = function(file){
+    $scope.uploadFile = function (file) {
         var storageRef = firebase.storage().ref();
         var uploadTask = storageRef.child(Date.now().toString() + '-' + file.name).put(file);
-        uploadTask.on('state_changed', function(snapshot) {
-        }, function(error) {
-            console.log(error);
-        }, function() {
-        
-        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-            var params = {
-                entity_type: 1,
-                entity_type_id: $scope.recipeId,
-                url: downloadURL
-            };
-            Data.uploadImage(params, function (result) {
-                $scope.images.push(result.contents);
+        uploadTask.on('state_changed', function (snapshot) {
         }, function (error) {
-            alert(error);
-        });
-        });
+            console.log(error);
+        }, function () {
+
+            uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                var params = {
+                    entity_type: 1,
+                    entity_type_id: $scope.recipeId,
+                    url: downloadURL
+                };
+                Data.uploadImage(params, function (result) {
+                    $scope.images.push(result.contents);
+                }, function (error) {
+                    alert(error);
+                });
+            });
         });
     };
 
     $scope.updateRecipe = function () {
-        
+
         $scope.updateRecipeLoader = true;
         var params = {
             id: $scope.recipe.id,
@@ -196,6 +197,20 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
 
         });
     };
+
+    $scope.updatePrice = function () {
+        var params = {
+            food_item_id: $scope.recipeId,
+            entity_prices: $scope.recipe.food_item_prices
+        };
+
+        Data.updateFoodItemPrices(params, function () {
+            Notification.success('Prices updated');
+        }, function (error) {
+            console.log(error);
+        });
+    };
+
 
     $scope.getIngredientNutrientValue = function (n, ing_nutrients) {
         var return_val = 0;

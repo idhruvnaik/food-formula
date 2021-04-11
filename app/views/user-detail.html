@@ -9,48 +9,81 @@
         background-color: #113448;
         padding: 0 15px;
         z-index: 1;
-        flex: none; 
+        flex: none;
     }
-    .page-content{
+
+    .page-content {
         overflow: auto;
     }
-    .headTitle h5,h1{
+
+    .headTitle h5,
+    h1 {
         color: #ffffff;
     }
-    .g-cols{
+
+    .g-cols {
         margin: 20px 0px;
     }
-    .g-cols.offset_none > .one-half{
+
+    .g-cols.offset_none>.one-half {
         width: 40%;
     }
-    .form-field .input-icon{
+
+    .form-field .input-icon {
         padding-left: 10px;
     }
-    .fix-width{
+
+    .fix-width {
         width: 155px;
     }
-    .back-btn-link{
+
+    .back-btn-link {
         color: #14bf98;
         margin-right: 10px
     }
-    .btn{
+
+    .btn {
         width: 100px;
     }
-    
-    .default-password-input{
+
+    .default-password-input {
         position: absolute;
         top: 5px;
         color: #132753;
+    }
+
+    .item-container {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .item-container .entity-container {
+        display: flex;
+        align-items: center;
+        width: calc(50% - 30px);
+        justify-content: space-between;
+        margin: 0px 10px 10px 0px;
+        border-bottom: 1px solid #14bf98;
+        padding: 10px;
+    }
+    .entity-container h5{
+        color: #113448;
+        font-weight: 400;
+        font-size: 14px;
     }
 </style>
 <header class="header">
     <div class="headTitle">
         <h1>{{ accountName}}</h1>
     </div>
-</header><!--header-->
+</header>
 
 <div class="page-content">
-    <div >
+    <div>
         <div class="g-cols offset_none">
             <div class="one-half">
                 <div class="card-block">
@@ -64,138 +97,209 @@
                                     <div class="form-field-set">
                                         <label>Restaurant Name</label>
                                         <div class="form-field">
-                                            <input type="text" placeholder="Enter Name" class="input-icon" ng-model="formData.name" name="name" required="">
+                                            <input type="text" placeholder="Enter Name" class="input-icon"
+                                                ng-model="formData.name" name="name" required="">
                                             <span ng-show="userForm.$submitted || userForm.name.$touched">
-                                                <span class="error-msg" ng-show="userForm.name.$error.required">Please enter name!</span>
+                                                <span class="error-msg" ng-show="userForm.name.$error.required">Please
+                                                    enter name!</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="form-field-set">
                                         <label>Tag line</label>
                                         <div class="form-field">
-                                            <input type="text" placeholder="Enter Tag line" class="input-icon" ng-model="formData.tagline" name="tagline">
+                                            <input type="text" placeholder="Enter Tag line" class="input-icon"
+                                                ng-model="formData.tagline" name="tagline">
                                         </div>
                                     </div>
                                     <div class="form-field-set">
                                         <label>Manager name</label>
                                         <div class="form-field">
-                                            <input type="text" placeholder="Enter Manager name" class="input-icon" ng-model="formData.manager_name" name="managerName" required="">
+                                            <input type="text" placeholder="Enter Manager name" class="input-icon"
+                                                ng-model="formData.manager_name" name="managerName" required="">
                                             <span ng-show="userForm.$submitted || userForm.managerName.$touched">
-                                                <span class="error-msg" ng-show="userForm.managerName.$error.required">Please enter manager name!</span>
+                                                <span class="error-msg"
+                                                    ng-show="userForm.managerName.$error.required">Please enter manager
+                                                    name!</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="form-field-set">
                                         <label>Username</label>
                                         <div class="form-field">
-                                            <input type="text" placeholder="Enter Username" class="input-icon" ng-model="formData.username" name="username" required="">
+                                            <input type="text" placeholder="Enter Username" class="input-icon"
+                                                ng-model="formData.username" name="username" required="">
                                             <span ng-show="userForm.$submitted || userForm.username.$touched">
-                                                <span class="error-msg" ng-show="userForm.username.$error.required">Please enter username!</span>
+                                                <span class="error-msg"
+                                                    ng-show="userForm.username.$error.required">Please enter
+                                                    username!</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="form-field-set">
                                         <label>Email</label>
                                         <div class="form-field">
-                                            <input type="email" placeholder="Enter Email" class="input-icon" ng-model="formData.email" name="email" required="">
+                                            <input type="email" placeholder="Enter Email" class="input-icon"
+                                                ng-model="formData.email" name="email" required="">
                                             <span ng-show="userForm.$submitted || userForm.email.$touched">
-                                                <span class="error-msg" ng-show="userForm.email.$error.required">Please enter email!</span>
-                                                <span class="error-msg" ng-show="userForm.email.$error.email">Please enter valid email!</span>
+                                                <span class="error-msg" ng-show="userForm.email.$error.required">Please
+                                                    enter email!</span>
+                                                <span class="error-msg" ng-show="userForm.email.$error.email">Please
+                                                    enter valid email!</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="form-field-set fix-width">
                                         <label>Start Date</label>
                                         <div class="form-field">
-                                            <input type="date" placeholder="Enter Username" class="input-icon" ng-model="formData.start_date" name="start_date" required="">
+                                            <input type="date" placeholder="Enter Username" class="input-icon"
+                                                ng-model="formData.start_date" name="start_date" required="">
                                             <span ng-show="userForm.$submitted || userForm.start_date.$touched">
-                                                <span class="error-msg" ng-show="userForm.start_date.$error.required">Please enter start date!</span>
+                                                <span class="error-msg"
+                                                    ng-show="userForm.start_date.$error.required">Please enter start
+                                                    date!</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="form-field-set fix-width">
                                         <label>End Date</label>
                                         <div class="form-field">
-                                            <input type="date" placeholder="Enter Username" class="input-icon" ng-model="formData.end_date" name="end_date" required="">
+                                            <input type="date" placeholder="Enter Username" class="input-icon"
+                                                ng-model="formData.end_date" name="end_date" required="">
                                             <span ng-show="userForm.$submitted || userForm.end_date.$touched">
-                                                <span class="error-msg" ng-show="userForm.end_date.$error.required">Please enter end date!</span>
+                                                <span class="error-msg"
+                                                    ng-show="userForm.end_date.$error.required">Please enter end
+                                                    date!</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="form-field-set fix-width">
                                         <label>Country</label>
                                         <div class="form-field">
-                                            <select ng-model="formData.country" ng-options="key as value for (key , value) in countries" class="select-box" name="country" required="">
+                                            <select ng-model="formData.country"
+                                                ng-options="key as value for (key , value) in countries"
+                                                class="select-box" name="country" required="">
                                                 <option value="" ng-if="typeOfView == 'add'">Select Country</option>
                                             </select>
                                             <span ng-show="userForm.$submitted || userForm.country.$touched">
-                                                <span class="error-msg" ng-show="userForm.country.$error.required">Please Select country!</span>
+                                                <span class="error-msg"
+                                                    ng-show="userForm.country.$error.required">Please Select
+                                                    country!</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="form-field-set fix-width">
                                         <label>Currency</label>
                                         <div class="form-field">
-                                            <select class="select-box" name="currency" ng-model="formData.currency" ng-options="key as value for (key , value) in currencies">
+                                            <select class="select-box" name="currency" ng-model="formData.currency"
+                                                ng-options="key as value for (key , value) in currencies">
                                                 <option value="" ng-if="typeOfView == 'add'">Select Currency</option>
                                             </select>
                                             <span ng-show="userForm.$submitted || userForm.currency.$touched">
-                                                <span class="error-msg" ng-show="userForm.currency.$error.required">Please Select currency!</span>
+                                                <span class="error-msg"
+                                                    ng-show="userForm.currency.$error.required">Please Select
+                                                    currency!</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="form-field-set">
                                         <label>Mobile</label>
                                         <div class="form-field">
-                                            <input type="number" placeholder="Enter Mobile Number" class="input-icon" ng-model="formData.mobile_no" name="mobile" required="">
+                                            <input type="number" placeholder="Enter Mobile Number" class="input-icon"
+                                                ng-model="formData.mobile_no" name="mobile" required="">
                                             <span ng-show="userForm.$submitted || userForm.mobile.$touched">
-                                                <span class="error-msg" ng-show="userForm.mobile.$error.required">Please enter mobile!</span>
+                                                <span class="error-msg" ng-show="userForm.mobile.$error.required">Please
+                                                    enter mobile!</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="form-field-set">
                                         <label>Website URL</label>
                                         <div class="form-field">
-                                            <input type="text" placeholder="Enter Website/social media URL" class="input-icon" ng-model="formData.website">
+                                            <input type="text" placeholder="Enter Website/social media URL"
+                                                class="input-icon" ng-model="formData.website">
                                         </div>
                                     </div>
                                     <div class="form-field-set fix-width">
                                         <label>Status</label>
                                         <div class="form-field">
-                                            <select ng-model="formData.status_id" ng-options="state.val as state.label for state in statuses" class="select-box" name="status" required="">
+                                            <select ng-model="formData.status_id"
+                                                ng-options="state.val as state.label for state in statuses"
+                                                class="select-box" name="status" required="">
                                                 <option value="" ng-if="typeOfView == 'add'">Select Status</option>
                                             </select>
                                             <span ng-show="userForm.$submitted || userForm.status.$touched">
-                                                <span class="error-msg" ng-show="userForm.status.$error.required">Please enter status!</span>
+                                                <span class="error-msg" ng-show="userForm.status.$error.required">Please
+                                                    enter status!</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="form-field-set fix-width">
                                         <label>Enable Access</label>
                                         <div class="form-field">
-                                            <select ng-model="formData.enable_access_state" ng-options="state.val as state.label for state in access_states" class="select-box" name="enable_access" required="">
-                                                <option value="" ng-if="typeOfView == 'add'">Select Access State</option>
+                                            <select ng-model="formData.enable_access_state"
+                                                ng-options="state.val as state.label for state in access_states"
+                                                class="select-box" name="enable_access" required="">
+                                                <option value="" ng-if="typeOfView == 'add'">Select Access State
+                                                </option>
                                             </select>
                                             <span ng-show="userForm.$submitted || userForm.enable_access.$touched">
-                                                <span class="error-msg" ng-show="userForm.enable_access.$error.required">Please enter enable access!</span>
+                                                <span class="error-msg"
+                                                    ng-show="userForm.enable_access.$error.required">Please enter enable
+                                                    access!</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="form-field-set" ng-if="typeOfView == 'edit'">
                                         <div class="form-field">
-                                            <input value="123456" type="checkbox" class="default-password-input" ng-model="formData.password"><label> Set default password as 123456</label>
+                                            <input value="123456" type="checkbox" class="default-password-input"
+                                                ng-model="formData.password"><label> Set default password as
+                                                123456</label>
                                         </div>
                                     </div>
 
                                     <div class="form-footer">
                                         <a ui-sref="app.admin-dashboard" class="back-btn-link">Back</a>
-                                        <button type="submit" class="btn btn-icon" ng-class="{'loader': btnLoader}"><span class="icon-save"></span>&nbsp;{{typeOfView=='add'? 'Add User': 'Update'}}</button>
+                                        <button type="submit" class="btn btn-icon"
+                                            ng-class="{'loader': btnLoader}"><span
+                                                class="icon-save"></span>&nbsp;{{typeOfView=='add'? 'Add User': 'Update'}}</button>
                                         <div class="success-msg" ng-if="successMsg">
-                                            <img src="images/icon-success.svg"/>&nbsp;&nbsp;User is added
+                                            <img src="images/icon-success.svg" />&nbsp;&nbsp;User is added
                                         </div>
                                     </div>
 
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="one-half" ng-if="typeOfView == 'edit'">
+                <div class="card-block">
+                    <div class="card-pad">
+                        <div class="card-head">
+                            <h3>User Entities</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="item-container">
+                                <div class="entity-container" ng-repeat="entity in userEntities">
+                                    <h5>{{entity.name}}</h5>
+                                    <a ng-click="removeUserEntity(entity.id, $index)"><img
+                                            src="/images/delete-icon.svg"></a>
+                                </div>
+                            </div>
+                            <div class="form-container">
+                                <div class="form-field-set">
+                                    <label>Add User Entity</label>
+                                    <div class="form-field">
+                                        <select ng-model="entityId" class="select-box"
+                                            ng-change="addUserEntity(entityId)">
+                                            <option value="" selected>Select Entity</option>
+                                            <option value="{{entity.id}}" ng-value="{{entity.id}}"
+                                                ng-repeat="entity in entities">{{entity.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

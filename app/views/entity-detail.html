@@ -1,0 +1,99 @@
+<style>
+    .header {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        box-shadow: 2.407px 3.195px 5px rgba(0, 0, 0, 0.08);
+        background-color: #113448;
+        padding: 0 15px;
+        z-index: 1;
+        flex: none; 
+    }
+    .page-content{
+        overflow: auto;
+    }
+    .headTitle h5,h1{
+        color: #ffffff;
+    }
+    .g-cols{
+        margin: 20px 0px;
+    }
+    .g-cols.offset_none > .one-half{
+        width: 40%;
+    }
+    .form-field .input-icon{
+        padding-left: 10px;
+    }
+    .fix-width{
+        width: 155px;
+    }
+    .back-btn-link{
+        color: #14bf98;
+        margin-right: 10px
+    }
+    .btn{
+        width: 100px;
+    }
+    
+    .default-password-input{
+        position: absolute;
+        top: 5px;
+        color: #132753;
+    }
+</style>
+<header class="header">
+    <div class="headTitle">
+        <h1>{{accountName}}</h1>
+    </div>
+</header>
+
+<div class="page-content">
+    <div >
+        <div class="g-cols offset_none">
+            <div class="one-half">
+                <div class="card-block">
+                    <div class="card-pad">
+                        <div class="card-head">
+                            <h3>{{entityId ? 'Update Entity' : 'Add Entity'}}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-container">
+                                <form name="entityForm" ng-submit="entityForm.$valid && saveEntity()" novalidate="">
+                                    <div class="form-field-set">
+                                        <label>Entity Name</label>
+                                        <div class="form-field">
+                                            <input type="text" placeholder="Enter Name" class="input-icon" ng-model="formData.name" name="name" required="">
+                                            <span ng-show="entityForm.$submitted || entityForm.name.$touched">
+                                                <span class="error-msg" ng-show="entityForm.name.$error.required">Please enter name!</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-field-set fix-width">
+                                        <label>Status</label>
+                                        <div class="form-field">
+                                            <select ng-model="formData.status_id" class="select-box" name="status" required="">
+                                                <option value="">Select Status</option>
+                                                <option value="1" ng-value="1">Published</option>
+                                                <option value="2" ng-value="2">Draft</option>
+                                            </select>
+                                            <span ng-show="entityForm.$submitted || entityForm.status.$touched">
+                                                <span class="error-msg" ng-show="entityForm.status.$error.required">Please enter status!</span>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-footer">
+                                        <a ui-sref="app.entity" class="back-btn-link">Back</a>
+                                        <button type="submit" class="btn btn-icon" ng-class="{'loading': btnLoader}"><span class="icon-save"></span>&nbsp;{{entityId ? 'Update' : 'Add'}}</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

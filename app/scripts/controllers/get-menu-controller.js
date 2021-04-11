@@ -22,14 +22,11 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$window'
         $scope.recipeImages = [];
         $scope.selected = 0;
         $scope.foodItemObj = [];
-        $scope.loader = true;
-
-        $timeout(function () {
-            $scope.loader = false;
-        }, 3000);
+        
     };
 
     $scope.getRestaurantMenu = function () {
+        $scope.loader = true;
         Data.getRestaurantMenu({ menu_key: $scope.menu_key }, function (result) {
             $scope.user = result.contents.user;
             $scope.categories = result.contents.categories;
@@ -37,6 +34,7 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$window'
                 $scope.foodItemObj.push({ id: item.id, recipes: item.recipes });
             });
             $scope.recipes = (($scope.foodItemObj[0] && $scope.foodItemObj[0].recipes) ? $scope.foodItemObj[0].recipes : []);
+            $scope.loader = false;
         }, function (error) {
             console.log(error);
         });

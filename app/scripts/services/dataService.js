@@ -7,7 +7,7 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
 
     s.postHttp = function (url, params, successCb, failureCb) {
         s.getAuthData(params);
-        $http.post(s.baseUrl + url, params, {ignoreLoadingBar: params.ignoreLoadingBar}).then(function (result) {
+        $http.post(s.baseUrl + url, params, { ignoreLoadingBar: params.ignoreLoadingBar }).then(function (result) {
             if (result.data.status == 'error') {
                 failureCb(result.data.message);
 
@@ -60,8 +60,13 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
         data.ignoreLoadingBar = true;
         s.postHttp('admin/request_account_access', data, successCb, failureCb);
     };
+
     s.getMastersData = function (successCb, failureCb) {
         s.postHttp('user/get_master', {}, successCb, failureCb);
+    };
+
+    s.getAdminMaster = function (successCb, failureCb) {
+        s.postHttp('admin/get_master', {}, successCb, failureCb);
     };
 
     s.getDashboardDetails = function (successCb, failureCb) {
@@ -273,6 +278,24 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
     };
     s.getRecipesByCategories = function (params, successCb, failureCb) {
         s.postHttp('restaurant/get_recipe_details_from_category', params, successCb, failureCb);
+    };
+    s.getEntities = function (successCb, failureCb) {
+        s.postHttp('entity/get_all_masters_entities', {}, successCb, failureCb);
+    };
+    s.getEntityById = function (params, successCb, failureCb) {
+        s.postHttp('entity/get_entity_by_id', params, successCb, failureCb);
+    };
+    s.addUpdateEntity = function (params, successCb, failureCb) {
+        s.postHttp('entity/add_or_update_entity', params, successCb, failureCb);
+    };
+    s.addUserEntity = function (params, successCb, failureCb) {
+        s.postHttp('entity/create_user_entity', params, successCb, failureCb);
+    };
+    s.removeUserEntity = function (params, successCb, failureCb) {
+        s.postHttp('entity/remove_user_entity', params, successCb, failureCb);
+    };
+    s.updateFoodItemPrices = function (params, successCb, failureCb) {
+        s.postHttp('restaurant/update_food_item_prices', params, successCb, failureCb);
     };
     s.handleResponse = function (result, successCb, failureCb) {
         if (result.data.status == 'success') {

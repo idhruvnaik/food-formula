@@ -39,6 +39,12 @@ angular.module('restaurantApp').controller('MainCtrl', ['$scope', '$rootScope', 
             }, function (error) {
                 console.log(error);
             });
+        } else if ($localStorage.api_key && $scope.isAdmin()) {
+            Data.getAdminMaster(function (result) {
+                $scope.adminData = result.contents;
+            }, function (error) {
+                console.log(error);
+            });
         }
     };
     $scope.loadMasters();

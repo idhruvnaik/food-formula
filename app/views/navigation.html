@@ -1,7 +1,7 @@
 <navigation id="navigation">
     <nav class="mainNav">
         <div class="logoBlock">
-            <img src="/images/dashboard-icon.png"/>
+            <img src="/images/dashboard-icon.png" />
         </div>
 
         <div class="nav" ng-if="!isAdmin()">
@@ -9,7 +9,7 @@
                 <li ui-sref-active="active">
                     <div ui-sref="app.dashboard">
                         <a href="#">
-                            <img class="nav-img" src="images/dashboard-icon.svg"/>
+                            <img class="nav-img" src="images/dashboard-icon.svg" />
                         </a>
                         <ul class="subNav">
                             <li>Home</li>
@@ -19,7 +19,7 @@
                 <li ui-sref-active="active">
                     <div ui-sref="app.profile">
                         <a href="#">
-                            <img class="nav-img" src="images/profile-icon.svg"/>
+                            <img class="nav-img" src="images/profile-icon.svg" />
                         </a>
 
                         <ul class="subNav multi-subnav">
@@ -29,7 +29,7 @@
                 </li>
                 <li ui-sref-active="active" style="display: none;">
                     <div ui-sref="app.nutrical_tutorial">
-                        <a >
+                        <a>
                             <img class="nav-img" src="images/nutrical-tutorial.svg" style="width: 30px;" />
                         </a>
 
@@ -40,10 +40,10 @@
                 </li>
             </ul>
 
-            <ul class="bot-links" >
+            <ul class="bot-links">
                 <li title="Logout">
                     <div ng-click="logout()">
-                        <a href="#" >
+                        <a href="#">
                             <img class="nav-img" src="images/logout-icon.svg" />
                         </a>
                         <ul class="subNav">
@@ -53,13 +53,13 @@
                 </li>
             </ul>
         </div>
-        
+
         <div class="nav" ng-if="isAdmin()">
             <ul>
                 <li ui-sref-active="active">
                     <div ui-sref="app.admin-dashboard">
                         <a href="#">
-                            <img class="nav-img" src="/images/users-icon.svg"/>
+                            <img class="nav-img" src="/images/users-icon.svg" />
                         </a>
                         <ul class="subNav">
                             <li>Users</li>
@@ -67,9 +67,19 @@
                     </div>
                 </li>
                 <li ui-sref-active="active">
+                    <div ui-sref="app.entity">
+                        <a href="#">
+                            <img class="nav-img" src="/images/entity-icon.svg" />
+                        </a>
+                        <ul class="subNav">
+                            <li>Entities</li>
+                        </ul>
+                    </div>
+                </li>
+                <li ui-sref-active="active">
                     <div ui-sref="app.enquiry">
                         <a href="#">
-                            <img class="nav-img" src="/images/enquiry-icon.svg"/>
+                            <img class="nav-img" src="/images/enquiry-icon.svg" />
                         </a>
                         <ul class="subNav">
                             <li>Enquiry</li>
@@ -79,7 +89,7 @@
                 <li ui-sref-active="active">
                     <div>
                         <a href="#">
-                            <img class="nav-img" src="images/profile-icon.svg"/>
+                            <img class="nav-img" src="images/profile-icon.svg" />
                         </a>
 
                         <ul class="subNav multi-subnav">
@@ -89,10 +99,10 @@
                 </li>
             </ul>
 
-            <ul class="bot-links" >
+            <ul class="bot-links">
                 <li title="Logout">
                     <div ng-click="logout()">
-                        <a href="#" >
+                        <a href="#">
                             <img class="nav-img" src="images/logout-icon.svg" />
                         </a>
                         <ul class="subNav">
