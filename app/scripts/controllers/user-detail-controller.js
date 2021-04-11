@@ -8,6 +8,7 @@ angular.module('restaurantApp').controller('userDetailCtrl', ['$scope', '$state'
     $scope.currencies = ENV.CURRENCY;
     $scope.entityId = '';
     $scope.userEntities = [];
+    $scope.userLanguages = [];
 
     var path = $location.$$path;
     if (path == '/add-user') {
@@ -43,11 +44,13 @@ angular.module('restaurantApp').controller('userDetailCtrl', ['$scope', '$state'
 
     var initialize = function () {
         $scope.entities = $scope.$parent.adminData.masters_entities;
+        $scope.languages = $scope.$parent.adminData.masters_languages;
         if ($stateParams.id) {
             Data.getUserData({ user_id: $stateParams.id }, function (result) {
                 var data = result.contents;
                 $scope.formData = data;
                 $scope.userEntities = data.user_entities;
+                $scope.userLanguages = data.user_languages;
                 if (data.start_date == null) {
                     $scope.start_date = null;
                 } else {
@@ -86,6 +89,33 @@ angular.module('restaurantApp').controller('userDetailCtrl', ['$scope', '$state'
         };
         Data.removeUserEntity(params, function (result) {
             $scope.userEntities.splice(index, 1);
+        }, function (error) {
+            console.log(error);
+        });
+    };
+
+    $scope.addUserLanguage = function (id) {
+        var params = {
+            language_id: id,
+            user_id: $stateParams.id
+        };
+        if (id) {
+            Data.addUserLanguage(params, function (result) {
+                $scope.userLanguages.push(result.contents);
+                $scope.languageId = '';
+            }, function (error) {
+                console.log(error);
+                $scope.languageId = '';
+            });
+        }
+    };
+
+    $scope.removeUserLanguage = function (id, index) {
+        var params = {
+            user_language_id: id
+        };
+        Data.removeUserLanguage(params, function (result) {
+            $scope.userLanguages.splice(index, 1);
         }, function (error) {
             console.log(error);
         });

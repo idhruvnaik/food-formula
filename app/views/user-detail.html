@@ -275,7 +275,7 @@
                 </div>
             </div>
             <div class="one-half" ng-if="typeOfView == 'edit'">
-                <div class="card-block">
+                <div class="card-block mb10">
                     <div class="card-pad">
                         <div class="card-head">
                             <h3>User Entities</h3>
@@ -297,6 +297,36 @@
                                             <option value="" selected>Select Entity</option>
                                             <option value="{{entity.id}}" ng-value="{{entity.id}}"
                                                 ng-repeat="entity in entities">{{entity.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-block">
+                    <div class="card-pad">
+                        <div class="card-head">
+                            <h3>User Languages</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="item-container">
+                                <div class="entity-container" ng-repeat="language in userLanguages">
+                                    <h5>{{language.name}}</h5>
+                                    <a ng-click="removeUserLanguage(language.id, $index)"><img
+                                            src="/images/delete-icon.svg"></a>
+                                </div>
+                            </div>
+                            <div class="form-container">
+                                <div class="form-field-set">
+                                    <label>Add User Entity</label>
+                                    <div class="form-field">
+                                        <select ng-model="languageId" class="select-box"
+                                            ng-change="addUserLanguage(languageId)">
+                                            <option value="" selected>Select Entity</option>
+                                            <option value="{{language.id}}" ng-value="{{language.id}}"
+                                                ng-repeat="language in languages">{{language.name}}</option>
                                         </select>
                                     </div>
                                 </div>

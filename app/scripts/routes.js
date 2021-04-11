@@ -243,6 +243,42 @@ angular.module('routes', [])
                 data: {
                     role: 'admin'
                 }
+            }).state('app.language', {
+                url: '/language',
+                controller: 'languageCtrl',
+                templateUrl: 'views/language.html',
+                resolve: {
+                    loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load('scripts/controllers/language-controller.js');
+                    }]
+                },
+                data: {
+                    role: 'admin'
+                }
+            }).state('app.add-language', {
+                url: '/add-language',
+                controller: 'languageDetailCtrl',
+                templateUrl: 'views/language-detail.html',
+                resolve: {
+                    loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load('scripts/controllers/language-detail-controller.js');
+                    }]
+                },
+                data: {
+                    role: 'admin'
+                }
+            }).state('app.edit-language', {
+                url: '/edit-language/:id',
+                controller: 'languageDetailCtrl',
+                templateUrl: 'views/language-detail.html',
+                resolve: {
+                    loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load('scripts/controllers/language-detail-controller.js');
+                    }]
+                },
+                data: {
+                    role: 'admin'
+                }
             });
         $urlRouterProvider.otherwise('/');
     }]);

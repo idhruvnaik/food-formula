@@ -1,14 +1,14 @@
 
 'use strict';
-angular.module('restaurantApp').controller('entityDetailCtrl', ['$scope', '$state', '$http', 'Data', '$location', '$stateParams', 'Notification', 'ENV', function ($scope, $state, $http, Data, $location, $stateParams, Notification, ENV) {
+angular.module('restaurantApp').controller('languageDetailCtrl', ['$scope', '$state', '$http', 'Data', '$location', '$stateParams', 'Notification', 'ENV', function ($scope, $state, $http, Data, $location, $stateParams, Notification, ENV) {
     $scope.formData = {};
-    $scope.entityId = $stateParams.id ? $stateParams.id : null;
+    $scope.languageId = $stateParams.id ? $stateParams.id : null;
 
-    $scope.saveEntity = function () {
+    $scope.saveLanguage = function () {
         $scope.btnLoader = true;
-        if ($scope.entityId) {
-            $scope.formData.id = $scope.entityId;
-            Data.addUpdateEntity($scope.formData, function (result) {
+        if ($scope.languageId) {
+            $scope.formData.id = $scope.languageId;
+            Data.addUpdateLanguage($scope.formData, function (result) {
                 $scope.btnLoader = false;
                 Notification.success(result.message);
             }, function (error) {
@@ -16,9 +16,9 @@ angular.module('restaurantApp').controller('entityDetailCtrl', ['$scope', '$stat
                 $scope.btnLoader = false;
             });
         } else {
-            Data.addUpdateEntity($scope.formData, function (result) {
+            Data.addUpdateLanguage($scope.formData, function (result) {
                 $scope.btnLoader = false;
-                $state.go('app.entity');
+                $state.go('app.language');
             }, function (error) {
                 console.log(error);
                 $scope.btnLoader = false;
@@ -27,8 +27,8 @@ angular.module('restaurantApp').controller('entityDetailCtrl', ['$scope', '$stat
     };
 
     var initialize = function () {
-        if ($scope.entityId) {
-            Data.getEntityById({ id: $scope.entityId }, function (result) {
+        if ($scope.languageId) {
+            Data.getLanguageById({ id: $scope.languageId }, function (result) {
                 $scope.formData = result.contents;
                 $scope.formData.status_id = parseInt(result.contents.status_id);
             }, function (error) {
