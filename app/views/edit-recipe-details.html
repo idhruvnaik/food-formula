@@ -324,6 +324,7 @@
         padding: 8px 15px;
     }
 </style>
+
 <header class="header">
     <div class="headTitle">
         <h1>{{isCopy == 'true' ? 'Add Recipe' : 'Edit Recipe'}}</h1>
@@ -342,11 +343,23 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-container food-info-block">
-                                    <div class="form-footer">
-                                        <button type="submit" class="btn btn-icon update-btn"
-                                            ng-class="{'loading': updateNameLoader}"><span
-                                                class="icon-save"></span>Save</button>
-                                    </div>
+                                    <form name="nameForm" ng-submit="nameForm.$valid && updateAliases()" novalidate="">
+                                        <div class="form-field-set"
+                                            ng-repeat="item in recipe.food_items_aliases track by $index"
+                                            ng-class="{'error': nameForm.$submitted && nameForm.language{{$index}}language.$invalid}">
+                                            <label>{{item.language_name}}</label>
+                                            <div class="form-field">
+                                                <input type="text" name="language{{$index}}language" class="input-icon"
+                                                    required="" ng-model="item.alias" placeholder="Enter alias" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-footer">
+                                            <button type="submit" class="btn btn-icon update-btn"
+                                                ng-class="{'loading': updateNameLoader}"><span
+                                                    class="icon-save"></span>Save</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -359,18 +372,18 @@
                             <div class="card-body">
                                 <div class="form-container food-info-block">
                                     <form name="priceForm" ng-submit="priceForm.$valid && updatePrice()" novalidate="">
-                                        <div class="form-field-set" ng-repeat="item in recipe.food_item_prices track by $index"
+                                        <div class="form-field-set"
+                                            ng-repeat="item in recipe.food_item_prices track by $index"
                                             ng-class="{'error': priceForm.$submitted && priceForm.price{{$index}}price.$invalid}">
                                             <label>{{item.entity_name}}</label>
                                             <div class="form-field">
                                                 <input type="number" name="price{{$index}}price" class="input-icon"
-                                                    required="" ng-model="item.price" placeholder="Enter Price"/>
+                                                    required="" ng-model="item.price" placeholder="Enter Price" />
                                             </div>
                                         </div>
 
                                         <div class="form-footer">
-                                            <button type="submit"
-                                                class="btn btn-icon update-btn"
+                                            <button type="submit" class="btn btn-icon update-btn"
                                                 ng-class="{'loading': updatePriceLoader}"><span
                                                     class="icon-save"></span>Save</button>
                                         </div>
@@ -381,7 +394,7 @@
                     </div>
                 </div>
             </div>
-            <div class="g-cols">
+            <div class="g-cols mb10">
                 <div class="card-block">
                     <div class="card-pad">
                         <div class="card-head">

@@ -298,19 +298,22 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
         s.postHttp('restaurant/update_food_item_prices', params, successCb, failureCb);
     };
     s.getLanguages = function (successCb, failureCb) {
-        s.postHttp('admin/get_all_masters_languages', {}, successCb, failureCb);
+        s.postHttp('language/get_all_masters_languages', {}, successCb, failureCb);
     };
     s.getLanguageById = function (params, successCb, failureCb) {
-        s.postHttp('admin/get_language_by_id', params, successCb, failureCb);
+        s.postHttp('language/get_language_by_id', params, successCb, failureCb);
     };
     s.addUpdateLanguage = function (params, successCb, failureCb) {
-        s.postHttp('admin/add_or_update_language', params, successCb, failureCb);
+        s.postHttp('language/add_or_update_language', params, successCb, failureCb);
     };
     s.addUserLanguage = function (params, successCb, failureCb) {
-        s.postHttp('entity/create_user_language', params, successCb, failureCb);
+        s.postHttp('language/create_user_language', params, successCb, failureCb);
     };
     s.removeUserLanguage = function (params, successCb, failureCb) {
-        s.postHttp('entity/remove_user_language', params, successCb, failureCb);
+        s.postHttp('language/remove_user_language', params, successCb, failureCb);
+    };
+    s.updateFoodItemAliases = function (params, successCb, failureCb) {
+        s.postHttp('restaurant/update_food_item_aliases', params, successCb, failureCb);
     };
     s.handleResponse = function (result, successCb, failureCb) {
         if (result.data.status == 'success') {

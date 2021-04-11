@@ -10,7 +10,8 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
     $scope.recipeId = ($stateParams.id) ? $stateParams.id : null;
     $scope.isCopy = ($stateParams.isCopy) ? $stateParams.isCopy : false;
     $scope.recipe = {
-        food_item_prices: []
+        food_item_prices: [],
+        food_item_aliases: []
     };
     $scope.masterIngredients = {};
     $scope.masterSubRecipes = {};
@@ -124,7 +125,9 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
             $scope.recipeCategories = result.contents.categories;
 
             $scope.recipe.category_id = result.contents.category_id;
-            $scope.recipe.food_item_prices = result.contents.food_items_prices;
+            $scope.recipe.food_item_prices = result.contents.food_item_prices;
+
+            $scope.recipe.food_items_aliases = result.contents.food_item_aliases;
             $scope.images = result.contents.recipe_images;
 
             $scope.generateTotal();
@@ -199,6 +202,7 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
     };
 
     $scope.updatePrice = function () {
+        $scope.updatePriceLoader = true;
         var params = {
             food_item_id: $scope.recipeId,
             entity_prices: $scope.recipe.food_item_prices
@@ -206,208 +210,27 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
 
         Data.updateFoodItemPrices(params, function () {
             Notification.success('Prices updated');
+            $scope.updatePriceLoader = false;
         }, function (error) {
             console.log(error);
+            $scope.updatePriceLoader = false;
         });
     };
 
+    $scope.updateAliases = function () {
+        $scope.updateNameLoader = true;
+        var params = {
+            food_item_id: $scope.recipeId,
+            food_item_aliases: $scope.recipe.food_items_aliases
+        };
 
-    $scope.getIngredientNutrientValue = function (n, ing_nutrients) {
-        var return_val = 0;
-
-        if (ing_nutrients[n.id]) {
-            return_val = ing_nutrients[n.id];
-        }
-
-        return return_val
-    };
-
-    $scope.generateTotal = function () {
-        $scope.totalIngredientWeight = 0;
-        $scope.total_ingredient_cost = 0;
-        for (var i in $scope.masterNutrients) {
-            var n = $scope.masterNutrients[i];
-            n.total = 0;
-        }
-
-        for (var i in $scope.recipe.ingredients) {
-            var ing = $scope.recipe.ingredients[i];
-            for (var s in $scope.masterNutrients) {
-                var n = $scope.masterNutrients[s];
-                if (ing.nutrient_values_without_absorption[n.id]) {
-                    n.total = (parseFloat(n.total) + parseFloat(ing.nutrient_values_without_absorption[n.id]));
-                }
-            }
-
-            $scope.totalIngredientWeight = (parseFloat($scope.totalIngredientWeight) + (parseFloat(ing.unit_quantity) * parseFloat(ing.quantity)));
-            $scope.total_ingredient_cost = (parseFloat($scope.total_ingredient_cost) + parseFloat(ing.total_cost));
-        }
-    };
-
-    $scope.getGetRoundOfNum = function (num) {
-        if (num) {
-            return num.toFixed(2);
-        }
-        {
-            return 0;
-        }
-    };
-
-    $scope.ingredientFormId = function (id) {
-        console.log(id);
-    };
-
-    $scope.showAutocomplete = false;
-    $scope.showAutocompletes = false;
-    $scope.showloader = false;
-
-    $scope.searchIngredients = function () {
-        $scope.addIngredientForm.loader = true;
-        if ($scope.addIngredientForm.ingredient_name.length > 2) {
-            $scope.showloader = true;
-            Data.searchIngredients({ name: $scope.addIngredientForm.ingredient_name }, function (result) {
-                $scope.showloader = false;
-                $scope.masterIngredients = result.contents;
-                $scope.showAutocomplete = true;
-                $scope.addIngredientForm.loader = false;
-
-            }, function (error) {
-                console.log(error);
-            });
-        } else {
-            $scope.masterIngredients = [];
-            $scope.addIngredientForm.loader = false;
-        }
-    };
-
-    $scope.searchSubRecipe = function () {
-        $scope.addIngredientsForm.loader = true;
-        if ($scope.addIngredientsForm.ingredient_name.length > 2) {
-            Data.searchSubRecipe({ id: $scope.recipeId, name: $scope.addIngredientsForm.ingredient_name }, function (result) {
-                $scope.masterSubRecipes = result.contents;
-                $scope.showAutocompletes = true;
-                $scope.addIngredientsForm.loader = false;
-
-            }, function (error) {
-                console.log(error);
-            });
-        } else {
-            $scope.masterSubRecipes = [];
-            $scope.addIngredientsForm.loader = false;
-        }
-    };
-
-    $scope.setIngredient = function (ing) {
-        $scope.addIngredientForm.ingredient_id = ing.id;
-        $scope.addIngredientForm.ingredient_name = ing.name;
-        $scope.addIngredientForm.serving_units = ing.serving_units;
-        $scope.showAutocomplete = false;
-    };
-    $scope.setIngredients = function (ing) {
-        $scope.addIngredientsForm.add = true;
-        $scope.addIngredientsForm.sub_recipe_id = ing.id;
-        $scope.addIngredientsForm.ingredient_name = ing.name;
-        $scope.addIngredientsForm.serving_units = ing.serving_units;
-        $scope.showAutocompletes = false;
-    };
-
-    $scope.addIngredient = function () {
-        $scope.addIngredientForm.loader = true;
-
-        Data.addIngredient($scope.addIngredientForm, function (result) {
-            var ing = result.contents;
-            var obj = {};
-            obj.id = ing.id;
-            obj.name = ing.name;
-            obj.nutrient_values_without_absorption = ing.nutrient_values_without_absorption;
-            obj.quantity = ing.quantity;
-            obj.total_quantity = ing.total_quantity;
-            obj.unit_name = ing.unit_name;
-            obj.unit_quantity = ing.unit_quantity;
-            obj.total_cost = ing.total_cost
-            obj.per_gram_cost = ing.per_gram_cost
-            $scope.recipe.ingredients.push(obj);
-
-            $scope.addIngredientForm.loader = false;
-            $scope.addIngredientForm.ingredient_id = '';
-            $scope.addIngredientForm.ingredient_name = '';
-            $scope.addIngredientForm.serving_units = '';
-            $scope.addIngredientForm.serving_unit_id = '';
-            $scope.addIngredientForm.quantity = '';
-            $scope.generateTotal();
-
+        Data.updateFoodItemAliases(params, function () {
+            Notification.success('Names updated');
+            $scope.updateNameLoader = false;
         }, function (error) {
             console.log(error);
-            $scope.addIngredientForm.loader = false;
+            $scope.updateNameLoader = false;
         });
-    };
-
-    $scope.addIngredients = function () {
-        $scope.addIngredientsForm.loader = true;
-        $scope.addIngredientsForm.recipe_id = $stateParams.id;
-
-        Data.addIngredients($scope.addIngredientsForm, function (result) {
-            var ing = result.contents;
-            Array.from(ing).forEach(function (i) {
-                var obj = {};
-                obj.id = i.id;
-                obj.name = i.name;
-                obj.nutrient_values_without_absorption = i.nutrient_values_without_absorption
-                obj.quantity = i.quantity;
-                obj.total_quantity = i.total_quantity
-                obj.unit_name = i.unit_name;
-                obj.unit_quantity = i.unit_quantity;
-                obj.parent_recipe = i.parent_recipe;
-                obj.total_cost = i.total_cost;
-                obj.per_gram_cost = i.per_gram_cost;
-                $scope.recipe.ingredients.push(obj);
-            });
-            $scope.addIngredientsForm.loader = false;
-            $scope.addIngredientsForm.sub_recipe_id = '';
-            $scope.addIngredientsForm.ingredient_name = '';
-            $scope.addIngredientsForm.serving_units = '';
-            $scope.addIngredientsForm.serving_unit_id = '';
-            $scope.addIngredientsForm.quantity = '';
-            $scope.generateTotal();
-            $scope.addIngredientsForm.add = false;
-
-        }, function (error) {
-            console.log(error);
-            $scope.addIngredientsForm.loader = false;
-        });
-    };
-
-    $scope.updateIngredient = function (ing) {
-        var ing = ing;
-        ing.isEditableLoader = true;
-        Data.updateIngredient({ id: ing.id, quantity: ing.quantity }, function (result) {
-            ing.isEditableLoader = false;
-            ing.isEditable = false;
-            var new_ing = result.contents;
-            ing.nutrient_values_without_absorption = new_ing.nutrient_values_without_absorption;
-            ing.total_quantity = new_ing.total_quantity
-            ing.total_cost = (ing.per_gram_cost * new_ing.total_quantity);
-            $scope.generateTotal();
-
-        }, function (error) {
-            console.log(error);
-        });
-    };
-
-    $scope.removeIngredient = function (ing) {
-        var index = $scope.recipe.ingredients.indexOf(ing);
-        if (index >= 0) {
-            Data.removeIngredient({ id: ing.id }, function (result) {
-                $scope.recipe.ingredients.splice(index, 1);
-                $scope.generateTotal();
-            }, function (error) {
-                console.log(error);
-            });
-        }
-    };
-
-    $scope.setIngredientEditable = function (ing) {
-        ing.isEditable = true;
     };
 
     $scope.init();
