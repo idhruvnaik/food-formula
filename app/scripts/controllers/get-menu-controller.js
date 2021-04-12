@@ -17,17 +17,19 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$window'
     $scope.init = function () {
         $scope.popupShow = false;
         $scope.menu_key = $stateParams.menu_key;
+        $scope.entity = $stateParams.entity;
+        $scope.lang = $stateParams.lang;
         $scope.getRestaurantMenu();
         $scope.images = true;
         $scope.recipeImages = [];
         $scope.selected = 0;
         $scope.foodItemObj = [];
-        
+
     };
 
     $scope.getRestaurantMenu = function () {
         $scope.loader = true;
-        Data.getRestaurantMenu({ menu_key: $scope.menu_key }, function (result) {
+        Data.getRestaurantMenu({ menu_key: $scope.menu_key, entity: $scope.entity, lang: $scope.lang }, function (result) {
             $scope.user = result.contents.user;
             $scope.categories = result.contents.categories;
             angular.forEach(result.contents.categories, function (item) {
@@ -43,7 +45,7 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$window'
     $scope.populateRecipes = function (cat, index) {
         var result = _.findWhere($scope.foodItemObj, { id: cat.id });
         if (result.recipes.length == 0) {
-            Data.getRecipesByCategories({ category_id: result.id, menu_key: $scope.menu_key }, function (result) {
+            Data.getRecipesByCategories({ category_id: result.id, menu_key: $scope.menu_key, entity: $scope.entity, lang: $scope.lang }, function (result) {
                 $scope.recipes = result.contents.recipes;
                 var index = _.findIndex($scope.foodItemObj, { id: cat.id });
                 $scope.foodItemObj[index].recipes = result.contents.recipes;

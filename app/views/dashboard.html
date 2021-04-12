@@ -329,6 +329,31 @@
         opacity: 1;
         height: auto;
     }
+
+    .menu-print-popup .menu-variation-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .menu-print-popup .menu-variation-container select {
+        margin-right: 10px;
+        width: 150px;
+    }
+
+    .menu-print-popup .menu-variation-container select:last-child {
+        margin-right: 0px;
+    }
+
+    .menu-print-popup .pop-up-title h4 {
+        margin-bottom: 10px;
+    }
+
+    .menu-print-popup label.checkbox-inline {
+        padding: 10px;
+        border-bottom: 1px solid #00000047;
+        cursor: grab;
+    }
 </style>
 <header class="header db-page">
     <div class="headTitle">
@@ -358,8 +383,8 @@
                         <div class="card-pad">
                             <div class="add-cat-block" ng-if="isUserChanged() == false"
                                 ng-class="{'open': category.showCatBox}">
-                                <div class="btn btn-icon add-cat-link" ng-click="category.openCatBox()" 
-                                ng-class="{'button-disable':access_state == 2 && getRecipeCategoriesLength() >= 3}">
+                                <div class="btn btn-icon add-cat-link" ng-click="category.openCatBox()"
+                                    ng-class="{'button-disable':access_state == 2 && getRecipeCategoriesLength() >= 3}">
                                     <span class="icon-plus-circle"></span>&nbsp;Add New Category
                                 </div>
                                 <div class="add-food-item-box add-cat-box">
@@ -498,7 +523,9 @@
                                             ng-class="{'button-disable':access_state == 2 && cat.recipes.length >= 3}"><span></span>Bulk
                                             Entry</a>
                                     </div>
-                                    <button class="btn btn-icon save-order" ng-show="cat.show" ng-class="{'open none' : cat.show}" ng-click="saveOrder(cat.recipes)">Save order</button>
+                                    <button class="btn btn-icon save-order" ng-show="cat.show"
+                                        ng-class="{'open none' : cat.show}" ng-click="saveOrder(cat.recipes)">Save
+                                        order</button>
                                 </div>
                                 <!--empty-body-->
                             </div>
@@ -574,11 +601,11 @@
                     <div class="pop-up-title">
                         <h4>{{ detail.recipe.name}}</h4>
                         <select ng-model="qrLanguage" class="select-box">
-                        <option ng-value="" value=""  ng-if="!qrLanguage" >Select Language</option>
-                        <option ng-value="1"  ng-if="qrLanguage" >Both</option>
-                        <option ng-value="2">English</option>
-                        <option ng-value="3">Arabic</option>
-                    </select>
+                            <option ng-value="" value=""  ng-if="!qrLanguage" >Select Language</option>
+                            <option ng-value="1"  ng-if="qrLanguage" >Both</option>
+                            <option ng-value="2">English</option>
+                            <option ng-value="3">Arabic</option>
+                        </select>
                     </div>
                 </div>
 
@@ -662,24 +689,39 @@
 </script>
 
 <script type="text/ng-template" id="menu_print_modal.html">
-    <div class="pop-up">
+    <div class="pop-up menu-print-popup">
         <div class="popup-box">
             <div class="pop-up-pad">
                 <span ng-click="$dismiss()" class="close-btn"></span>
                 <div class="pop-up-head">
                     <div class="pop-up-title">
                         <h4>Select Category</h4>
+                        <div class="menu-variation-container">
+                            <select ng-model="menuEntity" class="select-box">
+                                <option ng-value="" value=""  ng-if="!menuEntity">Select Entity</option>
+                                <option value="{{entity.id}}" ng-value="{{entity.id}}" ng-repeat="entity in entities">{{entity.name}}</option>
+                            </select>
+                            <select ng-model="menuLanguage" class="select-box">
+                                <option ng-value="" value=""  ng-if="!menuLanguage">Select Language</option>
+                                <option value="{{language.id}}" ng-value="{{language.id}}" ng-repeat="language in languages">{{language.name}}</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
                 <div class="pop-up-content scroll-vertical">
                     <div class="full-width">
-                        <div class="form-container">
+                        <div class="form-container" dnd-list="categories">
                             <label class="checkbox-inline">
                                 <input type="checkbox" ng-model="download.checkall" ng-true-value="true" ng-false-value="false"> 
                                 <span>Select All</span>
                             </label>
-                            <label class="checkbox-inline" ng-repeat="cat in categories track by $index">
+                            <label class="checkbox-inline"
+                            ng-repeat="cat in categories" 
+                            dnd-draggable="cat"
+                            dnd-effect-allowed="move"
+                            dnd-moved="categories.splice($index, 1)"
+                            dnd-type="{{String(cat.id)}}">
                                 <input type="checkbox" checklist-model="download.categories" checklist-value="cat.id"> 
                                 <span ng-bind="cat.name"></span>
                             </label>

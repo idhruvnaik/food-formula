@@ -39,7 +39,6 @@ angular
         },
       };
       $scope.user = $localStorage.user;
-      console.log($scope.user['access_state']);
       $scope.access_state = $scope.user['access_state'];
       if ($scope.access_state == 2 && $scope.getRecipeCategoriesLength < 3) {
         var d = document.getElementById('access_state');
@@ -490,8 +489,12 @@ angular
             templateUrl: 'menu_print_modal.html',
             controller: 'menuPrintCtrl',
             resolve: {
-              categories: function () {
-                return $scope.recipeCategories;
+              options: function () {
+                return {
+                  categories: $scope.recipeCategories,
+                  entities: $scope.$parent.accountData.user_entities,
+                  languages: $scope.$parent.accountData.user_languages
+                };
               },
             },
           })
@@ -499,7 +502,7 @@ angular
             console.log(result.cat_id);
             $localStorage.QrCategories = result.cat_id.join('@');
             $timeout(function () {
-              $window.open('/menu-qr-print', '_blank');
+              $window.open('/menu-qr-print/' + result.entity + '/' + result.lang, '_blank');
             }, 100);
           });
       };
@@ -618,25 +621,29 @@ angular
   ])
   .controller('menuPrintCtrl', [
     '$scope',
-    'categories',
+    'options',
     '$uibModalInstance',
     'Notification',
     'Data',
     '$localStorage',
     function (
       $scope,
-      categories,
+      options,
       $uibModalInstance,
       Notification,
       Data,
       $localStorage
     ) {
       $scope.download = { categories: [] };
-      $scope.categories = categories;
+      $scope.categories = options.categories;
+      $scope.entities = options.entities;
+      $scope.languages = options.languages;
       $scope.printCategories = function (lang) {
         if ($scope.download.categories.length > 0) {
           $uibModalInstance.close({
-            cat_id: $scope.download.categories
+            cat_id: $scope.download.categories,
+            entity: $scope.menuEntity,
+            lang: $scope.menuLanguage
           });
         } else {
           Notification.error('Select atleast one category');
