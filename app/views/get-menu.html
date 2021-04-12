@@ -112,38 +112,6 @@
         font-size: 20px;
         margin-bottom: 0px;
     }
-
-    .slide {
-        padding: 0px;
-        min-height: unset;
-    }
-
-    .slide,
-    .container .hero-banner {
-        min-height: unset;
-    }
-
-    .carousel-indicators li {
-        margin-right: 10px !important;
-        border: 1px solid;
-    }
-
-    .carousel-indicators li:last-child {
-        margin-right: 0px !important;
-    }
-
-    .carousel-control.right,
-    .carousel-control.left {
-        background-image: unset;
-    }
-
-    .carousel-indicators {
-        bottom: -40px;
-    }
-
-    .carousel-indicators .active {
-        background-color: black;
-    }
 </style>
 <div class="menu-container" ng-if="loader == false">
     <div class="menu-header">
@@ -209,8 +177,8 @@
             <div class="pop-up-pad">
                 <div class="pop-up-nav">
                     <ul>
-                        <li class="li-item active" ng-click="popContentToggle('images')">Images</li>
-                        <li class="li-item" ng-click="popContentToggle('facts')">Other Information</li>
+                        <li class="active" ng-click="popContentToggle('images')">Images</li>
+                        <li ng-click="popContentToggle('facts')">Other Information</li>
                     </ul>
                 </div>
                 <div class="pop-up-content">
@@ -230,9 +198,13 @@
                     </div>
                     <div class="recipe-img-container" ng-if="images">
                         <h1 class="empty-text" ng-if="recipeImages.length == 0">Images not available!</h1>
-                        <div class="owl-carousel owl-theme" id="slide-list">
-                            <div class="banner" ng-repeat="img in recipeImages">
-                                <img src="{{img}}">
+                        <div class="container">
+                            <div class="hero-banner">
+                                <div class="owl-carousel owl-theme" id="slide-list">
+                                    <div class="banner" ng-repeat="img in recipeImages">
+                                        <img src="{{img}}">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -254,18 +226,3 @@
         <h5>Powered by Food Formula</h5>
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var owl = $("#slide-list");
-        owl.owlCarousel({
-            slideSpeed: 500,
-            paginationSpeed: 1000,
-            loop: true,
-            autoplay: true,
-            autoplayHoverPause: true,
-            items: 1,
-            nav: false,
-            dots: true,
-        });
-    });
-</script>

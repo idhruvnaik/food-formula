@@ -643,7 +643,9 @@
                         <label>Select Recipe Image</label>
                         <div class="form-field">
                             <input type="file" onchange="angular.element(this).scope().uploadFile(this.files[0])"
-                                ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'">
+                                ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'" image="image1"
+                                resize-max-height="800" resize-max-width="800" resize-quality="0.7"
+                                resize-type="image/jpg" ng-image-compress>
                         </div>
                     </div>
                     <!-- <button type="submit" class="btn btn-icon update-btn" ng-click="uploadFile()">Upload Image</button> -->

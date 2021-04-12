@@ -1,10 +1,5 @@
 'use strict';
-angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$window', '$localStorage', 'ENV', 'Data', '$stateParams', '$timeout', function ($scope, $window, $localStorage, ENV, Data, $stateParams, $timeout) {
-
-    $('li').click(function () {
-        $('li.li-item.active').removeClass('active');
-        $(this).addClass('active');
-    });
+angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '$stateParams', function ($scope, Data, $stateParams) {
 
     $scope.foodTypes = [
         { id: 1, name: 'Veg' },
@@ -25,6 +20,10 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$window'
         $scope.selected = 0;
         $scope.foodItemObj = [];
 
+        $('li').click(function () {
+            $('li.li-item.active').removeClass('active');
+            $(this).addClass('active');
+        });
     };
 
     $scope.getRestaurantMenu = function () {
@@ -79,12 +78,4 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$window'
     }
 
     $scope.init();
-}]).directive('contentSlider', function () {
-
-    return function (scope, element) {
-        if (scope.$last) {
-            element.addClass('active');
-        }
-    };
-
-});
+}]);

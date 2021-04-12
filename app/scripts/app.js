@@ -1,5 +1,5 @@
 'use strict';
-angular.module('restaurantApp', ['ui.router', 'oc.lazyLoad', 'ui.bootstrap', 'ui-notification', 'ngStorage', 'angular-loading-bar', 'ui.tinymce', 'ngIdle', 'checklist-model', 'monospaced.qrcode', 'routes', 'config', 'interceptor', 'ngAnimate', 'ngFileUpload', 'ui.select2', 'dndLists'])
+angular.module('restaurantApp', ['ui.router', 'oc.lazyLoad', 'ui.bootstrap', 'ui-notification', 'ngStorage', 'angular-loading-bar', 'ui.tinymce', 'ngIdle', 'checklist-model', 'monospaced.qrcode', 'routes', 'config', 'interceptor', 'ngAnimate', 'ngFileUpload', 'ui.select2', 'dndLists', 'ngImageCompress'])
         .config(['$provide', '$locationProvider', 'NotificationProvider', '$qProvider', 'IdleProvider', 'KeepaliveProvider', '$localStorageProvider', '$httpProvider', function ($provide, $locationProvider, NotificationProvider, $qProvider, IdleProvider, KeepaliveProvider, $localStorageProvider, $httpProvider) {
                 $locationProvider.html5Mode(true);
                 NotificationProvider.setOptions({
