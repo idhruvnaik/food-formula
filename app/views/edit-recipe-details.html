@@ -486,7 +486,7 @@
                                                 <select ng-model="recipeDetail.is_liquid" class="select-box"
                                                     name="foodType" required="">
                                                     <option value="" ng-if="!recipeDetail.is_liquid" selected>IS
-                                                        Liquid?</option>
+                                                        Liquid ?</option>
                                                     <option ng-value="type.id" ng-repeat="type in liquid"
                                                         ng-bind="type.name"></option>
                                                 </select>
@@ -497,87 +497,9 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-field-set qty-field"
-                                            ng-class="{'error': recipeForm.$submitted && recipeForm.cookedWeight.$invalid}">
-                                            <label class="input-label"><sup>*</sup> Total Cooked
-                                                Weight&nbsp;&nbsp;<img src="images/info-icon-blue.svg"
-                                                    title="Enter the cooked weight in grams of your recipe. This will be less than or equal to the total weight of your recipe."></label>
-                                            <div class="form-field">
-                                                <input type="number" ng-model="recipeDetail.cookedWeight"
-                                                    name="cookedWeight" class="" id="composition_weight"
-                                                    placeholder="Quantity" min="1" required="" />
-                                                <span ng-if="recipeForm.$submitted">
-                                                    <span class="err-msg"
-                                                        ng-if="recipeForm.cookedWeight.$error.required && recipeForm.cookedWeight.$error.min">Required</span>
-                                                </span>
-                                                <em class="serv-unit">gm</em>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-field-set qty-field"
-                                            ng-class="{'error': recipeForm.$submitted && recipeForm.servingDescription.$invalid}">
-                                            <label class="input-label"><sup>*</sup> Serving
-                                                Description&nbsp;&nbsp;<img src="images/info-icon-blue.svg"
-                                                    title="Example - Serves 2, 1 Serving, 8 pcs per plate."></label>
-                                            <div class="form-field">
-                                                <input type="text" ng-model="recipeDetail.servingDescription"
-                                                    name="servingDescription" class="" id="composition_description"
-                                                    placeholder="Description" required="" />
-                                                <span ng-if="recipeForm.$submitted">
-                                                    <span class="err-msg"
-                                                        ng-if="recipeForm.servingDescription.$error.required">Required</span>
-                                                </span>
-                                            </div>
-                                        </div>
-
                                     </div>
 
                                     <div class="g-cols">
-                                        <div class="form-field-set qty-field"
-                                            ng-class="{'error': recipeForm.$submitted && recipeForm.servingWeight.$invalid}">
-                                            <label class="input-label"><sup>*</sup> Per Serving
-                                                Weight&nbsp;&nbsp;<img src="images/info-icon-blue.svg"
-                                                    title="Enter weight in grams per serving. This weight is also used to compute the Nutrition Facts Label"></label>
-                                            <div class="form-field">
-                                                <input type="number" ng-model="recipeDetail.servingWeight"
-                                                    name="servingWeight" class="" id="composition_quantity" min="1"
-                                                    placeholder="Quantity" required="" />
-                                                <span ng-if="recipeForm.$submitted">
-                                                    <span class="err-msg"
-                                                        ng-if="recipeForm.servingWeight.$error.required && recipeForm.servingWeight.$error.min">Required</span>
-                                                </span>
-                                                <em class="serv-unit">gm</em>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-field-set qty-field"
-                                            ng-class="{'error': recipeForm.$submitted && recipeForm.price.$invalid}">
-                                            <label class="input-label">Per Serving Selling Price</label>
-                                            <div class="form-field">
-                                                <input type="number" ng-model="dietInfo.price" name="price" class=""
-                                                    id="composition_price" placeholder="Price" required="" />
-                                                <span ng-if="recipeForm.$submitted">
-                                                    <span class="err-msg"
-                                                        ng-if="recipeForm.price.$error.required">Required</span>
-                                                </span>
-                                                <em class="serv-unit"></em>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-field-set qty-field"
-                                            ng-class="{'error': recipeForm.$submitted && recipeForm.costPrice.$invalid}">
-                                            <label class="input-label">Per Serving Cost Price</label>
-                                            <div class="form-field">
-                                                <input type="number" ng-model="dietInfo.costPrice" name="costPrice"
-                                                    id="composition_cost_price" placeholder="Cost Price" required="" />
-                                                <span ng-if="recipeForm.$submitted">
-                                                    <span class="err-msg"
-                                                        ng-if="recipeForm.costPrice.$error.required">Required</span>
-                                                </span>
-                                                <em class="serv-unit"></em>
-                                            </div>
-                                        </div>
-
                                         <div class="form-field-set"
                                             ng-class="{'error': recipeForm.$submitted && recipeForm.statusId.$invalid}">
                                             <label class="input-label">Status</label>
@@ -591,6 +513,40 @@
                                                     <span class="err-msg"
                                                         ng-if="recipeForm.statusId.$error.required">Required</span>
                                                 </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-field-set qty-field">
+                                            <label class="input-label"> Per Serving
+                                                Weight&nbsp;&nbsp;<img src="images/info-icon-blue.svg"
+                                                    title="Enter weight in grams per serving. This weight is also used to compute the Nutrition Facts Label"></label>
+                                            <div class="form-field">
+                                                <input type="number" ng-model="recipeDetail.servingWeight"
+                                                    name="servingWeight" class="" min="1" placeholder="Quantity" />
+                                                <em class="serv-unit" ng-if="!recipeDetail.is_liquid">gm</em>
+                                                <em class="serv-unit" ng-if="recipeDetail.is_liquid">ml</em>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-field-set qty-field">
+                                            <label class="input-label">Total Cooked
+                                                Weight&nbsp;&nbsp;<img src="images/info-icon-blue.svg"
+                                                    title="Enter the cooked weight in grams of your recipe. This will be less than or equal to the total weight of your recipe."></label>
+                                            <div class="form-field">
+                                                <input type="number" ng-model="recipeDetail.cookedWeight"
+                                                    name="cookedWeight" placeholder="Quantity" min="1" />
+                                                <em class="serv-unit" ng-if="!recipeDetail.is_liquid">gm</em>
+                                                <em class="serv-unit" ng-if="recipeDetail.is_liquid">ml</em>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-field-set qty-field">
+                                            <label class="input-label"> Serving Description&nbsp;&nbsp;<img
+                                                    src="images/info-icon-blue.svg"
+                                                    title="Example - Serves 2, 1 Serving, 8 pcs per plate."></label>
+                                            <div class="form-field">
+                                                <input type="text" ng-model="recipeDetail.servingDescription"
+                                                    name="servingDescription" placeholder="Description" />
                                             </div>
                                         </div>
 

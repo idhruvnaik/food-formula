@@ -105,8 +105,6 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
             $scope.recipeDetail.statusId = result.contents.status_id;
             $scope.recipeDetail.expiryDate = new Date(result.contents.expiry_date);
 
-            $scope.dietInfo.price = result.contents.per_serving_selling_price;
-            $scope.dietInfo.costPrice = result.contents.per_serving_cost_price;
             $scope.cookingInstruction = result.contents.cooking_info;
             $scope.dietInfo.allergiesInfo = result.contents.allergies_info;
             $scope.dietInfo.ingredientsInfo = result.contents.ingredients_info;
@@ -177,8 +175,6 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
             ingredients_info: $scope.dietInfo.ingredientsInfo,
             cooking_info: $scope.cookingInstruction,
             allergies_info: $scope.dietInfo.allergiesInfo,
-            per_serving_cost_price: $scope.dietInfo.costPrice,
-            per_serving_selling_price: $scope.dietInfo.price,
             allergy_ids: $scope.diet.allergies.join('@'),
             meal_type_ids: $scope.diet.mealTypes.join('@'),
             expiry_date: $scope.recipeDetail.expiryDate,

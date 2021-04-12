@@ -717,11 +717,7 @@
                                 <span>Select All</span>
                             </label>
                             <label class="checkbox-inline"
-                            ng-repeat="cat in categories" 
-                            dnd-draggable="cat"
-                            dnd-effect-allowed="move"
-                            dnd-moved="categories.splice($index, 1)"
-                            dnd-type="{{String(cat.id)}}">
+                            ng-repeat="cat in categories">
                                 <input type="checkbox" checklist-model="download.categories" checklist-value="cat.id"> 
                                 <span ng-bind="cat.name"></span>
                             </label>
@@ -729,7 +725,7 @@
                     </div>
                 </div>
                 <div class="form-footer">
-                    <button class="btn btn-icon" ng-click="printCategories('eng')">English QR</button>
+                    <button class="btn btn-icon" ng-click="printCategories('eng')">Generate QR</button>
                 </div>
             </div>
         </div>
