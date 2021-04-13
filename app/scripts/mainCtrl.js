@@ -22,13 +22,12 @@ angular.module('restaurantApp').controller('MainCtrl', ['$scope', '$rootScope', 
     }
 
     var firebaseObj = {
-        apiKey: 'AIzaSyBEJHWSaGOIgYNScau7n0950kbgceIgJeY',
-        authDomain: 'ikoverk-978.firebaseapp.com',
-        databaseURL: 'https://ikoverk-978.firebaseio.com',
-        projectId: 'ikoverk-978',
-        storageBucket: 'ikoverk-978.appspot.com',
-        messagingSenderId: '999626119500',
-        appId: '1:999626119500:web:caaf848155db8433'
+        apiKey: "AIzaSyDKf7O3FwPXA_R22YsUw4pvMjesOwm0PzQ",
+        authDomain: "foodformula-f69fa.firebaseapp.com",
+        projectId: "foodformula-f69fa",
+        storageBucket: "foodformula-f69fa.appspot.com",
+        messagingSenderId: "869483731565",
+        measurementId: "G-WT57HTPPBS"
     };
     firebase.initializeApp(firebaseObj);
 

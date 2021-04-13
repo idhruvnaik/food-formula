@@ -126,7 +126,14 @@
     </div>
     <div class="menu-content">
         <div class="menu-bg-container">
-            <img src="/images/menu-bg.svg">
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <div class="numbertext">{{imageIndex + 1}}/{{sliderImages.length}}</div>
+                    <img src="{{sliderImages[imageIndex]}}" style="width:100%">
+                </div>
+                <a class="prev arrow" ng-click="changeImage(-1)">&#10094;</a>
+                <a class="next arrow" ng-click="changeImage(1)">&#10095;</a>
+            </div>
         </div>
         <div class="menu-details">
             <div class="category-container">
@@ -134,7 +141,7 @@
                     <div ng-class="{active: $index == selected}">{{cat.name}}</div>
                 </a>
             </div>
-            <div class="filter-container">
+            <div class="filter-container" style="display: none;">
                 <div class="form-field">
                     <select ng-model="foodType" class="select-box">
                         <option value="" ng-if="!foodType">Select Type</option>
@@ -146,10 +153,10 @@
             </div>
             <div class="recipe-container">
                 <div class="recipe-item"
-                    ng-repeat="recipe in recipes | filter: (!!foodType || undefined) && {recipe_type: foodType} track by $index"
+                    ng-repeat="recipe in recipes track by $index"
                     ng-click="showRecipeInfo(recipe.recipe_images, recipe.allergies, recipe.meal_types)">
                     <div class="recipe-image-container">
-                        <img src="{{recipe.recipe_images ? recipe.recipe_images[0] : ''}}">
+                        <img src="{{recipe.recipe_images.length > 0 ? recipe.recipe_images[0] : '/images/default-food-icon.svg'}}">
                     </div>
                     <div class="recipe-details">
                         <div class="recipe-name-container">

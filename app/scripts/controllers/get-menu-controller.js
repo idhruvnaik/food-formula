@@ -8,6 +8,7 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
     ];
 
     $scope.foodType = null;
+    $scope.imageIndex = 0;
 
     $scope.init = function () {
         $scope.popupShow = false;
@@ -31,6 +32,7 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
         Data.getRestaurantMenu({ menu_key: $scope.menu_key, entity: $scope.entity, lang: $scope.lang }, function (result) {
             $scope.user = result.contents.user;
             $scope.categories = result.contents.categories;
+            $scope.sliderImages = result.contents.slider_images;
             angular.forEach(result.contents.categories, function (item) {
                 $scope.foodItemObj.push({ id: item.id, recipes: item.recipes });
             });
@@ -76,6 +78,16 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
             $scope.images = false;
         }
     }
+
+    $scope.changeImage = function (index) {
+        if (($scope.sliderImages.length - 1) == $scope.imageIndex && index > 0) {
+            $scope.imageIndex = 0;
+        } else if ($scope.imageIndex == 0 && index < 0) {
+            $scope.imageIndex = $scope.sliderImages.length - 1;
+        } else {
+            $scope.imageIndex += index;            
+        }
+    };
 
     $scope.init();
 }]);

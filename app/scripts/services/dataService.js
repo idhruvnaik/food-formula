@@ -74,7 +74,7 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
     };
 
     s.saveRecipeCategory = function (id, name, successCb, failureCb) {
-        s.postHttp('restaurant/create_category', { id: id, name: name }, successCb, failureCb);
+        s.postHttp('restaurant/add_or_update_category', { id: id, name: name }, successCb, failureCb);
     };
 
     s.updateUserPassword = function (data, successCb, failureCb) {
