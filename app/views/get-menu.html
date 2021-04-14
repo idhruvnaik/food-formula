@@ -122,7 +122,7 @@
                     <img ng-src="{{hrLogo}}">
                 </div>
                 <h4 class="restaurant-title" ng-if="!hrLogo" ng-bind="user.name"></h4>
-                <span class="tagline"  ng-if="!hrLogo" ng-bind="user.tagline"></span>
+                <span class="tagline" ng-if="!hrLogo" ng-bind="user.tagline"></span>
             </div>
             <div class="right-div"></div>
         </div>
@@ -130,12 +130,11 @@
     <div class="menu-content">
         <div class="menu-bg-container">
             <div class="slideshow-container">
-                <div class="mySlides fade">
-                    <div class="numbertext">{{imageIndex + 1}}/{{sliderImages.length}}</div>
-                    <img src="{{sliderImages[imageIndex]}}" style="width:100%">
-                </div>
-                <a class="prev arrow" ng-click="changeImage(-1)">&#10094;</a>
-                <a class="next arrow" ng-click="changeImage(1)">&#10095;</a>
+                <img ng-repeat="slide in sliderImages" class="slide slide-animation" ng-hide="!isCurrentSlideIndex($index)"
+                    ng-src="{{slide}}" width="100%">
+
+                <a class="prev arrow" ng-click="prevSlide()">&#10094;</a>
+                <a class="next arrow" ng-click="nextSlide()">&#10095;</a>
             </div>
         </div>
         <div class="menu-details">

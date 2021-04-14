@@ -8,7 +8,6 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
     ];
 
     $scope.foodType = null;
-    $scope.imageIndex = 0;
 
     $scope.init = function () {
         $scope.popupShow = false;
@@ -42,6 +41,22 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
         }, function (error) {
             console.log(error);
         });
+    };
+
+    $scope.currentIndex = 0;
+
+    $scope.setCurrentSlideIndex = function (index) {
+        $scope.currentIndex = index;
+    };
+    $scope.isCurrentSlideIndex = function (index) {
+        return $scope.currentIndex === index;
+    };
+
+    $scope.prevSlide = function () {
+        $scope.currentIndex = ($scope.currentIndex < $scope.sliderImages.length - 1) ? ++$scope.currentIndex : 0;
+    };
+    $scope.nextSlide = function () {
+        $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.sliderImages.length - 1;
     };
 
     $scope.populateRecipes = function (cat, index) {
@@ -79,16 +94,6 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
             $scope.images = false;
         }
     }
-
-    $scope.changeImage = function (index) {
-        if (($scope.sliderImages.length - 1) == $scope.imageIndex && index > 0) {
-            $scope.imageIndex = 0;
-        } else if ($scope.imageIndex == 0 && index < 0) {
-            $scope.imageIndex = $scope.sliderImages.length - 1;
-        } else {
-            $scope.imageIndex += index;            
-        }
-    };
 
     $scope.init();
 }]);
