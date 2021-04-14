@@ -79,6 +79,15 @@
     .menu-title:after {
         margin: 0 0 0 5px;
     }
+    .ac{
+        background-color: #14bf98;
+    }
+    .nonac-text{
+        color: #ce0909ad !important;
+    }
+    .nonac-bg{
+        background-color: #ce0909ad !important;
+    }
 
 @media print {
     .menu-print-box{
@@ -120,9 +129,9 @@
                         <div class="pop-up-head">
                             <h5 ng-bind="accountData.name" class="restaurant-title" ng-if="logo == null"></h5>
                             <img class="img-container" ng-src="{{logo.url}}" ng-if="logo != null"/>
-                            <h5 class="menu-title" ng-if="lang == 1">English Menu QR</h5>
-                            <h5 class="menu-title" ng-if="lang == 2">Gujarati Menu QR</h5>
-                            <h5 class="menu-title" ng-if="lang == 0">Menu QR</h5>
+                            <h5 class="menu-title" ng-class="{'nonac-text' : entity != 1}" ng-if="lang == 1">English Menu QR</h5>
+                            <h5 class="menu-title" ng-class="{'nonac-text' : entity != 1}" ng-if="lang == 2">Gujarati Menu QR</h5>
+                            <h5 class="menu-title" ng-class="{'nonac-text' : entity != 1}" ng-if="lang == 0">Menu QR</h5>
                         </div>
                         <div class="pop-up-content">
                             <div class="g-cols">
@@ -131,7 +140,7 @@
                                         <qrcode data="{{menuPrint.qrcodeUrl}}" color="{{lang == 'ar' ? 'green' : 'black'}}" href="{{menuPrint.qrcodeUrl}}" size="{{qrSize}}" download></qrcode>
                                     </div>
                                 </div>
-                                <div class="info-text">
+                                <div class="info-text" ng-class="{'nonac-bg' : entity != 1}">
                                     <h5>Scan to See Menu</h5>
                                     <img src="/images/camera.svg">
                                 </div>
