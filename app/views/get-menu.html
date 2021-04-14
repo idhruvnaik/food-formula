@@ -116,10 +116,13 @@
 <div class="menu-container" ng-if="loader == false">
     <div class="menu-header">
         <div class="menu-header-pad">
-            <div class="burger-icon"></div>
+            <div class="burger-icon"><img ng-src="{{user.logo}}"></div>
             <div class="name-tagline-div">
-                <h4 class="restaurant-title" ng-bind="user.name"></h4>
-                <span class="tagline" ng-bind="user.tagline"></span>
+                <div ng-if="hrLogo">
+                    <img ng-src="{{hrLogo}}">
+                </div>
+                <h4 class="restaurant-title" ng-if="!hrLogo" ng-bind="user.name"></h4>
+                <span class="tagline"  ng-if="!hrLogo" ng-bind="user.tagline"></span>
             </div>
             <div class="right-div"></div>
         </div>
@@ -152,11 +155,11 @@
                 </div>
             </div>
             <div class="recipe-container">
-                <div class="recipe-item"
-                    ng-repeat="recipe in recipes track by $index"
+                <div class="recipe-item" ng-repeat="recipe in recipes track by $index"
                     ng-click="showRecipeInfo(recipe.recipe_images, recipe.allergies, recipe.meal_types)">
                     <div class="recipe-image-container">
-                        <img src="{{recipe.recipe_images.length > 0 ? recipe.recipe_images[0] : '/images/default-food-icon.svg'}}">
+                        <img
+                            src="{{recipe.recipe_images.length > 0 ? recipe.recipe_images[0] : '/images/default-food-icon.svg'}}">
                     </div>
                     <div class="recipe-details">
                         <div class="recipe-name-container">

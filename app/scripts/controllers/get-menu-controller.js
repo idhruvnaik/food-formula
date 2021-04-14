@@ -31,6 +31,7 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
         $scope.loader = true;
         Data.getRestaurantMenu({ menu_key: $scope.menu_key, entity: $scope.entity, lang: $scope.lang }, function (result) {
             $scope.user = result.contents.user;
+            $scope.hrLogo = result.contents.hr_logo;
             $scope.categories = result.contents.categories;
             $scope.sliderImages = result.contents.slider_images;
             angular.forEach(result.contents.categories, function (item) {
