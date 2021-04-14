@@ -160,7 +160,7 @@
                     </div>
                     <div class="recipe-details">
                         <div class="recipe-name-container">
-                            <h5 ng-bind="recipe.name"></h5>
+                            <h5>{{recipe.name}}{{recipe.alias ? (' / ' + recipe.alias) : ''}}</h5>
                             <div class="img-cotainer">
                                 <img src="/images/veg-icon.svg" ng-if="recipe.recipe_type == 1">
                                 <img src="/images/non-veg-icon.svg" ng-if="recipe.recipe_type == 2">

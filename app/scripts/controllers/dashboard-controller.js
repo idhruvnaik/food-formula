@@ -640,6 +640,12 @@ angular
       $scope.languages = options.languages;
       $scope.printCategories = function (lang) {
         if ($scope.download.categories.length > 0) {
+          
+          if ($scope.menuEntity == undefined || $scope.menuLanguage == undefined) {
+            Notification.error('Please select entity and language both');
+            return;
+          }
+          
           $uibModalInstance.close({
             cat_id: $scope.download.categories,
             entity: $scope.menuEntity,

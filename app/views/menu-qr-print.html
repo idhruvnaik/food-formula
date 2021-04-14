@@ -52,7 +52,7 @@
         object-fit: contain;
         max-height: 120px;
         max-width: 200px;
-        border-radius: 50%;
+        border-radius: 10px;
         margin-bottom: 10px;
     }
     .pop-up-head{
@@ -120,7 +120,9 @@
                         <div class="pop-up-head">
                             <h5 ng-bind="accountData.name" class="restaurant-title" ng-if="logo == null"></h5>
                             <img class="img-container" ng-src="{{logo.url}}" ng-if="logo != null"/>
-                            <h5 class="menu-title">Menu QR</h5>
+                            <h5 class="menu-title" ng-if="lang == 1">English Menu QR</h5>
+                            <h5 class="menu-title" ng-if="lang == 2">Gujarati Menu QR</h5>
+                            <h5 class="menu-title" ng-if="lang == 0">Menu QR</h5>
                         </div>
                         <div class="pop-up-content">
                             <div class="g-cols">
@@ -130,7 +132,7 @@
                                     </div>
                                 </div>
                                 <div class="info-text">
-                                    <h5>Scan to order</h5>
+                                    <h5>Scan to See Menu</h5>
                                     <img src="/images/camera.svg">
                                 </div>
                             </div>
