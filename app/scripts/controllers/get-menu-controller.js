@@ -94,30 +94,42 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
         }
     }
 
-    $scope.addRecipe = function (e, recipe) {
+    $scope.addRecipe = function (recipe) {
         $scope.orderItems.push(recipe);
-        itemCount(e.target.previousElementSibling, recipe.id);
+        recipe.quantity = _.filter($scope.orderItems, item => item.id == recipe.id).length;
     };
 
-    $scope.removeRecipe = function (e, recipe) {
+    $scope.removeRecipe = function (recipe) {
         var index = _.findIndex($scope.orderItems, function (item) { return item.id == recipe.id });
         if (index != -1) {
             $scope.orderItems.splice(index, 1);
         }
-        itemCount(e.target.nextElementSibling, recipe.id);
+        recipe.quantity = _.filter($scope.orderItems, item => item.id == recipe.id).length;
     };
 
-    $scope.showItem = function(){
+    $scope.showItem = function () {
         $scope.foodItemListPopUpShow = true;
     }
-    
-    $scope.closFoodItemListPopUpShow = function(){
+
+    $scope.closFoodItemListPopUpShow = function () {
         $scope.foodItemListPopUpShow = false;
     }
 
-    function itemCount(element, id) {
-        element.value = _.filter($scope.orderItems, item => item.id == id).length;
+    $scope.getFoodItemCount = function (id) {
+        return _.filter($scope.orderItems, item => item.id == id).length;
     }
 
     $scope.init();
-}]);
+}]).filter('unique', function () {
+
+    return function (arr, field) {
+        var o = {}, i, l = arr.length, r = [];
+        for (i = 0; i < l; i += 1) {
+            o[arr[i][field]] = arr[i];
+        }
+        for (i in o) {
+            r.push(o[i]);
+        }
+        return r;
+    };
+})

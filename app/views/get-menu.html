@@ -176,9 +176,9 @@
                         <p ng-bind="recipe.ingredients_info"></p>
 
                         <div class="recipe-count-container">
-                            <span ng-click="removeRecipe($event, recipe)" id="minus">-</span>
-                            <input type="number" value="0" readonly />
-                            <span ng-click="addRecipe($event, recipe)" id="plus">+</span>
+                            <span ng-click="removeRecipe(recipe)" id="minus">-</span>
+                            <input type="number" ng-model="recipe.quantity" ng-value="0" readonly />
+                            <span ng-click="addRecipe(recipe)" id="plus">+</span>
                         </div>
                     </div>
                 </div>
@@ -249,14 +249,17 @@
                     </ul>
                 </div>
                 <div class="pop-up-content order-container">
-                    <div ng-repeat="item in orderItems track by $index" class="order-item">
-                        <h5>{{$index + 1}}. {{item.name}}{{item.alias ? (' / ' + item.alias) : ''}}</h5>
-                        <div class="img-cotainer">
-                            <img src="/images/veg-icon.svg" ng-if="item.recipe_type == 1">
-                            <img src="/images/non-veg-icon.svg" ng-if="item.recipe_type == 2">
-                            <img src="/images/eggitarian-icon.svg" ng-if="item.recipe_type == 3">
-                            <span class="jain-icon" ng-if="item.is_jain">(J)</span>
+                    <div ng-repeat="item in orderItems | unique: 'id'" class="order-item">
+                        <div class="recipe-detail">
+                            <h5>{{$index + 1}}. {{item.name}}{{item.alias ? (' / ' + item.alias) : ''}}</h5>
+                            <div class="img-cotainer">
+                                <img src="/images/veg-icon.svg" ng-if="item.recipe_type == 1">
+                                <img src="/images/non-veg-icon.svg" ng-if="item.recipe_type == 2">
+                                <img src="/images/eggitarian-icon.svg" ng-if="item.recipe_type == 3">
+                                <span class="jain-icon" ng-if="item.is_jain">(J)</span>
+                            </div>
                         </div>
+                        <span> X {{getFoodItemCount(item.id)}}</span>
                     </div>
                 </div>
             </div>

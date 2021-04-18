@@ -43,7 +43,7 @@
         }
         .item-count {
           position: absolute;
-          padding: 1px 5px;
+          padding: 4px;
           border-radius: 50%;
           color: #ffffff;
           background-color: red;
@@ -200,9 +200,9 @@
                 margin: 0px 10px;
               }
               span {
-                width: 15px;
-                height: 10px;
-                background: #f2f2f2;
+                width: 20px;
+                height: 20px;
+                background: #d6d6d6;
                 border-radius: 4px;
                 padding: 5px;
                 border: 1px solid #ddd;
@@ -232,30 +232,37 @@
           padding: 10px;
           border-bottom: 1px solid #14bf98;
           justify-content: space-between;
+          .recipe-detail {
+            display: flex;
+            align-items: center;
+            h5 {
+              color: #113448;
+              font-size: 14px;
+              font-weight: 500;
+              margin-right: 10px;
+              text-align: left;
+            }
+            .img-cotainer {
+              display: flex;
+              align-items: center;
+              img {
+                height: 12px;
+                width: 12px;
+                margin-right: 7px;
+              }
+              .jain-icon {
+                font-size: 14px;
+                font-weight: 400;
+                color: #14bf98;
+              }
+            }
+          }
+          span{
+            color: black;
+          }
           &:last-child {
             margin-bottom: 10px;
             border-bottom: none;
-          }
-          h5 {
-            color: #113448;
-            font-size: 14px;
-            font-weight: 500;
-            margin-right: 10px;
-            text-align: left;
-          }
-          .img-cotainer {
-            display: flex;
-            align-items: center;
-            img {
-              height: 12px;
-              width: 12px;
-              margin-right: 7px;
-            }
-            .jain-icon {
-              font-size: 14px;
-              font-weight: 400;
-              color: #14bf98;
-            }
           }
         }
       }
