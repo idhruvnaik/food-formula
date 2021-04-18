@@ -19,11 +19,6 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
         $scope.recipeImages = [];
         $scope.selected = 0;
         $scope.foodItemObj = [];
-
-        $('li').click(function () {
-            $('li.li-item.active').removeClass('active');
-            $(this).addClass('active');
-        });
     };
 
     $scope.getRestaurantMenu = function () {

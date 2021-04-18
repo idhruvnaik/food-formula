@@ -220,6 +220,14 @@
                 </div>
             </div>
         </div>
+        <script>
+            $(document).ready(function () {
+                $('li').click(function () {
+                    $('li.active').removeClass('active');
+                    $(this).addClass('active');
+                });
+            });
+        </script>
     </div>
 </div>
 <div class="loader-container" ng-if="loader == true">
