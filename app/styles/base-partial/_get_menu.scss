@@ -31,6 +31,27 @@
           font-weight: 200;
         }
       }
+      .right-div {
+        position: relative;
+        padding: 5px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:active {
+          background-color: #0b634e;
+        }
+        .item-count {
+          position: absolute;
+          padding: 1px 5px;
+          border-radius: 50%;
+          color: #ffffff;
+          background-color: red;
+          font-size: 11px;
+          top: 0px;
+          left: 25px;
+        }
+      }
     }
   }
   .menu-content {
@@ -152,7 +173,7 @@
               }
               h5 {
                 color: #113448;
-                font-size: 16px;
+                font-size: 14px;
                 font-weight: 500;
                 margin-right: 10px;
               }
@@ -161,13 +182,37 @@
               color: #14bf98;
               margin-bottom: 5px;
               font-weight: 300;
-              font-weight: 14px;
+              font-size: 12px;
             }
             p {
               margin: 0;
               font-size: 14px;
               color: #113448;
               font-weight: 200;
+              margin-bottom: 10px;
+            }
+            .recipe-count-container {
+              display: flex;
+              align-items: center;
+              input {
+                padding: 5px 10px;
+                width: 30px;
+                margin: 0px 10px;
+              }
+              span {
+                width: 15px;
+                height: 10px;
+                background: #f2f2f2;
+                border-radius: 4px;
+                padding: 5px;
+                border: 1px solid #ddd;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &:active {
+                  background: #ffffff;
+                }
+              }
             }
           }
         }
@@ -176,6 +221,44 @@
   }
   .pop-up {
     .pop-up-content {
+      &.order-container {
+        display: flex;
+        overflow: auto;
+        flex-direction: column;
+        .order-item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+          padding: 10px;
+          border-bottom: 1px solid #14bf98;
+          justify-content: space-between;
+          &:last-child {
+            margin-bottom: 10px;
+            border-bottom: none;
+          }
+          h5 {
+            color: #113448;
+            font-size: 14px;
+            font-weight: 500;
+            margin-right: 10px;
+            text-align: left;
+          }
+          .img-cotainer {
+            display: flex;
+            align-items: center;
+            img {
+              height: 12px;
+              width: 12px;
+              margin-right: 7px;
+            }
+            .jain-icon {
+              font-size: 14px;
+              font-weight: 400;
+              color: #14bf98;
+            }
+          }
+        }
+      }
       .detail-container {
         display: flex;
         flex-direction: column;

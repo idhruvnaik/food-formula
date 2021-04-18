@@ -124,14 +124,17 @@
                 <h4 class="restaurant-title" ng-if="!hrLogo" ng-bind="user.name"></h4>
                 <span class="tagline" ng-if="!hrLogo" ng-bind="user.tagline"></span>
             </div>
-            <div class="right-div"></div>
+            <div class="right-div" ng-click="showItem()">
+                <img src="/images/shopping-cart-icon.svg" width="30px" height="30px">
+                <span class="item-count">{{orderItems.length}}</span>
+            </div>
         </div>
     </div>
     <div class="menu-content">
         <div class="menu-bg-container">
             <div class="slideshow-container">
-                <img ng-repeat="slide in sliderImages" class="slide slide-animation" ng-hide="!isCurrentSlideIndex($index)"
-                    ng-src="{{slide}}" width="100%">
+                <img ng-repeat="slide in sliderImages" class="slide slide-animation"
+                    ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide}}" width="100%">
 
                 <a class="prev arrow" ng-click="prevSlide()">&#10094;</a>
                 <a class="next arrow" ng-click="nextSlide()">&#10095;</a>
@@ -154,8 +157,7 @@
                 </div>
             </div>
             <div class="recipe-container">
-                <div class="recipe-item" ng-repeat="recipe in recipes track by $index"
-                    ng-click="showRecipeInfo(recipe.recipe_images, recipe.allergies, recipe.meal_types)">
+                <div class="recipe-item" ng-repeat="recipe in recipes track by $index">
                     <div class="recipe-image-container">
                         <img
                             src="{{recipe.recipe_images.length > 0 ? recipe.recipe_images[0] : '/images/default-food-icon.svg'}}">
@@ -172,6 +174,12 @@
                         </div>
                         <span class="price">{{recipe.price}} {{recipe.currency}}</span>
                         <p ng-bind="recipe.ingredients_info"></p>
+
+                        <div class="recipe-count-container">
+                            <span ng-click="removeRecipe($event, recipe)" id="minus">-</span>
+                            <input type="number" value="0" readonly />
+                            <span ng-click="addRecipe($event, recipe)" id="plus">+</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -215,6 +223,39 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $('li').click(function () {
+                    $('li.active').removeClass('active');
+                    $(this).addClass('active');
+                });
+            });
+        </script>
+    </div>
+
+    <div class="pop-up" ng-class="{'is-open' : foodItemListPopUpShow}" ng-show="foodItemListPopUpShow">
+        <div class="popup-bg" ng-click="closFoodItemListPopUpShow()">
+        </div>
+        <div class="popup-box">
+            <div class="pop-up-pad">
+                <div class="pop-up-nav">
+                    <ul>
+                        <li class="active">Food items</li>
+                    </ul>
+                </div>
+                <div class="pop-up-content order-container">
+                    <div ng-repeat="item in orderItems track by $index" class="order-item">
+                        <h5>{{$index + 1}}. {{item.name}}{{item.alias ? (' / ' + item.alias) : ''}}</h5>
+                        <div class="img-cotainer">
+                            <img src="/images/veg-icon.svg" ng-if="item.recipe_type == 1">
+                            <img src="/images/non-veg-icon.svg" ng-if="item.recipe_type == 2">
+                            <img src="/images/eggitarian-icon.svg" ng-if="item.recipe_type == 3">
+                            <span class="jain-icon" ng-if="item.is_jain">(J)</span>
                         </div>
                     </div>
                 </div>

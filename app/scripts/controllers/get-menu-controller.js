@@ -8,9 +8,11 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
     ];
 
     $scope.foodType = null;
+    $scope.orderItems = [];
 
     $scope.init = function () {
         $scope.popupShow = false;
+        $scope.foodItemListPopUpShow = false;
         $scope.menu_key = $stateParams.menu_key;
         $scope.entity = $stateParams.entity;
         $scope.lang = $stateParams.lang;
@@ -43,6 +45,7 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
     $scope.setCurrentSlideIndex = function (index) {
         $scope.currentIndex = index;
     };
+
     $scope.isCurrentSlideIndex = function (index) {
         return $scope.currentIndex === index;
     };
@@ -50,6 +53,7 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
     $scope.prevSlide = function () {
         $scope.currentIndex = ($scope.currentIndex < $scope.sliderImages.length - 1) ? ++$scope.currentIndex : 0;
     };
+
     $scope.nextSlide = function () {
         $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.sliderImages.length - 1;
     };
@@ -88,6 +92,31 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
         else {
             $scope.images = false;
         }
+    }
+
+    $scope.addRecipe = function (e, recipe) {
+        $scope.orderItems.push(recipe);
+        itemCount(e.target.previousElementSibling, recipe.id);
+    };
+
+    $scope.removeRecipe = function (e, recipe) {
+        var index = _.findIndex($scope.orderItems, function (item) { return item.id == recipe.id });
+        if (index != -1) {
+            $scope.orderItems.splice(index, 1);
+        }
+        itemCount(e.target.nextElementSibling, recipe.id);
+    };
+
+    $scope.showItem = function(){
+        $scope.foodItemListPopUpShow = true;
+    }
+    
+    $scope.closFoodItemListPopUpShow = function(){
+        $scope.foodItemListPopUpShow = false;
+    }
+
+    function itemCount(element, id) {
+        element.value = _.filter($scope.orderItems, item => item.id == id).length;
     }
 
     $scope.init();
