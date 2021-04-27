@@ -58,34 +58,6 @@ angular.module('restaurantApp').controller('editRecipeDetailsCtrl', ['$filter', 
     $scope.dietInfo = {};
     $scope.diet = {};
 
-    $scope.uploadImages = function () {
-
-        if ($scope.recipeImage.length == 0) {
-            Notification({ type: 'warning', message: 'Please select an image to be uploaded' });
-            return;
-        }
-
-        if ($scope.recipeImage.size > 10485760) {
-            Notification({ type: 'warning', message: 'Image file size exceeding 10 MB' });
-            return;
-        }
-
-        $scope.loader = true;
-
-        var fd = new FormData();
-        fd.append('file', $scope.recipeImage);
-        fd.append('entity_type', 1);
-        fd.append('entity_type_id', $scope.recipeId);
-
-        Data.uploadImages(fd, function (result) {
-            $scope.images.push(result);
-            $scope.loader = false;
-        }, function (error) {
-            $scope.loader = false;
-            console.log(error);
-        });
-    };
-
     $scope.removeImage = function (index, imageId) {
         Data.removeImage({ id: imageId }, function (result) {
             $scope.images.splice(index, 1);

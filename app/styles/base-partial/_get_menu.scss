@@ -7,12 +7,14 @@
       align-items: center;
       justify-content: space-between;
       .burger-icon {
-        height: 70px;
-        width: 70px;
+        height: 30px;
+        width: 30px;
         img {
           height: 100%;
           width: 100%;
-          border-radius: 10px;
+          &:active {
+            opacity: 0.5;
+          }
         }
       }
       .name-tagline-div {
@@ -257,7 +259,7 @@
               }
             }
           }
-          span{
+          span {
             color: black;
           }
           &:last-child {
@@ -292,6 +294,43 @@
               margin-right: 0px;
             }
           }
+        }
+      }
+    }
+  }
+}
+
+.restaurant-info-container {
+  padding: 10px;
+  .logo-container {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 10px;
+    img {
+      height: 100%;
+      width: 100%;
+      border-radius: 10px;
+    }
+  }
+  .contact-details {
+    .contact-item {
+      display: flex;
+      align-items: center;
+      h3 {
+        color: white;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        font-weight: 400;
+        margin-right: 10px;
+      }
+      h5 {
+        a {
+          color: white;
+          font-weight: 400;
+          font-size: 14px;
+          padding: 0;
+          text-decoration: underline;
         }
       }
     }

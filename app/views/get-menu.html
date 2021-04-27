@@ -112,11 +112,69 @@
         font-size: 20px;
         margin-bottom: 0px;
     }
+
+    .sidenav {
+        height: 100%;
+        /* 100% Full-height */
+        width: 0;
+        /* 0 width - change this with JavaScript */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Stay on top */
+        top: 0;
+        left: 0;
+        background-color: #111;
+        /* Black*/
+        overflow-x: hidden;
+        /* Disable horizontal scroll */
+        padding-top: 60px;
+        /* Place content 60px from the top */
+        transition: 0.5s;
+        /* 0.5 second transition effect to slide in the sidenav */
+    }
+
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        font-family: Gotham;
+        color: #818181;
+        display: block;
+        transition: 0.3s
+    }
+
+    .sidenav a:hover,
+    .offcanvas a:focus {
+        color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    #main {
+        transition: margin-left .5s;
+    }
+
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+    }
 </style>
-<div class="menu-container" ng-if="loader == false">
+<div class="menu-container" id="main" ng-if="loader == false">
     <div class="menu-header">
         <div class="menu-header-pad">
-            <div class="burger-icon"><img ng-src="{{user.logo}}"></div>
+            <div class="burger-icon"><span onclick="openNav()"><img src="/images/menu.svg"></span></div>
             <div class="name-tagline-div">
                 <div ng-if="hrLogo">
                     <img ng-src="{{hrLogo}}">
@@ -187,6 +245,7 @@
             </div>
         </div>
     </div>
+
     <div class="pop-up" ng-class="{'is-open' : popupShow}" ng-show="popupShow">
         <div class="popup-bg" ng-click="closePopup()">
         </div>
@@ -274,6 +333,20 @@
         </script>
     </div>
 </div>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="restaurant-info-container">
+        <div class="logo-container">
+            <img ng-src="{{user.logo}}">
+        </div>
+        <div class="contact-details">
+            <div class="contact-item">
+                <h3>Contact Us: </h3>
+                <h5> <a href="tel:{{user.mobile_no}}">{{user.mobile_no}}</a></h5>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="loader-container" ng-if="loader == true">
     <div class="loader">
         <div class="loader__bar"></div>
@@ -287,3 +360,13 @@
         <h5>Powered by Food Formula</h5>
     </div>
 </div>
+
+<script type="text/javascript">
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "100%";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>

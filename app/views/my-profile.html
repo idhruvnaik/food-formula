@@ -9,7 +9,9 @@
         background-color: #113448;
         padding: 0 15px;
         z-index: 1;
-        flex: none; }
+        flex: none;
+    }
+
     .header .rest-logo {
         position: absolute;
         width: 199px;
@@ -21,18 +23,26 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        display: none; }
+        display: none;
+    }
+
     .header .rest-logo img {
         max-height: 70px;
-        max-width: 180px; }
+        max-width: 180px;
+    }
+
     .header .right-head-col {
         padding-right: 220px;
         display: flex;
-        align-items: center; }
+        align-items: center;
+    }
+
     .header .search-box {
         width: 350px;
         display: flex;
-        position: relative; }
+        position: relative;
+    }
+
     .header .search-box:before {
         content: '';
         width: 40px;
@@ -42,7 +52,9 @@
         margin: auto;
         display: block;
         left: 0;
-        position: absolute; }
+        position: absolute;
+    }
+
     .header .search-box input {
         font-size: 13px;
         line-height: 40px;
@@ -55,44 +67,61 @@
         padding: 0 0 0 40px;
         width: 100%;
         background-color: #132753;
-        margin-right: 25px; }
-    .header .search-box input:focus, .header .search-box input:hover {
+        margin-right: 25px;
+    }
+
+    .header .search-box input:focus,
+    .header .search-box input:hover {
         background-color: #f5f7fb;
         border-radius: 4px;
-        transition: all 0.5s; }
+        transition: all 0.5s;
+    }
+
     .header .search-box ::-webkit-input-placeholder {
         font-weight: 300;
         font-style: italic;
         font-size: 13px;
         line-height: 13px;
-        color: #d9d9d9; }
+        color: #d9d9d9;
+    }
+
     .header .search-box ::-moz-placeholder {
         font-weight: 300;
         font-style: italic;
         font-size: 13px;
         line-height: 13px;
-        color: #d9d9d9; }
+        color: #d9d9d9;
+    }
+
     .header .search-box :-ms-input-placeholder {
         font-weight: 300;
         font-style: italic;
         font-size: 13px;
         line-height: 13px;
-        color: #d9d9d9; }
+        color: #d9d9d9;
+    }
+
     .header .search-box :-moz-placeholder {
         font-weight: 300;
         font-style: italic;
         font-size: 13px;
         line-height: 13px;
-        color: #d9d9d9; }
-    .headTitle h5,h1{
+        color: #d9d9d9;
+    }
+
+    .headTitle h5,
+    h1 {
         color: #ffffff;
     }
-    .rest-logo{
+
+    .rest-logo {
         background-color: #132753;
     }
-    .g-cols.offset_none > .one-half{
+
+    .g-cols.offset_none>.one-half {
         margin: 10px;
     }
+
     .close {
         position: absolute;
         right: 5px;
@@ -107,61 +136,78 @@
         font-size: 22px;
         border-radius: 50%;
     }
-    .close:hover{
+
+    .close:hover {
         color: #DF8F52;
     }
-    .img-container{
+
+    .img-container {
         width: 200px;
         height: 200px;
         position: relative;
         align-items: center;
     }
-    .img-container img{
+
+    .img-container img {
         border-radius: 5px;
         object-fit: contain;
     }
-    .restaurant-logo{
-        width: 100%; display: block; height: 100%;
+
+    .restaurant-logo {
+        width: 100%;
+        display: block;
+        height: 100%;
     }
-    .form-field-set.max-width{
+
+    .form-field-set.max-width {
         max-width: 250px;
     }
-    .api-card .card-body .form-field-set{
+
+    .api-card .card-body .form-field-set {
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
-    .api-card .card-body .form-field-set a{
+
+    .api-card .card-body .form-field-set a {
         color: #14bf98;
     }
-    .account-detail-card .form-container form{
+
+    .account-detail-card .form-container form {
         display: flex;
         flex-wrap: wrap;
     }
-    .account-detail-card .form-container form .form-field-set{
+
+    .account-detail-card .form-container form .form-field-set {
         width: calc(50% - 20px);
         margin-right: 10px;
     }
-    .form-field-set label sup{
+
+    .form-field-set label sup {
         color: red;
         font-size: 14px;
     }
-    .card-block{
+
+    .card-block {
         margin-right: 0px;
     }
-    .api-popup .field-container{
+
+    .api-popup .field-container {
         display: flex;
         flex-wrap: wrap;
     }
-    .api-popup .field-container .form-field-set:last-child{
+
+    .api-popup .field-container .form-field-set:last-child {
         width: 50%;
         margin-bottom: 10px;
     }
-    .api-popup .field-container .form-field-set:first-child{
+
+    .api-popup .field-container .form-field-set:first-child {
         width: calc(50% - 10px);
         margin-right: 10px;
     }
-    .api-popup .param-title{
+
+    .api-popup .param-title {
         padding-bottom: 10px;
         border-bottom: 1px solid black;
         margin-bottom: 10px;
@@ -169,13 +215,25 @@
         color: #14bf98;
         font-weight: 400;
     }
+
+    .banner-img-container {
+        display: flex;
+        margin: 10px 0px;
+    }
+
+    .banner-img-container .img-container {
+        margin-right: 10px;
+        width: 100px;
+        height: 100px;
+    }
 </style>
 
 <header class="header">
     <div class="headTitle">
         <h1>{{accountData.name}}</h1>
     </div>
-</header><!--header-->
+</header>
+<!--header-->
 
 <div class="page-content profile-page" style="height: calc(100vh - 60px); overflow: auto;">
     <div class="g-cols offset_none">
@@ -187,13 +245,17 @@
                     </div>
                     <div class="card-body">
                         <div class="form-container">
-                            <form name="userDetailsForm" ng-submit="userDetailsForm.$valid && updateUserDetails()" novalidate>
-                                <div class="form-field-set" ng-class="{'error': userDetailsForm.$submitted &&  userDetailsForm.name.$invalid}">
+                            <form name="userDetailsForm" ng-submit="userDetailsForm.$valid && updateUserDetails()"
+                                novalidate>
+                                <div class="form-field-set"
+                                    ng-class="{'error': userDetailsForm.$submitted &&  userDetailsForm.name.$invalid}">
                                     <label>Name <sup>*</sup></label>
                                     <div class="form-field">
-                                        <input name="name" type="text" placeholder="Type your name" ng-model="user.name" required>
+                                        <input name="name" type="text" placeholder="Type your name" ng-model="user.name"
+                                            required>
                                         <span ng-show="userDetailsForm.$submitted || userDetailsForm.name.$touched">
-                                            <span class="err-msg" ng-show="userDetailsForm.name.$error.required">Required</span>
+                                            <span class="err-msg"
+                                                ng-show="userDetailsForm.name.$error.required">Required</span>
                                         </span>
                                     </div>
                                 </div>
@@ -201,16 +263,20 @@
                                 <div class="form-field-set">
                                     <label>User name <sup>*</sup></label>
                                     <div class="form-field">
-                                        <input name="username" type="text" ng-model="user.username" class="disabled" readonly>
+                                        <input name="username" type="text" ng-model="user.username" class="disabled"
+                                            readonly>
                                     </div>
                                 </div>
 
-                                <div class="form-field-set" ng-class="{'error': userDetailsForm.$submitted &&  userDetailsForm.email.$invalid}">
+                                <div class="form-field-set"
+                                    ng-class="{'error': userDetailsForm.$submitted &&  userDetailsForm.email.$invalid}">
                                     <label>Email <sup>*</sup></label>
                                     <div class="form-field">
-                                        <input name="email" type="email" placeholder="Type email" ng-model="user.email" required>
+                                        <input name="email" type="email" placeholder="Type email" ng-model="user.email"
+                                            required>
                                         <span ng-show="userDetailsForm.$submitted || userDetailsForm.email.$touched">
-                                            <span class="err-msg" ng-show="userDetailsForm.email.$error.required">Required</span>
+                                            <span class="err-msg"
+                                                ng-show="userDetailsForm.email.$error.required">Required</span>
                                         </span>
                                     </div>
                                 </div>
@@ -218,19 +284,22 @@
                                 <div class="form-field-set">
                                     <label>Currency <sup>*</sup></label>
                                     <div class="form-field">
-                                        <select class="select-box" ng-model="user.currency" ng-options="key as value for (key , value) in currencies"></select>
+                                        <select class="select-box" ng-model="user.currency"
+                                            ng-options="key as value for (key , value) in currencies"></select>
                                     </div>
                                 </div>
 
                                 <div class="form-field-set">
                                     <label>Website URL</label>
                                     <div class="form-field">
-                                        <input type="text" ng-model="user.website" name="website" placeholder="Enter website URL">
+                                        <input type="text" ng-model="user.website" name="website"
+                                            placeholder="Enter website URL">
                                     </div>
                                 </div>
 
-                                <div class="form-footer">    
-                                    <button type="submit" class="btn btn-icon"><span class="icon-save"></span>&nbsp;save changes</button>
+                                <div class="form-footer">
+                                    <button type="submit" class="btn btn-icon"><span class="icon-save"></span>&nbsp;save
+                                        changes</button>
                                 </div>
                             </form>
                         </div>
@@ -245,44 +314,59 @@
                     <div class="card-body">
                         <div class="form-container">
                             <form name="profileForm" ng-submit="profileForm.$valid && saveUserPassword()" novalidate>
-                                <div class="form-field-set" ng-class="{'error': profileForm.$submitted &&  profileForm.old_password.$invalid}">
+                                <div class="form-field-set"
+                                    ng-class="{'error': profileForm.$submitted &&  profileForm.old_password.$invalid}">
                                     <div class="bdr-bottom">
                                         <label>Old Password</label>
                                         <div class="form-field">
                                             <img src="images/password-icon.svg">
-                                            <input name="old_password" type="password" placeholder="type your old password" ng-model="pass.old_password" class="input-icon" required="">
+                                            <input name="old_password" type="password"
+                                                placeholder="type your old password" ng-model="pass.old_password"
+                                                class="input-icon" required="">
                                             <span ng-show="profileForm.$submitted || profileForm.old_password.$touched">
-                                                <span class="err-msg" ng-show="profileForm.old_password.$error.required">Wrong password</span>
+                                                <span class="err-msg"
+                                                    ng-show="profileForm.old_password.$error.required">Wrong
+                                                    password</span>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-field-set" ng-class="{'error': profileForm.$submitted &&  profileForm.new_password.$invalid}">
+                                <div class="form-field-set"
+                                    ng-class="{'error': profileForm.$submitted &&  profileForm.new_password.$invalid}">
                                     <label>New Password</label>
                                     <div class="form-field">
                                         <img src="images/password-icon.svg">
-                                        <input type="password" placeholder="type your new password" name="new_password" ng-model="pass.new_password" class="input-icon" required="">
+                                        <input type="password" placeholder="type your new password" name="new_password"
+                                            ng-model="pass.new_password" class="input-icon" required="">
                                         <span ng-show="profileForm.$submitted || profileForm.new_password.$touched">
-                                            <span class="err-msg" ng-show="profileForm.new_password.$error.required">Wrong password</span>
+                                            <span class="err-msg"
+                                                ng-show="profileForm.new_password.$error.required">Wrong password</span>
                                         </span>
                                     </div>
                                 </div>
 
-                                <div class="form-field-set" ng-class="{'error': profileForm.$submitted &&  profileForm.confirm_password.$invalid}" style="margin-bottom: 40px;">
+                                <div class="form-field-set"
+                                    ng-class="{'error': profileForm.$submitted &&  profileForm.confirm_password.$invalid}"
+                                    style="margin-bottom: 40px;">
                                     <label>Retype New Password</label>
                                     <div class="form-field">
                                         <img src="images/password-icon.svg">
-                                        <input type="password" placeholder="retype your new password" name="confirm_password" ng-model="pass.retype_new_password" class="input-icon" required="">
+                                        <input type="password" placeholder="retype your new password"
+                                            name="confirm_password" ng-model="pass.retype_new_password"
+                                            class="input-icon" required="">
                                         <span ng-show="profileForm.$submitted || profileForm.confirm_password.$touched">
-                                            <span class="err-msg" ng-show="profileForm.confirm_password.$error.required">Wrong password</span>
+                                            <span class="err-msg"
+                                                ng-show="profileForm.confirm_password.$error.required">Wrong
+                                                password</span>
                                         </span>
                                     </div>
                                 </div>
-                                <div class="form-footer">    
-                                    <button type="submit" class="btn btn-icon"><span class="icon-save"></span>&nbsp;save changes</button>
+                                <div class="form-footer">
+                                    <button type="submit" class="btn btn-icon"><span class="icon-save"></span>&nbsp;save
+                                        changes</button>
                                     <div class="success-msg" ng-if="successMsg2">
-                                        <img src="images/icon-success.svg" /> &nbsp;  &nbsp;Your information is updated
+                                        <img src="images/icon-success.svg" /> &nbsp; &nbsp;Your information is updated
                                     </div>
                                 </div>
                             </form>
@@ -296,7 +380,8 @@
             <div class="card-block mb10">
                 <div class="card-pad mb10">
                     <div class="card-head">
-                        <h3>Update Logo&nbsp;<sup><img src="images/info-icon-blue.svg" width="10px" title="Upload only .PNG .JPG .SVG file"></sup></h3>
+                        <h3>Update Logo&nbsp;<sup><img src="images/info-icon-blue.svg" width="10px"
+                                    title="Upload only .PNG .JPG .SVG file"></sup></h3>
                     </div>
                     <div class="card-body">
                         <div class="form-container">
@@ -305,20 +390,94 @@
                                     <div class="bdr-bottom">
                                         <label ng-if="!logo.id">Select Image File</label>
                                         <div class="form-field" ng-if="!logo.id">
-                                            <input type="file" onchange="angular.element(this).scope().getFiles(this.files[0])" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'">
+                                            <input type="file"
+                                                onchange="angular.element(this).scope().getFiles(this.files[0])"
+                                                ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'">
                                         </div>
                                         <div class="img-container" ng-if="logo.url">
                                             <span class="close" ng-click="removeRestaurantLogo(logo.id)">&times;</span>
-                                            <img ng-src="{{logo.url}}" class="restaurant-logo"/>
+                                            <img ng-src="{{logo.url}}" class="restaurant-logo" />
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-footer"  ng-if="!logo.id">    
-                                    <button type="submit" class="btn btn-icon"><span class="icon-refresh"></span>&nbsp;Update Logo</button>
+                                <div class="form-footer" ng-if="!logo.id">
+                                    <button type="submit" class="btn btn-icon"><span
+                                            class="icon-refresh"></span>&nbsp;Update Logo</button>
                                 </div>
                             </form>
-                        </div>            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-block mb10">
+                <div class="card-pad mb10">
+                    <div class="card-head">
+                        <h3>Upload slider Images&nbsp;<sup><img src="images/info-icon-blue.svg" width="10px"
+                                    title="Upload only .PNG .JPG .SVG file"></sup></h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-container">
+                            <form name="logoForm" ng-submit="saveRestaurantLogo()">
+                                <div class="form-field-set">
+                                    <div class="bdr-bottom">
+                                        <label>Select Image File</label>
+                                        <div class="form-field">
+                                            <input type="file"
+                                                onchange="angular.element(this).scope().uploadFile(this.files[0])"
+                                                ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'">
+                                        </div>
+                                        <div class="banner-img-container">
+                                            <div class="img-container" ng-repeat="img in bannerImages">
+                                                <span class="close"
+                                                    ng-click="removeImage($index, img.id)">&times;</span>
+                                                <img ng-src="{{ img.url}}" class="recipe-img" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-footer" ng-if="!logo.id">
+                                    <button type="submit" class="btn btn-icon"><span
+                                            class="icon-refresh"></span>&nbsp;Update Logo</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-block mb10">
+                <div class="card-pad mb10">
+                    <div class="card-head">
+                        <h3>Horizontal Logo&nbsp;<sup><img src="images/info-icon-blue.svg" width="10px"
+                                    title="Upload only .PNG .JPG .SVG file"></sup></h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-container">
+                            <form name="logoForm" ng-submit="saveHrLogo()">
+                                <div class="form-field-set">
+                                    <div class="bdr-bottom">
+                                        <label ng-if="!hrLogo.id">Select Image File</label>
+                                        <div class="form-field" ng-if="!hrLogo.id">
+                                            <input type="file"
+                                                onchange="angular.element(this).scope().gethrLogo(this.files[0])"
+                                                ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'">
+                                        </div>
+                                        <div class="img-container" ng-if="hrLogo.url">
+                                            <span class="close" ng-click="removeHrLogo(hrLogo.id)">&times;</span>
+                                            <img ng-src="{{hrLogo.url}}" class="restaurant-logo" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-footer" ng-if="!hrLogo.id">
+                                    <button type="submit" class="btn btn-icon"><span
+                                            class="icon-refresh"></span>&nbsp;Update Logo</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
