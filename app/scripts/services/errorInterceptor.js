@@ -8,7 +8,7 @@ angular.module('interceptor', []).factory('errorHttpInterceptor', ['$q', '$injec
                 return config || $q.when(config);
             },
             response: function (response) {
-                console.clear();
+                // console.clear();
                 return response || $q.when(response);
             },
             responseError: function (response) {
