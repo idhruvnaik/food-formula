@@ -91,7 +91,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: calc(100% - 30px);
         .cat-name {
           display: flex;
           -webkit-tap-highlight-color: transparent;
@@ -155,6 +154,7 @@
             padding: 5px;
             display: flex;
             flex-direction: column;
+            width: calc(100% - 10px);
             .recipe-name-container {
               display: flex;
               align-items: center;
@@ -278,6 +278,14 @@
           font-size: 16px;
           padding: 0px;
           margin-bottom: 10px;
+        }
+        p{
+          margin: 0;
+          font-size: 14px;
+          color: #113448;
+          font-weight: 200;
+          margin-bottom: 10px;
+          text-align: left;
         }
         .item-container {
           display: flex;

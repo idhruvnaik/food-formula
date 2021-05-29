@@ -115,23 +115,16 @@
 
     .sidenav {
         height: 100%;
-        /* 100% Full-height */
         width: 0;
-        /* 0 width - change this with JavaScript */
         position: fixed;
-        /* Stay in place */
         z-index: 1;
-        /* Stay on top */
         top: 0;
         left: 0;
         background-color: #111;
         /* Black*/
         overflow-x: hidden;
-        /* Disable horizontal scroll */
         padding-top: 60px;
-        /* Place content 60px from the top */
         transition: 0.5s;
-        /* 0.5 second transition effect to slide in the sidenav */
     }
 
     .sidenav a {
@@ -231,12 +224,14 @@
                             </div>
                         </div>
                         <span class="price">{{recipe.price}} {{recipe.currency}}</span>
-                        <p ng-bind="recipe.ingredients_info"></p>
 
                         <div class="recipe-count-container">
                             <span ng-click="removeRecipe(recipe)" id="minus">-</span>
                             <input type="number" ng-model="recipe.quantity" ng-value="0" readonly />
                             <span ng-click="addRecipe(recipe)" id="plus">+</span>
+                        </div>
+                        <div style="text-align: right">
+                            <a ng-click="showRecipeInfo(recipe.recipe_images,recipe.allergies,recipe.mealTypes,recipe.ingredients_info)">Details</a>
                         </div>
                     </div>
                 </div>
@@ -259,6 +254,10 @@
                 </div>
                 <div class="pop-up-content">
                     <div ng-if="!images">
+                        <div class="detail-container">
+                            <h4>Description</h4>
+                            <p>{{ingredients_info}}</p>
+                        </div>
                         <div class="detail-container">
                             <h4>Contains</h4>
                             <div class="item-container">

@@ -74,11 +74,12 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
         $scope.selected = index;
     }
 
-    $scope.showRecipeInfo = function (images, allergies, mealTypes) {
+    $scope.showRecipeInfo = function (images, allergies, mealTypes, ingredients_info) {
         $scope.popupShow = true;
         $scope.recipeImages = images;
         $scope.allergies = allergies;
         $scope.mealTypes = mealTypes;
+        $scope.ingredients_info = ingredients_info;
     }
 
     $scope.closePopup = function () {
