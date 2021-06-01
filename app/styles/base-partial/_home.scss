@@ -1,5 +1,5 @@
 .home-page {
-  .hamburger .line{
+  .hamburger .line {
     width: 30px;
     height: 5px;
     background-color: #113448;
@@ -9,26 +9,26 @@
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
-  
-  .hamburger:hover{
+
+  .hamburger:hover {
     cursor: pointer;
   }
-  
-  #hamburger-9{
+
+  #hamburger-9 {
     position: relative;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
-  
-  #hamburger-9.is-active{
+
+  #hamburger-9.is-active {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
   }
-  
-  #hamburger-9:before{
+
+  #hamburger-9:before {
     content: "";
     position: absolute;
     -webkit-box-sizing: border-box;
@@ -44,27 +44,27 @@
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
-  
-  #hamburger-9.is-active:before{
+
+  #hamburger-9.is-active:before {
     border: 5px solid #113448;
   }
-  
-  #hamburger-9.is-active .line{
+
+  #hamburger-9.is-active .line {
     width: 35px;
   }
-  
-  #hamburger-9.is-active .line:nth-child(2){
+
+  #hamburger-9.is-active .line:nth-child(2) {
     opacity: 0;
   }
-  
-  #hamburger-9.is-active .line:nth-child(1){
+
+  #hamburger-9.is-active .line:nth-child(1) {
     -webkit-transform: translateY(13px);
     -ms-transform: translateY(13px);
     -o-transform: translateY(13px);
     transform: translateY(13px);
   }
-  
-  #hamburger-9.is-active .line:nth-child(3){
+
+  #hamburger-9.is-active .line:nth-child(3) {
     -webkit-transform: translateY(-13px) rotate(90deg);
     -ms-transform: translateY(-13px) rotate(90deg);
     -o-transform: translateY(-13px) rotate(90deg);
@@ -249,6 +249,35 @@
       }
     }
   }
+  #brands {
+    margin-bottom: 50px;
+    .section-head {
+      .section-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    .section-body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .single-logo {
+        max-width: 200px;
+        max-height: 200px;
+        margin-right: 50px;
+        &:last-child {
+          margin-right: 0px;
+        }
+        a {
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
   #upcoming {
     padding: 0px 40px;
     display: flex;
@@ -398,6 +427,23 @@
         .row {
           .header-hero-content {
             text-align: center;
+          }
+        }
+      }
+    }
+    #brands {
+      margin-bottom: 30px;
+      .section-body {
+        flex-direction: column;
+        .single-logo {
+          margin-right: 0px;
+          margin-bottom: 30px;
+          text-align: center;
+          img{
+            opacity: 1;
+          }
+          &:last-child {
+            margin-bottom: 0px;
           }
         }
       }
