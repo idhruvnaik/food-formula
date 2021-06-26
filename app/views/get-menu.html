@@ -183,8 +183,11 @@
     </div>
     <div class="menu-content">
         <div class="menu-bg-container">
-            <div class="fotorama">
-                <img src="../images/account-analysis.svg">
+            <div class="slideshow-container" ng-if="sliderImages.length > 0">
+                <img ng-repeat="slide in sliderImages" class="slide slide-animation"
+                    ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide}}" width="100%">
+                <a class="prev arrow" ng-click="prevSlide()">&#10094;</a>
+                <a class="next arrow" ng-click="nextSlide()">&#10095;</a>
             </div>
         </div>
         <div class="menu-details">
