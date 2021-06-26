@@ -1226,6 +1226,10 @@ p {
   font-size: 16px;
   color: #fe7e71;
   margin-top: 30px;
+  margin-bottom: 12px;
+}
+.single-blog .blog-content .more .content{
+  font-size: 12px;
 }
 .single-blog .blog-content .more i {
   margin-left: 5px;
@@ -1431,9 +1435,6 @@ p {
   color: #fe8464;
 }
 
-.footer-contact .contact {
-  padding-top: 20px;
-}
 .footer-contact .contact li {
   margin-top: 20px;
   font-size: 16px;

@@ -391,8 +391,12 @@
             </div>
             <div class="blog-content">
                 <p class="text">QR Code Menu 101: Make Restaurant Menu QR Codes for Safe Dining in 2021</p>
-                <a class="more" href="https://blog.beaconstac.com/2019/05/qr-code-menu-for-restaurant/"
-                    target="_blank">Learn More <i class="lni-chevron-right"></i></a>
+                <a class="more show_hide" target="_blank">Read More <i class="lni-chevron-right"></i></a>
+                <p class="content">As restaurants reopen, a major concern for them is limiting the spread of the
+                    Coronavirus through
+                    surfaces, such as physical menus. Switching to contactless options like QR Code menus is the next
+                    normal for restaurants of all sizes. CDC in its guidelines clearly stated the use of disposable or
+                    digital menus.</p>
             </div>
         </div>
 
@@ -402,8 +406,10 @@
             </div>
             <div class="blog-content">
                 <p class="text">Benefits Of Contactless Ordering Solution For Restaurants</p>
-                <a class="more" href="https://www.uengage.in/spotlight/contactless-ordering-solution"
-                    target="_blank">Learn More <i class="lni-chevron-right"></i></a>
+                <a class="more show_hide" target="_blank">Read More <i class="lni-chevron-right"></i></a>
+                <p class="content">Manage your restaurant with lesser staff, manage dine-in with minimal physical
+                    contact and manage takeaways with zero physical contact
+                </p>
             </div>
         </div>
 
@@ -414,9 +420,12 @@
             <div class="blog-content">
                 <p class="text">How to make contactless technology part of your restaurant’s 'new normal'
                 </p>
-                <a class="more"
-                    href="https://www.fastcasual.com/blogs/how-to-make-contactless-technology-part-of-your-restaurants-new-normal/"
-                    target="_blank">Learn More <i class="lni-chevron-right"></i></a>
+                <a class="more show_hide" target="_blank">Read More <i class="lni-chevron-right"></i></a>
+                <p class="content">Throughout the pandemic, restaurants have raced to find ways to make their
+                    restaurants as contactless as possible. But is contactless technology going to be the way of the
+                    future for the industry, now and beyond? There are certainly some solutions arising that show that
+                    promise. Contactless technology for menus, ordering, and payment can add a lot of convenience and
+                    speed to dining out.</p>
             </div>
         </div>
     </div>
@@ -457,10 +466,9 @@
                 <h4 class="title">Contact Us</h4>
             </div>
             <ul class="contact">
-                <li>+809272561823</li>
-                <li>info@gmail.com</li>
-                <li>www.yourweb.com</li>
-                <li>123 Stree New York City , United <br> States Of America 750.</li>
+                <li>+91 931 997 0375</li>
+                <li>foodformula2021@gmail.com</li>
+                <li>Shop no-3, Pramukhswami complex, Opp. Swaminarayan temple, Gandevi Road. Jamalpore, Navsari.</li>
             </ul>
         </div>
     </div>
@@ -498,6 +506,12 @@
                 $('html, body').animate({
                     scrollTop: $($(this).attr('href')).offset().top - 100
                 }, 1000);
+            });
+
+            $(".content").hide();
+            $(".show_hide").on("click", function () {
+                $(this).text($(this).next('.content').is(':visible') ? 'Read More' : 'Read Less');
+                $(this).next('.content').slideToggle(200);
             });
 
             var scrollLink = $('.page-scroll');
