@@ -1,6 +1,8 @@
 .menu-container {
   .menu-header {
     background-color: #12a583;
+    position: fixed;
+    z-index: 9999;
     .menu-header-pad {
       padding: 10px;
       display: flex;
@@ -59,6 +61,7 @@
     }
   }
   .menu-content {
+    padding-top: 60px;
     .menu-bg-container {
       .slideshow-container {
         position: relative;
