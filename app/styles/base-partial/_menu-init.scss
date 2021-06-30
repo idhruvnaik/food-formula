@@ -1,0 +1,29 @@
+.menu-init-page {
+  background-color: #12a583;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .restaurant-detail {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 250px;
+    min-height: 200px;
+    .logo-container {
+      margin-bottom: 15px;
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+    }
+    .select-box{
+        margin-bottom: 20px;
+    }
+  }
+}

@@ -207,6 +207,15 @@ angular.module('routes', [])
                         return $ocLazyLoad.load('scripts/controllers/get-menu-controller.js');
                     }]
                 }
+            }).state('app.menuinit', {
+                url: '/menu-init/:menu_key',
+                controller: 'menuInitCtrl',
+                templateUrl: 'views/menu-init.html',
+                resolve: {
+                    loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                        return $ocLazyLoad.load('scripts/controllers/menu-init-controller.js');
+                    }]
+                }
             }).state('app.entity', {
                 url: '/entity',
                 controller: 'entityCtrl',

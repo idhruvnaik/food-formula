@@ -1,0 +1,23 @@
+<style type="text/css">
+
+</style>
+<div class="menu-init-page">
+    <div class="restaurant-detail">
+        <div class="logo-container">
+            <img ng-src={{logo}}>
+        </div>
+        <select ng-model="menuLanguage" class="select-box">
+            <option ng-value="" value="" ng-if="!menuLanguage">Select Language</option>
+            <option value="{{language.id}}" ng-value="{{language.id}}" ng-repeat="language in languages">
+                {{language.name}}</option>
+        </select>
+        <select ng-model="menuEntity" class="select-box">
+            <option ng-value="" value="" ng-if="!menuEntity">Select entity</option>
+            <option value="{{entity.id}}" ng-value="{{entity.id}}" ng-repeat="entity in entities">
+                {{entity.name}}</option>
+        </select>
+        <div class="form-footer">
+            <button class="btn btn-icon" ng-click="seeMenu()">See menu</button>
+        </div>
+    </div>
+</div>

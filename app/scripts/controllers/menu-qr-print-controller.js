@@ -12,7 +12,7 @@ angular.module('restaurantApp').controller('menuQrCtrl', ['$scope', '$window', '
         $scope.menuPrint = {};
         $scope.languages = $scope.$parent.accountData.user_languages;
         $scope.qrSize = 200;
-        $scope.menuPrint.qrcodeUrl = window.location.host + '/get-menu/' + $scope.menu_key + '/' + $scope.entity + '/' + $scope.lang;
+        $scope.menuPrint.qrcodeUrl = window.location.host + '/menu-init/' + $scope.menu_key;
 
         $scope.getRestaurantLogo($scope.user_id);
         var params = {

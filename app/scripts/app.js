@@ -58,7 +58,7 @@ angular.module('restaurantApp', ['ui.router', 'oc.lazyLoad', 'ui.bootstrap', 'ui
                         if (toState && toState.url == '/adminpanel') {
                             $location.path('/adminpanel');
                         } else {
-                            if (!_.contains(['app.who_is_it_for', 'app.how_it_works', 'app.contact_us', 'app.blogs', 'app.blogdetail', 'app.press', 'app.privacy_policy', 'app.terms_and_condition', 'app.getmenu'], toState.name)) {
+                            if (!_.contains(['app.who_is_it_for', 'app.how_it_works', 'app.contact_us', 'app.blogs', 'app.blogdetail', 'app.press', 'app.privacy_policy', 'app.terms_and_condition', 'app.getmenu', 'app.menuinit'], toState.name)) {
                                 $location.path('/');
                             }
                         }

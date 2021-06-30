@@ -248,6 +248,9 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
     s.getMenu = function (params, successCb, failureCb) {
         s.postHttp('restaurant/get_menu', params, successCb, failureCb);
     };
+    s.menuInit = function (params, successCb, failureCb) {
+        s.postHttp('restaurant/menu_init', params, successCb, failureCb);
+    };
     s.getAllergiesAndMealTypes = function (params, successCb, failureCb) {
         s.postHttp('nutrical/get_allergies_and_meal_types', params, successCb, failureCb);
     };
