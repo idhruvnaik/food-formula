@@ -15,8 +15,6 @@ angular.module('restaurantApp').controller('menuInitCtrl', ['$scope', 'Data', '$
     }
 
     $scope.seeMenu = function () {
-        console.log($scope.menuLanguage);
-        console.log($scope.menuEntity);
         if ($scope.menuLanguage == undefined || $scope.menuEntity == undefined) {
             Notification.error('Please select language and entity both');
             return;
