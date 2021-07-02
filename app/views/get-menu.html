@@ -190,20 +190,21 @@
             </div>
         </div>
         <div class="menu-details">
-            <div class="category-container">
-                <a class="cat-name" ng-click="populateRecipes(cat, $index)" ng-repeat="cat in categories">
-                    <div ng-class="{active: $index == selected}">{{cat.name}}</div>
-                </a>
-            </div>
-            <div class="filter-container" style="display: none;">
+            <div class="filter-container">
                 <div class="form-field">
-                    <select ng-model="foodType" class="select-box">
-                        <option value="" ng-if="!foodType">Select Type</option>
-                        <option value="" ng-if="foodType">Clear Type</option>
-                        <option ng-value="type.id" value="type.id" ng-repeat="type in foodTypes" ng-bind="type.name">
+                    <select ng-model="category" ng-change="populateRecipes(category, 0)" class="select-box">
+                        <option value="" ng-if="!category">Select category</option>
+                        <option value="" ng-if="category">See All Category</option>
+                        <option ng-value="cat" value="cat" ng-repeat="cat in categories" ng-bind="cat.name">
                         </option>
                     </select>
                 </div>
+            </div>
+            <div class="category-container">
+                <a class="cat-name" ng-click="populateRecipes(cat, $index)"
+                    ng-repeat="cat in categories | filter: (!!category || undefined) && {id: category.id}">
+                    <div ng-class="{active: $index == selected}">{{cat.name}}</div>
+                </a>
             </div>
             <div class="recipe-container">
                 <div class="recipe-item" ng-repeat="recipe in recipes track by $index">

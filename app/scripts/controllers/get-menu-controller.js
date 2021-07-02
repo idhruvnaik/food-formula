@@ -1,13 +1,7 @@
 'use strict';
 angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '$stateParams', function ($scope, Data, $stateParams) {
 
-    $scope.foodTypes = [
-        { id: 1, name: 'Veg' },
-        { id: 2, name: 'Non-Veg' },
-        { id: 3, name: 'Eggitarian' }
-    ];
-
-    $scope.foodType = null;
+    $scope.category = null;
     $scope.orderItems = [];
 
     $scope.init = function () {
@@ -59,17 +53,21 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
     };
 
     $scope.populateRecipes = function (cat, index) {
-        var result = _.findWhere($scope.foodItemObj, { id: cat.id });
-        if (result.recipes.length == 0) {
-            Data.getRecipesByCategories({ category_id: result.id, menu_key: $scope.menu_key, entity: $scope.entity, lang: $scope.lang }, function (result) {
-                $scope.recipes = result.contents.recipes;
-                var index = _.findIndex($scope.foodItemObj, { id: cat.id });
-                $scope.foodItemObj[index].recipes = result.contents.recipes;
-            }, function (error) {
-                console.log(error);
-            });
-        } else if (result.recipes.length > 0) {
-            $scope.recipes = result.recipes;
+        if (cat == '') {
+            $scope.recipes = $scope.foodItemObj[0].recipes;
+        } else {
+            var result = _.findWhere($scope.foodItemObj, { id: cat.id });
+            if (result.recipes.length == 0) {
+                Data.getRecipesByCategories({ category_id: result.id, menu_key: $scope.menu_key, entity: $scope.entity, lang: $scope.lang }, function (result) {
+                    $scope.recipes = result.contents.recipes;
+                    var index = _.findIndex($scope.foodItemObj, { id: cat.id });
+                    $scope.foodItemObj[index].recipes = result.contents.recipes;
+                }, function (error) {
+                    console.log(error);
+                });
+            } else if (result.recipes.length > 0) {
+                $scope.recipes = result.recipes;
+            }
         }
         $scope.selected = index;
     }

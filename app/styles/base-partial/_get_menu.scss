@@ -123,13 +123,11 @@
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        .form-field {
-          width: calc(50% - 10px);
-          margin-right: 10px;
-          &:last-child {
-            width: 50%;
-            margin-right: 0px;
-          }
+        border: 1px solid #113448;
+        margin: 10px 5px;
+        border-radius: 10px;
+        .form-field{
+          width: 100%;
         }
       }
       .recipe-container {
@@ -192,8 +190,8 @@
             span.price {
               color: #14bf98;
               margin-bottom: 5px;
-              font-weight: 300;
-              font-size: 12px;
+              font-weight: 400;
+              font-size: 14px;
             }
             p {
               margin: 0;
