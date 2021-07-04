@@ -241,7 +241,7 @@
         </div>
     </div>
 
-    <div class="order-icon-float" ng-click="getAllOrders()">
+    <div class="order-icon-float" ng-click="getAllOrders()" ng-if="take_away">
         <img src="/images/order-icon.png">
     </div>
 
@@ -324,7 +324,7 @@
                         <span> X {{getFoodItemCount(item.id)}}</span>
                     </div>
                 </div>
-                <div class="pop-up-footer order-container" ng-if="orderItems.length > 0">
+                <div class="pop-up-footer order-container" ng-if="orderItems.length > 0 && take_away">
                     <button class="btn btn-icon" ng-click="generateOrder()">Checkout</button>
                 </div>
             </div>
@@ -353,13 +353,13 @@
                     <div ng-repeat="order in orders" class="order-card">
                         <div class="head">
                             <h3>{{order.status}}</h3>
-                            <h5>{{order.total_price}}</h5>
+                            <h5>{{order.total_price}} {{currency}}</h5>
                         </div>
                         <div class="card-body">
                             <span ng-repeat="recipe in order.recipes">{{recipe.quantity}} X {{recipe.name}}</span>
                         </div>
                         <div class="card-footer">
-                            <span>Ordered On : 4th July 2021</span>
+                            <span>Ordered On : {{order.order_created_at | date: 'medium'}}</span>
                         </div>
                     </div>
                 </div>

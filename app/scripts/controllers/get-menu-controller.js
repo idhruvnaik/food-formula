@@ -31,6 +31,8 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
             $scope.hrLogo = result.contents.hr_logo;
             $scope.categories = result.contents.categories;
             $scope.sliderImages = result.contents.slider_images;
+            $scope.currency = result.contents.currency;
+            $scope.take_away = result.contents.take_away;
             angular.forEach(result.contents.categories, function (item) {
                 $scope.foodItemObj.push({ id: item.id, recipes: item.recipes });
             });
