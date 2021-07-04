@@ -449,6 +449,15 @@ var envSet = {
             'VN': 'Viet Nam',
             'VG': 'Virgin Islands, British',
             'VI': 'Virgin Islands, U.S.'
+        },
+        ORDER_STATUSES: {
+            1: 'New',
+            2: 'Accepted',
+            3: 'Preparing',
+            4: 'Out for delivery',
+            5: 'Delivered',
+            6: 'Failed',
+            7: 'Rejected'
         }
     },
     production: {
@@ -876,6 +885,15 @@ var envSet = {
             'VN': 'Viet Nam',
             'VG': 'Virgin Islands, British',
             'VI': 'Virgin Islands, U.S.'
+        },
+        ORDER_STATUSES: {
+            1: 'New',
+            2: 'Accepted',
+            3: 'Preparing',
+            4: 'Out for delivery',
+            5: 'Delivered',
+            6: 'Failed',
+            7: 'Rejected'
         }
     }
 };
@@ -895,7 +913,8 @@ function generateENV() {
                     CURRENCY: env.CURRENCY,
                     ALLERGIES: env.ALLERGIES,
                     MEALTYPES: env.MEALTYPES,
-                    COUNTRIES: env.COUNTRIES
+                    COUNTRIES: env.COUNTRIES,
+                    ORDER_STATUSES: env.ORDER_STATUSES
                 }
             },
             wrap: '<%= __ngModule %>'

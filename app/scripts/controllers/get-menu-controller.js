@@ -1,12 +1,19 @@
 'use strict';
-angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '$stateParams', function ($scope, Data, $stateParams) {
+angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '$stateParams', '$localStorage', '$state', 'Notification', 'ENV', function ($scope, Data, $stateParams, $localStorage, $state, Notification, ENV) {
 
     $scope.category = null;
     $scope.orderItems = [];
+    $scope.menu_key = $stateParams.menu_key;
+    $scope.statuses = ENV.statuses;
 
     $scope.init = function () {
+        if (!$localStorage.user) {
+            $state.go('app.menuinit', { menu_key: $scope.menu_key });
+        }
+        $scope.customer = $localStorage.user;
         $scope.popupShow = false;
         $scope.foodItemListPopUpShow = false;
+        $scope.orderListPopUpShow = false;
         $scope.menu_key = $stateParams.menu_key;
         $scope.entity = $stateParams.entity;
         $scope.lang = $stateParams.lang;
@@ -116,6 +123,44 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
 
     $scope.getFoodItemCount = function (id) {
         return _.filter($scope.orderItems, item => item.id == id).length;
+    }
+
+    $scope.generateOrder = function () {
+        if (!$localStorage.user) {
+            $state.go('app.menuinit', { menu_key: $scope.menu_key });
+        }
+        var params = {};
+        var order_details = [];
+        $scope.orderItems = _.uniq($scope.orderItems, function (item, key, a) {
+            return item.id;
+        });
+        angular.forEach($scope.orderItems, function (value) {
+            order_details.push({ recipe_id: value.id, quantity: value.quantity, total_current_price: (value.quantity * value.price) });
+        });
+        params = {
+            name: $scope.customer.name,
+            mobile_no: $scope.customer.mobile_no,
+            address: $scope.customer.address,
+            email: $scope.customer.email,
+            menu_key: $scope.menu_key,
+            order_details: order_details
+        };
+        Data.generateOrder(params, function (result) {
+            Notification.success('Order placed successfully');
+            $scope.orderItems = [];
+        });
+    }
+
+    $scope.getAllOrders = function () {
+        $scope.orders = [];
+        Data.getAllOrders({ mobile_no: $scope.customer.mobile_no, email: $scope.customer.eamil }, function (result) {
+            $scope.orderListPopUpShow = true;
+            $scope.orders = result.contents;
+        });
+    }
+
+    $scope.closeOrderListPopUpShow = function () {
+        $scope.orderListPopUpShow = false;
     }
 
     $scope.init();

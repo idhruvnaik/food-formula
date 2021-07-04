@@ -13,6 +13,7 @@
     justify-content: center;
     flex-direction: column;
     min-width: 250px;
+    max-width: 250px;
     min-height: 200px;
     .logo-container {
       margin-bottom: 15px;
@@ -22,8 +23,15 @@
         border-radius: 50%;
       }
     }
-    .select-box{
-        margin-bottom: 20px;
+    form {
+      overflow-y: auto;
+      max-height: 400px;
+      .select-box {
+        margin-bottom: 10px;
+      }
+      .form-field .input-icon {
+        padding-left: 10px;
+      }
     }
   }
 }

@@ -53,9 +53,7 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
     s.getUserLogin = function (data, successCb, failureCb) {
         s.postHttp('user/request_account_access', data, successCb, failureCb);
     };
-    s.signupRestaurant = function (data, successCb, failureCb) {
-        s.postHttp('account/nutrical_account_request', data, successCb, failureCb);
-    };
+
     s.getLogin = function (data, successCb, failureCb) {
         data.ignoreLoadingBar = true;
         s.postHttp('admin/request_account_access', data, successCb, failureCb);
@@ -108,10 +106,6 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
         s.postHttp('restaurant/get_food_item_details_by_id', params, successCb, failureCb);
     };
 
-    s.addIngredients = function (params, successCb, failureCb) {
-        s.postHttp('nutrical/add_ingredients', params, successCb, failureCb);
-    };
-
     s.addRecipe = function (name, categoryId, successCb, failureCb) {
         s.postHttp('restaurant/create_food_item', { name: name, category_id: categoryId }, successCb, failureCb);
     };
@@ -140,14 +134,6 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
         s.postHttp('account/remove_ingredient', params, successCb, failureCb);
     };
 
-    s.searchSubRecipe = function (params, successCb, failureCb) {
-        s.postHttp('nutrical/search_sub_recipe', params, successCb, failureCb);
-    };
-
-    s.searchIngredients = function (params, successCb, failureCb) {
-        s.postHttp('nutrical/search_ingredient', params, successCb, failureCb);
-    };
-
     s.updateUserDetails = function (params, successCb, failureCb) {
         s.postHttp('user/update_user_profile', params, successCb, failureCb);
     };
@@ -163,62 +149,20 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
         s.postHttp('restaurant/get_restaurant_logo', params, successCb, failureCb);
     };
 
-
-    s.getFoodItemTemplate = function (params, successCb, failureCb) {
-        s.postHttp('nutrical/get_food_item_template', params, successCb, failureCb);
+    s.getOrders = function (successCb, failureCb) {
+        s.postHttp('order/get_restaurant_orders', {}, successCb, failureCb);
     };
 
-    s.getPosts = function (successCb, failureCb) {
-        s.postHttp('nutrical/get_post_list', {}, successCb, failureCb);
+    s.getOrderDetails = function (params, successCb, failureCb) {
+        s.postHttp('order/get_order_details', params, successCb, failureCb);
     };
-    s.addPost = function (params, successCb, failureCb) {
-        $http.post(s.baseUrl + 'nutrical/add_post', params, {
-            withCredentials: false,
-            headers: { 'Content-Type': undefined },
-            transformRequest: angular.identity
-        }).then(function (result) {
-            s.handleResponse(result, successCb, failureCb);
-        }, function (error) {
-            failureCb(error);
-        });
+
+    s.updateOrderStatus = function (params, successCb, failureCb) {
+        s.postHttp('order/update_order', params, successCb, failureCb);
     };
-    s.updatePost = function (params, successCb, failureCb) {
-        $http.post(s.baseUrl + 'nutrical/update_post', params, {
-            withCredentials: false,
-            headers: { 'Content-Type': undefined },
-            transformRequest: angular.identity
-        }).then(function (result) {
-            s.handleResponse(result, successCb, failureCb);
-        }, function (error) {
-            failureCb(error);
-        });
-    };
-    s.getPost = function (params, successCb, failureCb) {
-        s.postHttp('nutrical/get_post', params, successCb, failureCb);
-    };
-    s.getChartNutrientsAnalysis = function (params, successCb, failureCb) {
-        params.ignoreLoadingBar = true;
-        s.postHttp('nutrical/get_chart_nutrients_analysis', params, successCb, failureCb);
-    };
-    s.getPublishedBlogs = function () {
-        var promise = $http.post(s.baseUrl + 'nutrical/get_published_blog_list').then(function (response) {
-            return response;
-        });
-        return promise;
-    };
-    s.getPublishedPress = function () {
-        var promise = $http.post(s.baseUrl + 'nutrical/get_published_press_list').then(function (response) {
-            return response;
-        });
-        return promise;
-    };
-    s.getBlogDetails = function (data) {
-        var promise = $http.post(s.baseUrl + 'nutrical/detailed_blog', {
-            url: data.url
-        }).then(function (response) {
-            return response;
-        });
-        return promise;
+
+    s.getAllOrders = function (params, successCb, failureCb) {
+        s.postHttp('order/get_end_user_orders', params, successCb, failureCb);
     };
 
     s.getResturantCategories = function (successCb, failureCb) {
@@ -230,12 +174,6 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
     s.updateQrCodeCategory = function (params, successCb, failureCb) {
         s.postHttp('restaurant/update_qr_code_category', params, successCb, failureCb);
     };
-    s.getIngredients = function (successCb, failureCb) {
-        s.postHttp('nutrical/get_ingredients', {}, successCb, failureCb);
-    }
-    s.updateIngredientCost = function (params, successCb, failureCb) {
-        s.postHttp('nutrical/update_ingredient_cost', params, successCb, failureCb);
-    }
     s.getFoodItemLabel = function (params, successCb, failureCb) {
         s.postHttp('restaurant/food_item_label', params, successCb, failureCb);
     };
@@ -250,12 +188,6 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
     };
     s.menuInit = function (params, successCb, failureCb) {
         s.postHttp('restaurant/menu_init', params, successCb, failureCb);
-    };
-    s.getAllergiesAndMealTypes = function (params, successCb, failureCb) {
-        s.postHttp('nutrical/get_allergies_and_meal_types', params, successCb, failureCb);
-    };
-    s.getLableInformation = function (params, successCb, failureCb) {
-        s.getHttp('nutrical/get_label_information', params, successCb, failureCb);
     };
     s.setRecipeCategory = function (params, successCb, failureCb) {
         s.postHttp('restaurant/set_recipe_category', params, successCb, failureCb);
@@ -317,6 +249,9 @@ angular.module('restaurantApp').service('Data', ['$http', '$localStorage', 'ENV'
     };
     s.updateFoodItemAliases = function (params, successCb, failureCb) {
         s.postHttp('restaurant/update_food_item_aliases', params, successCb, failureCb);
+    };
+    s.generateOrder = function (params, successCb, failureCb) {
+        s.postHttp('order/generate_order', params, successCb, failureCb);
     };
     s.handleResponse = function (result, successCb, failureCb) {
         if (result.data.status == 'success') {

@@ -38,7 +38,8 @@
     "raven-js": "^3.27.2",
     "angular-drag-and-drop-lists": "^2.1.0",
     "angular-image-compress": "^0.1.5",
-    "components-font-awesome": "^5.15.3"
+    "components-font-awesome": "^5.15.3",
+    "moment": "momentjs#^2.29.1"
   },
   "resolutions": {
     "angular": "1.8.2"

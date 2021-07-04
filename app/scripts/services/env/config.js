@@ -790,6 +790,15 @@ angular.module("config", [])
 		"VN": "Viet Nam",
 		"VG": "Virgin Islands, British",
 		"VI": "Virgin Islands, U.S."
+	},
+	"ORDER_STATUSES": {
+		"1": "New",
+		"2": "Accepted",
+		"3": "Preparing",
+		"4": "Out for delivery",
+		"5": "Delivered",
+		"6": "Failed",
+		"7": "Rejected"
 	}
 })
 

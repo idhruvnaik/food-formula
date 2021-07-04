@@ -1,0 +1,186 @@
+<style>
+    .headerBlue {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        box-shadow: 2.407px 3.195px 5px rgba(0, 0, 0, 0.08);
+        background-color: #113448;
+        padding: 0 15px;
+        z-index: 1;
+        flex: none;
+    }
+
+    .headerBlue .rest-logo {
+        position: absolute;
+        width: 199px;
+        height: 70px;
+        border-radius: 4px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.26);
+        background-color: #ffffff;
+        right: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: none;
+    }
+
+    .headerBlue .rest-logo img {
+        max-height: 70px;
+        max-width: 180px;
+    }
+
+    .headerBlue .right-head-col {
+        /*padding-right: 220px;*/
+        display: flex;
+        align-items: center;
+    }
+
+    .headerBlue .search-box {
+        width: 350px;
+        display: flex;
+        position: relative;
+    }
+
+    .headerBlue .search-box:before {
+        content: '';
+        width: 40px;
+        background: url("images/search-icon.svg") no-repeat center center;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        display: block;
+        left: 0;
+        position: absolute;
+    }
+
+    .headerBlue .search-box input {
+        font-size: 13px;
+        line-height: 40px;
+        color: #ffffff;
+        padding-left: 40px;
+        height: 40px;
+        color: #132753;
+        border: 0;
+        border-bottom: 1px solid #ddd;
+        border-radius: 0;
+        padding: 0 0 0 40px;
+        width: 100%;
+        margin-right: 25px;
+    }
+
+    .headerBlue .search-box input:focus,
+    .header .search-box input:hover {
+        background-color: #f5f7fb;
+        border-radius: 4px;
+        transition: all 0.5s;
+    }
+
+    .headerBlue .search-box ::-webkit-input-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9;
+    }
+
+    .headerBlue .search-box ::-moz-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9;
+    }
+
+    .headerBlue .search-box :-ms-input-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9;
+    }
+
+    .headerBlue .search-box :-moz-placeholder {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13px;
+        line-height: 13px;
+        color: #d9d9d9;
+    }
+
+    .headTitleBlue h1 {
+        color: #ffffff;
+    }
+
+    .add-hover:hover {
+        color: #132753;
+    }
+
+    td {
+        padding: 7px 0px;
+    }
+
+    td a {
+        color: #626262;
+    }
+
+    .card-block {
+        margin-right: 0px;
+    }
+
+    .card-head {
+        border-bottom: none;
+        padding: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+</style>
+<header class="headerBlue">
+    <div class="headTitleBlue">
+        <h1>Orders</h1>
+    </div>
+
+    <div class="right-head-col">
+    </div>
+</header>
+
+<div class="page-content">
+    <div>
+        <div class="page-cont-pad">
+            <div class="card-block ingred-info">
+                <div class="card-pad">
+                    <div class="card-body">
+                        <div class="scroll">
+                            <table class="table-block table-striped table-hover">
+                                <thead>
+                                    <tr style="text-align: left">
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Instructions</th>
+                                        <th>Address</th>
+                                        <th>Status</th>
+                                        <th>View</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="order in orders| filter:query">
+                                        <td>{{order.name}}</td>
+                                        <td>{{order.email}}</td>
+                                        <td>{{order.mobile_no}}</td>
+                                        <td>{{order.instructions}}</td>
+                                        <td>{{order.address}}</td>
+                                        <td>{{statuses[order.status_id]}}</td>
+                                        <td><a href="/get-order-details/{{order.id}}"><img src="/images/edit-icon.svg"></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
