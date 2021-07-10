@@ -12,9 +12,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    min-width: 250px;
-    max-width: 250px;
+    min-width: 300px;
+    max-width: 300px;
     min-height: 200px;
+    z-index: 999;
     .logo-container {
       margin-bottom: 15px;
       img {
@@ -26,11 +27,21 @@
     form {
       overflow-y: auto;
       max-height: 400px;
+      width: 100%;
       .select-box {
         margin-bottom: 10px;
       }
       .form-field .input-icon {
         padding-left: 10px;
+      }
+      .mandatory-field{
+        color: red;
+        font-size: 14px;
+      }
+      .form-field{
+        textarea{
+          width: 100%;
+        }
       }
     }
   }

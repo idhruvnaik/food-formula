@@ -5,14 +5,13 @@ angular.module('restaurantApp').controller('menuQrCtrl', ['$scope', '$window', '
     $scope.user_id = $localStorage.user.user_id;
 
     $scope.entity = $stateParams.entity;
-    $scope.lang = $stateParams.lang;
 
     $scope.menu_key = $localStorage.user.menu_key;
     $scope.init = function () {
         $scope.menuPrint = {};
         $scope.languages = $scope.$parent.accountData.user_languages;
         $scope.qrSize = 200;
-        $scope.menuPrint.qrcodeUrl = window.location.host + '/menu-init/' + $scope.menu_key;
+        $scope.menuPrint.qrcodeUrl = window.location.host + '/menu-init/' + $scope.menu_key + '/' + $stateParams.entity;
 
         $scope.getRestaurantLogo($scope.user_id);
         var params = {

@@ -701,11 +701,6 @@
                                 <option ng-value="" value=""  ng-if="!menuEntity">Select Entity</option>
                                 <option value="{{entity.id}}" ng-value="{{entity.id}}" ng-repeat="entity in entities">{{entity.name}}</option>
                             </select>
-                            <select ng-model="menuLanguage" class="select-box">
-                                <option ng-value="" value=""  ng-if="!menuLanguage">Select Language</option>
-                                <option ng-value="0" value="0">Both</option>
-                                <option value="{{language.id}}" ng-value="{{language.id}}" ng-repeat="language in languages">{{language.name}}</option>
-                            </select>
                         </div>
                     </div>
                 </div>

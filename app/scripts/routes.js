@@ -208,7 +208,7 @@ angular.module('routes', [])
                     }]
                 }
             }).state('app.menuinit', {
-                url: '/menu-init/:menu_key',
+                url: '/menu-init/:menu_key/:menu_entity',
                 controller: 'menuInitCtrl',
                 templateUrl: 'views/menu-init.html',
                 resolve: {

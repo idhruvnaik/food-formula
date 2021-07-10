@@ -3,12 +3,11 @@ angular.module('restaurantApp').controller('menuInitCtrl', ['$scope', 'Data', '$
 
     $scope.init = function () {
         $scope.menuLanguage;
-        $scope.menuEntity;
         $scope.formData = $localStorage.user ? $localStorage.user : {};
         $scope.menu_key = $stateParams.menu_key;
+        $scope.formData.menuEntity = $stateParams.menu_entity;
         Data.menuInit({ menu_key: $scope.menu_key }, function (result) {
             $scope.languages = result.contents.languages;
-            $scope.entities = result.contents.entities;
             $scope.logo = result.contents.logo;
             $localStorage.restaurant_id = result.contents.id;
         }, function (error) {
@@ -17,6 +16,10 @@ angular.module('restaurantApp').controller('menuInitCtrl', ['$scope', 'Data', '$
     }
 
     $scope.seeMenu = function () {
+        if($scope.formData.name == undefined || $scope.formData.mobile_no == undefined || $scope.formData.address == undefined || $scope.formData.menuLanguage == undefined){
+            Notification.error('Please fill all required information');
+            return;
+        }
         $localStorage.user = $scope.formData;
         $state.go('app.getmenu', { menu_key: $scope.menu_key, entity: $scope.formData.menuEntity, lang: $scope.formData.menuLanguage });
     }
