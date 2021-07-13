@@ -13,28 +13,28 @@
             <img ng-src={{logo}}>
         </div>
         <form name="userForm" ng-submit="seeMenu()" novalidate="">
-            <div class="form-field-set">
+            <div class="form-field-set" ng-if="take_away">
                 <label>Name <sup class="mandatory-field">*</sup></label>
                 <div class="form-field">
                     <input type="text" placeholder="Enter your name" class="input-icon" ng-model="formData.name"
-                        name="name" required=>
+                        name="name" required />
                 </div>
             </div>
-            <div class="form-field-set">
+            <div class="form-field-set" ng-if="take_away">
                 <label>Address <sup class="mandatory-field">*</sup></label>
                 <div class="form-field">
                     <textarea placeholder="Enter Address" name="address" ng-model="formData.address"
                         required></textarea>
                 </div>
             </div>
-            <div class="form-field-set">
+            <div class="form-field-set" ng-if="take_away">
                 <label>Email</label>
                 <div class="form-field">
                     <input type="email" placeholder="Enter Email" class="input-icon" ng-model="formData.email"
                         name="email">
                 </div>
             </div>
-            <div class="form-field-set">
+            <div class="form-field-set" ng-if="take_away">
                 <label>Mobile number <sup class="mandatory-field">*</sup></label>
                 <div class="form-field">
                     <input type="number" placeholder="Enter Mobile Number" class="input-icon"

@@ -7,9 +7,9 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
     $scope.statuses = ENV.statuses;
 
     $scope.init = function () {
-        if (!$localStorage.user) {
-            $state.go('app.menuinit', { menu_key: $scope.menu_key });
-        }
+        // if (!$localStorage.user) {
+        //     $state.go('app.menuinit', { menu_key: $scope.menu_key });
+        // }
         $scope.customer = $localStorage.user;
         $scope.popupShow = false;
         $scope.foodItemListPopUpShow = false;
