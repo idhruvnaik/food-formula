@@ -160,6 +160,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
+                                        <th>Date & Time</th>
                                         <th>Instructions</th>
                                         <th>Address</th>
                                         <th>Status</th>
@@ -171,6 +172,7 @@
                                         <td>{{order.name}}</td>
                                         <td>{{order.email}}</td>
                                         <td>{{order.mobile_no}}</td>
+                                        <td>{{order.created_at | date: 'd/MM/yy, h:mm a'}}</td>
                                         <td>{{order.instructions}}</td>
                                         <td>{{order.address}}</td>
                                         <td>{{statuses[order.status_id]}}</td>
