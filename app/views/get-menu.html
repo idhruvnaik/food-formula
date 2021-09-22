@@ -376,11 +376,14 @@
         <div class="contact-details">
             <div class="contact-item">
                 <h3>Contact Us: </h3>
-                <h5> <a href="tel:{{user.mobile_no}}">{{user.mobile_no}}</a></h5>
+                <h5> <a href="tel:+{{user.country_code}}{{user.mobile_no}}">+{{user.country_code}}{{user.mobile_no}}</a></h5>
             </div>
             <div class="contact-item" ng-if="user.address">
                 <h3>Address: </h3>
                 <h5><a>{{user.address}}</a></h5>
+            </div>
+            <div class="contact-item" ng-if="user.map_link">
+                <iframe ng-src="{{trustSrc(user.map_link)}}" width="100%" style="border-radius: 10px;"></iframe>
             </div>
         </div>
     </div>

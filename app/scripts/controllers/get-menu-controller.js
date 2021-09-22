@@ -1,5 +1,5 @@
 'use strict';
-angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '$stateParams', '$localStorage', '$state', 'Notification', 'ENV', function ($scope, Data, $stateParams, $localStorage, $state, Notification, ENV) {
+angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$sce', 'Data', '$stateParams', '$localStorage', '$state', 'Notification', 'ENV', function ($scope, $sce, Data, $stateParams, $localStorage, $state, Notification, ENV) {
 
     $scope.category = null;
     $scope.orderItems = [];
@@ -23,6 +23,10 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', 'Data', '
         $scope.selected = 0;
         $scope.foodItemObj = [];
     };
+
+    $scope.trustSrc = function (src) {
+        return $sce.trustAsResourceUrl(src);
+    }
 
     $scope.getRestaurantMenu = function () {
         $scope.loader = true;
