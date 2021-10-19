@@ -241,7 +241,7 @@
         </div>
     </div>
 
-    <div class="order-icon-float" ng-click="getAllOrders()" ng-if="take_away">
+    <div class="order-icon-float" ng-click="getAllOrders()" ng-if="take_away && customer.mobile_no && customer.email">
         <img src="/images/order-icon.png">
     </div>
 
@@ -307,36 +307,66 @@
             <div class="pop-up-pad">
                 <div class="pop-up-nav">
                     <ul>
-                        <li class="active">Food items</li>
+                        <li ng-class="{ 'active' : foodItemTab}" ng-click="tabShowHide('food-item')">Food items</li>
+                        <li ng-click="tabShowHide('user-details')" ng-class="{ 'active' : !foodItemTab}" ng-if="take_away && customer.mobile_no && customer.email">Details</li>
                     </ul>
                 </div>
-                <div class="pop-up-content order-container">
-                    <div ng-repeat="item in orderItems | unique: 'id'" class="order-item">
-                        <div class="recipe-detail">
-                            <h5>{{$index + 1}}. {{item.name}}{{item.alias ? (' / ' + item.alias) : ''}}</h5>
-                            <div class="img-cotainer">
-                                <img src="/images/veg-icon.svg" ng-if="item.recipe_type == 1">
-                                <img src="/images/non-veg-icon.svg" ng-if="item.recipe_type == 2">
-                                <img src="/images/eggitarian-icon.svg" ng-if="item.recipe_type == 3">
-                                <span class="jain-icon" ng-if="item.is_jain">(J)</span>
+                <div ng-if="foodItemTab == true">
+                    <div class="pop-up-content order-container">
+                        <div ng-repeat="item in orderItems | unique: 'id'" class="order-item">
+                            <div class="recipe-detail">
+                                <h5>{{$index + 1}}. {{item.name}}{{item.alias ? (' / ' + item.alias) : ''}}</h5>
+                                <div class="img-cotainer">
+                                    <img src="/images/veg-icon.svg" ng-if="item.recipe_type == 1">
+                                    <img src="/images/non-veg-icon.svg" ng-if="item.recipe_type == 2">
+                                    <img src="/images/eggitarian-icon.svg" ng-if="item.recipe_type == 3">
+                                    <span class="jain-icon" ng-if="item.is_jain">(J)</span>
+                                </div>
                             </div>
+                            <span> X {{getFoodItemCount(item.id)}}</span>
                         </div>
-                        <span> X {{getFoodItemCount(item.id)}}</span>
+                    </div>
+                    <div class="pop-up-footer order-container" ng-if="orderItems.length > 0 && take_away">
+                        <button class="btn btn-icon" ng-click="tabShowHide('user-details')">Next</button>
                     </div>
                 </div>
-                <div class="pop-up-footer order-container" ng-if="orderItems.length > 0 && take_away">
-                    <button class="btn btn-icon" ng-click="generateOrder()">Checkout</button>
+                <div ng-if="foodItemTab == false">
+                    <form name="userForm" novalidate="" style="padding: 20px;">
+                        <div class="form-field-set" ng-if="take_away">
+                            <label>Name <sup class="mandatory-field">*</sup></label>
+                            <div class="form-field">
+                                <input type="text" placeholder="Enter your name" class="input-icon"
+                                    ng-model="customer.name" name="name" required />
+                            </div>
+                        </div>
+                        <div class="form-field-set" ng-if="take_away">
+                            <label>Address <sup class="mandatory-field">*</sup></label>
+                            <div class="form-field">
+                                <textarea placeholder="Enter Address" style="width: 100%;" name="address" ng-model="customer.address"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-field-set" ng-if="take_away">
+                            <label>Email</label>
+                            <div class="form-field">
+                                <input type="email" placeholder="Enter Email" class="input-icon"
+                                    ng-model="customer.email" name="email">
+                            </div>
+                        </div>
+                        <div class="form-field-set" ng-if="take_away">
+                            <label>Mobile number <sup class="mandatory-field">*</sup></label>
+                            <div class="form-field">
+                                <input type="number" placeholder="Enter Mobile Number" class="input-icon"
+                                    ng-model="customer.mobile_no" name="mobile" required="">
+                            </div>
+                        </div>
+                        <div class="form-footer">
+                            <button type="submit" ng-click="generateOrder()" class="btn btn-icon">Place Order</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <script>
-            $(document).ready(function () {
-                $('li').click(function () {
-                    $('li.active').removeClass('active');
-                    $(this).addClass('active');
-                });
-            });
-        </script>
     </div>
 
     <div class="pop-up" ng-class="{'is-open' : orderListPopUpShow}" ng-show="orderListPopUpShow">
@@ -376,7 +406,8 @@
         <div class="contact-details">
             <div class="contact-item">
                 <h3>Contact Us: </h3>
-                <h5> <a href="tel:+{{user.country_code}}{{user.mobile_no}}">+{{user.country_code}}{{user.mobile_no}}</a></h5>
+                <h5> <a href="tel:+{{user.country_code}}{{user.mobile_no}}">+{{user.country_code}}{{user.mobile_no}}</a>
+                </h5>
             </div>
             <div class="contact-item" ng-if="user.address">
                 <h3>Address: </h3>

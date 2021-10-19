@@ -6,7 +6,8 @@ angular.module('restaurantApp').controller('menuQrCtrl', ['$scope', '$window', '
 
     $scope.entity = $stateParams.entity;
 
-    $scope.menu_key = $localStorage.user.menu_key;
+    $scope.menu_key = $scope.accountData.menu_key;
+    
     $scope.init = function () {
         $scope.menuPrint = {};
         $scope.languages = $scope.$parent.accountData.user_languages;

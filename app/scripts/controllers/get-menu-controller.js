@@ -22,6 +22,7 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$sce', '
         $scope.recipeImages = [];
         $scope.selected = 0;
         $scope.foodItemObj = [];
+        $scope.foodItemTab = true;
     };
 
     $scope.trustSrc = function (src) {
@@ -154,6 +155,10 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$sce', '
         Data.generateOrder(params, function (result) {
             Notification.success('Order placed successfully');
             $scope.orderItems = [];
+            $localStorage.user = $scope.customer;
+            $scope.foodItemListPopUpShow = false;
+            $scope.foodItemTab = true;
+            $scope.getAllOrders();
         });
     }
 
@@ -168,6 +173,14 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$sce', '
     $scope.closeOrderListPopUpShow = function () {
         $scope.orderListPopUpShow = false;
     }
+
+    $scope.tabShowHide = function (tab){
+        if (tab == "food-item"){
+            $scope.foodItemTab = true;
+        }else{
+            $scope.foodItemTab = false;
+        }
+    };
 
     $scope.init();
 }]).filter('unique', function () {

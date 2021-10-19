@@ -72,7 +72,7 @@ angular.module('routes', [])
                 }
             })
             .state('app.menu-qr-print', {
-                url: '/menu-qr-print/:entity/:lang',
+                url: '/menu-qr-print/:entity',
                 controller: 'menuQrCtrl',
                 templateUrl: 'views/menu-qr-print.html',
                 resolve: {

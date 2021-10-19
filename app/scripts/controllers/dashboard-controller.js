@@ -502,7 +502,7 @@ angular
             console.log(result.cat_id);
             $localStorage.QrCategories = result.cat_id.join('@');
             $timeout(function () {
-              $window.open('/menu-qr-print/' + result.entity + '/' + result.lang, '_blank');
+              $window.open('/menu-qr-print/' + result.entity , '_blank');
             }, 100);
           });
       };
