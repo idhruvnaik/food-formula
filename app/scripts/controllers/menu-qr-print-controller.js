@@ -6,11 +6,11 @@ angular.module('restaurantApp').controller('menuQrCtrl', ['$scope', '$window', '
 
     $scope.entity = $stateParams.entity;
 
-    $scope.menu_key = $scope.accountData.menu_key;
+    $scope.menu_key = $localStorage.user.menu_key;
     
-    $scope.init = async function () {
+    $scope.init = function () {
         $scope.menuPrint = {};
-        $scope.languages = await $scope.$parent.accountData.user_languages;
+        $scope.languages = $scope.$parent.accountData.user_languages;
         $scope.qrSize = 200;
         $scope.menuPrint.qrcodeUrl = window.location.host + '/menu-init/' + $scope.menu_key + '/' + $stateParams.entity;
 
