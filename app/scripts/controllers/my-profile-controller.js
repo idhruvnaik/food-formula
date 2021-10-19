@@ -175,7 +175,7 @@ angular.module('restaurantApp').controller('ProfileCtrl', ['$scope', '$filter', 
     };
 
     $scope.updateUserDetails = function () {
-        Data.updateUserDetails({ name: $scope.user.name, email: $scope.user.email, currency: $scope.user.currency, website: $scope.user.website, country_code: $scope.user.country_code, map_link: $scope.user.map_link }, function (result) {
+        Data.updateUserDetails({ name: $scope.user.name, email: $scope.user.email, currency: $scope.user.currency, website: $scope.user.website, country_code: $scope.user.country_code, map_link: $scope.user.map_link, color1: $scope.user.color1, color2: $scope.user.color2}, function (result) {
             $localStorage.user = result.contents;
             console.log($localStorage.user);
             

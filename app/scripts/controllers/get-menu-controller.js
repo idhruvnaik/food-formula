@@ -1,5 +1,5 @@
 'use strict';
-angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$sce', 'Data', '$stateParams', '$localStorage', '$state', 'Notification', 'ENV', function ($scope, $sce, Data, $stateParams, $localStorage, $state, Notification, ENV) {
+angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$sce', 'Data', '$stateParams', '$localStorage', '$state', 'Notification', 'ENV', '$timeout', function ($scope, $sce, Data, $stateParams, $localStorage, $state, Notification, ENV, $timeout) {
 
     $scope.category = null;
     $scope.orderItems = [];
@@ -42,7 +42,13 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$sce', '
                 $scope.foodItemObj.push({ id: item.id, recipes: item.recipes });
             });
             $scope.recipes = (($scope.foodItemObj[0] && $scope.foodItemObj[0].recipes) ? $scope.foodItemObj[0].recipes : []);
-            $scope.loader = false;
+
+            document.documentElement.style.setProperty('--primary-color', $scope.user.color1);
+            document.documentElement.style.setProperty('--secondary-color', $scope.user.color2);
+
+            $timeout(function () {
+                $scope.loader = false;
+            }, 1000);
         }, function (error) {
             console.log(error);
         });
@@ -174,10 +180,10 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$sce', '
         $scope.orderListPopUpShow = false;
     }
 
-    $scope.tabShowHide = function (tab){
-        if (tab == "food-item"){
+    $scope.tabShowHide = function (tab) {
+        if (tab == "food-item") {
             $scope.foodItemTab = true;
-        }else{
+        } else {
             $scope.foodItemTab = false;
         }
     };

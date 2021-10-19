@@ -11,6 +11,8 @@ angular.module('restaurantApp').controller('menuInitCtrl', ['$scope', 'Data', '$
             $scope.logo = result.contents.logo;
             $localStorage.restaurant_id = result.contents.id;
             $scope.take_away = result.contents.take_away;
+            document.documentElement.style.setProperty('--primary-color', result.contents.color1);
+            document.documentElement.style.setProperty('--secondary-color', result.contents.color2);
         }, function (error) {
             console.log(error);
         });

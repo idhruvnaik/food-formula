@@ -108,7 +108,7 @@
             padding: 7px 10px;
             border-radius: 50px;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-right: 10px;
             width: max-content;
             &.active {
@@ -123,7 +123,7 @@
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        border: 1px solid #113448;
+        border: 2px solid #113448;
         margin: 10px 5px;
         border-radius: 10px;
         .form-field {
@@ -177,18 +177,18 @@
                 .jain-icon {
                   font-size: 14px;
                   font-weight: 400;
-                  color: #14bf98;
+                  color: #12a583;
                 }
               }
               h5 {
                 color: #113448;
                 font-size: 14px;
-                font-weight: 500;
+                font-weight: 600;
                 margin-right: 10px;
               }
             }
             span.price {
-              color: #14bf98;
+              color: #12a583;
               margin-bottom: 5px;
               font-weight: 600;
               font-size: 16px;
@@ -209,8 +209,8 @@
                 margin: 0px 10px;
               }
               span {
-                width: 20px;
-                height: 20px;
+                width: 25px;
+                height: 25px;
                 background: #d6d6d6;
                 border-radius: 4px;
                 padding: 5px;
@@ -218,6 +218,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                line-height: 0;
                 &:active {
                   background: #ffffff;
                 }
@@ -239,7 +240,7 @@
           align-items: center;
           margin-bottom: 10px;
           padding: 10px;
-          border-bottom: 1px solid #14bf98;
+          border-bottom: 1px solid #12a583;
           justify-content: space-between;
           .recipe-detail {
             display: flex;
@@ -247,7 +248,7 @@
             h5 {
               color: #113448;
               font-size: 14px;
-              font-weight: 500;
+              font-weight: 600;
               margin-right: 10px;
               text-align: left;
             }
@@ -262,7 +263,7 @@
               .jain-icon {
                 font-size: 14px;
                 font-weight: 400;
-                color: #14bf98;
+                color: #12a583;
               }
             }
           }
@@ -300,7 +301,7 @@
           flex-wrap: wrap;
           span {
             padding: 5px 10px;
-            background-color: #14bf98;
+            background-color: #12a583;
             color: #fff;
             border-radius: 20px;
             margin: 0px 10px 10px 0px;
@@ -344,7 +345,7 @@
             span {
               padding: 5px;
               color: #fff;
-              background-color: #14bf98;
+              background-color: #12a583;
               margin-right: 10px;
               border-radius: 20px;
               font-size: 12px;
@@ -375,7 +376,7 @@
     padding: 10px;
     border-radius: 50%;
     &:active {
-      background-color: #14bf98;
+      background-color: #12a583;
     }
     img {
       height: 32px;
@@ -424,7 +425,6 @@
 // Variables
 $bar-color: #fff;
 $ball-color: #fff;
-$bg-color: #14bf98;
 
 html {
   height: 100%;
@@ -435,7 +435,7 @@ body {
 
 .loader-container {
   height: 100vh;
-  background: $bg-color;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;

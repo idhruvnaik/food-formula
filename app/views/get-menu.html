@@ -162,6 +162,73 @@
             font-size: 18px;
         }
     }
+
+    :root {
+        --primary-color: #ffffff;
+        --secondary-color: #ffffff;
+    }
+
+    .menu-container .menu-header {
+        background-color: var(--primary-color);
+    }
+
+    .menu-container .menu-content .menu-details .category-container .cat-name div.active {
+        background-color: var(--primary-color);
+    }
+
+    .menu-container .menu-content .menu-details .recipe-container .recipe-item .recipe-details span.price {
+        color: var(--primary-color);
+    }
+
+    .menu-container .pop-up .pop-up-content.order-container .order-item {
+        border-bottom: 1px solid var(--primary-color);
+    }
+
+    .menu-container .pop-up .pop-up-content .detail-container .item-container span {
+        background-color: var(--primary-color);
+    }
+
+    .menu-container .order-icon-float.active {
+        background-color: var(--primary-color);
+    }
+
+    .menu-container .menu-content .menu-details .category-container .cat-name div {
+        color: var(--secondary-color);
+    }
+
+    .menu-container .menu-content .menu-details .filter-container {
+        border: 2px solid var(--secondary-color);
+    }
+
+    .menu-container .menu-content .menu-details .recipe-container .recipe-item .recipe-details .recipe-name-container h5 {
+        color: var(--secondary-color);
+    }
+
+    .menu-container .pop-up .pop-up-content.order-container .order-item .recipe-detail h5 {
+        color: var(--secondary-color);
+    }
+
+    .menu-container .pop-up .pop-up-content .detail-container h4 {
+        color: var(--secondary-color);
+    }
+
+    .menu-container .order-icon-float{
+        background-color: var(--secondary-color);
+    }
+
+    .loader-container{
+        background: var(--primary-color);
+    }
+
+    .btn{
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color);
+    }
+
+    .btn:hover{
+        background-color: var(--secondary-color);
+        border: 1px solid #ffffff;
+    }
 </style>
 <div class="menu-container" id="main" ng-if="loader == false">
     <div class="menu-header">
@@ -241,7 +308,7 @@
         </div>
     </div>
 
-    <div class="order-icon-float" ng-click="getAllOrders()" ng-if="take_away && customer.mobile_no && customer.email">
+    <div class="order-icon-float" ng-click="getAllOrders()" ng-if="take_away && (customer.mobile_no || customer.email)">
         <img src="/images/order-icon.png">
     </div>
 
@@ -308,7 +375,8 @@
                 <div class="pop-up-nav">
                     <ul>
                         <li ng-class="{ 'active' : foodItemTab}" ng-click="tabShowHide('food-item')">Food items</li>
-                        <li ng-click="tabShowHide('user-details')" ng-class="{ 'active' : !foodItemTab}" ng-if="take_away && customer.mobile_no && customer.email">Details</li>
+                        <li ng-click="tabShowHide('user-details')" ng-class="{ 'active' : !foodItemTab}"
+                            ng-if="take_away">Details</li>
                     </ul>
                 </div>
                 <div ng-if="foodItemTab == true">
@@ -342,8 +410,8 @@
                         <div class="form-field-set" ng-if="take_away">
                             <label>Address <sup class="mandatory-field">*</sup></label>
                             <div class="form-field">
-                                <textarea placeholder="Enter Address" style="width: 100%;" name="address" ng-model="customer.address"
-                                    required></textarea>
+                                <textarea placeholder="Enter Address" style="width: 100%;" name="address"
+                                    ng-model="customer.address" required></textarea>
                             </div>
                         </div>
                         <div class="form-field-set" ng-if="take_away">
