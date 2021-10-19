@@ -181,7 +181,7 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$sce', '
     }
 
     $scope.tabShowHide = function (tab) {
-        if (tab == "food-item") {
+        if (tab == 'food-item') {
             $scope.foodItemTab = true;
         } else {
             $scope.foodItemTab = false;
