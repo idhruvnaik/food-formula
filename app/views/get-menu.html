@@ -113,46 +113,6 @@
         margin-bottom: 0px;
     }
 
-    .sidenav {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #111;
-        overflow-x: hidden;
-        padding-top: 65px;
-        transition: 0.5s;
-    }
-
-    .sidenav a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 25px;
-        font-family: Gotham;
-        color: #818181;
-        display: block;
-        transition: 0.3s
-    }
-
-    .sidenav a:hover,
-    .offcanvas a:focus {
-        color: #f1f1f1;
-    }
-
-    .sidenav .closebtn {
-        position: absolute;
-        top: 60px;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-    }
-
-    #main {
-        transition: margin-left .5s;
-    }
-
     @media screen and (max-height: 450px) {
         .sidenav {
             padding-top: 15px;
@@ -212,28 +172,71 @@
         color: var(--secondary-color);
     }
 
-    .menu-container .order-icon-float{
+    .menu-container .order-icon-float {
         background-color: var(--secondary-color);
     }
 
-    .loader-container{
+    .loader-container {
         background: var(--primary-color);
     }
 
-    .btn{
+    .btn {
         color: var(--primary-color);
         border: 1px solid var(--primary-color);
     }
 
-    .btn:hover{
+    .btn:hover {
         background-color: var(--secondary-color);
         border: 1px solid #ffffff;
+    }
+
+    .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .mm-vertical .mm-panel {
+        padding: 10px;
+    }
+
+    .mm-menu>.mm-panel:before {
+        height: 0;
+    }
+
+    .mm-menu>.mm-panel>.mm-listview:first-child {
+        margin-top: 0px;
+    }
+
+    .mm-menu>.mm-panel>.mm-listview {
+        margin: 0 0;
+    }
+
+    .mm-menu {
+        border: 1px solid #333;
+        box-shadow: 5px 0px #888888;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: var(--secondary-color) !important;
+    }
+
+    .navbar-brand {
+        color: var(--secondary-color);
     }
 </style>
 <div class="menu-container" id="main" ng-if="loader == false">
     <div class="menu-header">
         <div class="menu-header-pad">
-            <div class="burger-icon"><span onclick="openNav()"><img src="/images/menu.svg"></span></div>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#menu">
+                            <i class="fas fa-bars fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </nav>
             <div class="name-tagline-div">
                 <div ng-if="hrLogo">
                     <img ng-src="{{hrLogo}}">
@@ -247,13 +250,23 @@
             </div>
         </div>
     </div>
+
     <div class="menu-content">
         <div class="menu-bg-container">
-            <div class="slideshow-container" ng-if="sliderImages.length > 0">
-                <img ng-repeat="slide in sliderImages" class="slide slide-animation"
-                    ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide}}" width="100%">
-                <a class="prev arrow" ng-click="prevSlide()">&#10094;</a>
-                <a class="next arrow" ng-click="nextSlide()">&#10095;</a>
+            <div class="swiper" ng-if="sliderImages.length > 0" swiper>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" ng-repeat="slide in sliderImages track by $index">
+                        <div class="swiper-zoom-container" data-swiper-zoom="5">
+                            <img ng-src="{{slide}}" class="swiper-lazy">
+                            <div class="swiper-lazy-preloader"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-button-prev">
+                </div>
+                <div class="swiper-button-next">
+                </div>
             </div>
         </div>
         <div class="menu-details">
@@ -307,6 +320,19 @@
             </div>
         </div>
     </div>
+
+    <nav id="menu" mmenu>
+        <ul>
+            <li class="logo-container"><img ng-src="{{user.logo}}"></li>
+            <li><a href="tel:+{{user.country_code}}{{user.mobile_no}}">Contact Us:
+                    <u>+{{user.country_code}}{{user.mobile_no}}</u></a></li>
+            <li ng-if="user.address">Address: {{user.address}}</li>
+            <li ng-if="user.map_link">
+                <iframe ng-src="{{trustSrc(user.map_link)}}" class="map-container" width="100%"
+                    style="border-radius: 10px;"></iframe>
+            </li>
+        </ul>
+    </nav>
 
     <div class="order-icon-float" ng-click="getAllOrders()" ng-if="take_away && (customer.mobile_no || customer.email)">
         <img src="/images/order-icon.png">
@@ -465,30 +491,10 @@
         </div>
     </div>
 
-    <script data-cfasync="false" type="text/javascript" src="https://www.dexpredict.com/a/display.php?r=5240015"></script>
+    <!-- <script data-cfasync="false" type="text/javascript"
+        src="https://www.dexpredict.com/a/display.php?r=5240015"></script> -->
 </div>
-<div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <div class="restaurant-info-container">
-        <div class="logo-container">
-            <img ng-src="{{user.logo}}">
-        </div>
-        <div class="contact-details">
-            <div class="contact-item">
-                <h3>Contact Us: </h3>
-                <h5> <a href="tel:+{{user.country_code}}{{user.mobile_no}}">+{{user.country_code}}{{user.mobile_no}}</a>
-                </h5>
-            </div>
-            <div class="contact-item" ng-if="user.address">
-                <h3>Address: </h3>
-                <h5><a>{{user.address}}</a></h5>
-            </div>
-            <div class="contact-item" ng-if="user.map_link">
-                <iframe ng-src="{{trustSrc(user.map_link)}}" width="100%" style="border-radius: 10px;"></iframe>
-            </div>
-        </div>
-    </div>
-</div>
+
 <div class="loader-container" ng-if="loader == true">
     <div class="loader">
         <div class="loader__bar"></div>
@@ -503,12 +509,4 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "100%";
-    }
-
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-    }
-</script>
+<script type="text/javascript"></script>

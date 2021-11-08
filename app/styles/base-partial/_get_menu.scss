@@ -32,7 +32,7 @@
           color: #ffffff;
           margin-bottom: 5px;
           font-weight: 400;
-          font-size: 16px;
+          font-size: 20px;
           text-align: center;
         }
         .tagline {
@@ -67,6 +67,7 @@
   .menu-content {
     padding-top: 60px;
     .menu-bg-container {
+      padding: 10px 0px;
       .slideshow-container {
         position: relative;
         padding: 10px;
@@ -622,5 +623,25 @@ body {
   }
   100% {
     transform: scale(1, 1);
+  }
+}
+
+.mm-panel {
+  .mm-listview {
+    li {
+      padding-bottom: 10px;
+      &.logo-container {
+        height: 100px;
+        width: 100px;
+        img {
+          height: 100%;
+          object-fit: contain;
+          border-radius: 10px;
+        }
+      }
+      a{
+        padding: 10px 0 0;
+      }
+    }
   }
 }

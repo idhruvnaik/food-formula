@@ -69,7 +69,49 @@ angular.module('restaurantApp', ['ui.router', 'oc.lazyLoad', 'ui.bootstrap', 'ui
         $rootScope.$on('$stateNotFound', function (event, unfoundState, fromState, fromParams) {
             $location.path('/');
         });
-    }]);
+    }])
+    .directive('swiper', function () {
+        return {
+            link: function (scope, element, attr) {
+                const swiper = new Swiper('.swiper', {
+                    effect: 'fade',
+                    fadeEffect: {
+                        crossFade: true
+                    },
+                    direction: 'horizontal',
+                    loop: false,
+                    preloadImages: false,
+                    lazy: true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        type: 'bullets'
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                        hideOnClick: true
+                    },
+                    scrollbar: {
+                        el: '.swiper-scrollbar',
+                        draggable: true
+                    },
+                    zoom: {
+                        maxRatio: 5,
+                        toggle: true
+                    },
+                });
+                swiper.slideTo(scope.docReport.index);
+            }
+        };
+    })
+    .directive('mmenu', function () {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                $(element).mmenu({ slidingSubmenus: false });
+            }
+        };
+    });
 
 
 

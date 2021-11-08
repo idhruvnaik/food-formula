@@ -54,24 +54,6 @@ angular.module('restaurantApp').controller('getMenuQrCtrl', ['$scope', '$sce', '
         });
     };
 
-    $scope.currentIndex = 0;
-
-    $scope.setCurrentSlideIndex = function (index) {
-        $scope.currentIndex = index;
-    };
-
-    $scope.isCurrentSlideIndex = function (index) {
-        return $scope.currentIndex === index;
-    };
-
-    $scope.prevSlide = function () {
-        $scope.currentIndex = ($scope.currentIndex < $scope.sliderImages.length - 1) ? ++$scope.currentIndex : 0;
-    };
-
-    $scope.nextSlide = function () {
-        $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.sliderImages.length - 1;
-    };
-
     $scope.populateRecipes = function (cat, index) {
         if (cat == '') {
             $scope.recipes = $scope.foodItemObj[0].recipes;

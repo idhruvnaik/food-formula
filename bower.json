@@ -40,7 +40,8 @@
     "angular-image-compress": "^0.1.5",
     "components-font-awesome": "^5.15.3",
     "moment": "momentjs#^2.29.1",
-    "particles.js": "particles-js#^2.0.0"
+    "particles.js": "particles-js#^2.0.0",
+    "Font-Awesome": "^5.15.4"
   },
   "resolutions": {
     "angular": "1.8.2"
