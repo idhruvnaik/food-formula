@@ -422,7 +422,7 @@
                   }
                   &.active {
                     visibility: visible;
-                    height: 260px;
+                    height: 300px;
                   }
                 }
                 .navbar-btn {
@@ -520,6 +520,7 @@
         }
       }
       .part-two {
+        flex-wrap: wrap;
         .counter-wrapper {
           .counter-content {
             display: flex;
