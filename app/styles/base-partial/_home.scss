@@ -362,6 +362,7 @@
     }
     .part-two {
       display: flex;
+      flex-wrap: wrap;
       .footer-about{
         margin-right: 30px;
         .text{
@@ -369,6 +370,7 @@
         }
       }
       .footer-contact{
+        margin-right: 30px;
         li{
           width: 200px;
         }
@@ -662,8 +664,6 @@
       .part-two {
       }
       .container {
-        .subscribe-container {
-        }
       }
     }
   }

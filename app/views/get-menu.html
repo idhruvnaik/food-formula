@@ -113,6 +113,47 @@
         margin-bottom: 0px;
     }
 
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 65px;
+        transition: 0.5s;
+    }
+
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        font-family: Gotham;
+        color: #818181;
+        display: block;
+        transition: 0.3s
+    }
+
+    .sidenav a:hover,
+    .offcanvas a:focus {
+        color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 60px;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    #main {
+        transition: margin-left .5s;
+    }
+
+
     @media screen and (max-height: 450px) {
         .sidenav {
             padding-top: 15px;
@@ -232,7 +273,7 @@
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#menu">
-                            <i class="fas fa-bars fa-lg"></i>
+                            <img src="/images/hamburger-icon.svg" height="40px" width="40px">
                         </a>
                     </div>
                 </div>
@@ -253,20 +294,11 @@
 
     <div class="menu-content">
         <div class="menu-bg-container">
-            <div class="swiper" ng-if="sliderImages.length > 0" swiper>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" ng-repeat="slide in sliderImages track by $index">
-                        <div class="swiper-zoom-container" data-swiper-zoom="5">
-                            <img ng-src="{{slide}}" class="swiper-lazy">
-                            <div class="swiper-lazy-preloader"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="swiper-button-prev">
-                </div>
-                <div class="swiper-button-next">
-                </div>
+            <div class="slideshow-container" ng-if="sliderImages.length > 0">
+                <img ng-repeat="slide in sliderImages" class="slide slide-animation"
+                    ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide}}" width="100%">
+                <a class="prev arrow" ng-click="prevSlide()">&#10094;</a>
+                <a class="next arrow" ng-click="nextSlide()">&#10095;</a>
             </div>
         </div>
         <div class="menu-details">
@@ -462,6 +494,16 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
 
     <div class="pop-up" ng-class="{'is-open' : orderListPopUpShow}" ng-show="orderListPopUpShow">
         <div class="popup-bg" ng-click="closeOrderListPopUpShow()">
