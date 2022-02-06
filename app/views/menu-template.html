@@ -1,18 +1,23 @@
 <style>
-    html, body{
+    html,
+    body {
         overflow: visible;
         height: 100%;
     }
-    div{
+
+    div {
         color: black;
     }
-    navigation{
+
+    navigation {
         display: none;
     }
+
     #page-wrapper {
         padding-left: 0px;
     }
-    .container{
+
+    .container {
         margin: auto;
         width: 100%;
         height: 100%;
@@ -23,101 +28,140 @@
         flex-direction: column;
         background-color: rgba(0, 0, 0, 0.7);
     }
-    .content{
+
+    .content {
         border-radius: 10px;
         background-color: white;
         overflow: auto;
         width: 50%;
         height: 80%;
     }
-    .restaurant-logo{
+
+    .restaurant-logo {
         width: 120px;
         height: 120px;
         object-fit: contain;
         border-radius: 5px;
         margin: 10px;
     }
-    .category-title{
-        color:#1d2e5c;
+
+    .category-title {
+        color: #1d2e5c;
         font-size: 20px;
         font-weight: 800;
         text-align: left;
-        padding:0px;
+        padding: 0px;
         line-height: 1;
     }
-    .print{
+
+    .print {
         display: none;
     }
-    table td{
+
+    table td {
         width: 70px;
         padding: 10px 5px;
         font-size: 15px;
         text-align: right;
     }
-    table tr{
+
+    table tr {
         padding: 10px;
         page-break-inside: avoid;
     }
+
     thead {
         display: table-header-group;
     }
-    .nested-table tr:last-child td{
+
+    .nested-table tr:last-child td {
         font-size: 12px;
         padding-top: 0px;
     }
+
     .nested-table td {
         text-align: left;
     }
-    .container-table{
+
+    .container-table {
         padding: 10px;
     }
-    .category-info-block{
+
+    .category-info-block {
         padding: 10px;
         margin-bottom: 15px;
     }
-    .recipe-name{
+
+    .recipe-name {
         color: #14bf98;
     }
 
-    @media print
-    {    
+    @media print {
         @page {
             size: auto;
-            margin: 0.5cm 0mm 0.5cm 0cm ;
+            margin: 0.5cm 0mm 0.5cm 0cm;
             padding: 0;
         }
-        .no-print{
+
+        .no-print {
             display: none !important;
         }
-        .container{
+
+        .container {
             display: unset;
         }
-        .content{
+
+        .content {
             border-radius: 0px;
             width: auto;
             height: 100%;
             overflow: visible;
             padding: 0px 10px;
         }
-        .restaurant-logo{
+
+        .restaurant-logo {
             margin: 10px 10px 10px 0px;
         }
-        .print{
+
+        .print {
             display: block;
         }
     }
 </style>
 <div class="container">
+
+    <div style=" margin-bottom: 20px; border-radius: 10px; display: flex; align-items: center; justify-content: space-between; background-color: white;"
+        class="no-print">
+        <div class="form-field" style="width: 200px; padding: 10px;">
+            <select ng-model="entity" class="select-box" ng-change="getMenu()">
+                <option ng-value="entity.id" ng-repeat="entity in userEntities">{{entity.name}}</option>
+            </select>
+        </div>
+
+        <div class="form-field" style="width: 200px; padding: 10px;">
+            <select ng-model="language" class="select-box" ng-change="getMenu()">
+                <option ng-value="language.id" ng-repeat="language in userLanguages">{{language.name}}</option>
+            </select>
+        </div>
+
+        <div class="form-field" style="width: 200px; padding: 10px;">
+            <select ng-model="image" class="select-box">
+                <option ng-value="false">Hide Image</option>
+                <option ng-value="true">Show Image</option>
+            </select>
+        </div>
+    </div>
+
     <div class="content">
         <header class="no-print">
-            <img ng-src="{{logo.url}}" class="restaurant-logo" ng-if="logo != null"/>
+            <img ng-src="{{logo.url}}" class="restaurant-logo" ng-if="logo != null" />
         </header>
         <div ng-if="recipeCategories && recipeCategories.length">
             <table class="container-table">
                 <thead>
                     <tr class="print">
                         <th>
-                            <img ng-src="{{logo.url}}" class="restaurant-logo" ng-if="logo != null"/>
+                            <img ng-src="{{logo.url}}" class="restaurant-logo" ng-if="logo != null" />
                         </th>
                     </tr>
                 </thead>
@@ -125,12 +169,16 @@
                     <tr ng-repeat="category in recipeCategories track by $index">
                         <td>
                             <table class="category-info-block">
-                                <tr><td class="category-title" ng-bind="category.name" colspan="4"></td></tr>
+                                <tr>
+                                    <td class="category-title" ng-bind="category.name" colspan="{{image ? '2' : '3'}}">
+                                    </td>
+                                </tr>
                                 <tr ng-repeat="recipe in category.recipes track by $index">
                                     <td style="width: 130px;">
                                         <table class="nested-table">
                                             <tr>
-                                                <td style="line-height: 1.2;" class="recipe-name" ng-bind="recipe.name"></td>
+                                                <td style="line-height: 1.2;" class="recipe-name" ng-bind="recipe.name">
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td class="ingredients-info" ng-bind="recipe.ingredients_info"></td>
@@ -138,9 +186,9 @@
                                         </table>
                                     </td>
                                     <td ng-bind="(recipe.price)? recipe.price+' '+currency:'NA'"></td>
-                                    <td>{{recipe.serving_weight}} {{recipe.is_liquid == true ? 'ml' : 'gms'}}</td>
-                                    <td style="text-align: -webkit-right;">
-                                        <img ng-src="{{recipe.image_url}}" class="restaurant-logo"/>
+                                    <!-- <td>{{recipe.serving_weight}} {{recipe.is_liquid == true ? 'ml' : 'gms'}}</td> -->
+                                    <td style="text-align: -webkit-right;" ng-if="image">
+                                        <img ng-src="{{recipe.image_url}}" class="restaurant-logo" />
                                     </td>
                                 </tr>
                             </table>
@@ -150,7 +198,8 @@
             </table>
         </div>
     </div>
-    <div class="form-footer no-print" style="padding: 10px 0px; width: 50%;" ng-if="recipeCategories && recipeCategories.length">    
+    <div class="form-footer no-print" style="padding: 10px 0px; width: 50%;"
+        ng-if="recipeCategories && recipeCategories.length">
         <div ng-click='printPage()' class="btn btn-icon"><span class="icon-printer"></span>&nbsp;PRINT</div>
     </div>
 </div>

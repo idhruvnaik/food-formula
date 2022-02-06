@@ -35,6 +35,8 @@ angular.module('restaurantApp').controller('MainCtrl', ['$scope', '$rootScope', 
         if ($localStorage.api_key && !$scope.isAdmin()) {
             Data.getMastersData(function (result) {
                 $scope.accountData = result.contents;
+                $localStorage.userEntities = result.contents.user_entities;
+                $localStorage.userLanguages = result.contents.user_languages;
             }, function (error) {
                 console.log(error);
             });

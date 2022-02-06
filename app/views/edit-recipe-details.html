@@ -626,7 +626,7 @@
             </div>
         </div>
 
-        <div class="card-block mb10">
+        <div class="card-block mb10" ng-if="accountData && accountData.image_access">
             <div class="card-pad">
                 <div class="image-list" ng-if="images.length > 0">
                     <div class="img-container" ng-repeat="img in images" ng-if="!loader">

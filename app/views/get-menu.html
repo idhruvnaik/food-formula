@@ -320,7 +320,7 @@
             </div>
             <div class="recipe-container">
                 <div class="recipe-item" ng-repeat="recipe in recipes track by $index">
-                    <div class="recipe-image-container">
+                    <div class="recipe-image-container" ng-if="user.image_access">
                         <img
                             src="{{recipe.recipe_images.length > 0 ? recipe.recipe_images[0] : '/images/default-food-icon.svg'}}">
                     </div>
